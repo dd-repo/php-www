@@ -3,8 +3,8 @@ applications:
   .: 
     mem: 128M
     instances: 2
-    name: php-0D98eLAB
-    url: www.anotherservice.com
+    name: php-DOJKGDhA
+    url: dev.anotherservice.com
     framework: 
       info: 
         mem: 128M
