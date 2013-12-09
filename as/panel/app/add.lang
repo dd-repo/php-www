@@ -3,7 +3,7 @@
 [FR]
 title = "Ajouter une application"
 intro = "Choisissez le type ou l'application qui convient le mieux à votre besoin."
-standalone = "From scratch"
+standalone = "Langages"
 frameworks = "Frameworks"
 apps = "Applications"
 no_info = "Vous n'avez pas renseigné vos informations de paiement, vous ne pouvez donc pas ajouter d'applications."

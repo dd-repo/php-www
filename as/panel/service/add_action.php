@@ -6,7 +6,7 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-api::send('self/service/add', array('vendor'=>$_POST['vendor'], 'version'=>$_POST['version'], 'desc'=>$_POST['desc']));
+api::send('self/service/add', array('vendor'=>$_POST['vendor'], 'version'=>$_POST['version'], 'desc'=>$_POST['desc'], 'pass'=>$_POST['pass']));
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);

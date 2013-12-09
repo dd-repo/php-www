@@ -9,7 +9,7 @@ if( !defined('PROPER_START') )
 $app = api::send('self/app/list', array('id'=>$_GET['id']));
 $app = $app[0];
 
-api::send('self/app/update', array('app'=>$_GET['id'], 'memory' => $app['instances'][0]['memory']['quota']/1024/1024*2));
+api::send('self/app/update', array('app'=>$_GET['id'], 'memory' => $app['instances'][0]['memory']['quota']*2));
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);

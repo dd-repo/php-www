@@ -67,56 +67,14 @@ if( security::hasGrant('SELF_SELECT') )
 						<input type=\"submit\" value=\"{$lang['update']}\" {$disabled} />
 					</fieldset>
 				</form>
-			</div>
-			<div class=\"clearfix\"></div>";
+			";
 }
 
-if( security::hasGrant('SELF_TOKEN_SELECT') )
-{
-	$tokens = api::send('self/token/list');
-	
-	$content .= "
-			<h2>{$lang['tokens']}</h2>
-			<table>
-				<tr>
-					<th>{$lang['name']}</th>
-					<th>{$lang['token']}</th>
-					<th>{$lang['actions']}</th>
-				</tr>
-	";
-	
-	foreach( $tokens as $t )
-	{
-		$content .= "
-				<tr>
-					<td>{$t['name']}</td>
-					<td>{$t['token']}</td>
-					<td align=\"center\">";
-
-		if( security::hasGrant('SELF_TOKEN_UPDATE') )
-		{
-			$content .= "
-						<a href=\"/panel/token/detail?token={$t['token']}\" title=\"{$lang['update']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/refresh3.png\" alt=\"{$lang['update']}\" /></a>";
-		}
-		
-		if( security::hasGrant('SELF_TOKEN_DELETE') )
-		{
-			$content .= "
-						<a href=\"/panel/token/del_action?token={$t['token']}');\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>";
-		}
-		
-		$content .= "
-					</td>
-				</tr>";
-	}
-
-	$content .= "		
-			</table>
-			<br />
-			<a class=\"btn\" href=\"/panel/token/add\">{$lang['add']}</a>
+$content .= "
+			</div>
+			<div class=\"clearfix\"></div>
 		</div>
 	</div>";
-}
 
 /* ========================== OUTPUT PAGE ========================== */
 $template->output($content);

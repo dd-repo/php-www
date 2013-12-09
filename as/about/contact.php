@@ -11,7 +11,6 @@ $content = "
 		<div class=\"header\">
 			<div class=\"container\">
 				<div class=\"head\">{$lang['title']}</div>
-				<div class=\"subhead\">{$lang['subtitle']}</div>
 			</div>
 		</div>
 		<div class=\"left\">
@@ -52,21 +51,22 @@ $content = "
 		<div class=\"right\">
 			<div class=\"container\">
 				<h1>{$lang['contact']}</h1>
+				<br />
 				<p>
-					<span class=\"lightlarge\">{$lang['email']}</span><br />
+					<span class=\"large\">Paris, France</span>
+				</p>
+				<p>
 					<span class=\"large\"><a href=\"mailto: contact@notherservice.com\">contact@anotherservice.com</a></span>
 				</p>
 				<br />
 				<p>
-					<span class=\"lightlarge\">{$lang['phone']}</span><br />
 					<span class=\"large\">+33.(0)953.935.953</span>
 				</p>
 				<br />
 				<p class=\"large\">
-					<span class=\"lightlarge\">{$lang['address']}</span><br />
-					S.Y.S SAS - Another Service<br />
-					19 chemin de Ch&acirc;teau Gombert<br />
-					13013 Marseille
+					<span class=\"large\">Another Service</span><br />
+					40bis rue du Faubourg Poissonni&egrave;re<br />
+					75010 Paris
 				</p>
 				
 			</div>

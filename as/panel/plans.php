@@ -18,25 +18,14 @@ $content = "
 		<div class=\"header\">
 			<div class=\"container\">
 				<div class=\"head\">{$lang['title']}</div>
-				<div class=\"subhead\">{$lang['subtitle']}</div>
 			</div>
 		</div>
 		<div class=\"container\">
-			<h2>{$lang['plans']}</h2>
-			<p class=\"large\">{$lang['intro']}</p>
 			<table>
 				<tr>
 					<th>{$lang['plan']}</th>
 					<th>{$lang['price']}</th>
 					<th>{$lang['actions']}</th>
-				</tr>
-				<tr>
-					<td>
-						<h2>{$lang['offer_0_title']}</h2>
-						<p>{$lang['offer_0_desc']}</p>
-					</td>
-					<td><span class=\"large\"><span class=\"colored\">{$lang['free']}</span></span></td>
-					<td>".($quota['max']==256?"<span class=\"large colored\">{$lang['current']}</span>":"<a class=\"btn\" href=\"/panel/plan/select?plan=99\">{$lang['select']}</a>")."</td>
 				</tr>
 				<tr>
 					<td>

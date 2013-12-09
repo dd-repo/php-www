@@ -6,7 +6,7 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-api::send('self/app/update', array('app'=>$_POST['id'], 'url' => $_POST['url'], 'mode'=>'add'));
+api::send('self/app/update', array('app'=>$_POST['id'], 'url' => $_POST['url'], 'branch' => $_POST['branch'], 'mode'=>'add'));
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);

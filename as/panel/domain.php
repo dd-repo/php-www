@@ -12,7 +12,7 @@ $content = "
 	<div class=\"box nocol\">
 		<div class=\"container\">
 			<h2>{$lang['title']}</h2>
-			<p class=\"large\">{$lang['intro']}</p>
+			<br />
 			<table>
 				<tr>
 					<th>{$lang['domain']}</th>
@@ -26,10 +26,28 @@ if( count($domains) > 0 )
 {
 	foreach($domains as $d)
 	{
+		$arecord = "";
+		if( is_array($d['aRecord']) )
+		{
+			$i = 1;
+			$max = count($d['aRecord']);
+			foreach( $d['aRecord'] as $a )
+			{
+				if( $i == $max )
+					$arecord .= "{$a}";
+				else
+					$arecord .= "{$a}, ";
+					
+				$i++;
+			}
+		}
+		else
+			$arecord = $d['aRecord'];
+		
 		$content .= "
 				<tr>
 					<td><a href=\"/panel/domain/config?id={$d['id']}\"><strong>{$d['hostname']}</strong></a></td>
-					<td><span class=\"lightlarge\">{$d['aRecord']}</a></td>
+					<td><span class=\"lightlarge\">{$arecord}</a></td>
 					<td>{$d['homeDirectory']}</td>
 					<td align=\"center\">
 		";

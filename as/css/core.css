@@ -1,14 +1,13 @@
 html, body {
-	background-color: ;
 }
 
 body {
 	margin: 0;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
+	font-family: Cuprum;
+	font-size: 14px;
 	font-weight: normal;
 	line-height: 18px;
-	color: #404040;
+	color: #4c4c4c;
 }
 
 a {
@@ -27,8 +26,43 @@ a:hover {
 }
 
 #wrapper {
-	background-color: #58aad7;
-	background-image: url('../images/bg-body-home.png');
+	background-color: #2475ae;
 	background-repeat: repeat-x;
 	background-position: top left;
+}
+
+@font-face {
+	font-family: "Cuprum";
+	src: url('/as/fonts/bentonsans-book.eot');
+	src:
+		url('/as/fonts/bentonsans-book.ttf') format('truetype'),
+		url('/as/fonts/bentonsans-book.woff') format('woff'),
+		url('/as/fonts/bentonsans-book.eot?#iefix') format('embedded-opentype'),
+		url('/as/fonts/bentonsans-book.svg#BentonSans') format('svg');
+	font-weight: 200;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Cuprum";
+	src: url('/as/fonts/bentonsans-regular.eot');
+	src:
+		url('/as/fonts/bentonsans-regular.ttf') format('truetype'),
+		url('/as/fonts/bentonsans-regular.woff') format('woff'),
+		url('/as/fonts/bentonsans-regular.eot?#iefix') format('embedded-opentype'),
+		url('/as/fonts/bentonsans-regular.svg#BentonSans') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Cuprum";
+	src: url('/as/fonts/bentonsans-medium.eot');
+	src:
+		url('/as/fonts/bentonsans-medium.ttf') format('truetype'),
+		url('/as/fonts/bentonsans-medium.woff') format('woff'),
+		url('/as/fonts/bentonsans-medium.eot?#iefix') format('embedded-opentype'),
+		url('/as/fonts/bentonsans-medium.svg#BentonSans') format('svg');
+	font-weight: bold;
+	font-style: normal;
 }

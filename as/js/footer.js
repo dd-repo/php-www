@@ -24,7 +24,7 @@ function setFooter() {
 			var contentHeight = document.getElementById('wrapper').offsetHeight;
 			var need = windowHeight - contentHeight;
 			if (need > 0) {
-				document.getElementById('footer').style.marginTop = (20+need) + 'px';
+				document.getElementById('footer').style.marginTop = (30+need) + 'px';
 			}
 		}
 	}

@@ -7,32 +7,21 @@ if( !defined('PROPER_START') )
 }
 
 $content = "
-	<div class=\"box rightcol\">
-		<div class=\"left\">
-			<div class=\"container\">
-				<h2>{$lang['title']}</h2>
-				<p class=\"large\">{$lang['intro']}</p>
-				<form action=\"/panel/domain/add_action\" method=\"post\">
-					<fieldset>
-						<label>{$lang['domain']}</label>
-						<input type=\"text\" name=\"domain\" />
-						".(isset($_GET['e'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$lang['error']}</span>":"")."
-					</fieldset>
-					<fieldset>
-						<label></label>
-						<input type=\"submit\" value=\"{$lang['create']}\" />
-					</fieldset>
-				</form>
-			</div>
+	<div class=\"box nocol\">
+		<div class=\"container\">
+			<h2>{$lang['title']}</h2>
+			<form action=\"/panel/domain/add_action\" method=\"post\">
+				<fieldset>
+					<label>{$lang['domain']}</label>
+					<input type=\"text\" name=\"domain\" />
+					".(isset($_GET['e'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$lang['error']}</span>":"")."
+				</fieldset>
+				<fieldset>
+					<label></label>
+					<input type=\"submit\" value=\"{$lang['create']}\" />
+				</fieldset>
+			</form>
 		</div>
-		<div class=\"right\">
-			<div class=\"container\">
-				<h2>{$lang['doc']}</h2>
-				<p class=\"large\">{$lang['doc_text']}</p>
-				<a class=\"btn\" href=\"https://projets.anotherservice.com/projects/as-panel/wiki/Gerer_vos_noms_de_domaines\">{$lang['go']}</a>
-			</div>
-		</div>
-		<div class=\"clearfix\"></div>
 	</div>
 ";
 

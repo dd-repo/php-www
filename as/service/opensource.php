@@ -11,15 +11,12 @@ $content = "
 		<div class=\"header\">
 			<div class=\"container\">
 				<div class=\"head\">{$lang['title']}</div>
-				<div class=\"subhead\">{$lang['subtitle']}</div>
 			</div>
 		</div>
 		<div class=\"container\">		
 			<img class=\"icon-right\" style=\"border: 1px solid #e5e5e5; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illustrations/open.png\" alt=\"intro\" />
 			<p class=\"large\">{$lang['intro']}</p>
 			<hr>
-			<br />
-			<h1>{$lang['concept']}</h1>
 			<h2>{$lang['usage']}</h2>
 			<p class=\"large\">{$lang['usage_text']}</p><br />
 			<img class=\"icon\" style=\"border: 3px solid #e5e5e5; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illustrations/rmll.png\" alt=\"intro\" />

@@ -14,7 +14,6 @@ $content = "
 		<div class=\"header\">
 			<div class=\"container\">
 				<div class=\"head\">{$lang['title']}</div>
-				<div class=\"subhead\">{$lang['subtitle']}</div>
 			</div>
 		</div>
 		<div class=\"container\">

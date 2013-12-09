@@ -1,12 +1,8 @@
 p {
 	font-weight: normal;
-	line-height: 18px;
-	margin-bottom: 9px;
-}
-
-p.large {
-	font-size: 16px;
+	font-size: 15px;
 	line-height: 25px;
+	margin: 5px 0 5px 0;
 }
 
 h1 {
@@ -15,7 +11,7 @@ h1 {
 	font-size: 30px;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
-	font-weight: bold;
+	font-weight: normal;
 	color: #2e9fff;
 }
 
@@ -33,7 +29,7 @@ h2 {
 	font-family: Cuprum;
 	font-size: 26px;
 	font-weight: 300;
-	margin: 0px 0px 10px 0px;
+	margin: 5px 0px 10px 0px;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
 }
@@ -121,9 +117,12 @@ dl dd {
 
 hr {
 	border: none;
-	margin: 10px 0 10px 0;
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
 	padding: 0;
 	border-top: 1px solid #e2eef6;
+	width: 800px;
 }
 
 strong {
@@ -294,11 +293,11 @@ div.title {
 	margin: 0 0 30px 0;
 	padding: 0;
 	text-align: center;
-	font-size: 40px;
+	font-size: 32px;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
-	font-weight: bold;
 	color: #ffffff;
+	font-weight: 200;
 	text-shadow: 0 -2px 0 rgba(0, 0, 0, 0.15);	
 }
 
@@ -311,7 +310,7 @@ div.subtitle {
 	font-size: 20px;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
-	font-weight: normal;
+	font-weight: 200;
 	color: #ffffff;
 	line-height: 30px;
 	letter-spacing: 1px;
@@ -326,7 +325,7 @@ ul.simple {
 
 ul.simple li {
 	font-family: Cuprum;
-	margin: 0;
+	margin: 5px 0 5px 0;
 	padding: 0;
 	font-size: 13px;
 }
@@ -365,4 +364,32 @@ ul.rightmenu li {
 ul.rightmenu li p {
 	font-size: 15px;
 	margin: 10px 0px 10px 0px;
+}
+
+div.separator {
+	clear: both;
+	background-image: linear-gradient(to right, rgb(255, 255, 255), rgb(221, 221, 221) 35%, rgb(221, 221, 221) 65%, rgb(255, 255, 255));
+	background-position: 50% 0%;
+	background-repeat: no-repeat;
+	background-size: 100% 1px;
+	width: 1100px;
+	height: 20px;
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding: 0;
+}
+
+div.seperator-light {
+	clear: both;
+	background-image: linear-gradient(to right, rgb(255, 255, 255), rgb(221, 221, 221) 35%, rgb(221, 221, 221) 65%, rgb(255, 255, 255));
+	background-position: 50% 0%;
+	background-repeat: no-repeat;
+	background-size: 100% 1px;
+	width: 1100px;
+	height: 20px;
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 0;
 }

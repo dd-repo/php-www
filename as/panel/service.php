@@ -61,7 +61,7 @@ $content = "
 			<div class=\"clearfix\"></div>
 			<br />
 			<h2>{$lang['list']}</h2>
-			<p class=\"large\">{$lang['intro']}</p>
+			<br />
 			<table>
 				<tr>
 					<th>{$lang['name']}</th>

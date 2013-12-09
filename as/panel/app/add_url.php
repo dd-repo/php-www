@@ -12,20 +12,18 @@ $app = $app[0];
 $domains = api::send('self/domains/list');
 	
 $content = "
-	<div class=\"box rightcol\">
-		<div class=\"left\">
-			<div class=\"container\">
-				<h2>{$lang['title']} :: <i>{$app['name']}</i></h2>
-				<p class=\"large\">{$lang['intro']}</p>
-				<form action=\"/panel/app/add_url_action\" method=\"post\">
-					<input type=\"hidden\" name=\"id\" value=\"{$_GET['id']}\" />
-					<fieldset>
-						<label for=\"url\">{$lang['subdomain']}</label>
-						<select name=\"url\">";
+	<div class=\"box nocol\">
+		<div class=\"container\">
+			<h2>{$lang['title']} :: <i>{$app['name']}</i></h2>
+			<form action=\"/panel/app/add_url_action\" method=\"post\">
+				<input type=\"hidden\" name=\"id\" value=\"{$_GET['id']}\" />
+				<fieldset>
+					<label for=\"url\">{$lang['subdomain']}</label>
+					<select name=\"url\">";
 foreach( $domains as $d )
 {
-	$content .= "			 <optgroup label=\"{$d['hostname']}\">
-								<option value=\"{$d['hostname']}\">{$d['hostname']}</option>
+	$content .= "		<optgroup label=\"{$d['hostname']}\">
+							<option value=\"{$d['hostname']}\">{$d['hostname']}</option>
 	";
 
 	$subdomains = api::send('self/subdomain/list', array('domain' => $d['hostname']));
@@ -36,20 +34,27 @@ foreach( $domains as $d )
 }
 
 $content .= "
-						</select>
-					</fieldset>
-					<fieldset>
-						<label for=\"submit\">&nbsp;</label>
-						<input type=\"submit\" value=\"{$lang['add']}\" />
-					</fieldset>
-				</form>
-			</div>
+					</select>
+				</fieldset>
+				<fieldset>
+					<label for=\"branch\">{$lang['branch']}</label>
+					<select name=\"branch\">";
+foreach( $app['branches'] as $b )
+{
+	$content .= "
+						<option value=\"{$b}\">{$b}</option>
+	";
+}
+
+$content .= "
+					</select>
+				</fieldset>
+				<fieldset>
+					<label for=\"submit\">&nbsp;</label>
+					<input type=\"submit\" value=\"{$lang['add']}\" />
+				</fieldset>
+			</form>
 		</div>
-		<div class=\"right\">
-			<div class=\"container\">	
-			</div>
-		</div>
-		<div class=\"clearfix\"></div>
 	</div>
 ";
 

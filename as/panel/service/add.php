@@ -10,9 +10,6 @@ $content = "
 	<div class=\"box nocol\">
 		<div class=\"container\">
 			<h2>{$lang['title']}</h2>
-			<p class=\"large\">{$lang['intro']}</p>
-			<br />
-			<h3 class=\"colored\">{$lang['relationnal']}</h3>
 			<br />	
 			<a href=\"/panel/service/add2?vendor=mysql&version=5.1\">
 				<div class=\"app\">
@@ -27,11 +24,7 @@ $content = "
 					<div class=\"overline\">9.0</div>
 					<br />					
 				</div>
-			</a>
-			<div class=\"clearfix\"></div>
-			<br />
-			<h3 class=\"colored\">{$lang['nosql']}</h3>
-			<br />						
+			</a>				
 			<a href=\"/panel/service/add2?vendor=mongodb&version=1.8\">
 				<div class=\"app\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-mongodb.png\" alt=\"mongodb\"><span class=\"large\">MongoDB</span><br /><span style=\"color: #000000;\" class=\"small\">MongoDB datastore</span></p>
@@ -40,8 +33,6 @@ $content = "
 				</div>
 			</a>
 			<div class=\"clearfix\"></div>
-			<br />
-			<h3 class=\"colored\">{$lang['key']}</h3>
 			<br />	
 			<a href=\"/panel/service/add2?vendor=redis&version=2.2\">
 				<div class=\"app\">
@@ -57,13 +48,9 @@ $content = "
 					<br />					
 				</div>
 			</a>
-			<div class=\"clearfix\"></div>
-			<br />
-			<h3 class=\"colored\">{$lang['queue']}</h3>
-			<br />	
 			<a href=\"/panel/service/add2?vendor=rabbitmq&version=2.4\">
 				<div class=\"app\">
-					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-rabbitmq.png\" alt=\"rabbitmq\"><span class=\"large\">RabbitMQ</span><br /><span style=\"color: #000000;\" class=\"small\">RabbitMQ Message Queue Service</span></p>
+					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-rabbitmq.png\" alt=\"rabbitmq\"><span class=\"large\">RabbitMQ</span><br /><span style=\"color: #000000;\" class=\"small\">RabbitMQ Queue Service</span></p>
 					<div class=\"overline\">2.4</div>
 					<br />					
 				</div>

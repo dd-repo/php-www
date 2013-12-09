@@ -20,6 +20,10 @@ $content = "
 						<input type=\"text\" name=\"desc\" />
 					</fieldset>
 					<fieldset>
+						<label for=\"pass\">{$lang['password']}</label>
+						<input type=\"password\" name=\"pass\" />
+					</fieldset>
+					<fieldset>
 						<label for=\"submit\">&nbsp;</label>
 						<input type=\"submit\" value=\"{$lang['add']}\" />
 					</fieldset>

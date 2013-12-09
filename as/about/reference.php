@@ -11,13 +11,9 @@ $content = "
 		<div class=\"header\">
 			<div class=\"container\">
 				<div class=\"head\">{$lang['title']}</div>
-				<div class=\"subhead\">{$lang['subtitle']}</div>
 			</div>
 		</div>
 		<div class=\"container\">
-			<h1>{$lang['references']}</h1>
-			<p class=\"large\">{$lang['references_text']}</p>
-			<br />
 			<a href=\"http://www.iprotego.com\">
 				<div class=\"reference white\" style=\"background-color: #ffffff;\">
 					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/showcases/iprotego.png\" alt=\"\" />

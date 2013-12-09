@@ -12,9 +12,6 @@ $content = "
 	<div class=\"box nocol\">
 		<div class=\"container\">
 			<h2>{$lang['title']}</h2>
-			<p class=\"large\">{$lang['intro']}</p>
-			<br />
-			<h3 class=\"colored\">{$lang['list']}</h3>
 			<br />
 			<table>
 				<tr>

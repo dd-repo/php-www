@@ -1,15 +1,13 @@
 [EN]
 
 [FR]
-nservice = "Services"
-npricing = "Tarifs"
-nshowcase = "Références"
+nhosting = "Hébergement"
+nconsulting = "Conseils"
 nhelp = "Documentation"
 nabout = "A propos"
 npanel = "Panel"
 nlogout = "Déconnexion"
 nlogin = "Connexion"
 nregister = "Inscription"
-nentreprise = "Entreprises"
 ncontact = "Contact"
-nadmin = "Administration"
+nblog = "Blog"

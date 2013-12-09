@@ -6,7 +6,7 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$app = api::send('self/app/add', array('domain'=>$_POST['domain'], 'runtime'=>$_POST['runtime'], 'framework'=>$_POST['framework'], 'app'=>$_POST['app'], 'url'=>$_POST['subdomain']));
+$app = api::send('self/app/add', array('domain'=>$_POST['domain'], 'runtime'=>$_POST['runtime'], 'framework'=>$_POST['framework'], 'app'=>$_POST['app'], 'url'=>$_POST['subdomain'], 'pass'=>$_POST['pass']));
 
 if( $_POST['service'] && $_POST['version'] )
 {
