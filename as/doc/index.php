@@ -16,28 +16,36 @@ $content = "
 		<div class=\"container\">		
 			<div style=\"float: left; width: 500px;\">
 				<h2>{$lang['intro']}</h2>
+				<div style=\"border-left: 3px solid #555555; padding-left: 10px; margin: 30px 0 30px 0;\">
+					<a href=\"/doc/first\"><h4 class=\"colored\">{$lang['first']}</h4></a>
+					<p>{$lang['first_text']}</p>			
+				</div>
+				<div style=\"border-left: 3px solid #555555; padding-left: 10px; margin: 20px 0 30px 0;\">
+					<a href=\"/doc/concepts\"><h4 class=\"colored\">{$lang['concepts']}</h4></a>
+					<p>{$lang['concepts_text']}</p>			
+				</div>			
+				<div style=\"border-left: 3px solid #555555; padding-left: 10px; margin: 20px 0 30px 0;\">
+					<a href=\"/doc/languages\"><h4 class=\"colored\">{$lang['languages']}</h4></a>
+					<p>{$lang['languages_text']}</p>			
+				</div>
 			</div>
-			<div style=\"float: right; text-align: right; width: 300px;\">
-				<a class=\"btn\" href=\"/doc/info\">{$lang['info']}</a>		
+			<div style=\"float: right; text-align: left; width: 500px;\">
+				<a class=\"btn\" style=\"float: right;\" href=\"/doc/info\">{$lang['info']}</a>
+				<div class=\"clearfix\"></div>
+				<div style=\"border-left: 3px solid #555555; padding-left: 10px; margin: 10px 0 30px 0;\">
+					<a href=\"/doc/services\"><h4 class=\"colored\">{$lang['services']}</h4></a>
+					<p>{$lang['services_text']}</p>			
+				</div>
+				<div style=\"border-left: 3px solid #555555; padding-left: 10px; margin: 20px 0 30px 0;\">
+					<a href=\"/doc/first\"><h4 class=\"colored\">{$lang['developers']}</h4></a>
+					<p>{$lang['developers_text']}</p>			
+				</div>
+				<div style=\"border-left: 3px solid #555555; padding-left: 10px; margin: 20px 0 30px 0;\">
+					<a href=\"https://support.anotherservice.com\"><h4 class=\"colored\">{$lang['support']}</h4></a>
+					<p>{$lang['support_text']}</p>			
+				</div>
 			</div>
 			<div class=\"clearfix\"></div>
-			<div style=\"border-left: 3px solid #555555; padding-left: 10px; margin: 20px 0 30px 0;\">
-				<a href=\"/doc/first\"><h4 class=\"colored\">{$lang['first']}</h4></a>
-				<p>{$lang['first_text']}</p>			
-			</div>
-			<div style=\"border-left: 3px solid #555555; padding-left: 10px; margin: 20px 0 30px 0;\">
-				<a href=\"/doc/concepts\"><h4 class=\"colored\">{$lang['concepts']}</h4></a>
-				<p>{$lang['concepts_text']}</p>			
-			</div>			
-			<div style=\"border-left: 3px solid #555555; padding-left: 10px; margin: 20px 0 30px 0;\">
-				<a href=\"/doc/languages\"><h4 class=\"colored\">{$lang['languages']}</h4></a>
-				<p>{$lang['languages_text']}</p>			
-			</div>
-			<div style=\"border-left: 3px solid #555555; padding-left: 10px; margin: 20px 0 30px 0;\">
-				<a href=\"/doc/services\"><h4 class=\"colored\">{$lang['services']}</h4></a>
-				<p>{$lang['services_text']}</p>			
-			</div>				
-			<br />
 			<h2>{$lang['top']}</h2>
 			<br />
 			<ul style=\"list-style-type: none; margin: 0; padding: 0;\">

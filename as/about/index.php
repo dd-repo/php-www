@@ -17,7 +17,7 @@ $content = "
 			<div class=\"container\">
 				<h1>{$lang['about']}</h1>
 				<p class=\"large\">{$lang['intro']}</p>
-				<hr>
+				<div class=\"separator\"></div>
 				<h1>{$lang['legal']}</h1>
 				<p class=\"large\">{$lang['legal_text']}</p>
 			</div>

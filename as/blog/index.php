@@ -22,11 +22,21 @@ if( count($news) > 0 )
 {
 	foreach( $news as $n )
 	{
+		$d = date('d', $n['date']);
+		$m = date('M', $n['date']);
+		$y = date('Y', $n['date']);
+		
 		$content .= "
 			<div class=\"blogentry\">
-				<a href=\"/blog/view?id={$n['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/news/{$n['id']}.png\" class=\"icon\" /></a>
-				<a href=\"/blog/view?id={$n['id']}\"><h3 class=\"colored\">{$n['title']}</h3></a>
-				<br />
+				<span class=\"bigdate\">
+					{$d}<br />{$m}<br />{$y}
+				</span>
+				<span style=\"float: left; margin: 5px 0 0 20px; display: block;\">
+					<a href=\"/blog/view?id={$n['id']}\"><h2 style=\"color: #424242;\">{$n['title']}</h2></a>
+					<span class=\"author\">{$lang['by']} {$n['author']}</span>
+				</span>
+				<div class=\"clearfix\"></div>
+				<a href=\"/blog/view?id={$n['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/news/{$n['id']}.png\" class=\"newssmall\" /></a>
 				<p class=\"large\">{$n['description']}</p>
 				<div style=\"float: left;\">
 					<div class=\"social\">
@@ -36,8 +46,11 @@ if( count($news) > 0 )
 						<div class=\"g-plusone\" data-size=\"medium\"></div>
 					</div>
 				</div>
-				<a class=\"btn\" style=\"float: right;\" href=\"/blog/view?id={$n['id']}\">{$lang['read']}</a>
+				<a class=\"btn\" style=\"float: right; margin-top: 10px;\" href=\"/blog/view?id={$n['id']}\">{$lang['read']}</a>
 				<div class=\"clearfix\"></div>
+				<br />
+				<div class=\"seperator-light\"></div>
+				
 			</div>";
 	}
 }

@@ -136,15 +136,16 @@ $content .= "
 						<h3>{$lang['paasstats']}</h3>
 						<br />
 						<div style=\"text-align: center;\">
-							<img src=\"http://munin.anotherservice.com/AS-Nodes/anotherservice.com/traffic-day.png\">
+							<img src=\"http://munin.anotherservice.com/AS-Nodes/anotherservice.com/traffic-day.png\" />
 							<br /><br />
-							<img src=\"http://munin.anotherservice.com/AS-Nodes/anotherservice.com/memory-day.png\">
+							<img src=\"http://munin.anotherservice.com/AS-Nodes/anotherservice.com/memory-day.png\" />
 							<br /><br />
-							<img src=\"http://munin.anotherservice.com/AS-Nodes/anotherservice.com/cpu-day.png\">
+							<img src=\"http://munin.anotherservice.com/AS-Nodes/anotherservice.com/cpu-day.png\" />							
 						</div>
 					</div>
 				</div>			
 				<div class=\"clearfix\"></div>
+				
 			</div>
 		</div>
 		

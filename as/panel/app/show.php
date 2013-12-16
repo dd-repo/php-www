@@ -218,14 +218,8 @@ $content .= "
 				</tr>
 				<tr>
 					<td><span class=\"large\">GIT</span></td>
-					<td>ssh://git.as/~{$app['name']}/git</td>
-					<td>{$app['name']}</td>
-					<td>22</td>
-				</tr>
-				<tr>
-					<td><span class=\"large\">GIT</span></td>
 					<td>ssh://git.as/~".security::get('USER')."/{$app['name']}.git</td>
-					<td>".security::get('USER')."</td>
+					<td>{$app['name']}</td>
 					<td>22</td>
 				</tr>
 				<tr>
