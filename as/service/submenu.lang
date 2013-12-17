@@ -3,6 +3,7 @@
 [FR]
 menu_overview = "Aperçu"
 menu_hosting = "Hébergement"
+menu_offer = "Offres"
 menu_consulting = "Conseil"
 menu_open = "Open Source"
 menu_project = "Projets"

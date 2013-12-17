@@ -67,7 +67,7 @@ $content = "
 					</tr>
 					<tr>
 						<td>{$lang['incident']}</td>
-						<td><a href=\"mailto:noc@anotherservice.com\">noc@anotherservice.com</a></td>
+						<td><a href=\"mailto:hosting@anotherservice.com\">hosting@anotherservice.com</a></td>
 					</tr>
 					<tr>
 						<td>{$lang['doc']}</td>
