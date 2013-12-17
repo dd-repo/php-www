@@ -7,6 +7,7 @@ if( isset($GLOBALS['lang']) && is_object($GLOBALS['lang']) )
 $menu = array(
 	array('text'=>"menu_hosting", 'default'=>true, 'link'=>"/service/hosting"),
 	array('text'=>"menu_consulting", 'link'=>"/service/consulting"),
+	array('text'=>"menu_infrastructure", 'link'=>"/service/infrastructure"),
 	array('text'=>"menu_open", 'link'=>"/service/opensource")
 );
 
