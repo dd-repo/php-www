@@ -9,7 +9,7 @@ Ruby, Python, Java, NodeJS et .Net sont disponibles.<br /><br />Afin d'enrichir 
 MongoDB, Memcached, RabbitMQ, Redis...<br /><br />Nous faisons régulièrement évoluer notre <a href='/service/offer'>offre</a> en fonction des besoins de nos clients."
 control = "Contrôle des processus et des branches"
 control_text = "Chaque application possède des branches (développement, production, recette...) et chaque branche a ses propres processus isolés. Vous pouvez gérer et visualiser directement dans le panel les processus
-de chaque branche, ajuster leurs nombres et la mémoire qui leur est allouée. <br /><br />Par exemple, il est possible de lancer deux processus de 64Mo de mémoire pour l'environnement de recette et quatre processus de 128Mo pour 
+de chaque branche, ajuster leur nombre et la mémoire qui leur est allouée. <br /><br />Par exemple, il est possible de lancer deux processus de 64Mo de mémoire pour l'environnement de recette et quatre processus de 128Mo pour 
 l'environnement de production."
 domain = "Domaines, agendas, contacts et stockage"
 domain_text = "Quelle que soit l'offre choisie nous ne limitons pas le nombre de noms de domaine, de comptes mails ou d'agendas créés. Nous proposons une gestion complète des domaines 

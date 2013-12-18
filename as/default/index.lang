@@ -11,7 +11,7 @@ services = "Services et conseils"
 services_text = "Nous fournissons un service d'<a href='/service/hosting'>hébergement</a> haute disponibilité pour vos applications et vos environnement de développement. Nous vous accompagnons dans le déploiement et la mise 
 en oeuvre d'architectures \"cloud\".<br /><br />Investis dans le monde de l'<a href='/service/opensource'>Open Source</a>, les documentations de nos infrastructures et les codes sources de nos applications sont ouverts à la 
 communauté."
-apps = "Applications et bases de donnéees"
+apps = "Applications et bases de données"
 apps_text = "Notre plateforme supporte de nombreux langages et permet d'exécuter des applications PHP, JAVA, Ruby, Python, NodeJS et .Net. Aussi, nous proposons aussi bien des bases de données SQL (MySQL, PostgreSQL...) 
 que no-SQL (MongoDB, Redis, CouchDB...). <br /><br />De nombreux outils sont à votre disposition pour surveiller votre consommation et ajuster les ressources dont vous avez besoin."
 

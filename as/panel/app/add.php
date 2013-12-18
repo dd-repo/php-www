@@ -66,7 +66,7 @@ $content = "
 			<br />
 			<h3 class=\"colored\">{$lang['standalone']}</h3>
 			<br />
-			<a href=\"/panel/app/add2?runtime=php&standalone\">
+			<a href=\"/panel/app/add2?runtime=phpworker&standalone\">
 				<div class=\"app\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-phpworker.png\" alt=\"PHP\"><span class=\"large\">PHP (Worker)</span></p>
 					<div class=\"overline\">5.4.9</div>
