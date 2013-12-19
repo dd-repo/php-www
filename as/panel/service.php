@@ -75,8 +75,8 @@ foreach( $services as $s )
 {
 	$content .= "
 				<tr>
-					<td><img class=\"language\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-{$s['vendor']}.png\" alt=\"\" /><strong>{$s['name']}</strong></td>
-					<td>{$s['description']}</td>
+					<td><img class=\"language\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-{$s['vendor']}.png\" alt=\"\" /><strong>{$s['description']}</strong></td>
+					<td>{$s['name']}</td>
 					<td>{$s['vendor']}</td>
 					<td>{$s['version']}</td>
 					<td align=\"center\">
