@@ -62,7 +62,7 @@ $content = "
 			<table>
 				<tr>
 					<th>{$lang['name']}</th>
-					<th>{$lang['desc']}</th>
+					<th>{$lang['uid']}</th>
 					<th>{$lang['dir']}</th>
 					<th>{$lang['size']}</th>
 					<th>{$lang['actions']}</th>
@@ -73,8 +73,8 @@ foreach( $repos as $r )
 {
 	$content .= "
 				<tr>
-					<td><img class=\"language\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/repos/icon-{$r['type']}.png\" alt=\"\" /><strong>{$r['name']}</strong></td>
-					<td>{$r['description']}</td>
+					<td><img class=\"language\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/repos/icon-{$r['type']}.png\" alt=\"\" /><strong>{$r['description']}</strong></td>
+					<td>{$r['name']}</td>
 					<td>{$r['dir']}</td>
 					<td><span class=\"large\">{$r['size']}Mo</span></td>
 					<td align=\"center\">
