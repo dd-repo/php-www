@@ -82,7 +82,7 @@ $content = "
 			<table>
 				<tr>
 					<th>{$lang['name']}</th>
-					<th>{$lang['tag']}</th>
+					<th>{$lang['uid']}</th>
 					<th>{$lang['uris']}</th>
 					<th>{$lang['memory']}</th>
 					<th>{$lang['size']}</th>
@@ -120,8 +120,8 @@ if( count($apps) > 0 )
 
 		$content .= "
 					<tr>
-						<td><img class=\"language\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" alt=\"\" /><a href=\"/panel/app/show?id={$a['id']}\"><strong>{$a['name']}</strong></a></td>
-						<td>{$a['tag']}</td>
+						<td><img class=\"language\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" alt=\"\" /><a href=\"/panel/app/show?id={$a['id']}\"><strong>{$a['tag']}</strong></a></td>
+						<td>{$a['name']}</td>
 						<td>";
 		if( $a['branches'] )
 		{

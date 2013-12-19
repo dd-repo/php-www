@@ -64,7 +64,7 @@ $content = "
 			<table>
 				<tr>
 					<th>{$lang['name']}</th>
-					<th>{$lang['desc']}</th>
+					<th>{$lang['uid']}</th>
 					<th>{$lang['vendor']}</th>
 					<th>{$lang['version']}</th>
 					<th>{$lang['actions']}</th>
