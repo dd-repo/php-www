@@ -7,26 +7,25 @@ if( !defined('PROPER_START') )
 }
 
 $content = "
-	<div class=\"box nocol\">
-		<div class=\"header\">
+		<div class=\"head-light\">
 			<div class=\"container\">
-				<div class=\"head\">{$lang['title']}</div>
+				<h1 class=\"dark\">{$lang['title']}</h1>
 			</div>
 		</div>
-		<div class=\"container\">		
-			<img class=\"icon-right\" style=\"border: 1px solid #e5e5e5; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illustrations/open.png\" alt=\"intro\" />
+		<div class=\"content\">		
+			<img class=\"icon-right\" style=\"float: right; display: block; padding: 10px; border: 1px solid #d1d1d1; border-radius: 3px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illustrations/open.png\" alt=\"intro\" />
 			<p class=\"large\">{$lang['intro']}</p>
-			<hr>
-			<h2>{$lang['usage']}</h2>
+			<div class=\"seperator-light\" style=\"clear: none; width: 500px; margin-right: 350px;\"></div>
+			<br />
+			<h2 class=\"dark\">{$lang['usage']}</h2>
 			<p class=\"large\">{$lang['usage_text']}</p><br />
-			<img class=\"icon\" style=\"border: 3px solid #e5e5e5; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illustrations/rmll.png\" alt=\"intro\" />
-			<h2>{$lang['doc']}</h2>
+			<img class=\"icon\" style=\"float: left; display: block; padding: 10px; margin-right: 25px; border: 1px solid #d1d1d1; border-radius: 3px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illustrations/rmll.png\" alt=\"intro\" />
+			<h2 class=\"dark\">{$lang['doc']}</h2>
 			<p class=\"large\">{$lang['doc_text']}</p><br />
-			<h2>{$lang['source']}</h2>
+			<h2 class=\"dark\">{$lang['source']}</h2>
 			<p class=\"large\">{$lang['source_text']}</p>
 		</div>
-		<div class=\"clearfix\"></div>
-	</div>
+		<div class=\"clear\"></div><br />
 ";
 
 /* ========================== OUTPUT PAGE ========================== */

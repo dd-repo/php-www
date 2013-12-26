@@ -22,6 +22,24 @@ $content = "
 			</div>
 			<div class=\"clear\"></div>
 			<br /><br />
+			<div class=\"separator light\"></div>			
+			<div style=\"text-align: center;\">
+				<div style=\"display: inline-block; margin-right: 50px; opacity: 0.6;\">
+					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/techno/cisco.png\" alt=\"\" />
+				</div>
+				<div style=\"display: inline-block; margin-right: 50px; opacity: 0.6;\">
+					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/techno/juniper.png\" alt=\"\" />
+				</div>
+				<div style=\"display: inline-block; margin-right: 50px; opacity: 0.6;\">
+					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/techno/intel.png\" alt=\"\" />
+				</div>
+				<div style=\"display: inline-block; opacity: 0.6;\">
+					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/techno/dell.png\" alt=\"\" />
+				</div>
+			</div>
+			<div class=\"clearfix\"></div>
+			<div class=\"separator light\"></div>	
+			<br />
 			<div style=\"float: left; width: 500px;\">
 				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/techno/stack.png\" style=\"display: block; border-radius: 3px;\" />
 			</div>
