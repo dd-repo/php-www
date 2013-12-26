@@ -215,13 +215,13 @@ h1 {
 }
 
 h1.dark {
-	color: #de5711;
+	color: #2475ae;
 	text-align: left;
 	font-size: 35px;
 }
 
 h1.blue {
-	color: #de5711;
+	color: #2475ae;
 }
 
 h1.thin {
@@ -646,7 +646,7 @@ img.photo {
 }
 
 img.photo:hover {
-	border: 1px solid #de5711;
+	border: 1px solid #0079e1;
 }
 
 ul.simple {

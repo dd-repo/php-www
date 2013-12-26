@@ -436,3 +436,45 @@ span.bigdate {
 	background-color: #448cdd;
 	color: #fff;
 }
+
+div.reference {
+	display: inline-block;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-ms-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	transition: all 0.2s;
+	margin: 0 0 20px 0;
+	padding: 10px;
+}
+
+div.reference div.inref {
+	width: 285px;
+	height: 120px;
+	vertical-align: middle;
+	display: table-cell;
+	text-align: center;
+}
+
+div.reference div.inref div {
+	 display:inline-block;
+}
+
+.white {
+	border: 2px solid #e5e5e5;
+}
+
+.white:hover {
+	border: 2px solid #0079e1;
+}
+
+.black {
+	border: 2px solid #1c1c1c;
+}
+
+.black:hover {
+	border: 2px solid #0079e1;
+}

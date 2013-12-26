@@ -41,7 +41,7 @@ input, select, textarea {
 }
 
 input:focus, select:focus, textarea:focus {
-	outline: #ee974a solid 1px;
+	outline: #2475ae solid 1px;
 }
 
 input[type=button]:focus, input[type=image]:focus, input[type=submit]:focus {

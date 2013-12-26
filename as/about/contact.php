@@ -7,76 +7,50 @@ if( !defined('PROPER_START') )
 }
 
 $content = "
-	<div class=\"box rightcol\">
-		<div class=\"header\">
-			<div class=\"container\">
-				<div class=\"head\">{$lang['title']}</div>
+			<div class=\"head-light\">
+				<div class=\"container\">
+					<h1 class=\"dark\">{$lang['title']}</h1>
+				</div>
+			</div>	
+			<div class=\"content\">
+				<div class=\"left\">
+					<h4>{$lang['send']}</h4>
+					<p>{$lang['send_text']}</p>
+					<br />
+					<form action=\"/about/contact_action\" method=\"post\">
+						<fieldset>
+							<input class=\"auto\" style=\"width: 300px;\" type=\"text\" name=\"name\" value=\"{$lang['name']}\" onfocus=\"this.value = this.value=='{$lang['name']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['name']}' : this.value; this.value=='{$lang['name']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+						</fieldset>
+						<fieldset>
+							<input class=\"auto\" style=\"width: 300px;\"type=\"text\" name=\"email\" value=\"{$lang['email']}\" onfocus=\"this.value = this.value=='{$lang['email']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['email']}' : this.value; this.value=='{$lang['email']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+						</fieldset>
+						<fieldset>
+							<input class=\"auto\" style=\"width: 300px;\" type=\"text\" name=\"subject\" value=\"{$lang['subject']}\" onfocus=\"this.value = this.value=='{$lang['subject']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['subject']}' : this.value; this.value=='{$lang['subject']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+						</fieldset>
+						<fieldset>
+							<textarea class=\"auto\" style=\"width: 300px;\" rows=\"10\" name=\"message\" onfocus=\"this.value = this.value=='{$lang['message']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['message']}' : this.value; this.value=='{$lang['message']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\">{$lang['message']}</textarea>
+						</fieldset>
+						<fieldset>
+							<input type=\"submit\" value=\"{$lang['send_now']}\" />
+						</fieldset>
+					</form>
+				</div>
+				<div class=\"right border\">
+					<h4>{$lang['infos']}</h4>
+					<p>Paris, France</p>
+					<p><a href=\"mailto: contact@anotherservice.com\">contact@anotherservice.com</a></p>
+					<p>+33.953.935.953</p>
+					<p>#anotherservice@irc.freenode.net</p>
+					<br />
+					<h4>{$lang['meet']}</h4>
+					<p>{$lang['meet_text']}</p>
+					<div style=\"width: 330px; height: 330px;\">
+						<iframe width=\"330\" height=\"330\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\" src=\"http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=40%2Bbis%2Brue%2BFaubourg%2BPoissoni%C3%A8re%2C%2BParis&ie=UTF8&z=5&t=m&iwloc=near&output=embed\"></iframe>
+					</div>
+				</div>
+				<div class=\"clear\"></div>
+				<br /><br />
 			</div>
-		</div>
-		<div class=\"left\">
-			<div class=\"container\">
-				<p class=\"large\">{$lang['intro']}</p>
-				<form action=\"/about/contact_action\" method=\"post\">
-					<fieldset>
-						<label for=\"name\">{$lang['name']}</label>
-						<input type=\"text\" name=\"name\" />
-					</fieldset>
-					<fieldset>
-						<label for=\"email\">{$lang['email']}</label>
-						<input type=\"text\" name=\"email\" />
-					</fieldset>
-					<fieldset>
-						<label for=\"subject\">{$lang['company']}</label>
-						<input type=\"text\" name=\"company\" />
-					</fieldset>
-					<fieldset>
-						<label for=\"subject\">{$lang['phone']}</label>
-						<input type=\"text\" name=\"phone\" />
-					</fieldset>
-					<fieldset>
-						<label for=\"subject\">{$lang['subject']}</label>
-						<input type=\"text\" name=\"subject\" />
-					</fieldset>
-					<fieldset>
-						<label for=\"message\">{$lang['message']}</label>
-						<textarea rows=\"10\" name=\"message\"></textarea>
-					</fieldset>
-					<fieldset>
-						<label for=\"submit\">&nbsp;</label>
-						<input type=\"submit\" value=\"{$lang['send']}\" />
-					</fieldset>
-				</form>
-			</div>
-		</div>
-		<div class=\"right\">
-			<div class=\"container\">
-				<h1>{$lang['contact']}</h1>
-				<br />
-				<p>
-					<span class=\"large\">Another Service, France</span>
-				</p>
-				<p>
-					<span class=\"large\"><a href=\"mailto: contact@notherservice.com\">contact@anotherservice.com</a></span>
-				</p>
-				<br />
-				<p>
-					<span class=\"large\">+33.(0)953.935.953</span>
-				</p>
-				<br />
-				<p class=\"large\">
-					<span class=\"large\">Paris</span><br />
-					40 bis rue du Faubourg Poissonni&egrave;re<br />
-					75010 Paris
-					<br /><br />
-					<span class=\"large\">Marseille</span><br />
-					45 rue Fr&eacute;d&eacute;ric Joliot Curie<br />
-					13382 Marseille Cedex 13
-				</p>
-				
-			</div>
-		</div>
-		<div class=\"clearfix\"></div>
-	</div>
 ";
 
 /* ========================== OUTPUT PAGE ========================== */

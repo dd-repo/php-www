@@ -78,7 +78,7 @@ div.header div.content div.menu ul  li.nlogin a:hover {
 }
 
 div.header div.content div.menu ul  li.npanel a {
-	background-image: linear-gradient(rgb(255, 255, 255), rgb(222, 87, 17) 50%, rgb(222, 87, 17) 50%, rgb(255, 255, 255));
+	background-image: linear-gradient(rgb(28, 28, 28), rgb(36, 117, 174) 50%, rgb(36, 117, 174) 50%, rgb(28, 28, 28));
 	background-position: 0% 50%;
 	background-repeat: no-repeat;
 	background-size: 1px 100%;
@@ -89,7 +89,7 @@ div.header div.content div.menu ul  li.npanel a {
 
 div.header div.content div.menu ul  li.nlogout a {
 	transition: all 0.2s;
-	background-color: #de5711;
+	background-color: #2475ae;
 	border-radius: 3px;
 	color: #ffffff;
 	cursor: pointer;
@@ -100,7 +100,7 @@ div.header div.content div.menu ul  li.nlogout a {
 }
 
 div.header div.content div.menu ul  li.nlogout a:hover {
-	background-color: #eb782b;
+	background-color: #2c8dd2;
 }
 
 div.header div.content div.menu ul  li.nsignup a {
@@ -126,9 +126,9 @@ div.header div.content div.menu ul  li.nregister a:hover {
 
 div.menu-fixed {
 	position: absolute;
-	top: 120px;
+	top: 115px;
 	width: 100%;
-	background-color: #de5711;
+	background-color: #2475ae;
 	height: 50px;
 	border-bottom: 1px solid #ccc;
 	z-index: 100;
@@ -161,12 +161,12 @@ div.menu-fixed  div.container ul  li {
 
 div.menu-fixed  div.container ul  li:hover {
 	text-decoration: none;
-	background-color: #eb782b;
+	background-color: #2c8dd2;
 }
 
 div.menu-fixed  div.container ul  li.active {
 	text-decoration: none;
-	background-color: #eb782b;
+	background-color: #2c8dd2;
 }
 
 div.menu-fixed  div.container ul li a {

@@ -30,3 +30,5 @@ quote = "Another Service est une solution complète et performante pour le dépl
 quote_author = "Damien Boissier, Altermedia"
 signup_now = "S'inscrire maintenant"
 help = "Une question? N'hésitez pas à <a href='/about/contact'>nous contacter</a>."
+panel = "Panel"
+logged = "Identifié en tant que"

@@ -7,33 +7,28 @@ if( !defined('PROPER_START') )
 }
 
 $content = "
-	<div class=\"box nocol\">
-		<div class=\"header\">
+		<div class=\"head-light\">
 			<div class=\"container\">
-				<div class=\"head\">{$lang['title']}</div>
+				<h1 class=\"dark\">{$lang['title']}</h1>
 			</div>
-		</div>
-		<div class=\"container\">
-			<img class=\"photo\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/team/yann.png\" />
+		</div>	
+		<div class=\"content\">
+			<a href=\"https://twitter.com/aya\"><img class=\"photo\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/team/yann.png\" /></a>
 			<h3 class=\"colored\">Yann Autissier</h3>
+			<p>{$lang['yann']}</p>
+			<div class=\"clear\"></div>
 			<br />
-			<p class=\"large\">{$lang['yann']}</p>
-			<div class=\"clearfix\"></div>
+			<a href=\"https://twitter.com/SamuelHassine\"><img class=\"photo\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/team/sam.png\" /></a>
+			<h3>Samuel Hassine</h3>
+			<p>{$lang['sam']}</p>
+			<div class=\"clear\"></div>
 			<br />
-			<img class=\"photo\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/team/sam.png\" />
-			<h3 class=\"colored\">Samuel Hassine</h3>
-			<br />
-			<p class=\"large\">{$lang['sam']}</p>
-			<div class=\"clearfix\"></div>
-			<br />
-			<img class=\"photo\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/team/simon.png\" />
-			<h3 class=\"colored\">Simon Uyttendaele</h3>
-			<br />
-			<p class=\"large\">{$lang['simon']}</p>
-			<div class=\"clearfix\"></div>
+			<a href=\"https://twitter.com/suytt\"><img class=\"photo\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/team/simon.png\" /></a>
+			<h3>Simon Uyttendaele</h3>
+			<p>{$lang['simon']}</p>
+			<div class=\"clear\"></div>
 			<br />
 		</div>
-	</div>
 ";
 
 /* ========================== OUTPUT PAGE ========================== */
