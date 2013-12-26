@@ -1,59 +1,66 @@
-#header {
-	margin: 0;
-	height: 80px;
-	padding: 20px 0 0 0;
+/* Header CSS */
+
+div.header {
 	width: 100%;
+	margin: 0;
+	padding: 15px 0 20px 0;
 	background-color: #1c1c1c;
+	height: 80px;
 }
 
-#header .container {
+div.header div.content  {
 	width: 1100px;
 	margin: 0 auto;
+	padding: 0;
 }
 
-#header .container .logo {
+div.header div.content div.logo {
 	float: left;
+	margin: 0;
+	padding: 6px 0 0 0;
 }
 
-#header .container .menu {
-	padding-top: 16px;
-	font-family: Cuprum;
-	font-size: 17px;
+div.header div.content div.logo-big {
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+}
+
+div.header div.content div.menu {
 	float: right;
 }
 
-#header .container .menu ul {
-	list-style: none;
+div.header div.content div.menu ul {
+	float: left;
+	margin: 22px 0 0 0;
+	padding: 0;
+	text-align: left;
+	list-style-type: none;
+}
+
+div.header div.content div.menu ul  li {
+	float: left;
 	margin: 0;
 	padding: 0;
 }
 
-#header .container .menu ul li {
-	float: left;
-}
-
-#header .container .menu li.active a {
-	color: #3fb3df;
-}
-
-#header .container .menu li a {
+div.header div.content div.menu ul  li a {
 	display: block;
-	margin-left: 15px;
-	padding: 10px;
 	color: #b2c0cA;
-	-webkit-transition: 0.2s all;
-	-moz-transition: 0.2s all;
-	-ms-transition: 0.2s all;
-	-o-transition: 0.2s all;
-	transition: 0.2s all;
-	font-size: 14px;
+	margin: 0px 4px 0 4px;
+	padding: 10px 11px 10px 11px;
 }
 
-#header .container .menu li a:hover {
+div.header div.content div.menu ul  li a:hover {
+	text-decoration: none;
 	color: #3fb3df;
 }
 
-#header .container .menu #nlogin a {
+div.header div.content div.menu ul  li a.active {
+	color: #3fb3df;
+}
+
+div.header div.content div.menu ul  li.nlogin a {
 	height: 10px;
 	margin: 0 0 0 20px;
 	padding: 10px 12px 12px 12px;
@@ -65,12 +72,38 @@
 	background-color: #68ab17;
 }
 
-#header .container .menu #nlogin a:hover {
+div.header div.content div.menu ul  li.nlogin a:hover {
 	background: #7bcb1b;
 	color: #ffffff;
 }
 
-#header .container .menu #nregister a {
+div.header div.content div.menu ul  li.npanel a {
+	background-image: linear-gradient(rgb(255, 255, 255), rgb(222, 87, 17) 50%, rgb(222, 87, 17) 50%, rgb(255, 255, 255));
+	background-position: 0% 50%;
+	background-repeat: no-repeat;
+	background-size: 1px 100%;
+	padding-left: 35px;
+	margin-left: 20px;
+}
+
+
+div.header div.content div.menu ul  li.nlogout a {
+	transition: all 0.2s;
+	background-color: #de5711;
+	border-radius: 3px;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+div.header div.content div.menu ul  li.nlogout a {
+	color: #ffffff;
+}
+
+div.header div.content div.menu ul  li.nlogout a:hover {
+	background-color: #eb782b;
+}
+
+div.header div.content div.menu ul  li.nsignup a {
 	height: 10px;
 	margin: 0 0 0 20px;
 	padding: 10px 12px 12px 12px;
@@ -82,66 +115,144 @@
 	background-color: #51626b;
 }
 
-#header .container .menu #nregister a:hover {
+div.header div.content div.menu ul  li.nsignup a {
+	color: #ffffff;
+}
+
+div.header div.content div.menu ul  li.nregister a:hover {
 	background: #628598;
 	color: #ffffff;
 }
 
-#submenu {
-	margin: 0 auto;
-	margin-top: 50px;
-	width: 1100px;
-	background-color: #eef6fb;
+div.menu-fixed {
+	position: absolute;
+	top: 120px;
+	width: 100%;
+	background-color: #de5711;
 	height: 50px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	border-bottom: 1px solid #ccc;
+	z-index: 100;
 }
 
-#submenu .left {
-	float: left;
+div.fixed {
+    position: fixed;
+    top: 0;
+}
+
+div.menu-fixed div.container {
+	width: 1100px;
+	margin: 0 auto;
+}
+
+div.menu-fixed  div.container ul {
 	margin: 0;
-	padding: 18px 0 0 15px;
-	font-size: 18px;
-	text-transform: uppercase;
-	color: #2d97d0;
+	padding: 0;
+	text-align: left;
+	list-style-type: none;
 }
 
-#submenu ul {
-	float: right;
-	list-style: none;
+div.menu-fixed  div.container ul  li {
+	display: block;	
+	float: left;
+	height: 50px;
 	margin: 0;
 	padding: 0;
 }
 
-#submenu ul li {
-	float: left;
-	height: 50px;
-	border-left: 1px solid #daeaf4;
+div.menu-fixed  div.container ul  li:hover {
+	text-decoration: none;
+	background-color: #eb782b;
 }
 
-#submenu ul li.active {
-	background-color: #daeaf4;
+div.menu-fixed  div.container ul  li.active {
+	text-decoration: none;
+	background-color: #eb782b;
 }
 
-#submenu ul li a {
+div.menu-fixed  div.container ul li a {
 	display: block;
-	padding: 20px;
-	color: #666666;
-	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 13px;
+	height: 32px;
+	margin: 0;
+	padding: 15px 20px 0 20px;
+	font-weight: 400;
+	font-size: 15px;
+	color: #e8e8e8;
 }
 
-#submenu ul li.active a {
-	color: #3fb3df;
+div.menu-fixed  div.container ul li a:hover {
+	text-decoration: none;
 }
 
-#submenu ul li a:hover {
-	color: #3fbfe8;
+div.menu-fixed  div.container ul  li.sub {
+	padding-right: 10px;
+	background: url('../images/arrow.png') 95% center no-repeat;
 }
 
-#submenu ul li:last-child {
-	border-top-right-radius: 4px;
-	border-bottom-right-radius: 4px;
+div.menu-fixed  div.container ul  li.sub:hover {
+	background-color: #f2f2f2;
+}
+
+div.menu-fixed  div.container ul  li ul {
+	display: none;
+	top: 45px;
+	padding: 5px;
+	position: absolute;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	border-radius: 3%;
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 30px 0px;
+}
+
+div.menu-fixed  div.container ul  li ul li {
+	float: none;
+	width: 180px;
+	font-weight: 400;
+	padding: 0;
+	margin: 0;
+	height: 30px;
+}
+
+div.menu-fixed  div.container ul  li ul li a {
+	font-size: 12px;
+	padding: 8px;
+	margin: 0;
+}
+
+li.snew {
+	background-image: linear-gradient(rgb(255, 255, 255), rgb(150, 150, 150) 50%, rgb(150, 150, 150) 50%, rgb(255, 255, 255));
+	background-position: 100% 0%;
+	background-repeat: no-repeat;
+	background-size: 1px 100%;
+	margin-right: 20px;	
+}
+
+#credits {
+	display: block;
+	height: 32px;
+	margin: 0;
+	padding: 17px 20px 0 55px;
+	font-weight: 400;
+	font-size: 15px;
+	color: #919191;
+	background-image: url('../images/icons/suitcase.png');
+	background-repeat: no-repeat;
+	background-position: 8% center;
+}
+
+#scategory ul {
+	margin-left: 20px;
+}
+
+#search-li {
+	float: right;
+}
+
+#search-li:hover {
+	background: none;
+}
+
+#search {
+	margin: 8px 0 0 0;
+	width: 180px;
+	height: 23px;
 }

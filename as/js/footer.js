@@ -21,11 +21,13 @@ function setFooter() {
 	if (document.getElementById) {
 		var windowHeight = getWindowHeight();
 		if (windowHeight > 0) {
-			var contentHeight = document.getElementById('wrapper').offsetHeight;
-			var need = windowHeight - contentHeight;
-			if (need > 0) {
-				document.getElementById('footer').style.marginTop = (30+need) + 'px';
+			var coreHeight = document.getElementById('core').offsetHeight;
+			var need = windowHeight - coreHeight;
+			if (need > 255) {
+				document.getElementById('footer').style.marginTop = (need-255) + 'px';
 			}
+			else
+				document.getElementById('footer').style.marginTop = '0px';
 		}
 	}
 }
