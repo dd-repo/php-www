@@ -1,0 +1,21 @@
+[EN]
+
+
+[FR]
+title = "Infrastructure"
+datacenters = "Datacenters et réseau"
+datacenters_text = "Olympe s'appuie sur ses partenaires <a href='http://www.anotherservice.com'>Another Service</a> et <a href='http://www.interxion.com'>Interxion</a> pour opérer les salles, le transit et la couche réseau
+de son infrastructure. Nos serveurs sont situés en France, dans plusieurs centres de données. <br /><br />Grâce aux emplacements géographiques distincts et à la flexibilité de nos fournisseurs notamment sur le routage
+et les annonces BGP, nous avons mis en place une infrastructure résistante aux pannes même en cas de coupure complète d'un site de production.<br /><br />
+Grâce à l'aide d'Interxion, Olympe dispose d'un port gigabit sur le point de peering <a href='https://www.franceix.net'>FranceIX</a>. Cela nous permet d'accroître nos capacités de transits vers 
+les principaux opérateurs français et ainsi améliorer les performances globales de la plateforme."
+virt = "Stockage et virtualisation"
+virt_text = "L'infrastructure d'Olympe repose sur un cluster de serveurs physiques <a href='http://www.proxmox.com'>Proxmox</a> qui assure la gestion et la redondance des machines virtuelles. Nous avons développé nos 
+<a href='/developers'>outils</a> d'ajustement automatique des ressources et de haute disponibilité.<br /><br />
+Le stockage de la production est assuré par un pool <a href='http://www.ceph.com'>Ceph</a> de 22 teraoctets, avec des blocs <a href='http://ceph.com/docs/next/rbd/rbd/'>Rados</a> pour les machines virtuelles 
+et une partition CephFS pour les données persistantes. Les sauvegardes sont effectuées sur un espace répliqué/distribué <a href='http://www.gluster.org'>GlusterFS</a>.<br /><br />
+Nous avons ensuite des colonnes duplicables comprenant des firewalls <a href='http://www.pfsense.org'>Pfsense</a> (virtuel) et <a href='http://www.cisco.com'>Cisco</a> (physiques) frontaux, des machines virtuelles de load balancing
+(proxy) et les briques de traitement."
+
+soft = "Applicatifs"
+status = "Statut de l'infrastructure"

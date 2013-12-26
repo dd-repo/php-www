@@ -660,3 +660,14 @@ ul.simple li {
 	padding: 0;
 	font-size: 13px;
 }
+
+span.colored {
+	color: #2e9fff;
+}
+
+span.large {
+	font-size: 17px;
+	font-weight: bold;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+}

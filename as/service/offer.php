@@ -7,19 +7,17 @@ if( !defined('PROPER_START') )
 }
 
 $content = "
-	<div class=\"box nocol\">
-		<div class=\"header\">
+		<div class=\"head-light\">
 			<div class=\"container\">
-				<div class=\"head\">{$lang['title']}</div>
+				<h1 class=\"dark\">{$lang['title']}</h1>
 			</div>
-		</div>
-		<div class=\"container\">
-			<h2>{$lang['description']}</h2>
-			<br />
+		</div>	
+		<div class=\"content\">
+			<h3 style=\"text-align: center;\">{$lang['description']}</h3>
 			<table class=\"offer\">
 				<tr>
 					<td colspan=\"2\">
-						<h2>{$lang['langserv']}</h2>
+						<h2 class=\"dark\" style=\"text-align: center; font-size: 25px; margin: 5px 0 5px 0;\">{$lang['langserv']}</h2>
 					</td>
 				</tr>
 				<tr>
@@ -36,51 +34,49 @@ $content = "
 			<table class=\"offer\">
 				<tr>
 					<td colspan=\"2\">
-						<h2>{$lang['illimited']}</h2>
+						<h2 class=\"dark\" style=\"text-align: center; font-size: 25px; margin: 5px 0 5px 0;\">{$lang['illimited']}</h2>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<h2>{$lang['offer_1_title']}</h2>
-						<p>{$lang['offer_1_desc']}</p>
+						<h3>{$lang['offer_1_title']}</h3>
+						<p style=\"margin-bottom: 0;\">{$lang['offer_1_desc']}</p>
 					</td>
 					<td>
-						<h2>{$lang['offer_2_title']}</h2>
-						<p>{$lang['offer_2_desc']}</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<h2>{$lang['offer_3_title']}</h2>
-						<p>{$lang['offer_3_desc']}</p>
-					</td>
-					<td>
-						<h2>{$lang['offer_4_title']}</h2>
-						<p>{$lang['offer_4_desc']}</p>
+						<h3>{$lang['offer_2_title']}</h3>
+						<p style=\"margin-bottom: 0;\">{$lang['offer_2_desc']}</p>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<h2>{$lang['offer_5_title']}</h2>
-						<p>{$lang['offer_5_desc']}</p>
+						<h3>{$lang['offer_3_title']}</h3>
+						<p style=\"margin-bottom: 0;\">{$lang['offer_3_desc']}</p>
 					</td>
 					<td>
-						<h2>{$lang['offer_6_title']}</h2>
-						<p>{$lang['offer_6_desc']}</p>
+						<h3>{$lang['offer_4_title']}</h3>
+						<p style=\"margin-bottom: 0;\">{$lang['offer_4_desc']}</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h3>{$lang['offer_5_title']}</h3>
+						<p style=\"margin-bottom: 0;\">{$lang['offer_5_desc']}</p>
+					</td>
+					<td>
+						<h3>{$lang['offer_6_title']}</h2>
+						<p style=\"margin-bottom: 0;\">{$lang['offer_6_desc']}</p>
 					</td>
 				</tr>
 			</table>
 			<br />
 			<div style=\"text-align: center;\">
-				<a class=\"button\" href=\"/join\" style=\"height: 22px; width: 200px; margin: 0 auto;\">
+				<a class=\"button classic\" href=\"/join\" style=\"height: 22px; width: 200px; margin: 0 auto;\">
 					<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['signup_now']}</span>
 				</a>
-				<br />
 				<p>{$lang['help']}</p>
 			</div>
 			<br />
-			<h2>{$lang['addons']}</h2>
-			<br />
+			<h3 style=\"text-align: center;\">{$lang['addons']}</h3>
 			<table class=\"offer\">
 				<tr>
 					<th>{$lang['service']}</th>
@@ -162,49 +158,47 @@ $content = "
 				</tr>
 			</table>
 			<br /><br />
-			<h2>{$lang['more_disk']}</h2>
-			<br />
+			<h3 style=\"text-align: center;\">{$lang['more_disk']}</h3>
 			<table class=\"offer\">
 				<tr>
 					<td>
-						<h2>{$lang['dd_1_title']}</h2>
-						<p>{$lang['dd_1_desc']}</p>
+						<h3>{$lang['dd_1_title']}</h3>
+						<p style=\"margin-bottom: 0;\">{$lang['dd_1_desc']}</p>
 					</td>
 					<td>
-						<h2>{$lang['dd_2_title']}</h2>
-						<p>{$lang['dd_2_desc']}</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<h2>{$lang['dd_3_title']}</h2>
-						<p>{$lang['dd_3_desc']}</p>
-					</td>
-					<td>
-						<h2>{$lang['dd_4_title']}</h2>
-						<p>{$lang['dd_4_desc']}</p>
+						<h3>{$lang['dd_2_title']}</h3>
+						<p style=\"margin-bottom: 0;\">{$lang['dd_2_desc']}</p>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<h2>{$lang['dd_5_title']}</h2>
-						<p>{$lang['dd_5_desc']}</p>
+						<h3>{$lang['dd_3_title']}</h3>
+						<p style=\"margin-bottom: 0;\">{$lang['dd_3_desc']}</p>
 					</td>
 					<td>
-						<h2>{$lang['dd_6_title']}</h2>
-						<p>{$lang['dd_6_desc']}</p>
+						<h3>{$lang['dd_4_title']}</h3>
+						<p style=\"margin-bottom: 0;\">{$lang['dd_4_desc']}</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h3>{$lang['dd_5_title']}</h3>
+						<p style=\"margin-bottom: 0;\">{$lang['dd_5_desc']}</p>
+					</td>
+					<td>
+						<h3>{$lang['dd_6_title']}</h3>
+						<p style=\"margin-bottom: 0;\">{$lang['dd_6_desc']}</p>
 					</td>
 				</tr>
 			</table>
 			<br />
 			<div style=\"text-align: center;\">
-				<a class=\"button\" href=\"/service/infrastructure\" style=\"height: 22px; width: 300px; margin: 0 auto;\">
+				<a class=\"button classic\" href=\"/service/infrastructure\" style=\"height: 22px; width: 300px; margin: 0 auto;\">
 					<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['infra']}</span>
 				</a>
 			</div>
-			<br />
+			<br /><br />
 		</div>
-	</div>
 ";
 
 /* ========================== OUTPUT PAGE ========================== */
