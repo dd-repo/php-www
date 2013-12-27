@@ -41,6 +41,16 @@ $content = "
 						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['owncloud']}</span>
 					</a>					
 				</div>
+				<div class=\"clear\"></div><br /><br />
+				<div style=\"float: left; width: 510px;\">
+					<h2 class=\"dark\">{$lang['stats_awstats']}</h2>
+					<p>{$lang['stats_awstats_text']}</p>
+					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/awstats.png\" style=\"display: block; padding: 10px; border: 1px solid #d1d1d1; border-radius: 3px; margin-left: 20px;\" />
+					<p>{$lang['stats_awstats_text2']}</p>
+				</div>
+				<div style=\"float: right; width: 510px;\">
+					
+				</div>
 				<div class=\"clear\"></div><br />
 			</div>
 		</div>

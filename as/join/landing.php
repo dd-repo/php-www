@@ -7,19 +7,15 @@ if( !defined('PROPER_START') )
 }
 
 $content = "
-	<div class=\"box nocol\">
-		<div class=\"header\">
-			<div class=\"container\">
-				<div class=\"head\">{$lang['title']}</div>
+		<div class=\"head\">
+			<div class=\"container\" style=\"width: 1100px; margin: 0 auto; padding: 40px 0 40px 0;\">
+				<h1>{$lang['thanks']}</h1>
 			</div>
+		</div>	
+		<div class=\"content\" style=\"text-align: center;\">
+			<p style=\"font-size: 18px;\">{$lang['thanks_text']}</p>
 		</div>
-		<div class=\"container\">
-			<h2>{$lang['thanks']}</h2>
-			<p>{$lang['thanks_text']}</p>
-			<br />
-			<a class=\"btn\" href=\"/\">{$lang['home']}</a> <a class=\"btn\" href=\"/doc\">{$lang['doc']}</a> 
-		</div>
-	</div>
+		<br />
 ";
 
 /* ========================== OUTPUT PAGE ========================== */
