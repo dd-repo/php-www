@@ -80,8 +80,8 @@ foreach( $services as $s )
 		<h3 class=\"center\">{$lang['config']}</h3>
 		<p style=\"text-align: center;\">{$lang['config_text']}</p>
 		<div class=\"form-small\">		
-			<form action=\"/panel/database/config_action\" method=\"post\" class=\"center\">
-				<input id=\"database\" type=\"hidden\" name=\"database\" value=\"\" />
+			<form action=\"/panel/service/config_action\" method=\"post\" class=\"center\">
+				<input id=\"service\" type=\"hidden\" name=\"service\" value=\"\" />
 				<fieldset>
 					<input id=\"desc\" type=\"text\" value=\"\" name=\"desc\" />
 					<span class=\"help-block\">{$lang['desc_help']}</span>
@@ -94,8 +94,8 @@ foreach( $services as $s )
 					<input  type=\"submit\" value=\"{$lang['update']}\" />
 				</fieldset>
 			</form>
-			<form action=\"/panel/database/del_action\" method=\"post\" class=\"center\">
-				<input id=\"database2\" type=\"hidden\" name=\"database\" value=\"\" />
+			<form action=\"/panel/service/del_action\" method=\"post\" class=\"center\">
+				<input id=\"service2\" type=\"hidden\" name=\"service\" value=\"\" />
 				<fieldset>	
 					<input type=\"submit\" value=\"{$lang['delete']}\"/>
 				</fieldset>
@@ -103,7 +103,6 @@ foreach( $services as $s )
 		</div>
 	</div>	
 	<script>
-		newDialog('new', 550, 450);
 		newDialog('config', 550, 440);
 	</script>
 ";

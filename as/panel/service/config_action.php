@@ -6,11 +6,11 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-api::send('self/database/update', array('database'=>$_POST['database'], 'pass'=>$_POST['password']));
+api::send('self/service/update', array('service'=>$_POST['service'], 'desc'=>$_POST['desc'], 'pass'=>$_POST['password']));
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	$template->redirect('/panel/db');
+	$template->redirect('/panel/service');
 
 ?>
