@@ -94,6 +94,7 @@ div.panel div.apps div.app {
 	transition: all 0.2s;
 	overflow: hidden;
 	cursor: pointer;
+	position: relative;
 }
 
 div.panel div.apps div.app:hover {
@@ -170,6 +171,95 @@ div.panel div.apps div.bullet:before {
 	border-color: transparent #fff transparent transparent;
 }
 
+div.panel div.nservice {
+	display: block;
+    border-radius: 5px 5px 5px 5px;
+    padding: 12px;
+	width: 280px;
+    z-index: 1000;
+	float: left;
+	margin: 10px 10px;
+	border: 1px solid white;
+	line-height: 1;
+	background-color: #fcfcfc;
+	box-shadow: inset 10px 10px 10px rgba(255, 255, 255, 0.8);
+	border: 1px solid #e0e0e0;
+}
+
+div.panel div.nservice:hover {
+	background-color: #f1efef;
+}
+
+div.panel div.service {
+	width: 312px;
+	height: 70px;
+	display: inline-block;
+	margin: 0 0 25px 30px;
+    padding: 15px;
+	background-color: #f1f1f1;
+    border-radius: 3px;
+	box-shadow: inset 10px 10px 10px rgba(255, 255, 255, 0.5);
+	border: 1px solid #e0e0e0;
+	text-align: left;
+	cursor: pointer;
+	transition: all 0.2s;
+	position: relative;
+}
+
+div.panel div.service.first {
+	margin-left: 0;
+}
+
+div.panel div.service:hover {
+	background-color: #f6f6f6;
+	border: 1px solid #2475ae;
+}
+
+div.panel div.service span.name {
+	font-size: 18px;
+}
+
+div.panel div.service span.subname {
+	font-size: 14px;
+	color: #929292;
+}
+
+div.panel div.service span.expiration {
+	display: block;
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	color: #f4842d;
+	font-size: 10px;
+}
+
+div.panel div.service span.birth  {
+	display: block;
+	position: absolute;
+	left: 5px;
+	bottom: 5px;
+	color: #8daa00;
+	font-size: 10px;
+}
+
+div.panel div.service span.key {
+	display: block;
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	color: #acacac;
+	font-size: 10px;
+}
+
+div.panel div.service span.type {
+	display: block;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	color: #acacac;
+	font-size: 10px;
+}
+
 div.panel div.container {
 	width: 1100px;
 	margin: 0 auto;
@@ -192,117 +282,6 @@ div.panel div.container div.right.border {
 	background-position: 0 center;
 	background-repeat: no-repeat;
 	background-size: 1px 100%;
-}
-
-div.panel div.app {
-	width: 1100px;
-	margin: 0 auto;
-	padding: 0;
-	position: relative;
-}
-
-div.panel div.app a.prev {
-	display: block;
-}
-
-div.panel div.app div.left {
-	float: left;
-	width: 195px;
-}
-
-div.panel div.app div.right {
-	float: left;
-	width: 195px;
-}
-
-div.panel div.app div.connector {
-	float: left;
-	width: 700px;
-}
-
-div.panel div.app div.connector div.tax {
-	width: 90px;
-	text-align: right;
-	position: absolute;
-	top: 6px;
-	right: 8px;
-	font-family: Cuprum;
-	font-size: 16px;
-	color: #b11e1e;
-}
-
-div.panel div.app div.connector div.status {
-	width: 200px;
-	height: 20px;
-	position: absolute;
-	top: 5px;
-	left: 10px;
-	border-radius: 10px;
-	font-family: Cuprum;
-	background-repeat: no-repeat;
-	background-position: center left;
-	padding: 5px 0 0 20px;
-}
-
-div.panel div.app div.connector div.status.green {
-	color: #b2cb39;
-	background-image: url('../images/icons/status_2.png');
-}
-
-div.panel div.app div.connector div.status.orange {
-	color: #f4842d;
-	background-image: url('../images/icons/status_3.png');
-}
-
-div.panel div.app div.connectorcontainer {
-	position: relative;
-	width: 500px;
-	margin-left: 80px;
-	height: 515px;
-	background-color: #f1f1f1;
-	border: 1px solid #e0e0e0;
-	box-shadow: inset 10px 10px 10px rgba(255, 255, 255, 0.5);
-	padding: 15px;
-	z-index: 0;
-}
-
-div.panel div.app div.connectorcontainer p {
-	font-size: 16px;
-	color: #444444;
-	text-align: center;
-}
-
-div.panel div.app div.connector div.background {
-	margin: 0;
-	padding: 0;
-	text-align: center;
-	width: 100%;
-	height: 500px;
-	position: absolute;
-	top: 100px;
-	left: 0;
-	z-index: -20;
-	 -webkit-filter: grayscale(100%);
-	-moz-filter: grayscale(100%);
-	filter: grayscale(100%);
-	opacity: 0.1;
-	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
-}
-
-div.panel div.app div.connector  div.inputs {
-	float: left;
-	text-align: left;
-	width: 150px;
-	margin: 33px 0 0 10px;
-	font-size: 16px;
-}
-
-div.panel div.app div.connector  div.outputs {
-	float: right;
-	text-align: right;
-	width: 150px;
-	margin: 33px 10px 0 0;
-	font-size: 16px;
 }
 
  div.quick {

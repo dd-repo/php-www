@@ -9,12 +9,15 @@ if( !defined('PROPER_START') )
 $domains = api::send('self/domain/list');
 
 $content = "
-	<div class=\"box nocol\">
-		<div class=\"container\">
-			<h2>{$lang['title']}</h2>
-			<br />
-			<table>
+		<div class=\"panel\">
+			<div class=\"top\">
+				<h1 class=\"dark\">{$lang['title']}</h1>
+			</div>
+			<div class=\"clear\"></div><br /><br />
+			<div class=\"container\">
+				<table>
 				<tr>
+					<th></th>
 					<th>{$lang['domain']}</th>
 					<th>{$lang['arecord']}</th>
 					<th>{$lang['users']}</th>
@@ -50,11 +53,12 @@ if( count($domains) > 0 )
 		
 		$content .= "
 				<tr>
-					<td><a href=\"/panel/user/list?domain={$d['hostname']}\"><strong>{$d['hostname']}</strong></a></td>
+					<td style=\"text-align: center; width: 40px;\"><a href=\"/panel/user/list?domain={$d['hostname']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/domain.png\" /></td>
+					<td><span style=\"font-weight: bold;\">{$d['hostname']}<span style=\"font-weight: bold;\"></td>
 					<td><span class=\"lightlarge\">{$arecord}</span></td>
 					<td>{$users['count']} {$lang['user']}</td>
 					<td>{$groups['count']} {$lang['group']}</td>
-					<td align=\"center\">
+					<td style=\"width: 50px; text-align: center;\">
 		";
 		
 		if( security::hasGrant('SELF_ACCOUNT_INSERT') )
@@ -71,7 +75,6 @@ if( count($domains) > 0 )
 }
 	
 $content .= "
-						</tbody>
 					</table>
 				</div>
 			</div>

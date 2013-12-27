@@ -6,7 +6,7 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-api::send('self/service/del', array('service'=>$_GET['name']));
+api::send('self/service/del', array('service'=>$_POST['service']));
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);

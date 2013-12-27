@@ -21,12 +21,6 @@ foreach( $quotas as $q )
 
 switch( $_GET['plan'] )
 {
-	case '99':
-		$ram = 256;
-		$services = 1;
-		$disk = 1000;
-		$success = true;
-	break;
 	case '1':
 		$ram = 1024;
 		$services = 4;
