@@ -10,157 +10,217 @@ $domain = api::send('self/domain/list', array('id'=>$_GET['id']));
 $domain = $domain[0];
 
 if( is_array($domain['aRecord']) )
-        $domain['aRecord'] = $domain['aRecord'][0];
-
-$content = "
-	<div class=\"box nocol\">
-		<div class=\"container\">
-			<h2>{$lang['title']} :: <i>{$domain['hostname']}</i></h2>
-			<p class=\"large\">{$lang['intro']}</p>
-			<br />
-			<div style=\"float: left;\">
-				<h3>{$lang['config']}</h3>
-				<br />
-	";
-
-if( security::hasGrant('SELF_DOMAIN_UPDATE') )
-	$disabled = '';
+{
+	$i = 1;
+	$count = count($domain['aRecord']);
+	foreach( $domain['aRecord'] as $a )
+	{
+			$arecord .= $a;
+			if( $i != $count )
+				$arecord .= ',';
+			
+		$i++;
+	}
+}
 else
-	$disabled = 'disabled';
+	$arecord = $domain['aRecord'];
 
-$content .= "
-				<form action=\"/panel/domain/config_action\" method=\"post\" class=\"mainForm\">
-					<input type=\"hidden\" name=\"id\" value=\"{$_GET['id']}\" />
-					<input type=\"hidden\" name=\"domain\" value=\"{$domain['hostname']}\" />
-					<fieldset>
-						<label>{$lang['mx1']}</label>
-						<input type=\"text\" value=\"".str_replace('10 ', '', $domain['mxRecord'][0])."\" name=\"mx1\" {$disabled} />
-					</fieldset>
-					<fieldset>
-						<label>{$lang['mx2']}</label>
-						<input type=\"text\" value=\"".str_replace('20 ', '', $domain['mxRecord'][1])."\" name=\"mx2\" {$disabled} />
-					</fieldset>
-					<fieldset>
-						<label>{$lang['arecord']}</label>
-						<input type=\"text\" value=\"{$domain['aRecord']}\" name=\"domain_arecord\" {$disabled} />
-					</fieldset>
-					<fieldset>
-						<label>{$lang['mailer']}</label>
-						<input type=\"checkbox\" value=\"yes\" name=\"mailer\" {$disabled} ".($domain['mailHost']?"checked":"")." />
-					</fieldset>
-					<fieldset>
-						<label></label>
-						<input type=\"submit\" value=\"{$lang['update']}\" {$disabled} />
-					</fieldset>
-				</form>
-			</div>
-			<div style=\"float: left; margin-left: 50px;\">
-				<h3>{$lang['aliases']}</h3>
-				<br />
-				<table>
-					<tr>
-						<th>{$lang['domain']}</th>
-						<th>{$lang['record2']}</th>
-						<th>{$lang['type']}</th>
-						<th>{$lang['actions']}</th>
-					</tr>
-";
-
+$subdomains = api::send('self/subdomain/list', array('domain'=>$domain['hostname']));
 $aliases = api::send('self/alias/list', array('source'=>$domain['hostname']));
 
-	if( count($aliases) > 0 )
+$content = "
+			<div class=\"panel\">
+				<div class=\"top\">
+					<div class=\"left\" style=\"width: 500px; padding-top: 5px;\"\">
+						<h1 class=\"dark\">{$lang['title']} {$domain['hostname']}</h1>
+					</div>
+					<div class=\"right\">
+
+					</div>
+				</div>
+				<div class=\"clear\"></div><br />
+				<div class=\"container\">
+					<div style=\"float: left; width: 300px;\">
+						<h2 style=\"padding-top: 10px;\" class=\"dark\">{$lang['dns']}</h2>
+						<form style=\"margin-top: 23px;\" action=\"/panel/domain/config_action\" method=\"post\">
+							<input type=\"hidden\" name=\"id\" value=\"{$domain['id']}\" />
+							<input type=\"hidden\" name=\"domain\" value=\"{$domain['hostname']}\" />
+							<fieldset>
+								<input style=\"width: 250px;\" type=\"text\" value=\"".str_replace('10 ', '', $domain['mxRecord'][0])."\" name=\"mx1\" />
+								<span class=\"help-block\">{$lang['mx1']}</span>
+							</fieldset>
+							<fieldset>
+								<input style=\"width: 250px;\" type=\"text\" value=\"".str_replace('20 ', '', $domain['mxRecord'][1])."\" name=\"mx2\" />
+								<span class=\"help-block\">{$lang['mx2']}</span>
+							</fieldset>
+							<fieldset>
+								<input style=\"width: 250px;\" type=\"text\" value=\"{$arecord}\" name=\"domain_arecord\" />
+								<span class=\"help-block\">{$domain['hostname']}</span>
+							</fieldset>
+							<fieldset>				
+								<input type=\"submit\" value=\"{$lang['update']}\" />
+							</fieldset>
+						</form>					
+					</div>
+					<div style=\"float: right; width: 700px;\">
+						<div style=\"float: left; width: 250px;\">
+							<h2 style=\"padding-top: 10px;\" class=\"dark\">{$lang['aliases']}</h2>
+						</div>
+						<div style=\"float: right; width: 300px;\">
+							<a class=\"button classic\" href=\"#\" onclick=\"$('#newalias').dialog('open'); return false;\" style=\"width: 200px; height: 22px; float: right;\">
+								<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
+								<span style=\"display: block; padding-top: 3px;\">{$lang['add_alias']}</span>
+							</a>						
+						</div>
+						<div class=\"clear\"></div>
+						<br />
+						<table>
+							<tr>
+								<th>{$lang['domain']}</th>
+								<th>{$lang['record']}</th>
+								<th>{$lang['type']}</th>
+								<th>{$lang['actions']}</th>
+							</tr>";
+
+if( count($aliases) > 0 )
+{
+	foreach( $aliases as $a )
 	{
-		foreach( $aliases as $a )
+		$arecord = "";
+		if( is_array($a['aRecord']) )
 		{
-			$arecord = "";
-			if( is_array($a['aRecord']) )
+			$i = 1;
+			$max = count($a['aRecord']);
+			foreach( $a['aRecord'] as $r )
 			{
-				$i = 1;
-				$max = count($a['aRecord']);
-				foreach( $a['aRecord'] as $r )
-				{
-					if( $i == $max )
-						$arecord .= "{$r}";
-					else
-						$arecord .= "{$r}<br />";
-					
-					$i++;
-				}
+				if( $i == $max )
+					$arecord .= "{$r}";
+				else
+					$arecord .= "{$r}<br />";
+				
+				$i++;
 			}
-			else
+		}
+		else
 			$arecord = $a['aRecord'];
 			
-				$content .= "
-					<tr>
-						<td>{$a['hostname']}</td>
-						<td>{$arecord}</td>
-						<td>{$a['type']}</td>
-						<td><a href=\"/panel/domain/del_alias_action?id={$a['id']}&source={$domain['hostname']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a></td>
-					</tr>
+		$content .= "
+							<tr>
+								<td>{$a['hostname']}</td>
+								<td>{$arecord}</td>
+								<td>{$a['type']}</td>
+								<td><a href=\"/panel/domain/del_alias_action?id={$a['id']}&source={$domain['hostname']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a></td>
+							</tr>
 				";
-		}
 	}
-	
+}				
+
 $content .= "
-				</table>
-				<br />
-				<a class=\"btn\" href=\"/panel/domain/add_alias?domain={$domain['id']}\">{$lang['add_alias']}</a>			
-			</div>
-			<div class=\"clearfix\"></div>
-			<br />
-			<h3>{$lang['subdomains']}</h3>
-			<br />
+						</table>
+					</div>
+					<div class=\"clear\"></div>
+					<br />
+					<div class=\"left\">
+						<h2 style=\"padding-top: 10px;\" class=\"dark\">{$lang['list']}</h2>
+					</div>
+					<div class=\"right\">
+						<a class=\"button classic\" href=\"#\" onclick=\"$('#new').dialog('open'); return false;\" style=\"width: 200px; height: 22px; float: right;\">
+							<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
+							<span style=\"display: block; padding-top: 3px;\">{$lang['add']}</span>
+						</a>
+					</div>
+					<div class=\"clear\"></div><br />
+					<table>
+						<tr>
+							<th>{$lang['address']}</th>
+							<th>{$lang['record']}</th>
+							<th>{$lang['actions']}</th>
+						</tr>
 ";
-	
-if( security::hasGrant('SELF_SUBDOMAIN_SELECT') )
+
+if( count($subdomains) > 0 )
 {
-	$subdomains = api::send('self/subdomain/list', array('domain'=>$domain['hostname']));
-
-	$content .= "
-			<table>
-				<tr>
-					<th>{$lang['address']}</th>
-					<th>{$lang['record']}</th>
-					<th>{$lang['actions']}</th>
-				</tr>
-	";
-	
-	if( count($subdomains) > 0 )
+	foreach( $subdomains as $s )
 	{
-		foreach( $subdomains as $s )
-		{
-			$content .= "
-				<tr>
-					<td><a href=\"http://{$s['hostname']}\"><strong>{$s['hostname']}</strong></a></td>
-					<td>{$s['aRecord']}{$s['cNAMERecord']}</td>
-					<td align=\"center\">";
-
-			if( security::hasGrant('SELF_SUBDOMAIN_UPDATE') )
-			{
-				$content .= "
-						<a href=\"/panel/domain/config_subdomain?domain_id={$domain['id']}&domain={$domain['hostname']}&id={$s['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>";
-			}
-		
-			if( security::hasGrant('SELF_SUBDOMAIN_DELETE') )
-			{
-				$content .= "
-						<a href=\"/panel/domain/del_subdomain_action?id={$s['id']}&domain={$domain['hostname']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>";
-			}
-		
-			$content .= "
-					</td>
-				</tr>";
-		}
+		$content .= "
+						<tr>
+							<td>{$s['hostname']}</td>
+							<td>{$s['aRecord']}{$s['cNAMERecord']}</td>
+							<td style=\"width: 70px;\">
+								<a href=\"#\" onclick=\"$('#record').val('{$s['aRecord']}{$s['cNAMERecord']}'); $('#subdomainid').val('{$s['id']}'); $('#config').dialog('open'); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>
+								<a href=\"/panel/domain/del_subdomain_action?domain={$domain['hostname']}&id={$s['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+							</td>
+						</tr>
+			";
 	}
 }
 
-	$content .= "
-			</table>
-			<br />
-			<a class=\"btn\" href=\"/panel/domain/add_subdomain?id={$domain['id']}\">{$lang['add']}</a>
-			<br /><br />
-		</div>
-	</div>
+$content .= "
+					</table>
+				</div>
+			</div>
+			<div id=\"new\" style=\"display: none;\" class=\"floatingdialog\">
+				<h3 class=\"center\">{$lang['new']}</h3>
+				<p style=\"text-align: center;\">{$lang['new_text']}</p>
+				<div class=\"form-small\">
+					<form action=\"/panel/domain/add_subdomain_action\" method=\"post\" class=\"center\">
+						<input type=\"hidden\" name=\"id\" value=\"{$domain['id']}\" />
+						<input type=\"hidden\" name=\"domain\" value=\"{$domain['hostname']}\" />
+						<fieldset>
+							<input class=\"auto\" type=\"text\" value=\"{$lang['subdomain']}\" name=\"subdomain\" onfocus=\"this.value = this.value=='{$lang['subdomain']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['subdomain']}' : this.value; this.value=='{$lang['subdomain']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+							<span class=\"help-block\">".str_replace('{DOMAIN}', $domain['hostname'], $lang['tipsubdomain'])."</span>
+						</fieldset>
+						<fieldset autofocus>	
+							<input type=\"submit\" value=\"{$lang['create']}\" />
+						</fieldset>
+					</form>
+				</div>
+			</div>
+			<div id=\"newalias\" style=\"display: none;\" class=\"floatingdialog\">
+				<h3 class=\"center\">{$lang['newalias']}</h3>
+				<p style=\"text-align: center;\">{$lang['newalias_text']}</p>
+				<div class=\"form-small\">
+					<form action=\"/panel/domain/add_alias_action\" method=\"post\" class=\"center\">
+						<input type=\"hidden\" name=\"id\" value=\"{$domain['id']}\" />
+						<fieldset>
+							<input class=\"auto\" type=\"text\" value=\"{$lang['alias']}\" name=\"domain\" onfocus=\"this.value = this.value=='{$lang['alias']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['alias']}' : this.value; this.value=='{$lang['alias']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+							<span class=\"help-block\">{$lang['tipalias']}</span>
+						</fieldset>
+						<fieldset>
+							<select name=\"type\">
+								<option value=\"permanent\">Permanente</option>
+								<option value=\"transparent\">Transparente</option>
+							</select>
+							<span class=\"help-block\">{$lang['type']}</span>
+						</fieldset>
+						<fieldset autofocus>	
+							<input type=\"submit\" value=\"{$lang['create']}\" />
+						</fieldset>
+					</form>
+				</div>
+			</div>
+			<div id=\"config\" style=\"display: none;\" class=\"floatingdialog\">
+				<h3 class=\"center\">{$lang['config']}</h3>
+				<p style=\"text-align: center;\">{$lang['config_text']}</p>
+				<div class=\"form-small\">
+					<form action=\"/panel/domain/config_subdomain_action\" method=\"post\" class=\"center\">
+						<input id=\"subdomainid\" type=\"hidden\" name=\"id\" value=\"\" />
+						<input type=\"hidden\" name=\"domain\" value=\"{$domain['hostname']}\" />
+						<input type=\"hidden\" name=\"domain_id\" value=\"{$domain['id']}\" />
+						<fieldset>
+							<input id=\"record\" type=\"text\" value=\"\" name=\"record\" />
+							<span class=\"help-block\">{$lang['tiprecord']}</span>
+						</fieldset>
+						<fieldset autofocus>	
+							<input type=\"submit\" value=\"{$lang['update']}\" />
+						</fieldset>
+					</form>
+				</div>
+			<script>
+				newDialog('new', 550, 280);
+				newDialog('newalias', 550, 340);
+				newDialog('config', 550, 290);
+			</script>
 ";
 
 /* ========================== OUTPUT PAGE ========================== */
