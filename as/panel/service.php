@@ -37,71 +37,77 @@ $services_left = 260-round($serv['used']*260/$serv['max']);
 $services = api::send('self/service/list');
 
 $content = "
-	<div class=\"box nocol\">
+	<div class=\"panel\">
+		<div class=\"top\">
+			<div class=\"left\" style=\"width: 500px; padding-top: 5px;\">
+				<h1 class=\"dark\">{$lang['title']}</h1>
+			</div>
+			<div class=\"right\">
+				<a class=\"button classic\" href=\"/panel/service/add\" style=\"width: 200px; height: 22px; float: right;\">
+					<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
+					<span style=\"display: block; padding-top: 3px;\">{$lang['add']}</span>
+				</a>
+			</div>
+		</div>
+		<div class=\"clear\"></div><br /><br />
 		<div class=\"container\">
-			<h2>{$lang['title']}</h2>
-			<br />
-			<div style=\"float: left; width: 500px;\">
-				<h3>{$lang['services']}</h3>
-				<div class=\"ui-meter-holder\">
-					<div class=\"ui-meter\">
-						<div class=\"after-fill fill\" style=\"z-index: 9; display: none;\"></div>
-						<div class=\"before-fill fill\" style=\"z-index: 10; right: {$services_left}px;\"></div>
-						<div class=\"base-fill fill\" style=\"z-index: 20; display: none;\"></div>
-					</div>
-				</div>
-				<div class=\"details\">
-					<span class=\"usage\">{$serv['used']}</span> / <span class=\"limit\">{$serv['max']}</span>
-				</div>
-				<div class=\"clearfix\"></div>
-			</div>
-			<div style=\"padding-top: 14px;\">
-				<a class=\"btn\" href=\"/panel/plans\">{$lang['more']}</a>
-			</div>
-			<div class=\"clearfix\"></div>
-			<br />
-			<h2>{$lang['list']}</h2>
-			<table>
-				<tr>
-					<th>{$lang['name']}</th>
-					<th>{$lang['uid']}</th>
-					<th>{$lang['vendor']}</th>
-					<th>{$lang['version']}</th>
-					<th>{$lang['actions']}</th>
-				</tr>
 ";
 
+if( count($services) == 0 )
+	$content .= "<p>{$lang['no_service']}</pa>";
+
+$j = 1;
 foreach( $services as $s )
 {
 	$content .= "
-				<tr>
-					<td><img class=\"language\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-{$s['vendor']}.png\" alt=\"\" /><strong>{$s['description']}</strong></td>
-					<td>{$s['name']}</td>
-					<td>{$s['vendor']}</td>
-					<td>{$s['version']}</td>
-					<td align=\"center\">
-		";
-		
-		if( security::hasGrant('SELF_SERVICE_DELETE') )
-		{
-			$content .= "
-									<a href=\"/panel/service/del_action?name={$s['name']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>";
-		}
-		
-		$content .= "
-								</td>
-							</tr>
-		";
+			<div class=\"service ".($j==1?"first":"")."\" onclick=\"$('#service').val('{$s['name']}'); $('#service2').val('{$s['name']}'); $('#desc').val('{$s['description']}'); $('#config').dialog('open'); return false;\">
+				<img style=\"float: left; margin: 10px 15px 0 0;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-{$s['vendor']}.png\" />
+				<span class=\"name\" style=\"margin-top: 25px;\">{$s['description']}</span><br />
+				<span class=\"subname\">{$s['name']}</span>
+			</div>
+	";
+	
+	$j++;
+	
+	if( $j == 4 )
+		$j = 1;
 }
 
-$content .= "
-				</tr>
-			</table>
-			<br />
-			<a class=\"btn\" href=\"/panel/service/add\">{$lang['add']}</a> <a class=\"btn\" href=\"/doc/services\">{$lang['doc']}</a>
-		</div>
+	$content .= "
+		</div>		
 	</div>
+	<div id=\"config\" class=\"floatingdialog\">
+		<h3 class=\"center\">{$lang['config']}</h3>
+		<p style=\"text-align: center;\">{$lang['config_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/database/config_action\" method=\"post\" class=\"center\">
+				<input id=\"database\" type=\"hidden\" name=\"database\" value=\"\" />
+				<fieldset>
+					<input id=\"desc\" type=\"text\" value=\"\" name=\"desc\" />
+					<span class=\"help-block\">{$lang['desc_help']}</span>
+				</fieldset>
+				<fieldset>
+					<input type=\"password\" value=\"\" name=\"password\" />
+					<span class=\"help-block\">{$lang['password_help']}</span>
+				</fieldset>
+				<fieldset>	
+					<input  type=\"submit\" value=\"{$lang['update']}\" />
+				</fieldset>
+			</form>
+			<form action=\"/panel/database/del_action\" method=\"post\" class=\"center\">
+				<input id=\"database2\" type=\"hidden\" name=\"database\" value=\"\" />
+				<fieldset>	
+					<input type=\"submit\" value=\"{$lang['delete']}\"/>
+				</fieldset>
+			</form>
+		</div>
+	</div>	
+	<script>
+		newDialog('new', 550, 450);
+		newDialog('config', 550, 440);
+	</script>
 ";
+
 
 /* ========================== OUTPUT PAGE ========================== */
 $template->output($content);
