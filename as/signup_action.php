@@ -7,7 +7,7 @@ if( !defined('PROPER_START') )
 }
 
 if( $_POST['email'] )
-	$_SESSION['REGISTER']['EMAIL'] = security::encode($_POST['email']);
+	$_SESSION['JOIN_EMAIL'] = security::encode($_POST['email']);
 
 $content = "
 		<div class=\"head\">
@@ -74,13 +74,13 @@ $content = "
 			<p style=\"text-align: center;\">{$lang['new_text']}</p>
 			<div class=\"form-small\">		
 				<form action=\"/join/pay\" method=\"post\" class=\"center\">
-					<input id=\"plan\" type=\"hidden\" name=\"plan\" value=\"\" />
+					<input id=\"plan\" type=\"hidden\" name=\"plan\" value=\"{$_SESSION['JOIN_PLAN']}\" />
 					<fieldset>
-						<input class=\"auto\" type=\"text\" value=\"{$lang['name']}\" name=\"username\" onfocus=\"this.value = this.value=='{$lang['name']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['name']}' : this.value; this.value=='{$lang['name']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+						<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_USER']?"{$_SESSION['JOIN_USER']}":"{$lang['name']}")."\" name=\"username\" onfocus=\"this.value = this.value=='{$lang['name']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['name']}' : this.value; this.value=='{$lang['name']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
 						".(isset($_GET['eregisteradd'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$lang['error_user']}</span>":"<span class=\"help-block\" style=\"color: #bc0000;\">{$lang['tipname']}</span>")."
 					</fieldset>
 					<fieldset>
-						<input id=\"email\" type=\"text\" value=\"{$_SESSION['REGISTER']['EMAIL']}\" name=\"email\" />
+						<input id=\"email\" type=\"text\" value=\"{$_SESSION['JOIN_EMAIL']}\" name=\"email\" />
 						<span class=\"help-block\">{$lang['tipemail']}</span>
 					</fieldset>
 					<fieldset autofocus>	

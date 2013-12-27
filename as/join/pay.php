@@ -10,6 +10,7 @@ try
 {
 	$_SESSION['JOIN_USER'] = $_POST['username'];
 	$_SESSION['JOIN_EMAIL'] = $_POST['email'];
+	$_SESSION['JOIN_PLAN'] = $_POST['plan'];
 
 	api::send('registration/add', array('auth'=>'', 'user'=>$_POST['username'], 'plan' => $_POST['plan'], 'email'=>$_POST['email'], 'invitation'=>$_POST['code']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 }
