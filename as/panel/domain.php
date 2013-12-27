@@ -90,7 +90,7 @@ $content .= "
 				</div>
 			</div>
 			<script>
-				newDialog('new', 550, 250);
+				newFlexibleDialog('new', 550);
 			</script>
 ";
 

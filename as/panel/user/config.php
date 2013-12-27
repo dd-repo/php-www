@@ -11,9 +11,18 @@ $account = $account[0];
 
 $content .= "
 	<div class=\"panel\">
+		<div class=\"top\">
+			<div class=\"left\" style=\"padding-top: 5px; width: 600px;\">
+				<h1 class=\"dark\">{$lang['user']} {$account['mail']}</h1>
+			</div>
+			<div class=\"right\" style=\"width: 400px;\">
+				<a class=\"button classic\" href=\"/panel/user/list?domain=".security::encode($_GET['domain'])."\" style=\"width: 180px; height: 22px; float: right;\">
+					<span style=\"display: block; padding-top: 3px;\">{$lang['back']}</span>
+				</a>
+			</div>
+		</div>
+		<div class=\"clear\"></div><br /><br />
 		<div class=\"container\">
-			<h1 class=\"dark\">{$account['mail']}</h1>
-			<br />
 			<div style=\"width: 500px; float: left;\">
 				<h3 class=\"colored\">{$lang['change_pass']}</h3>
 				<form action=\"/panel/user/config_action\" method=\"post\">
@@ -31,7 +40,7 @@ $content .= "
 						<input type=\"submit\" value=\"{$lang['update']}\" />
 					</fieldset>
 			</div>
-			<div style=\"width: 390px; float: right;\">
+			<div style=\"width: 420px; float: right;\">
 				<h3 class=\"colored\">{$lang['change_info']}</h3>
 				<form action=\"/panel/user/config_action\" method=\"post\">
 					<fieldset>
@@ -44,24 +53,24 @@ $content .= "
 					</fieldset>
 				</form>
 			</div>
-			<div class=\"clear\"></div><br />
-			<div class=\"top\">
-				<div class=\"left\" style=\"padding-top: 5px;\">
+			<div class=\"clear\"></div><br /><br />
+			<div style=\"float: left; width: 530px;\">
+				<div style=\"float: left; width: 300px; padding-top: 5px;\">
 					<h3 class=\"colored\">{$lang['redirections']}</h3>
 				</div>
-				<div class=\"right\">
+				<div style=\"float: right; width: 200px;\">
 					<a class=\"button classic\" href=\"#\" onclick=\"$('#new-redirect').dialog('open');\" style=\"width: 200px; height: 22px; float: right;\">
 						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
 						<span style=\"display: block; padding-top: 3px;\">{$lang['add_redirect']}</span>
 					</a>
 				</div>
-			</div>
-			<br />
-			<table>
-				<tr>
-					<th>{$lang['email']}</th>
-					<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
-				</tr>
+				<div class=\"clear\"></div>
+				<br />
+				<table>
+					<tr>
+						<th>{$lang['email']}</th>
+						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
+					</tr>
 	";
 	
 	if( !is_array($account['redirection']) && $account['redirection'] )
@@ -72,35 +81,35 @@ $content .= "
 		foreach( $account['redirection'] as $r )
 		{
 			$content .= "
-				<tr>
-					<td>{$r}</td>
-					<td style=\"width: 35px; text-align: center;\">
-						<a href=\"/panel/user/del_redirection_action?redirection={$r}&domain={$_GET['domain']}&id={$_GET['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
-					</td>
-				</tr>";
+					<tr>
+						<td>{$r}</td>
+						<td style=\"width: 35px; text-align: center;\">
+							<a href=\"/panel/user/del_redirection_action?redirection={$r}&domain={$_GET['domain']}&id={$_GET['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+						</td>
+					</tr>";
 		}
 	}
 	
 	$content .= "		
-			</table>
-			<br /><br />
-			<div class=\"top\">
-				<div class=\"left\" style=\"padding-top: 5px;\">
+				</table>
+			</div>
+			<div style=\"float: right; width: 530px;\">
+				<div style=\"float: left; width: 300px; padding-top: 5px;\">
 					<h3 class=\"colored\">{$lang['alternates']}</h3>
 				</div>
-				<div class=\"right\">
+				<div style=\"float: right; width: 200px;\">
 					<a class=\"button classic\" href=\"#\" onclick=\"$('#new-alias').dialog('open');\" style=\"width: 200px; height: 22px; float: right;\">
 						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
 						<span style=\"display: block; padding-top: 3px;\">{$lang['add_alias']}</span>
 					</a>
 				</div>
-			</div>
-			<br /><br />
-			<table>
-				<tr>
-					<th>{$lang['email']}</th>
-					<th style=\"width: 35px; text-align: center;\">{$lang['actions']}</th>
-				</tr>
+				<div class=\"clear\"></div>
+				<br />
+				<table>
+					<tr>
+						<th>{$lang['email']}</th>
+						<th style=\"width: 35px; text-align: center;\">{$lang['actions']}</th>
+					</tr>
 	";
 	
 	if( !is_array($account['alternate']) && $account['alternate'] )
@@ -111,19 +120,59 @@ $content .= "
 		foreach( $account['alternate'] as $a )
 		{
 			$content .= "
-				<tr>
-					<td>{$a}</td>
-					<td style=\"width: 35px; text-align: center;\">
-						<a href=\"/panel/user/del_alternate_action?alternate={$a}&domain={$_GET['domain']}&id={$_GET['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
-					</td>
-				</tr>";
+					<tr>
+						<td>{$a}</td>
+						<td style=\"width: 35px; text-align: center;\">
+							<a href=\"/panel/user/del_alternate_action?alternate={$a}&domain={$_GET['domain']}&id={$_GET['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+						</td>
+					</tr>";
 		}
 	}
 	
 	$content .= "		
-			</table>
+				</table>
+			</div>
+			<div class=\"clear\"></div>
+			<br /><br />
+			<div style=\"float: left; width: 530px;\">
+				<div style=\"float: left; width: 300px; padding-top: 5px;\">
+					<h3 class=\"colored\">{$lang['groups']}</h3>
+				</div>
+				<div style=\"float: right: width: 200px;\">
+					<a class=\"button classic\" href=\"#\" onclick=\"$('#join').dialog('open');\" style=\"width: 200px; height: 22px; float: right;\">
+						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
+						<span style=\"display: block; padding-top: 3px;\">{$lang['join']}</span>
+					</a>
+				</div>
+				<div class=\"clear\"></div>
+				<br />
+				<table>
+					<tr>
+						<th>{$lang['group']}</th>
+						<th>{$lang['actions']}</th>
+					</tr>
+	";
+
+	if( $account['groups'] )
+	{
+		foreach( $account['groups'] as $g )
+		{
+			$content .= "
+					<tr>
+						<td>{$g['name']}</td>
+						<td style=\"width: 35px; text-align: center;\">
+							<a href=\"/panel/user/unjoin_action?group={$g['id']}&domain={$_GET['domain']}&id={$_GET['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+						</td>
+					</tr>";
+		}
+	}
+	
+	$content .= "		
+				</table>
+			</div>
+			<div class=\"clear\"></div>
 		</div>
-	</div>
+	</div><br />
 	<div id=\"new-redirect\" style=\"display: none;\" class=\"floatingdialog\">
 		<h3 class=\"center\">{$lang['new_redirect']}</h3>
 		<p style=\"text-align: center;\">{$lang['new_redirect_text']}</p>
