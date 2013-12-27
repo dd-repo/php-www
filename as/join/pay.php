@@ -9,7 +9,7 @@ if( !defined('PROPER_START') )
 $_SESSION['JOIN_USER'] = $_POST['username'];
 $_SESSION['JOIN_EMAIL'] = $_POST['email'];
 
-api::send('registration/add', array('auth'=>'', 'user'=>$_POST['username'], 'email'=>$_POST['email'], 'invitation'=>$_POST['code']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+api::send('registration/add', array('auth'=>'', 'user'=>$_POST['username'], 'plan' => $_POST['plan'], 'email'=>$_POST['email'], 'invitation'=>$_POST['code']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 	
 $content = "
 		<div class=\"head\">
