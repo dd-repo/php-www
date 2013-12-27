@@ -675,3 +675,26 @@ span.large {
 img.language {
 	height: 60px;
 }
+
+div.state {
+	display: inline-block;
+	height: 15px;
+	width: 15px;
+	float: left;
+	margin: 3px 3px 0 0px;
+}
+
+div.state-content {
+	margin: -1px 0 0 17px;
+	font-family: Cuprum;
+	font-size: 14px;
+	line-height: 21px;
+}
+
+.running {
+	background: url('../images/ui-sprite.png') 0px -279px;
+}
+
+.stopped {
+	background: url('../images/ui-sprite.png') 0px -294px;
+}

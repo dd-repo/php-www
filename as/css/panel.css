@@ -396,6 +396,15 @@ div.panel a.action.bill:hover {
 	background-image: url('../images/illu/bill_hover.png');
 }
 
+div.panel a.action.push {
+	background-image: url('../images/illu/push.png');
+}
+
+div.panel a.action.push:hover {
+	color: #2c8dd2;
+	background-image: url('../images/illu/push_hover.png');
+}
+
 div.panel a.action.certificate {
 	background-image: url('../images/illu/certificate.png');
 }
@@ -421,6 +430,15 @@ div.panel a.action.settings {
 div.panel a.action.settings:hover {
 	color: #2c8dd2;
 	background-image: url('../images/illu/settings_hover.png');
+}
+
+div.panel a.action.delete {
+	background-image: url('../images/illu/delete.png');
+}
+
+div.panel a.action.delete:hover {
+	color: #2c8dd2;
+	background-image: url('../images/illu/delete_hover.png');
 }
 
 div.panel a.action.buy {
@@ -493,6 +511,25 @@ div.panel a.action.reporting {
 div.panel a.action.reporting:hover {
 	color: #2c8dd2;
 	background-image: url('../images/illu/pdf_hover.png');
+}
+
+div.panel a.branch {
+	display: block;
+	float: left;
+	margin-right: 5px;
+	padding: 8px;
+	background-color: #eaeaea;
+	border-radius: 3px;
+	color: #d69e17;
+}
+
+div.panel a.branch:hover {
+	background-color: #dadada;
+}
+
+div.panel a.branch.active {
+	color: #45acb5;
+	font-weight: bold;
 }
 
 div.panel div.database {
@@ -955,3 +992,4 @@ div.panel div.multimenu div.subelement.active:hover {
 #usage div.infoint:hover {
 	background-color: #f8f8f8;
 }
+

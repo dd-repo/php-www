@@ -6,7 +6,7 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$app = api::send('self/app/list', array('id'=>$_GET['id'], 'extended'=>1));
+$app = api::send('self/app/list', array('id'=>$_GET['id']));
 $app = $app[0];
 
 if( !$_GET['branch'] && !$_SESSION['DATA'][$app['id']]['branch'] )
@@ -30,16 +30,47 @@ foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] 
 $expl = explode('-', $app['name']);
 $language = $expl[0];
 
+	
 $content = "
-	<div class=\"box nocol\">
+	<div class=\"panel\">
+		<div class=\"top\">
+			<div class=\"left\" style=\"width: 500px;\">
+				<img style=\"display: block; float: left; margin-right: 20px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" alt=\"\" />
+				<div style=\"float: left;\">
+					<span style=\"font-size: 25px; display: block; margin-bottom: 4px;\">{$app['tag']}</span>
+					<span style=\"font-size: 15px; color: #878787; display: block; margin-bottom: 10px;\">{$app['name']}</span>
+";
+
+foreach( $app['branches'] as $key => $value )
+	$content .= "<a href=\"/panel/app/show?id={$app['id']}&branch={$key}\" class=\"branch ".($key==$_SESSION['DATA'][$app['id']]['branch']?"active":"")."\">{$key}</a>";
+
+$content .= "
+					<a href=\"#\" class=\"branch\">+</a>
+				</div>
+			</div>
+			<div class=\"right\" style=\"width: 600px; float: right; text-align: right;\">
+				<a class=\"action settings big\" href=\"#\" onclick=\"$('#settings').dialog('open'); return false;\">
+					{$lang['settings']}
+				</a>
+				<a class=\"action push big\" href=\"#\">
+					{$lang['push']}
+				</a>
+				<a class=\"action delete big\" href=\"#\">
+					{$lang['delete']}
+				</a>					
+			</div>
+			<div class=\"clear\"></div><br /><br />
+		</div>
 		<div class=\"container\">
-			<div style=\"float: left; width: 550px; margin-right: 40px;\">
-				<h2>{$lang['title']} {$app['name']}</h2>
-				<br />
-				<br />
-				<h3 class=\"colored\">{$lang['info']} ".security::encode($_SESSION['DATA'][$app['id']]['branch'])."</h3>
-				<br />
-<table>
+			<div style=\"float: left; width: 500px;\">
+				<div style=\"float: left; width: 200px; padding-top: 8px;\">
+					<h2 class=\"dark\">{$lang['infos']}</h2>
+				</div>
+				<div style=\"float: right; width: 300px;\">
+					
+				</div>
+				<div class=\"clear\"></div><br />
+				<table>
 					<tr>
 						<th>{$lang['info']}</th>
 						<th>{$lang['data']}</th>
@@ -69,20 +100,16 @@ $content = "
 					</tr>
 				</table>
 			</div>
-			<div style=\"float: left; width: 470px;\">
-				<div style=\"text-align: right;\">
-";
-
-foreach( $app['branches'] as $key => $value )
-	$content .= "<a href=\"/panel/app/show?id={$app['id']}&branch={$key}\" class=\"btn ".($key==$_SESSION['DATA'][$app['id']]['branch']?"active":"")."\">{$key}</a>&nbsp;&nbsp;&nbsp;";
-
-$content .= "
-				<a class=\"btn\" href=\"/panel/app/add_env?id={$app['id']}\">+</a>		
+			<div style=\"float: right; width: 500px;\">
+				<div style=\"float: left; width: 400px; padding-top: 8px;\">
+					<h2 class=\"dark\">{$lang['uris']}</h2>
 				</div>
-				<br />
-				<br />
-				<h3 class=\"colored\">{$lang['uris']} ".security::encode($_SESSION['DATA'][$app['id']]['branch'])."</h3>
-				<br />
+				<div style=\"float: right; width: 100px;\">
+					<a class=\"button classic\" href=\"#\" onclick=\"$('#new').dialog('open');\" style=\"width: 22px; height: 22px; float: right;\">
+						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
+					</a>
+				</div>
+				<div class=\"clear\"></div><br />
 				<table>
 					<tr>
 						<th>{$lang['url']}</th>
@@ -107,30 +134,23 @@ if( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['urls'] )
 		
 $content .= "
 				</table>
-				<br />
-				<a class=\"btn\" href=\"/panel/app/add_url?id={$app['id']}\">{$lang['add_url']}</a>
-				<br />
 			</div>
-			<div class=\"clearfix\"></div>
+			<div class=\"clear\"></div><br />
 			<br />
-			<br />
-			<div style=\"float: left; width: 500px; margin-right: 40px;\">
-				<h2>{$lang['process']} ".security::encode($_SESSION['DATA'][$app['id']]['branch'])."</h2>
+			<div style=\"float: left; width: 500px; padding-top: 8px;\">
+				<h2 class=\"dark\">{$lang['branchinstances']}</h2>
 			</div>
-			<div style=\"float: right; width: 500px;\">
-				<div style=\"text-align: right;\">
-					<a href=\"/panel/app/rebuild_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."\" class=\"btn\">{$lang['rebuild']}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"/panel/app/restart_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."\" class=\"btn\">{$lang['restart']}</a>&nbsp;&nbsp;&nbsp;<a href=\"/panel/app/start_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."\" class=\"btn pill-left ".($running?"active":"")."\">{$lang['start']}</a><a href=\"/panel/app/stop_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."\" class=\"btn pill-right ".($running?"":"active")."\">{$lang['stop']}</a>
-				</div>
+			<div style=\"float: right; width: 300px;\">
+				
 			</div>
-			<div class=\"clearfix\"></div>
-			<br />
+			<div class=\"clear\"></div>
 			<table>
 				<tr>
 					<th>{$lang['id']}</th>
 					<th>{$lang['host']}</th>
 					<th>{$lang['port']}</th>
 					<th>{$lang['cpu']}</th>
-					<th>{$lang['mem']}</th>
+					<th>{$lang['memory']}</th>
 					<th>{$lang['uptime']}</th>
 					<th >{$lang['status']}</th>
 				</tr>
@@ -159,94 +179,36 @@ foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] 
 	$j++;
 }
 $content .= "
-			</table>
-			<hr>
-			<div style=\"float: left; width: 550px; margin-right: 40px;\">
-				<h3 class=\"colored\">{$lang['infosapp']}</h3>
-				<br />
-				<table>
-					<tr>
-						<th>{$lang['info']}</th>
-						<th>{$lang['data']}</th>
-					</tr>
-					<tr>
-						<td>{$lang['language']}</td>
-						<td><span class=\"large\">{$lang[$language]}</span></td>
-					</tr>			
-					<tr>
-						<td>{$lang['framework']}</td>
-						<td><span class=\"large\">".$lang['framework_' . $language]."</span></td>
-					</tr>
-					<tr>
-						<td>{$lang['binary']}</td>
-						<td><span class=\"small\">".($app['binary']?"{$lang['command']} {$app['binary']}":str_replace('{BRANCH}', security::encode($_SESSION['DATA'][$app['id']]['branch']), $lang['binary_' . $language]))."</span></td>
-					</tr>
-				</table>
-			</div>
-			<div style=\"float: left; width: 470px;\">
-				<h3 class=\"colored\">{$lang['change']}</h3>
-				<br />
-				<form action=\"/panel/app/update_action\" method=\"post\">
-					<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
-					<fieldset>
-						<label>{$lang['tag']}</label>
-						<input type=\"text\" name=\"tag\" value=\"{$app['tag']}\" />
-					</fieldset>
-					<fieldset>
-						<label>{$lang['password']}</label>
-						<input type=\"password\" name=\"newpassword\" />
-					</fieldset>
-					<fieldset>
-						<label>{$lang['password2']}</label>
-						<input type=\"password\" name=\"confirm\" />
-					</fieldset>
-					<fieldset>
-						<label></label>
-						<input type=\"submit\" value=\"{$lang['update']}\" />
-					</fieldset>
-				</form>
-			</div>
-			<div class=\"clearfix\"></div>
-			<h3 class=\"colored\">{$lang['access']}</h3>
-			<br />
-			<table>
-				<tr>
-					<th>{$lang['type']}</th>
-					<th>{$lang['info']}</th>
-					<th>{$lang['user']}</th>
-					<th>{$lang['port']}</th>
-				</tr>
-				<tr>
-					<td><span class=\"large\">GIT</span></td>
-					<td>ssh://git.as/~".security::get('USER')."/{$app['name']}.git</td>
-					<td>{$app['name']}</td>
-					<td>22</td>
-				</tr>
-				<tr>
-					<td><span class=\"large\">SFTP</span></td>
-					<td>sftp://ftp.anotherservice.com</td>
-					<td>{$app['name']}</td>
-					<td>22</td>
-				</tr>				
-				<tr>
-					<td><span class=\"large\">FTP</span></td>
-					<td>ftp://ftp.anotherservice.com</td>
-					<td>{$app['name']}</td>
-					<td>21</td>
-				</tr>
-			</table>
+			</table>			
 		</div>
-		<div class=\"clearfix\"></div>
 	</div>
+	<br />
+	<div id=\"new\" class=\"floatingdialog\">
+		<h3 class=\"center\">{$lang['changepass']}</h3>
+		<p style=\"text-align: center;\">{$lang['changepass_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/settings/update_action\" method=\"post\" class=\"center\">
+				<fieldset>
+					<input type=\"password\" name=\"pass\" />
+					<span class=\"help-block\">{$lang['pass_help']}</span>
+				</fieldset>
+				<fieldset>
+					<input type=\"password\" name=\"confirm\" />
+					<span class=\"help-block\">{$lang['confirm_help']}</span>
+				</fieldset>
+				<fieldset>	
+					<input autofocus type=\"submit\" value=\"{$lang['update']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<script>
+		newDialog('new', 550, 350);
+	</script>	
 ";
 
-/** 
- * Convert number of seconds into hours, minutes and seconds 
- * and return an array containing those values 
- * 
- * @param integer $inputSeconds Number of seconds to parse 
- * @return array 
- */ 
+/* ========================== OUTPUT PAGE ========================== */
+$template->output($content);
 
 function secondsToTime($inputSeconds) {
 
@@ -278,8 +240,5 @@ function secondsToTime($inputSeconds) {
     );
     return $obj;
 }
-
-/* ========================== OUTPUT PAGE ========================== */
-$template->output($content);
 
 ?>
