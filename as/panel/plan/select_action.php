@@ -63,7 +63,7 @@ switch( $_GET['plan'] )
 
 if( $quota['used'] > $ram )
 {
-	$_SESSION['MESSAGE']['TYPE'] = 'failure';
+	$_SESSION['MESSAGE']['TYPE'] = 'error';
 	$_SESSION['MESSAGE']['TEXT']= $lang['impossible'];
 	
 	if( isset($_GET['redirect']) )
@@ -93,7 +93,7 @@ if( $success === true )
 }
 else
 {
-	$_SESSION['MESSAGE']['TYPE'] = 'failure';
+	$_SESSION['MESSAGE']['TYPE'] = 'error';
 	$_SESSION['MESSAGE']['TEXT']= $lang['uknown'];		
 }
 

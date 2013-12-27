@@ -16,7 +16,7 @@ if( security::hasGrant('SELF_APP_SELECT') )
 
 foreach( $quotas as $q )
 {
-	if( $q['name'] == 'DISK' )
+	if( $q['name'] == 'MEMORY' )
 		$quota = $q;
 }
 
@@ -32,16 +32,19 @@ else
 $content = "
 	<div class=\"panel\">
 		<div class=\"top\">
-			<div class=\"left\">
+			<div class=\"left\" style=\"width: 500px;\">
 				<img style=\"width: 60px; height: 60px; float: left; margin: 5px 10px 0px 0px; display: block;\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$userinfo['id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$userinfo['id']}.png":"/{$GLOBALS['CONFIG']['SITE']}/images/users/user.png")."\" />
 				<h1 class=\"dark title\">".security::get('USER')."</h1>
 				<h2 class=\"dark title\">".($userinfo['firstname']?"{$userinfo['firstname']} {$userinfo['lastname']}":"{$lang['nolastname']}")."</h2>
 			</div>
-			<div class=\"right\">
-				<div class=\"fillgraph\" style=\"margin-top: 10px;\">
-					<small style=\"width: {$percent}%;\"></small>
+			<div class=\"right\" style=\"width: 450px;\">
+				<span style=\"block; float: left; padding-top: 7px; font-size: 18px; color: #878787;\">{$lang['memory']}</span>
+				<div style=\"float: right;\">
+					<div class=\"fillgraph\" style=\"margin-top: 10px;\">
+						<small style=\"width: {$percent}%;\"></small>
+					</div>
+					<span class=\"quota\"><span style='font-weight: bold;'>{$quota['used']}</span> {$lang['of']} {$quota['max']}. <a href=\"/panel/plans\">{$lang['request']}</a>.</span>
 				</div>
-				<span class=\"quota\"><span style='font-weight: bold;'>{$quota['used']}</span> {$lang['of']} {$quota['max']}. <a href=\"https://community.olympe.in\">{$lang['request']}</a>.</span>
 			</div>
 			<div class=\"clear\"></div>
 		</div>

@@ -8,32 +8,6 @@ if( !defined('PROPER_START') )
 
 $repos = api::send('self/repo/list');
 
-$me = api::send('self/whoami', array('quota'=>true));
-$me = $me[0];
-
-foreach( $me['quotas'] as $q )
-{
-	switch( $q['name'] )
-	{
-		case 'MEMORY':
-			$mem['used'] = $q['used'];
-			$mem['max'] = $q['max'];
-		break;
-		case 'DISK':
-			$disk['used'] = $q['used'];
-			$disk['max'] = $q['max'];
-		break;
-		case 'SERVICES':
-			$services['used'] = $q['used'];
-			$services['max'] = $q['max'];
-		break;
-		case 'APPS':
-			$appq['used'] = $q['used'];
-			$appq['max'] = $q['max'];
-		break;
-	}
-}
-
 $content = "
 	<div class=\"panel\">
 		<div class=\"top\">

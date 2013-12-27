@@ -41,7 +41,7 @@ div.panel div.top div.right {
 	width: 300px;
 }
 
-div.panel div.top div.fillgraph {
+div.panel div.fillgraph {
 	display: block;
 	background: #e5e5e5;
 	margin: 2px 0px 8px 0px;
@@ -51,7 +51,7 @@ div.panel div.top div.fillgraph {
 	box-shadow: inset rgba(0,0,0,0.2) 0px 1px 3px;
 }
 
-div.panel div.top div.fillgraph small {
+div.panel div.fillgraph small {
 	text-align: center;
 	display: block;
 	float: left;
@@ -64,7 +64,7 @@ div.panel div.top div.fillgraph small {
 	box-shadow: inset rgba(0,0,0,0.2) 0px 1px 3px, inset rgba(0,0,0,0.1) 0px -20px 20px -10px;
 }
 
-div.panel div.top span.quota {
+div.panel span.quota {
 	color: #969696;
 	font-size: 15px;
 }

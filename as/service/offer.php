@@ -70,7 +70,7 @@ $content = "
 			</table>
 			<br />
 			<div style=\"text-align: center;\">
-				<a class=\"button classic\" href=\"/join\" style=\"height: 22px; width: 200px; margin: 0 auto;\">
+				<a class=\"button classic\" href=\"#\" onclick=\"$('#signup').dialog('open'); return false;\" style=\"height: 22px; width: 200px; margin: 0 auto;\">
 					<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['signup_now']}</span>
 				</a>
 				<p>{$lang['help']}</p>

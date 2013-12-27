@@ -11,6 +11,7 @@ $menu = array(
 	array('text'=>"menu_domain", 'link'=>"/panel/domain"),
 	array('text'=>"menu_mail",  'link'=>"/panel/user"),
 	array('text'=>"menu_tools", 'link'=>"/panel/tools"),
+	array('text'=>"menu_quota", 'link'=>"/panel/quota"),
 	array('text'=>"menu_profile",'link'=>"/panel/settings"),
 );
 
