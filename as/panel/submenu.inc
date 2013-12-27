@@ -10,7 +10,7 @@ $menu = array(
 	array('text'=>"menu_dev", 'icon'=>"iDev", 'link'=>"/panel/dev"),
 	array('text'=>"menu_domain", 'icon'=>"iGlobe", 'link'=>"/panel/domain"),
 	array('text'=>"menu_mail", 'icon'=>"iMail", 'link'=>"/panel/user"),
-	array('text'=>"menu_profile", 'icon'=>"iProfile", 'link'=>"/panel/profile"),
+	array('text'=>"menu_profile", 'icon'=>"iProfile", 'link'=>"/panel/settings"),
 );
 
 return $menu;

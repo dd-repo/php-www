@@ -2,10 +2,16 @@
 
 [FR]
 title = "Noms de domaine"
-intro = "Voici la liste de vos domaines racines. Tous les domaines sont utilisables dans toutes les applications."
 domain = "Domaine"
 arecord = "Enregistrement A"
 home = "Dossier"
 actions = "Actions"
 add = "Ajouter un domaine"
 doc = "Documentation"
+new = "Nouveau nom de domaine"
+name = "domaine.com"
+tipname = "Sans le <i>www</i>. Exemples : toto.com, titi.fr"
+tipsite = "Site vers lequel le domaine pointera"
+folder = "dossier de destination"
+foldertip = "Nom du dossier de destination<br />Si vide, le domaine pointera à la racine du site."
+create = "Créer"

@@ -671,3 +671,7 @@ span.large {
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
 }
+
+img.language {
+	height: 60px;
+}

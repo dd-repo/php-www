@@ -1,0 +1,21 @@
+[EN]
+
+[FR]
+settings = "Paramètres"
+config = "Configuration"
+firstname_help = "Prénom"
+lastname_help = "Nom de famille"
+mail_help = "Adresse email"
+lang_help = "Langue préférée"
+avatar = "Avatar"
+bill = "Facturation"
+update = "Modifier"
+pass = "Mot de passe"
+changepass = "Modification du mot de passe"
+changepass_text = "Merci de bien vouloir remplir le formulaire pour modifier votre mot de passe."
+pass_help = "Nouveau mot de passe"
+confirm_help = "Confirmation du mot de passe"
+apps = "Applications"
+avatar_100 = "Image d'avatar. PNG 400x400 recommandé."
+dateformat = "d M Y"
+registered = "Vous avez rejoint la plateforme le"

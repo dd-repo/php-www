@@ -464,11 +464,11 @@ div.reference div.inref div {
 }
 
 .white {
-	border: 2px solid #e5e5e5;
+	border: 1px solid #e5e5e5;
 }
 
 .white:hover {
-	border: 2px solid #0079e1;
+	border: 1px solid #0079e1;
 }
 
 .black {
