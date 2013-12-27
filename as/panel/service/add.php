@@ -61,7 +61,7 @@ $content = "
 					<br />					
 				</div>
 			</a>			
-			<div class=\"clearfix\"></div>
+			<div class=\"clear\"></div>
 		</div>
 	</div>
 	<div id=\"new\" class=\"floatingdialog\">
