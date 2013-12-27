@@ -6,11 +6,18 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$_SESSION['JOIN_USER'] = $_POST['username'];
-$_SESSION['JOIN_EMAIL'] = $_POST['email'];
+try 
+{
+	$_SESSION['JOIN_USER'] = $_POST['username'];
+	$_SESSION['JOIN_EMAIL'] = $_POST['email'];
 
-api::send('registration/add', array('auth'=>'', 'user'=>$_POST['username'], 'plan' => $_POST['plan'], 'email'=>$_POST['email'], 'invitation'=>$_POST['code']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-	
+	api::send('registration/add', array('auth'=>'', 'user'=>$_POST['username'], 'plan' => $_POST['plan'], 'email'=>$_POST['email'], 'invitation'=>$_POST['code']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+}
+catch( Exception $e )
+{
+	$template->redirect($_SERVER['HTTP_REFERER'] . (strstr($_SERVER['HTTP_REFERER'], 'eregisteradd')===false?"?eregisteradd":""));
+}
+
 $content = "
 		<div class=\"head\">
 			<div class=\"container\" style=\"width: 1100px; margin: 0 auto; padding: 40px 0 40px 0;\">

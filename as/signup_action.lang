@@ -34,3 +34,5 @@ name = "Utilisateur"
 tipname = "Uniquement des minuscules, des chiffres et des points."
 tipemail = "Adresse email"
 create = "Continuer"
+
+error_user = "Cet utilisateur existe déjà, merci d'en choisir un autre."

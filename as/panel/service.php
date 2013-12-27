@@ -62,7 +62,7 @@ foreach( $services as $s )
 	$content .= "
 			<div class=\"service ".($j==1?"first":"")."\" onclick=\"$('#service').val('{$s['name']}'); $('#service2').val('{$s['name']}'); $('#desc').val('{$s['description']}'); $('#config').dialog('open'); return false;\">
 				<img style=\"float: left; margin: 10px 15px 0 0;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-{$s['vendor']}.png\" />
-				<span class=\"name\" style=\"margin-top: 25px;\">{$s['description']}</span><br />
+				<span class=\"name\" style=\"margin: 5px 0 0px 0; display: block;\">{$s['description']}</span><br />
 				<span class=\"subname\">{$s['name']}</span>
 			</div>
 	";

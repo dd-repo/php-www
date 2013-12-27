@@ -32,12 +32,12 @@ $content = "
 				</div>
 				<div class=\"clear\"></div>
 				<div style=\"float: left; width: 510px;\">
-					<a class=\"button classic\" href=\"http://stats.olympe.in\" style=\"height: 22px; width: 200px; margin: 0 auto;\">
+					<a class=\"button classic\" href=\"http://stats.anotherservice.com\" style=\"height: 22px; width: 200px; margin: 0 auto;\">
 						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['piwik']}</span>
 					</a>						
 				</div>
 				<div style=\"float: right; width: 510px;\">
-					<a class=\"button classic\" href=\"http://cloud.olympe.in\" style=\"height: 22px; width: 200px; margin: 0 auto;\">
+					<a class=\"button classic\" href=\"http://cloud.anotherservice.com\" style=\"height: 22px; width: 200px; margin: 0 auto;\">
 						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['owncloud']}</span>
 					</a>					
 				</div>

@@ -123,11 +123,8 @@ else
 		{
 			foreach( $a['branches'] as $key => $value )
 			{
-				if(  $value['urls'] )
-				{
-					foreach( $value['urls'] as $u )
-						$urls .= "				{$u}<br />";
-				}
+				if( $value['urls'] )
+					$urls = $value['urls'][0];
 			}
 		}
 		

@@ -23,7 +23,7 @@ $content = "
 						<p style=\"margin-bottom: 0;\">{$lang['offer_1_desc']}</p>
 					</td>
 					<td style=\"border: 0;\"><span class=\"large\"><span class=\"colored\">29&euro; HT</span> / {$lang['month']}</span></td>
-					<td style=\"border: 0;\"><a class=\"button classic\" href=\"#\" onclick=\"$('#email').val('{$_SESSION['REGISTER']['EMAIL']}'); $('#plan').val('1'); $('#new').dialog('open'); return false;\">{$lang['select']}</a></td>
+					<td style=\"border: 0;\"><a class=\"button classic\" href=\"#\" onclick=\"$('#plan').val('1'); $('#new').dialog('open'); return false;\">{$lang['select']}</a></td>
 				</tr>
 				<tr style=\"border: 0;\">
 					<td style=\"border: 0;\">
@@ -31,7 +31,7 @@ $content = "
 						<p style=\"margin-bottom: 0;\">{$lang['offer_2_desc']}</p>
 					</td>
 					<td style=\"border: 0;\"><span class=\"large\"><span class=\"colored\">99&euro; HT</span> / {$lang['month']}</span></td>
-					<td style=\"border: 0;\"><a class=\"button classic\" href=\"#\" onclick=\"$('#email').val('{$_SESSION['REGISTER']['EMAIL']}'); $('#plan').val('2'); $('#new').dialog('open'); return false;\">{$lang['select']}</a></td>
+					<td style=\"border: 0;\"><a class=\"button classic\" href=\"#\" onclick=\"$('#plan').val('2'); $('#new').dialog('open'); return false;\">{$lang['select']}</a></td>
 				</tr>
 				<tr style=\"border: 0;\">
 					<td style=\"border: 0;\">
@@ -39,7 +39,7 @@ $content = "
 						<p style=\"margin-bottom: 0;\">{$lang['offer_3_desc']}</p>
 					</td>
 					<td style=\"border: 0;\"><span class=\"large\"><span class=\"colored\">180&euro; HT</span> / {$lang['month']}</span></td>
-					<td style=\"border: 0;\"><a class=\"button classic\" href=\"#\" onclick=\"$('#email').val('{$_SESSION['REGISTER']['EMAIL']}'); $('#plan').val('3'); $('#new').dialog('open'); return false;\">{$lang['select']}</a></td>
+					<td style=\"border: 0;\"><a class=\"button classic\" href=\"#\" onclick=\"$('#plan').val('3'); $('#new').dialog('open'); return false;\">{$lang['select']}</a></td>
 				</tr>
 				<tr>
 					<td style=\"border: 0;\">
@@ -47,7 +47,7 @@ $content = "
 						<p style=\"margin-bottom: 0;\">{$lang['offer_4_desc']}</p>
 					</td>
 					<td style=\"border: 0;\"><span class=\"large\"><span class=\"colored\">320&euro; HT</span> / {$lang['month']}</span></td>
-					<td style=\"border: 0;\"><a class=\"button classic\" href=\"#\" onclick=\"$('#email').val('".security::encode($_POST['email'])."'); $('#plan').val('4'); $('#new').dialog('open'); return false;\">{$lang['select']}</a></td>
+					<td style=\"border: 0;\"><a class=\"button classic\" href=\"#\" onclick=\"$('#plan').val('4'); $('#new').dialog('open'); return false;\">{$lang['select']}</a></td>
 				</tr>
 				<tr style=\"border: 0;\">
 					<td style=\"border: 0;\">
@@ -55,7 +55,7 @@ $content = "
 						<p style=\"margin-bottom: 0;\">{$lang['offer_5_desc']}</p>
 					</td>
 					<td style=\"border: 0;\"><span class=\"large\"><span class=\"colored\">560&euro; HT</span> / {$lang['month']}</span></td>
-					<td style=\"border: 0;\"><a class=\"button classic\" href=\"#\" onclick=\"$('#email').val('{$_SESSION['REGISTER']['EMAIL']}'); $('#plan').val('5'); $('#new').dialog('open'); return false;\">{$lang['select']}</a></td>
+					<td style=\"border: 0;\"><a class=\"button classic\" href=\"#\" onclick=\"$('#plan').val('5'); $('#new').dialog('open'); return false;\">{$lang['select']}</a></td>
 				</tr>
 				<tr style=\"border: 0;\">
 					<td style=\"border: 0;\">
@@ -63,7 +63,7 @@ $content = "
 						<p style=\"margin-bottom: 0;\">{$lang['offer_6_desc']}</p>
 					</td>
 					<td style=\"border: 0;\"><span class=\"large\"><span class=\"colored\">999&euro; HT</span> / {$lang['month']}</span></td>
-					<td style=\"border: 0;\"><a class=\"button classic\" href=\"#\" onclick=\"$('#email').val('{$_SESSION['REGISTER']['EMAIL']}'); $('#plan').val('6'); $('#new').dialog('open'); return false;\">{$lang['select']}</a></td>
+					<td style=\"border: 0;\"><a class=\"button classic\" href=\"#\" onclick=\"$('#plan').val('6'); $('#new').dialog('open'); return false;\">{$lang['select']}</a></td>
 				</tr>
 			</table>
 		</div>
@@ -77,10 +77,10 @@ $content = "
 					<input id=\"plan\" type=\"hidden\" name=\"plan\" value=\"\" />
 					<fieldset>
 						<input class=\"auto\" type=\"text\" value=\"{$lang['name']}\" name=\"username\" onfocus=\"this.value = this.value=='{$lang['name']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['name']}' : this.value; this.value=='{$lang['name']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
-						<span class=\"help-block\">{$lang['tipname']}</span>
+						".(isset($_GET['eregisteradd'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$lang['error_user']}</span>":"<span class=\"help-block\" style=\"color: #bc0000;\">{$lang['tipname']}</span>")."
 					</fieldset>
 					<fieldset>
-						<input id=\"email\" type=\"text\" value=\"\" name=\"email\" />
+						<input id=\"email\" type=\"text\" value=\"{$_SESSION['REGISTER']['EMAIL']}\" name=\"email\" />
 						<span class=\"help-block\">{$lang['tipemail']}</span>
 					</fieldset>
 					<fieldset autofocus>	
@@ -91,6 +91,17 @@ $content = "
 		</div>
 		<script>
 			newDialog('new', 550, 350);
+";
+
+if( isset($_GET['eregisteradd']) )
+{
+	$content .= "$(document).ready(function() {
+								$(\"#new\").dialog(\"open\");
+								$(\".ui-dialog-titlebar\").hide();
+							});";
+}
+
+$content .= "
 		</script>
 ";
 

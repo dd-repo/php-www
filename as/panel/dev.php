@@ -57,13 +57,11 @@ $j = 1;
 foreach( $repos as $r )
 {
 	$content .= "
-		<a href=\"/panel/repo/config?id={$r['id']}\">
-			<div class=\"service ".($j==1?"first":"")."\">
+			<div class=\"service ".($j==1?"first":"")."\" onclick=\"window.location.href='/panel/repo/config?id={$r['id']}'; return false;\">
 				<img style=\"float: left; margin: 10px 15px 0 0;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/repos/icon-{$r['type']}.png\" />
-				<span class=\"name\" style=\"margin-top: 25px;\">{$r['description']}</span><br />
+				<span class=\"name\" style=\"margin: 5px 0 0px 0; display: block;\">{$r['description']}</span><br />
 				<span class=\"subname\">{$r['name']}</span>
 			</div>
-		</a>
 	";
 	
 	$j++;
