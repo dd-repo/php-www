@@ -41,7 +41,7 @@ $content = "
 				<div class=\"fillgraph\" style=\"margin-top: 10px;\">
 					<small style=\"width: {$percent}%;\"></small>
 				</div>
-				<span class=\"quota\"><span style='font-weight: bold;'>{$quota['used']}</span> {$lang['of']} {$quota['max']} <a href=\"https://community.olympe.in\">{$lang['request']}</a>.</span>
+				<span class=\"quota\"><span style='font-weight: bold;'>{$quota['used']}</span> {$lang['of']} {$quota['max']}. <a href=\"https://community.olympe.in\">{$lang['request']}</a>.</span>
 			</div>
 			<div class=\"clear\"></div>
 		</div>
