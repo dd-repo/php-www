@@ -6,11 +6,14 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-api::send('self/database/update', array('database'=>$_POST['database'], 'pass'=>$_POST['password']));
+api::send('self/repo/update', array('id'=>$_POST['id'], 'desc'=>$_POST['desc']));
+
+$_SESSION['MESSAGE']['TYPE'] = 'success';
+$_SESSION['MESSAGE']['TEXT']= $lang['success'];	
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	$template->redirect('/panel/db');
+	$template->redirect('/panel/repo/config?id='.security::encode($_POST['id']));
 
 ?>

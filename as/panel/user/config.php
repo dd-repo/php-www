@@ -59,9 +59,8 @@ $content .= "
 					<h3 class=\"colored\">{$lang['redirections']}</h3>
 				</div>
 				<div style=\"float: right; width: 200px;\">
-					<a class=\"button classic\" href=\"#\" onclick=\"$('#new-redirect').dialog('open');\" style=\"width: 200px; height: 22px; float: right;\">
+					<a class=\"button classic\" href=\"#\" onclick=\"$('#new-redirect').dialog('open');\" style=\"width: 22px; height: 22px; float: right;\">
 						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
-						<span style=\"display: block; padding-top: 3px;\">{$lang['add_redirect']}</span>
 					</a>
 				</div>
 				<div class=\"clear\"></div>
@@ -98,9 +97,8 @@ $content .= "
 					<h3 class=\"colored\">{$lang['alternates']}</h3>
 				</div>
 				<div style=\"float: right; width: 200px;\">
-					<a class=\"button classic\" href=\"#\" onclick=\"$('#new-alias').dialog('open');\" style=\"width: 200px; height: 22px; float: right;\">
+					<a class=\"button classic\" href=\"#\" onclick=\"$('#new-alias').dialog('open');\" style=\"width: 22px; height: 22px; float: right;\">
 						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
-						<span style=\"display: block; padding-top: 3px;\">{$lang['add_alias']}</span>
 					</a>
 				</div>
 				<div class=\"clear\"></div>
@@ -139,9 +137,8 @@ $content .= "
 					<h3 class=\"colored\">{$lang['groups']}</h3>
 				</div>
 				<div style=\"float: right: width: 200px;\">
-					<a class=\"button classic\" href=\"#\" onclick=\"$('#join').dialog('open');\" style=\"width: 200px; height: 22px; float: right;\">
+					<a class=\"button classic\" href=\"#\" onclick=\"$('#join').dialog('open');\" style=\"width: 22px; height: 22px; float: right;\">
 						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
-						<span style=\"display: block; padding-top: 3px;\">{$lang['join']}</span>
 					</a>
 				</div>
 				<div class=\"clear\"></div>
@@ -191,8 +188,8 @@ $content .= "
 		</div>
 	</div>
 	<div id=\"new-alias\" style=\"display: none;\" class=\"floatingdialog\">
-		<h3 class=\"center\">{$lang['new_redirect']}</h3>
-		<p style=\"text-align: center;\">{$lang['new_redirect_text']}</p>
+		<h3 class=\"center\">{$lang['new_alias']}</h3>
+		<p style=\"text-align: center;\">{$lang['new_alias_text']}</p>
 		<div class=\"form-small\">		
 			<form action=\"/panel/user/add_alternate_action\" method=\"post\" class=\"center\">
 				<input type=\"hidden\" name=\"id\" value=\"{$account['id']}\" />
