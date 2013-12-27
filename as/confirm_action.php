@@ -97,8 +97,8 @@ $_SESSION['MESSAGE']['TYPE'] = 'success';
 $_SESSION['MESSAGE']['TEXT']= $lang['success'] . ' ' . $tracker;
 
 // SEND MAIL
-$mail = "{$lang['success']}<br /><br />".str_replace(array('{USER}','{TOKEN}','{PASS}'), array($_POST['user'], $token, $pass), $lang['user']).$lang['thanks'];
-$result = mail($_GET['email'], $lang['subject'], str_replace(array('{TITLE}', '{CONTENT}'), array($lang['subject'], $lang['mailstart'].$mail.$lang['mailend']), $GLOBALS['CONFIG']['MAIL_TEMPLATE']), "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\nFrom: Another Service <no-reply@anotherservice.com>\r\nBcc: contact@anotherservice.com\r\n");
+$mail = "{$lang['success']}<br /><br />".str_replace(array('{USER}','{TOKEN}','{PASS}'), array(security::encode($_POST['username']), $token, security::encode($_POST['password'])), $lang['user']).$lang['thanks'];
+$result = mail($_POST['email'], $lang['subject'], str_replace(array('{TITLE}', '{CONTENT}'), array($lang['subject'], $lang['mailstart'].$mail.$lang['mailend']), $GLOBALS['CONFIG']['MAIL_TEMPLATE']), "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\nFrom: Another Service <no-reply@anotherservice.com>\r\nBcc: contact@anotherservice.com\r\n");
 
 template::redirect('/');
 
