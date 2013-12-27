@@ -7,16 +7,14 @@ if( !defined('PROPER_START') )
 }
 
 $message = "
-Name: {$_POST['name']}
-Email: {$_POST['email']}
-Société: {$_POST['company']}
-Téléphone: {$_POST['phone']}
-Subjet: {$_POST['subject']}
+Name: ".security::encode($_POST['name'])."
+Email: ".security::encode($_POST['email'])."
+Subjet: ".security::encode($_POST['subject'])."
 
-Message: {$_POST['message']}
+Message: ".security::encode($_POST['message'])."
 ";
 
-mail("contact@anotherservice.com", "[AS] {$_POST['subject']}", $message, "From: {$_POST['email']}");
+mail("contact@anotherservice.com", "[AS] ".security::encode($_POST['subject']), $message, "From: ".security::encode($_POST['email']));
 
 $message = "{$lang['success']}
 
@@ -41,7 +39,7 @@ var google_conversion_value = 0;
 
 $_SESSION['MESSAGE']['TYPE'] = 'success';
 $_SESSION['MESSAGE']['TEXT']= $message;
-			
+
 template::redirect('/about/contact');
 
 /* ========================== OUTPUT PAGE ========================== */

@@ -1,0 +1,17 @@
+[EN]
+title = "Team blog"
+
+rss = "Subscribe"
+follow = "Follow"
+read = "Read more"
+by = "by"
+DATEFORMAT = "M d, Y"
+
+[FR]
+title = "Blog de l'équipe"
+
+rss = "S'abonner"
+follow = "Suivre"
+read = "Lire la suite"
+by = "par"
+DATEFORMAT = "d M, Y"

@@ -3,7 +3,7 @@
 [FR]
 title = "Ajouter un dépôt"
 intro = "Merci de sélectionner le domaine associer et de renseigner la description du dépôt."
-desc = "Description"
+desc = "Nom"
 add = "Créer"
 domain = "Nom de domaine"
 doc = "Informations"

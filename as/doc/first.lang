@@ -1,0 +1,28 @@
+[EN]
+
+
+[FR]
+title = "Première application"
+intro = "Premiers pas"
+intro_text = "Une fois inscrit à la plateforme, vous devez disposer d'un nom de domaine disponible chez un registrer à rattacher à votre compte. Vous devez ensuite le configurer pour pointer vers votre espace d'hébergement
+Another Service. Voici les paramètres à entrer :"
+primary = "Serveur DNS primaire :"
+secondary = "Serveur DNS secondaire :"
+domain = "Création du nom de domaine"
+domain_text = "Dans la rubrique <a href='/panel/domain'><strong>domaines</strong></a> de votre panel, il suffit de remplir le formulaire correspondant."
+app = "Création de l'application"
+app_text = "Pour créer une application, il faut vous rendre sur la page d'accueil de votre <a href='/panel'>panel</a>. La première étape est de choisir le type d'application que vous voulez déployer. Dans cet exemple, nous 
+traitons d'une application PHP Web simple."
+app_text_2 = "Cliquer sur <a href='/panel/app/add'>ajouter une application</a> puis sélectionner le langage et/ou le framework correspondant à vos besoins."
+app_text3 = "Choisir ensuite le mot de passe de l'application qui servira pour les accès Git, SSH ou FTP, vous pouvez également ajouter une description afin d'identifier vos applications."
+app_text_4 = "La première étape est terminée, l'application est présente sur la plateforme."
+publish = "Publication du contenu"
+publish_text = "Voyons maintenant comment publier du contenu sur cette application, sur l'aperçu, il y a de nombreuses informations. Inutile de vous préoccuper des branches et des processus pour le moment."
+publish2_text = "En bas de cette page, vous avez les informations de publication. Vous pouvez publier vos données en FTP, SFTP et GIT. "
+publish3_text = "Nous allons voir ici un exemple avec une connexion SFTP au moyen du logiciel WinSCP."
+publish4_text = "La liste des dossiers de chaque branche apparaît, nous avons ici uniquement un dossier master, c'est dans celui-ci qu'il faut placer les fichiers. Uploader un fichier php à l'intérieur."
+access = "Accéder à l'application"
+access_text = "Une fois le fichier uploadé, il faut maintenant attribuer une adresse à l'environnement master de votre nouvelle application. Dans la gestion d'une application, il faut cliquer sur Ajouter une adresse."
+access2_text = "Choisir ensuite l'adresse et l'environnement vers lequelle celle-ci doit pointer."
+end = "Votre application est prête à être utilisée !"
+back = "Retour à l'accueil"

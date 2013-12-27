@@ -8,31 +8,51 @@ if( !defined('PROPER_START') )
 
 $domains = api::send('self/domain/list');
 
-$content = "
+if( count($domains) > 0 )
+{
+	$content = "
 	<div class=\"box nocol\">
 		<div class=\"container\">
 			<h2>{$lang['title']}</h2>
-			<p class=\"large\">{$lang['intro']}</p>
+			<br />
 			<form action=\"/panel/app/add_action\" method=\"post\">
-				<input type=\"hidden\" name=\"runtime\" value=\"{$_GET['runtime']}\" />
-				<input type=\"hidden\" name=\"framework\" value=\"{$_GET['framework']}\" />
-				<input type=\"hidden\" name=\"app\" value=\"{$_GET['app']}\" />
-				<input type=\"hidden\" name=\"service\" value=\"{$_GET['service']}\" />
-				<input type=\"hidden\" name=\"version\" value=\"{$_GET['version']}\" />
+				<input type=\"hidden\" name=\"runtime\" value=\"".security::encode($_GET['runtime'])."\" />
 				<fieldset>
 					<label for=\"name\">{$lang['domain']}</label>
-					<select name=\"domain\">
-						<option value=\"anotherservice.net\">anotherservice.net</option>";
-foreach( $domains as $d )
-	$content .= "		<option value=\"{$d['hostname']}\">{$d['hostname']}</option>";
+					<select name=\"domain\">";
+					
+	foreach( $domains as $d )
+		$content .= "		<option value=\"{$d['hostname']}\">{$d['hostname']}</option>";
 
-$content .= "
+	$content .= "
 					</select>
+					<span class=\"help-block\">{$lang['help_domain']}</span>
 				</fieldset>
 				<fieldset>
 					<label for=\"pass\">{$lang['password']}</label>
 					<input type=\"password\" name=\"pass\" />
+					<span class=\"help-block\">{$lang['help_password']}</span>
 				</fieldset>
+				<fieldset>
+					<label for=\"tag\">{$lang['tag']}</label>
+					<input type=\"text\" name=\"tag\" />
+					<span class=\"help-block\">{$lang['help_tag']}</span>
+				</fieldset>	
+";
+
+if( isset($_GET['standalone']) )
+{
+	$content .= "
+				<fieldset>
+					<label for=\"binary\">{$lang['binary']} ".security::encode($_GET['runtime'])."</label>
+					<input type=\"text\" name=\"binary\" />
+					<span class=\"help-block\">{$lang['help_binary']}</span>
+				</fieldset>	
+	";
+
+}
+
+$content .= "
 				<fieldset>
 					<label for=\"submit\">&nbsp;</label>
 					<input type=\"submit\" value=\"{$lang['add']}\" />
@@ -40,7 +60,20 @@ $content .= "
 			</form>
 		</div>
 	</div>
-";
+	";
+}
+else
+{
+	$content = "
+	<div class=\"box nocol\">
+		<div class=\"container\">
+			<h2>{$lang['title']}</h2>
+			<p class=\"large\">{$lang['no_domain']}</p><br />
+			<a class=\"btn\" href=\"/panel/domain/add\">{$lang['add_domain']}</a>
+		</div>
+	</div>
+	";
+}
 
 /* ========================== OUTPUT PAGE ========================== */
 $template->output($content);

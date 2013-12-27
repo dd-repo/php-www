@@ -14,17 +14,17 @@ table {
 
 table th,
 table td {
-	padding: 10px;
+	padding: 10px 10px 9px;
 	line-height: 18px;
 	text-align: left;
 }
 
 table th {
+	color: #2475ae;
 	padding-top: 9px;
 	vertical-align: middle;
 	border-bottom: 1px solid #ddd;
-	font-size: 18px;
-	font-family: Cuprum;
+	font-size: 16px;
 }
 
 table td {
@@ -84,11 +84,14 @@ table.offer tr {
 
 }
 
+table.offer tr th {
+	text-align: center;
+}
+
 table.offer tr td {
 	text-align: center;
-	font-family: Cuprum;
+
 	letter-spacing: 0.1em;
-	font-size: 13px;
+	font-size: 15px;
 	color: #909090;
-	vertical-align: middle;
 }

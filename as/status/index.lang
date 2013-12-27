@@ -1,0 +1,16 @@
+[EN]
+
+
+[FR]
+online = "En ligne"
+monitor = "Nous surveillons nos infrastructures 24/24 7/7, si vous rencontrez des problèmes d'accès et qu'ils n'apparaissent pas ici, vous pouvez nous écrire à 
+<a style='color: #ffffff; font-weight: bold;' href='mailto:hosting@anotherservice.com'>hosting@anotherservice.com</a>."
+30days = "Uptime des 30 derniers jours"
+365days = "Uptime des 365 derniers jours"
+24up = "Up 24 heures"
+status_1 = "Un problème est survenu."
+status_2 = "Le service est opérationnel."
+status_98 = "Démarrage de la supervision."
+allrunning = "Tous les services sont opérationnels."
+last7days = "Les 7 derniers jours"
+paasstats = "Statistiques de la plateforme d'hébergement"

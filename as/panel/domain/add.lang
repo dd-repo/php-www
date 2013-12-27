@@ -1,10 +1,4 @@
 [EN]
-title = "Add a domain"
-subtitle = "Creation form"
-domain = "Domain name"
-site = "Linked site"
-folder = "Folder"
-create = "Create"
 
 [FR]
 title = "Ajouter un domaine"
@@ -18,3 +12,4 @@ doc = "Informations"
 doc_text = "N'hésitez pas à consulter la documentation concernant la création de noms de domaine, elle contient notamment les paramètres DNS à entrer
 chez votre registrar."
 go = "Documentation"
+help_domain = "Exemple : google.com, yahoo.fr..."

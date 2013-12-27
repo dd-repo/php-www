@@ -12,7 +12,7 @@ $content = "
 	<div class=\"box nocol\">
 		<div class=\"container\">
 			<h2>{$lang['title']}</h2>
-			<p class=\"large\">{$lang['intro']}</p>
+			<br />
 			<table>
 				<tr>
 					<th>{$lang['domain']}</th>
@@ -27,13 +27,31 @@ if( count($domains) > 0 )
 {
 	foreach($domains as $d)
 	{
+		$arecord = "";
+		if( is_array($d['aRecord']) )
+		{
+			$i = 1;
+			$max = count($d['aRecord']);
+			foreach( $d['aRecord'] as $a )
+			{
+				if( $i == $max )
+					$arecord .= "{$a}";
+				else
+					$arecord .= "{$a}, ";
+					
+				$i++;
+			}
+		}
+		else
+			$arecord = $d['aRecord'];
+			
 		$users = api::send('self/account/list', array('domain'=>$d['hostname'], 'count'=>1));
 		$groups = api::send('self/team/list', array('domain'=>$d['hostname'], 'count'=>1));
 		
 		$content .= "
 				<tr>
 					<td><a href=\"/panel/user/list?domain={$d['hostname']}\"><strong>{$d['hostname']}</strong></a></td>
-					<td><span class=\"lightlarge\">{$d['aRecord']}</span></td>
+					<td><span class=\"lightlarge\">{$arecord}</span></td>
 					<td>{$users['count']} {$lang['user']}</td>
 					<td>{$groups['count']} {$lang['group']}</td>
 					<td align=\"center\">

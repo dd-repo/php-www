@@ -5,14 +5,20 @@
 intro = "Hébergement applicatif haute disponibilité "
 intro_text = "Services cloud et conseils en infrastructure."
 learn = "En savoir plus"
+signup = "S'inscrire"
+login_now = "ou se connecter"
+username = "Utilisateur"
+password = "Mot de passe"
+login = "Connexion"
+email = "Email"
 contact = "Contact"
 register = "Commencer"
 services = "Services et conseils"
 services_text = "Nous fournissons un service d'<a href='/service/hosting'>hébergement</a> haute disponibilité pour vos applications et vos environnement de développement. Nous vous accompagnons dans le déploiement et la mise 
-en oeuvre d'architectures clouds.<br /><br />Investis dans le monde de l'<a href='/service/opensource'>Open Source</a>, les documentations de nos infrastructures et les codes sources de nos applications sont ouverts à la 
+en oeuvre d'architectures \"cloud\".<br /><br />Investis dans le monde de l'<a href='/service/opensource'>Open Source</a>, les documentations de nos infrastructures et les codes sources de nos applications sont ouverts à la 
 communauté."
-apps = "Applications et bases de donnéees"
-apps_text = "Notre plateforme supporte de nombreux langage et permet d'exécuter des applications PHP, JAVA, Ruby, Python, NodeJS et .Net. Aussi, nous proposons aussi bien des bases de données SQL (MySQL, PostgreSQL...) 
+apps = "Applications et bases de données"
+apps_text = "Notre plateforme supporte de nombreux langages et permet d'exécuter des applications PHP, JAVA, Ruby, Python, NodeJS et .Net. Aussi, nous proposons aussi bien des bases de données SQL (MySQL, PostgreSQL...) 
 que no-SQL (MongoDB, Redis, CouchDB...). <br /><br />De nombreux outils sont à votre disposition pour surveiller votre consommation et ajuster les ressources dont vous avez besoin."
 
 showcase_text = "La mise en place d'un outil de gestion de projets en mode SaaS a apporté un réel gain de productivité pour 
@@ -21,6 +27,8 @@ s'occupe intégralement de l'hébergement, des mises à jour, et des évolutions
 more = "En savoir plus"
 references = "Références"
 quote = "Another Service est une solution complète et performante pour le déploiement d'applications critiques."
-quote_author = "Alain Braud, Truffières de Rabasse"
+quote_author = "Damien Boissier, Altermedia"
 signup_now = "S'inscrire maintenant"
 help = "Une question? N'hésitez pas à <a href='/about/contact'>nous contacter</a>."
+panel = "Panel"
+logged = "Identifié en tant que"

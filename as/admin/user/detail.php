@@ -295,23 +295,26 @@ if( security::hasGrant('APP_SELECT') )
 		$running = false;
 		$memory = 0;
 		$disk = 0;
-		foreach( $a['instances'] as $i )
+		foreach( $a['branches'] as $key => $value )
 		{
-			if( $i['state'] == 'RUNNING' )
-				$running = true;
-			$memory = $memory+$i['memory']['quota'];
-			$disk = $disk+$i['disk']['quota'];
+			foreach( $value['instances'] as $i )
+			{
+				if( $i['state'] == 'RUNNING' )
+					$running = true;
+				$memory = $memory+$i['memory']['quota'];
+				$disk = $disk+$i['disk']['quota'];
+			}
+			$instances = count($value['instances'])+$instances;
+			$memory = round($memory/1024/1024)+$memory;
 		}
-		$memory = round($memory/1024/1024);
-		$instances = count($a['instances']);
 		
 		$content .= "
 					<tr>
 						<td><img class=\"language\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" alt=\"\" /><a href=\"/panel/app/show?id={$a['id']}\"><strong>{$a['name']}</strong></a></td>
 						<td>";
-	if( $a['uris'] )
+	if( $a['branches']['urls'] )
 	{
-		foreach( $a['uris'] as $url )
+		foreach( $a['branches']['urls'] as $url )
 			$content .= "				<a href=\"http://{$url}\">{$url}</a><br />";
 	}
 		

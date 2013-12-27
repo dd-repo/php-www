@@ -49,25 +49,16 @@ else
 		
 		if( strcmp($res, "VERIFIED") == 0 )
 		{
-			api::send('bill/update', array('bill'=>$custom[0], 'status'=>1), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-			
-			if( $custom[1] && $custom[2] )
-			{
-				mail('contact@bus-it.com', '[Billing] New payment succeded', $message);
-				$quota = api::send('quota/user/list', array('user'=>$custom[1]),$GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-				foreach( $quota as $q )
-				{
-					if( $q['name'] == 'PREPAID' )
-						$current = $q['used'];
-				}
-				$new = $current+$custom[2];
-				$result = api::send('quota/user/update', array('user'=>$custom[1], 'quota'=>'PREPAID', 'current'=>$new), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-			}
+			$result = api::send('registration/select', array('email'=>$custom[0]), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+			$result = $result[0];
+
+			$email = str_replace(array('{USER}', '{EMAIL}', '{CODE}'), array($custom[1], $custom[0], $result['code']), $lang['content']);
+			mail($custom[0], $lang['subject'], str_replace(array('{TITLE}', '{CONTENT}'), array($lang['email_title'], $email), $GLOBALS['CONFIG']['MAIL_TEMPLATE']), "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\nFrom: Another Service <no-reply@anotherservice.com>\r\n");
+			mail('contact@anotherservice.com', '[Billing] New payment succeded', $message);
 		}
 		else if( strcmp($res, "INVALID") == 0 )
 		{
-			api::send('bill/update', array('id'=>$custom[0], 'status'=>2), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-			mail('contact@bus-it.com', '[Billing] New payment failed', $message);
+			mail('contact@anotherservice.com', '[Billing] New payment failed', $message);
 		}
 	}
 }

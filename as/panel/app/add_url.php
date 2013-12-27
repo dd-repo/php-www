@@ -15,6 +15,7 @@ $content = "
 	<div class=\"box nocol\">
 		<div class=\"container\">
 			<h2>{$lang['title']} :: <i>{$app['name']}</i></h2>
+			<br />
 			<form action=\"/panel/app/add_url_action\" method=\"post\">
 				<input type=\"hidden\" name=\"id\" value=\"{$_GET['id']}\" />
 				<fieldset>
@@ -39,10 +40,10 @@ $content .= "
 				<fieldset>
 					<label for=\"branch\">{$lang['branch']}</label>
 					<select name=\"branch\">";
-foreach( $app['branches'] as $b )
+foreach( $app['branches'] as $key => $value )
 {
 	$content .= "
-						<option value=\"{$b}\">{$b}</option>
+						<option value=\"{$key}\">{$key}</option>
 	";
 }
 

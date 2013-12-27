@@ -6,91 +6,91 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$me = api::send('self/whoami', array('quota'=>true));
-$me = $me[0];
+$userinfo = api::send('self/user/list');
+$userinfo = $userinfo[0];
 
-foreach( $me['quotas'] as $q )
-{
-	switch( $q['name'] )
-	{
-		case 'MEMORY':
-			$mem['used'] = $q['used'];
-			$mem['max'] = $q['max'];
-		break;
-		case 'DISK':
-			$disk['used'] = $q['used'];
-			$disk['max'] = $q['max'];
-		break;
-		case 'SERVICES':
-			$services['used'] = $q['used'];
-			$services['max'] = $q['max'];
-		break;
-		case 'APPS':
-			$appq['used'] = $q['used'];
-			$appq['max'] = $q['max'];
-		break;
-	}
-}
+$quotas =  api::send('self/quota/user/list');
 
 if( security::hasGrant('SELF_APP_SELECT') )
-	$apps = api::send('self/app/list');
+	$apps = api::send('self/app/list', array());
 
-$mem_left = 260-round($mem['used']*260/$mem['max']);
-$disk_left = 260-round($disk['used']*260/$disk['max']);
-$services_left = 260-round($services['used']*260/$services['max']);
-$apps_left = 260-round($appq['used']*260/$appq['max']);
-
-$content = "
-	<div class=\"box nocol\">
-		<div class=\"container\">
-			<h2>{$lang['title']}</h2>
-			<br />
-			<div style=\"float: left; width: 475px;\">
-				<h3>{$lang['memory']}</h3>
-				<div class=\"ui-meter-holder\">
-					<div class=\"ui-meter\">
-						<div class=\"after-fill fill\" style=\"z-index: 9; display: none;\"></div>
-						<div class=\"before-fill fill\" style=\"z-index: 10; right: {$mem_left}px;\"></div>
-						<div class=\"base-fill fill\" style=\"z-index: 20; display: none;\"></div>
-					</div>
-				</div>
-				<div class=\"details\">
-					<span class=\"usage\">{$mem['used']}Mo</span> / <span class=\"limit\">{$mem['max']}Mo</span>
-				</div>
-				<br /><br />
-				<a class=\"btn\" href=\"/panel/plans\">{$lang['more']}</a>
-				<div class=\"clearfix\"></div>
-			</div>
-			<div style=\"float: left; width: 475px;\">
-				<h3>{$lang['disk']}</h3>
-				<div class=\"ui-meter-holder\">
-					<div class=\"ui-meter\">
-						<div class=\"after-fill fill\" style=\"z-index: 9; display: none;\"></div>
-						<div class=\"before-fill fill\" style=\"z-index: 10; right: {$disk_left}px;\"></div>
-						<div class=\"base-fill fill\" style=\"z-index: 20; display: none;\"></div>
-					</div>
-				</div>
-				<div class=\"details\">
-					<span class=\"usage\">{$disk['used']}Mo</span> / <span class=\"limit\">{$disk['max']}Mo</span>
-				</div>
-				<br /><br />
-				<a class=\"btn\" href=\"/panel/storage\">{$lang['more_disk']}</a>				
-			</div>
-			<div class=\"clearfix\"></div>
-			<br />
-			<h2>{$lang['apps']}</h2>
-			<table>
-				<tr>
-					<th>{$lang['name']}</th>
-					<th>{$lang['uris']}</th>
-					<th>{$lang['memory']}</th>
-					<th>{$lang['size']}</th>
-					<th style=\"width: 80px;\">{$lang['status']}</th>
-					<th>{$lang['actions']}</th>
-				</tr>
-";
-if( count($apps) > 0 )
+foreach( $quotas as $q )
 {
+	if( $q['name'] == 'DISK' )
+		$quota = $q;
+}
+
+$percent = $quota['used']*100/$quota['max'];
+
+$quota['max'] = round($quota['max']/1024, 2) . " {$lang['gb']}";
+
+if( $quota['used'] >= 1024 )
+	$quota['used'] = round($quota['used']/1024, 2) . " {$lang['gb']}";
+else
+	$quota['used'] = "{$quota['used']} {$lang['gb']}";
+		
+$content = "
+	<div class=\"panel\">
+		<div class=\"top\">
+			<div class=\"left\">
+				<img style=\"width: 60px; height: 60px; float: left; margin: 5px 10px 0px 0px; display: block;\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$userinfo['id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$userinfo['id']}.png":"/{$GLOBALS['CONFIG']['SITE']}/images/users/user.png")."\" />
+				<h1 class=\"dark title\">".security::get('USER')."</h1>
+				<h2 class=\"dark title\">".($userinfo['firstname']?"{$userinfo['firstname']} {$userinfo['lastname']}":"{$lang['nolastname']}")."</h2>
+			</div>
+			<div class=\"right\">
+				<div class=\"fillgraph\" style=\"margin-top: 10px;\">
+					<small style=\"width: {$percent}%;\"></small>
+				</div>
+				<span class=\"quota\"><span style='font-weight: bold;'>{$quota['used']}</span> {$lang['of']} {$quota['max']} <a href=\"https://community.olympe.in\">{$lang['request']}</a>.</span>
+			</div>
+			<div class=\"clear\"></div>
+		</div>
+		<br />
+		<div class=\"apps\">
+			<div class=\"appscontent\">
+				<div class=\"app newapp\" id=\"newapp\">
+					<div id=\"addapp\">
+						<a href=\"#\" onclick=\"showForm(); return false;\" class=\"button classic\" style=\"margin: 0 auto; margin-top: 97px; padding: 10px 0 0 0; height: 40px; width: 50px; text-align: center;\">
+							<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white-big.png\" />
+						</a>
+					</div>
+					<div id=\"formapp\" style=\"display: none; position: relative; padding: 30px 10px 10px 10px;\">
+						<a href=\"#\" style=\"display: block; position: absolute; top: 5px; left: 5px;\" onclick=\"showNew(); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/arrowLeft.png\" alt=\"\" /></a>
+						<div class=\"form-small\">		
+							<form action=\"/panel/app/add_action\" method=\"post\" class=\"center\">
+								<fieldset>
+									<input class=\"auto\" type=\"text\" value=\"{$lang['name']}\" name=\"subdomain\" onfocus=\"this.value = this.value=='{$lang['name']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['name']}' : this.value; this.value=='{$lang['name']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+									<span class=\"help-block\">{$lang['tipapp']}</span>
+								</fieldset>
+								<fieldset>
+									<input class=\"auto\" type=\"password\" value=\"{$lang['password']}\" name=\"password\" onfocus=\"this.value = this.value=='{$lang['password']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['password']}' : this.value; this.value=='{$lang['password']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+									<span class=\"help-block\">{$lang['tippassword']}</span>
+								</fieldset>
+								<fieldset>	
+									<input autofocus type=\"submit\" value=\"{$lang['create']}\" style=\"width: 120px;\" />
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+";
+
+if( count($apps) == 0 )
+{
+	$content .= "<div class=\"new\">
+					<div class=\"bullet\"></div>
+					<div class=\"text\">
+						<span class=\"title\">{$lang['welcome']}</span>
+						{$lang['welcome_text']}
+					</div>
+				</div>
+	";
+}
+else
+{
+	$count = count($apps);
+	$i = 1;
+	
 	foreach( $apps as $a )
 	{
 		$language = explode('-', $a['name']);
@@ -98,51 +98,88 @@ if( count($apps) > 0 )
 
 		$running = false;
 		$memory = 0;
-		$memory_use = 0;
 		$disk = 0;
-		foreach( $a['instances'] as $i )
+		$count = 0;
+		if( $a['branches'] )
 		{
-			if( $i['state'] == 'RUNNING' )
-				$running = true;
-			$memory = $memory+$i['memory']['quota'];
-			$memory_use = $memory_use+$i['memory']['usage'];
-			$disk = $disk+$i['disk']['quota'];
+			foreach( $a['branches'] as $key => $value )
+			{
+				foreach( $value['instances'] as $i )
+				{
+					if( $i['state'] == 'RUNNING' )
+						$running = true;
+					$memory = $memory+$i['memory']['quota'];
+					$disk = $disk+$i['disk']['quota'];
+					
+					$count++;
+				}
+			}
 		}
 		$memory = $memory;
-		$memory_use = $memory_use;
-		$instances = count($a['instances']);
-
-		$content .= "
-					<tr>
-						<td><img class=\"language\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" alt=\"\" /><a href=\"/panel/app/show?id={$a['id']}\"><strong>{$a['name']}</strong></a></td>
-						<td>";
-		if( $a['uris'] )
+		$instances = $count;
+		
+		$urls = '';
+		if( $a['branches'] )
 		{
-			foreach( $a['uris'] as $url )
-				$content .= "				<a href=\"http://{$url}\">{$url}</a><br />";
+			foreach( $a['branches'] as $key => $value )
+			{
+				if(  $value['urls'] )
+				{
+					foreach( $value['urls'] as $u )
+						$urls .= "				{$u}<br />";
+				}
+			}
 		}
 		
+		if( $i == $count )
+			$last = "style=\"margin-right: 0;\"";
+			
+		$i++;
+		
 		$content .= "
-						</td>
-						<td><span class=\"lightlarge\">{$memory_use} / {$memory}Mo</span><br /><span style=\"font-size: 12px;\">{$instances} {$lang['instances']}</span></td>
-						<td><span class=\"large\">{$a['size']}Mo</span></td>
-						<td>".($running?"<div class=\"state running\"><div class=\"state-content\">{$lang['running']}</div></div>":"<div class=\"state stopped\"><div class=\"state-content\">{$lang['stopped']}")."</div></div></td>					
-						<td align=\"center\">
-							<a href=\"/panel/app/show?id={$a['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>
-							<a href=\"/panel/app/del_action?id={$a['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
-						</td>
+				<div class=\"app\" {$last} onclick=\"window.location.href='/panel/app/show?id={$a['id']}'; return false;\">
+					<div class=\"normal\">
+						<span style=\"color: #2475ae; font-size: 12px; display: block; position: absolute; left: 10px; top: 10px;\">{$a['name']}</span>
+						<span style=\"color: #2475ae; font-size: 12px; display: block; position: absolute; right: 10px; top: 10px;\">{$lang['size']} {$a['size']} {$lang['mb']}</span>
+						<div style=\"vertical-align: middle; display: table-cell; height: 250px; margin: 0 auto; width: 250px; text-align: center;\">
+							<div style=\"display: inline-block;\">
+								<span style=\"font-size: 25px; text-align: center; display: block; margin: 0 auto;\">{$a['tag']}</a><br />
+								<span style=\"color: #a3a3a3; font-size: 15px; text-align: center; display: block; margin: 0 auto;\">{$urls}</a>
+								<br />
+								<img class=\"language\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" alt=\"\" />
+							</div>
+						</div>						
+						<span style=\"color: #38b700; font-size: 12px; display: block; position: absolute; left: 10px; bottom: 10px;\">{$lang['cpu']} {$instances} {$lang['cores']}</span>
+						<span style=\"color: #38b700; font-size: 12px; display: block; position: absolute; right: 10px; bottom: 10px;\">{$lang['memory']} {$memory} {$lang['mb']}</span>
+					</div>
+				</div>
 		";
 	}
 }
 
 $content .= "
-				</tr>
-			</table>
-			<br />
-			<a class=\"btn\" href=\"/panel/app/add\">{$lang['add']}</a>
-		</div>
+			<div class=\"clear\"></div>
+			</div>
+		</div>	
 	</div>
-";
+	<script>
+		function showForm()
+		{
+			var options = {};
+			$(\"#addapp\").css(\"display\", \"none\");
+			$(\"#formapp\").show(\"fade\", options, 200);
+			$(\"#newapp\").css(\"background-color\", \"#ffffff\");
+			
+		}
+		function showNew()
+		{
+			var options = {};
+			$(\"#formapp\").css(\"display\", \"none\");
+			$(\"#addapp\").show(\"fade\", options, 200);
+			$(\"#newapp\").css(\"background\", \"rgba(0, 0, 0, 0.05)\");
+		}
+	</script>";
+
 
 /* ========================== OUTPUT PAGE ========================== */
 $template->output($content);

@@ -1,0 +1,32 @@
+[EN]
+
+
+[FR]
+title = "Centre d'aide"
+intro = "Débuter sur Another Service"
+intro_text = "Bienvenue sur notre plateforme d'hébergement applicatif. Vous trouverez ici toutes les informations utiles au service."
+info = "Informations utiles"
+
+top = "Question très fréquentes"
+first = "Publication d'une première application"
+first_text = "Une application simple en PHP pour comprendre le fonctionnement de la plateforme."
+concepts = "Concepts de la plateforme"
+concepts_text = "Nos services sont centrés autour de la haute disponibilité et des environnements de développement."
+languages = "Explications par langage"
+languages_text = "PHP, Python, Ruby, JAVA et NodeJS, un exemple dans chacun des langages disponibles."
+services = "Services disponibles"
+services_text = "Nous proposons de nombreux outils et bases de données permettant d'enrichir votre application."
+developers = "Développeurs"
+developers_text = "Nous mettons à disposition des développeurs une API et des outils pour la gestion de l'hébergement."
+support = "Support technique"
+support_text = "Accès à l'espace de travail Another Service, aux demandes de changement et à l'interface de tickets."
+question_1 = "Comment transférer les données de mon application ?"
+question_2 = "Quelles sont les adresses des serveurs DNS ?"
+question_3 = "Que signifie le bouton <i>reconstruire</i> ?"
+question_4 = "Qu'est-ce qu'un alias de domaine ?"
+question_5 = "Quelles sont les accès à ma base de données ?"
+question_6 = "Qu'est-ce qu'une branche ?"
+question_7 = "A quoi servent les dépôts de développement ?"
+question_8 = "Que se passe-t-il en cas de mise à jour ?"
+question_9 = "Comment ouvrir un ticket de support ?"
+question_10 = "En quoi Another Service est-il Open Source ?"

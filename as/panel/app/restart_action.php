@@ -6,9 +6,7 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-api::send('self/app/update', array('app'=>$_GET['id'], 'stop' => 1));
-sleep(2);
-api::send('self/app/update', array('app'=>$_GET['id'], 'start' => 1));
+api::send('self/app/update', array('app'=>$_GET['id'], 'branch'=>$_GET['branch'], 'restart' => 1));
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);

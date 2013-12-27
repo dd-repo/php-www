@@ -10,7 +10,7 @@ $content = "
 	<div class=\"box nocol\">
 		<div class=\"container\">
 			<h2>{$lang['title']}</h2>
-			<p class=\"large\">{$lang['intro']}</p>
+			<br />
 			<a href=\"/panel/repo/add2?type=git\">
 				<div class=\"app\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/repos/icon-git.png\" alt=\"git\"><span class=\"large\">GIT</span><br /><span style=\"color: #000000;\" class=\"small\">Git Repository</span></p>

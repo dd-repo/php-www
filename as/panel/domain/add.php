@@ -10,11 +10,12 @@ $content = "
 	<div class=\"box nocol\">
 		<div class=\"container\">
 			<h2>{$lang['title']}</h2>
+			<br />
 			<form action=\"/panel/domain/add_action\" method=\"post\">
 				<fieldset>
 					<label>{$lang['domain']}</label>
 					<input type=\"text\" name=\"domain\" />
-					".(isset($_GET['e'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$lang['error']}</span>":"")."
+					".(isset($_GET['e'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$lang['error']}</span>":"<span class=\"help-block\">{$lang['help_domain']}</span>")."
 				</fieldset>
 				<fieldset>
 					<label></label>

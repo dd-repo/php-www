@@ -6,8 +6,6 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$_SESSION['ANTISPAM'] = md5(time().'anotherservice');
-
 $content = "
 	<div class=\"box nocol\">
 		<div class=\"header\">
@@ -16,30 +14,60 @@ $content = "
 			</div>
 		</div>
 		<div class=\"container\">
-			<form action=\"/join_action\" method=\"post\" id=\"valid\" class=\"mainForm\">
-				<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
-				<input type=\"hidden\" name=\"code\" value=\"{$_GET['code']}\" />
-				<fieldset>
-					<label for=\"username\">{$lang['username']}</label>
-					<input type=\"text\" value=\"{$_SESSION['JOIN_USER']}\" name=\"username\" />
-					<span class=\"help-block\">{$lang['usertip']}</span>
-				</fieldset>
-				<fieldset>						
-					<label for=\"email\">{$lang['email']}</label>
-					<input type=\"text\" value=\"".($_GET['email']?"{$_GET['email']}":"{$_SESSION['JOIN_EMAIL']}")."\" name=\"email\" />
-				</fieldset>
-				<fieldset>	
-					<label for=\"submit\">&nbsp;</label>
-					<input type=\"submit\" value=\"{$lang['join']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
-				</fieldset>
-			</form>
+			<table style=\"border: 0;\">
+				<tr style=\"border: 0;\">
+					<td style=\"border: 0;\">
+						<h2>{$lang['offer_1_title']}</h2>
+						<p>{$lang['offer_1_desc']}</p>
+					</td>
+					<td style=\"border: 0;\"><span class=\"large\"><span class=\"colored\">29&euro; HT</span> / {$lang['month']}</span></td>
+					<td style=\"border: 0;\"><a class=\"btn\" href=\"/join/prepare?plan=1\">{$lang['select']}</a></td>
+				</tr>
+				<tr style=\"border: 0;\">
+					<td style=\"border: 0;\">
+						<h2>{$lang['offer_2_title']}</h2>
+						<p>{$lang['offer_2_desc']}</p>
+					</td>
+					<td style=\"border: 0;\"><span class=\"large\"><span class=\"colored\">99&euro; HT</span> / {$lang['month']}</span></td>
+					<td style=\"border: 0;\"><a class=\"btn\" href=\"/join/prepare?plan=2\">{$lang['select']}</a></td>
+				</tr>
+				<tr style=\"border: 0;\">
+					<td style=\"border: 0;\">
+						<h2>{$lang['offer_3_title']}</h2>
+						<p>{$lang['offer_3_desc']}</p>
+					</td>
+					<td style=\"border: 0;\"><span class=\"large\"><span class=\"colored\">180&euro; HT</span> / {$lang['month']}</span></td>
+					<td style=\"border: 0;\"><a class=\"btn\" href=\"/join/prepare?plan=3\">{$lang['select']}</a></td>
+				</tr>
+				<tr>
+					<td style=\"border: 0;\">
+						<h2>{$lang['offer_4_title']}</h2>
+						<p>{$lang['offer_4_desc']}</p>
+					</td>
+					<td style=\"border: 0;\"><span class=\"large\"><span class=\"colored\">320&euro; HT</span> / {$lang['month']}</span></td>
+					<td style=\"border: 0;\"><a class=\"btn\" href=\"/join/prepare?plan=4\">{$lang['select']}</a></td>
+				</tr>
+				<tr style=\"border: 0;\">
+					<td style=\"border: 0;\">
+						<h2>{$lang['offer_5_title']}</h2>
+						<p>{$lang['offer_5_desc']}</p>
+					</td>
+					<td style=\"border: 0;\"><span class=\"large\"><span class=\"colored\">560&euro; HT</span> / {$lang['month']}</span></td>
+					<td style=\"border: 0;\"><a class=\"btn\" href=\"/join/prepare?plan=5\">{$lang['select']}</a></td>
+				</tr>
+				<tr style=\"border: 0;\">
+					<td style=\"border: 0;\">
+						<h2>{$lang['offer_6_title']}</h2>
+						<p>{$lang['offer_6_desc']}</p>
+					</td>
+					<td style=\"border: 0;\"><span class=\"large\"><span class=\"colored\">999&euro; HT</span> / {$lang['month']}</span></td>
+					<td style=\"border: 0;\"><a class=\"btn\" href=\"/join/prepare?plan=6\">{$lang['select']}</a></td>
+				</tr>
+			</table>
 		</div>
+		<div class=\"clearfix\"></div>
 	</div>
 ";
-
-unset($_SESSION['JOIN_USER']);
-unset($_SESSION['JOIN_EMAIL']);
-unset($_SESSION['JOIN_STATUS']);
 
 /* ========================== OUTPUT PAGE ========================== */
 $template->output($content);

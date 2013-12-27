@@ -14,11 +14,19 @@ $content = "
 		<div class=\"left\">
 			<div class=\"container\">
 				<h2>{$lang['title']} :: <i>{$app['name']}</i></h2>
+				<br />
 				<form action=\"/panel/app/add_env_action\" method=\"post\">
 					<input type=\"hidden\" name=\"id\" value=\"{$_GET['id']}\" />
 					<fieldset>
-						<label for=\"url\">{$lang['branch']}</label>
-						<input type=\"text\" name=\"branch\" />
+						<label for=\"branch\">{$lang['branch']}</label>
+						<select name=\"branch\">
+							<option value=\"production\">production</option>
+							<option value=\"develop\">develop</option>
+							<option value=\"recipe\">recipe</option>
+							<option value=\"staging\">staging</option>
+							<option value=\"testing\">testing</option>
+						</select>
+						<span class=\"help-block\">{$lang['help']}</span>
 					</fieldset>
 					<fieldset>
 						<label for=\"submit\">&nbsp;</label>

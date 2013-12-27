@@ -6,7 +6,7 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-if( !isset($_GET['code']) || !isset($_GET['user']) || !isset($_GET['email']) )
+if( strlen($_GET['code']) < 2 || !isset($_GET['user']) || !isset($_GET['email']) )
 	throw new SiteException('Invalid or missing arguments', 400, 'Parameter code or user is not present');
 	
 // CONNECT TO THE API AS ADMIN TO CHECK REGISTRATION
@@ -30,7 +30,7 @@ $uid = $result['id'];
 api::send('group/user/add', array('user'=>$uid, 'group'=>'USERS'), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
 // CREATE THE FIRST TOKEN WITH BASIC ACCESS
-$result = api::send('token/insert', array('user'=>$uid, 'lease'=>0, 'name'=>'Another Service', 'grants'=>'ACCESS,SELF_SELECT,SELF_UPDATE,SELF_DELETE,SELF_GRANT_SELECT,SELF_GROUP_SELECT,SELF_GROUP_DELETE,SELF_TOKEN_INSERT,SELF_TOKEN_SELECT,SELF_TOKEN_UPDATE,SELF_TOKEN_DELETE,SELF_QUOTA_SELECT,SELF_TOKEN_GRANT_DELETE,SELF_TOKEN_GRANT_INSERT,SELF_DOMAIN_INSERT,SELF_DOMAIN_SELECT,SELF_DOMAIN_DELETE,SELF_DOMAIN_UPDATE,SELF_SUBDOMAIN_SELECT,SELF_SUBDOMAIN_UPDATE,SELF_SUBDOMAIN_INSERT,SELF_SUBDOMAIN_DELETE,SELF_ACCOUNT_DELETE,SELF_ACCOUNT_INSERT,SELF_ACCOUNT_SELECT,SELF_ACCOUNT_UPDATE,SELF_SERVICE_DELETE,SELF_SERVICE_INSERT,SELF_SERVICE_SELECT,SELF_SERVICE_UPDATE,SELF_APP_INSERT,SELF_APP_DELETE,SELF_APP_UPDATE,SELF_APP_SELECT,SELF_BILL_SELECT,SELF_BILL_INSERT,SELF_STORAGE_SELECT,SELF_STORAGE_UPDATE,SELF_STORAGE_DELETE,SELF_STORAGE_INSERT'), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+$result = api::send('token/insert', array('user'=>$uid, 'lease'=>'never', 'name'=>'Another Service', 'grants'=>'ACCESS,SELF_SELECT,SELF_UPDATE,SELF_DELETE,SELF_GRANT_SELECT,SELF_GROUP_SELECT,SELF_GROUP_DELETE,SELF_TOKEN_INSERT,SELF_TOKEN_SELECT,SELF_TOKEN_UPDATE,SELF_TOKEN_DELETE,SELF_QUOTA_SELECT,SELF_TOKEN_GRANT_DELETE,SELF_TOKEN_GRANT_INSERT,SELF_DOMAIN_INSERT,SELF_DOMAIN_SELECT,SELF_DOMAIN_DELETE,SELF_DOMAIN_UPDATE,SELF_SUBDOMAIN_SELECT,SELF_SUBDOMAIN_UPDATE,SELF_SUBDOMAIN_INSERT,SELF_SUBDOMAIN_DELETE,SELF_ACCOUNT_DELETE,SELF_ACCOUNT_INSERT,SELF_ACCOUNT_SELECT,SELF_ACCOUNT_UPDATE,SELF_SERVICE_DELETE,SELF_SERVICE_INSERT,SELF_SERVICE_SELECT,SELF_SERVICE_UPDATE,SELF_APP_INSERT,SELF_APP_DELETE,SELF_APP_UPDATE,SELF_APP_SELECT,SELF_BILL_SELECT,SELF_BILL_INSERT,SELF_STORAGE_SELECT,SELF_STORAGE_UPDATE,SELF_STORAGE_DELETE,SELF_STORAGE_INSERT'), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 $token = $result['token'];
 
 // ADD USER QUOTAS
@@ -38,32 +38,23 @@ api::send('quota/user/add', array('user'=>$uid, 'quotas'=>'APPS,DOMAINS,SERVICES
 api::send('quota/user/update', array('user'=>$uid, 'quota'=>'APPS', 'max'=>200), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 api::send('quota/user/update', array('user'=>$uid, 'quota'=>'DOMAINS', 'max'=>50), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 api::send('quota/user/update', array('user'=>$uid, 'quota'=>'SERVICES', 'max'=>4), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-api::send('quota/user/update', array('user'=>$uid, 'quota'=>'MEMORY', 'max'=>256), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+api::send('quota/user/update', array('user'=>$uid, 'quota'=>'MEMORY', 'max'=>1024), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 api::send('quota/user/update', array('user'=>$uid, 'quota'=>'DISK', 'max'=>1000), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
 // OUTPUT USER INFO
 $content .= "
-	<div class=\"box rightcol\">
+	<div class=\"box nocol\">
 		<div class=\"header\">
 			<div class=\"container\">
 				<div class=\"head\">{$lang['title']}</div>
-				<div class=\"subhead\">{$lang['subtitle']}</div>
 			</div>
 		</div>
-		<div class=\"left\">
-			<div class=\"container\">
-				<p class=\"large\">{$lang['success']}</p>
-				<p class=\"large\">".str_replace(array('{USER}','{TOKEN}','{PASS}'), array($_GET['user'], $token, $pass), $lang['user'])."</p>
-				<br />
-				<a class=\"btn\" href=\"/login\">{$lang['login']}</a>
-			</div>
+		<div class=\"container\">
+			<p class=\"large\">{$lang['success']}</p>
+			<p class=\"large\">".str_replace(array('{USER}','{TOKEN}','{PASS}'), array($_GET['user'], $token, $pass), $lang['user'])."</p>
+			<br />
+			<a class=\"btn\" href=\"/login\">{$lang['login']}</a>
 		</div>
-		<div class=\"right\">
-			<div class=\"container\">
-				
-			</div>
-		</div>
-		<div class=\"clearfix\"></div>
 	</div>
 <!-- Google Code for Nouveau compte Conversion Page -->
 <script type=\"text/javascript\">

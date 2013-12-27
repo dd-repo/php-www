@@ -61,12 +61,7 @@ $content = "
 			</div>
 			<div class=\"clearfix\"></div>
 			<br />
-			<h2>{$lang['list']}</h2>
-			<br />
-			<p class=\"large\">{$lang['intro']}</p>
-			<br />
-			<h3 class=\"colored\">{$lang['users']}</h3>
-			<br />
+			<h2>{$lang['users']}</h2>
 			<table>
 				<tr>
 					<th>{$lang['email']}</th>
@@ -132,8 +127,7 @@ $content .= "
 			<br />
 			<a class=\"btn\" href=\"/panel/user/add?domain={$domain['hostname']}\">{$lang['add']}</a>
 			<br /><br />
-			<h3 class=\"colored\">{$lang['groups']}</h3>
-			<br />
+			<h2>{$lang['groups']}</h2>
 			<table>
 				<tr>
 					<th>{$lang['email']}</th>

@@ -2,16 +2,15 @@
 
 [FR]
 mailerror = "L'email n'a pas pu être envoyé."
-success = "Un email vous a été envoyé avec votre nouveau token."
+success = "Un email contenant un lien permettant de changer votre mot de passe vous a été envoyé."
 nouser = "Cet utilisateur n'existe pas."
 
 subject = "Récupération du compte"
 content = "Bonjour,<br /><br />
-	Vous avez effectué une demande de récupération de votre compte sur la plateforme <a href='https://www.anotherservice.com'>Another Service</a>.<br /><br />
-	Un nouveau token temporaire a été créé pour vous permettre de reprendre posession de votre compte.
-	Ce token n'est valable que pendant <strong>6 heures après la demande de récupération</strong> !<br /><br />
-	Nom d'utilisateur : {USER}<br />
-	Token : {TOKEN}<br /><br />
+	Vous avez effectué une demande de récupération de votre compte sur la plateforme <a href='https://www.anotherservice.com'>Another Service</a>. Afin de modifier votre mot de passe, 
+	merci de cliquer sur le lien suivant. Attention, ce lien n'est valide que pendant <strong>6 heures</strong> !<br /><br />
+	Changement de mot de passe : <a href='https://www.anotherservice.com/change_password?user={USER}&token={TOKEN}'>https://www.anotherservice.com/change_password?user={USER}&token={TOKEN}</a>
+	<br /><br />
 	Cordialement,<br />
 	L'équipe Another Service"
 mailerror = "L'email de confirmation n'a pas pu être envoyé."

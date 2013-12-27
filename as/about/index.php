@@ -7,39 +7,32 @@ if( !defined('PROPER_START') )
 }
 
 $content = "
-	<div class=\"box rightcol\">
-		<div class=\"header\">
-			<div class=\"container\">
-				<div class=\"head\">{$lang['title']}</div>
+			<div class=\"head-light\">
+				<div class=\"container\">
+					<h1 class=\"dark\">{$lang['title']}</h1>
+				</div>
+			</div>	
+			<div class=\"content\">
+				<div class=\"left big\">
+					<h4>{$lang['intro']}</h4>
+					<p>{$lang['intro_text']}</p>
+					<br />
+					<h4>{$lang['data']}</h4>
+					<p>{$lang['data_text']}</p>
+				</div>
+				<div class=\"right small border\">
+					<h4>{$lang['follow']}</h4>
+					<p><a href=\"http://twitter.com/anotherservice\">Twitter</a></p>
+					<p><a href=\"http://www.facebook.com/another.service\">Facebook</a></p>
+					<p><a href=\"http://www.linkedin.com/company/2401897\">LinkedIn</a></p>
+					<p><a href=\"/blog\">{$lang['news']}</a></p>
+					<br />
+					<h4>{$lang['legal']}</h4>
+					<p>{$lang['legal_text']}</p>
+				</div>
+				<div class=\"clear\"></div>
+				<br /><br />
 			</div>
-		</div>
-		<div class=\"left\">
-			<div class=\"container\">
-				<h1>{$lang['about']}</h1>
-				<p class=\"large\">{$lang['intro']}</p>
-				<hr>
-				<h1>{$lang['legal']}</h1>
-				<p class=\"large\">{$lang['legal_text']}</p>
-			</div>
-		</div>
-		<div class=\"right\">
-			<div class=\"container\">
-				<h1>{$lang['info']}</h1>
-				<p>
-					<span class=\"lightlarge\">{$lang['owner']}</span> :<br /><span class=\"large\">Samuel Hassine</span>
-				</p>
-				<br />
-				<p class=\"large\">
-					<i>SIRET</i> : 52174593500010<br />
-					<i>RCS</i> : Marseille B 521 745 935<br />
-					<i>Capital social</i> : 10.000 euros
-				</p>
-				<br />
-				<p class=\"large\">{$lang['legal2_text']}</p>
-			</div>
-		</div>
-		<div class=\"clearfix\"></div>
-	</div>
 ";
 
 /* ========================== OUTPUT PAGE ========================== */

@@ -6,13 +6,7 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$app = api::send('self/app/add', array('domain'=>$_POST['domain'], 'runtime'=>$_POST['runtime'], 'framework'=>$_POST['framework'], 'app'=>$_POST['app'], 'url'=>$_POST['subdomain'], 'pass'=>$_POST['pass']));
-
-if( $_POST['service'] && $_POST['version'] )
-{
-	$service = api::send('self/service/add', array('vendor'=>$_POST['service'], 'version'=>$_POST['version'], 'desc' => $_POST['app'] . ' ' . $app['name']));
-	$template->redirect("/panel/app/add_service?id={$app['id']}");
-}
+$app = api::send('self/app/add', array('domain'=>$_POST['domain'], 'tag' => $_POST['tag'], 'runtime'=>$_POST['runtime'], 'binary'=>$_POST['binary'], 'pass'=>$_POST['pass']));
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);

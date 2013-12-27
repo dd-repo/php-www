@@ -72,10 +72,28 @@ $aliases = api::send('self/alias/list', array('source'=>$domain['hostname']));
 	{
 		foreach( $aliases as $a )
 		{
+			$arecord = "";
+			if( is_array($a['aRecord']) )
+			{
+				$i = 1;
+				$max = count($a['aRecord']);
+				foreach( $a['aRecord'] as $r )
+				{
+					if( $i == $max )
+						$arecord .= "{$r}";
+					else
+						$arecord .= "{$r}<br />";
+					
+					$i++;
+				}
+			}
+			else
+			$arecord = $a['aRecord'];
+			
 				$content .= "
 					<tr>
 						<td>{$a['hostname']}</td>
-						<td>{$a['aRecord']}{$a['cNAMERecord']}</td>
+						<td>{$arecord}</td>
 						<td>{$a['type']}</td>
 						<td><a href=\"/panel/domain/del_alias_action?id={$a['id']}&source={$domain['hostname']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a></td>
 					</tr>
