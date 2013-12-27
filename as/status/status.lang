@@ -1,0 +1,11 @@
+[EN]
+
+
+[FR]
+port_80 = "HTTP"
+port_21 = "FTP"
+port_22 = "SFTP"
+port_25 = "MySQL"
+port_80 = "HTTP"
+port_110 = "POP"
+port_143 = "MAIL"
