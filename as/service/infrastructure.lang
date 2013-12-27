@@ -11,12 +11,12 @@ les principaux opérateurs français et nos autres fournisseurs comme <a href='h
 tournent en parallèle dans plusieurs centres de données différent afin d'assurer une répartition des charges et une résiliance optimale."
 
 virt = "Stockage et virtualisation"
-virt_text = "L'infrastructure d'Olympe repose sur un cluster de serveurs physiques <a href='http://www.proxmox.com'>Proxmox</a> qui assure la gestion et la redondance des machines virtuelles. Nous avons développé nos 
+virt_text = "L'infrastructure d'Another Service repose sur un cluster de serveurs physiques <a href='http://www.proxmox.com'>Proxmox</a> qui assure la gestion et la redondance des machines virtuelles. Nous avons développé nos 
 <a href='/developers'>outils</a> d'ajustement automatique des ressources et de haute disponibilité.<br /><br />
 Le stockage de la production est assuré par un pool <a href='http://www.ceph.com'>Ceph</a> de 22 teraoctets, avec des blocs <a href='http://ceph.com/docs/next/rbd/rbd/'>Rados</a> pour les machines virtuelles 
 et une partition CephFS pour les données persistantes. Les sauvegardes sont effectuées sur un espace répliqué/distribué <a href='http://www.gluster.org'>GlusterFS</a>.<br /><br />
 Nous avons ensuite des colonnes duplicables comprenant des firewalls <a href='http://www.pfsense.org'>Pfsense</a> (virtuel) et <a href='http://www.cisco.com'>Cisco</a> (physiques) frontaux, des machines virtuelles de load balancing
-(proxy) et les briques de traitement."
+(proxy) et des briques de traitement découpées en <a href='http://www.docker.io'>containers LXC dockers</a>."
 
 soft = "Applicatifs"
 status = "Statut de l'infrastructure"
