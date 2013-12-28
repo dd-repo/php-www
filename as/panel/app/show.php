@@ -6,8 +6,6 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$domains = api::send('self/domains/list');
-
 $app = api::send('self/app/list', array('id'=>$_GET['id']));
 $app = $app[0];
 
@@ -31,7 +29,6 @@ foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] 
 
 $expl = explode('-', $app['name']);
 $language = $expl[0];
-
 	
 $content = "
 	<div class=\"panel\">
@@ -82,16 +79,16 @@ $content .= "
 						<td>{$lang['memory']}</td>
 						<td><span class=\"large\">{$memoryu}Mo</span> / {$memory}Mo</td>
 						<td style=\"width: 70px; text-align: center;\">
-							<a href=\"/panel/app/memory_less_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/less.png\" alt=\"\" /></a>
-							<a href=\"/panel/app/memory_plus_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/add.png\" alt=\"\" /></a>
+							<a href=\"#\" onclick=\"decreaseMemory(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/less.png\" alt=\"\" /></a>
+							<a href=\"#\" onclick=\"increaseMemory(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/add.png\" alt=\"\" /></a>
 						</td>
 					</tr>
 					<tr>
 						<td>{$lang['number']}</td>
 						<td><span class=\"large\">{$instances}</span> {$lang['instances']}</td>
 						<td style=\"width: 70px; text-align: center;\">
-							<a href=\"/panel/app/instance_less_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/less.png\" alt=\"\" /></a>
-							<a href=\"/panel/app/instance_plus_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/add.png\" alt=\"\" /></a>
+							<a href=\"#\" onclick=\"decreaseInstances(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/less.png\" alt=\"\" /></a>
+							<a href=\"#\" onclick=\"increaseInstances(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/add.png\" alt=\"\" /></a>
 						</td>
 					</tr>
 					<tr>
@@ -107,7 +104,7 @@ $content .= "
 					<h2 class=\"dark\">{$lang['uris']}</h2>
 				</div>
 				<div style=\"float: right; width: 100px;\">
-					<a class=\"button classic\" href=\"#\" onclick=\"$('#newurl').dialog('open');\" style=\"width: 22px; height: 22px; float: right;\">
+					<a class=\"button classic\" href=\"#\" onclick=\"geturls(); $('#newurl').dialog('open'); return false;\" style=\"width: 22px; height: 22px; float: right;\">
 						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
 					</a>
 				</div>
@@ -146,76 +143,16 @@ $content .= "
 				
 			</div>
 			<div class=\"clear\"></div>
-			<table>
-				<tr>
-					<th>{$lang['id']}</th>
-					<th>{$lang['host']}</th>
-					<th>{$lang['port']}</th>
-					<th>{$lang['cpu']}</th>
-					<th>{$lang['memory']}</th>
-					<th>{$lang['uptime']}</th>
-					<th >{$lang['status']}</th>
-				</tr>
-";
-$j = 0;
-foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] as $i )
-{
-	if( $i['status'] == 'run' )
-		$running = true;
-	else
-		$running = false;
-		
-	$info = secondsToTime($i['uptime']);
-	
-	$content .= "
-				<tr>
-					<td><span class=\"large\">{$app['name']}-".security::encode($_SESSION['DATA'][$app['id']]['branch'])."-{$j}</span></td>
-					<td>{$i['host']}</td>
-					<td>{$i['port']}</td>
-					<td>{$i['cpu']['usage']}% / {$i['cpu']['quota']} core</td>
-					<td>{$i['memory']['usage']}Mo / {$i['memory']['quota']}Mo</td>
-					<td>{$info['d']} {$lang['days']} {$info['h']} {$lang['hours']} {$info['m']} {$lang['minutes']} {$info['s']} {$lang['seconds']} </td>
-					<td>".($running?"<div class=\"state running\"><div class=\"state-content\">{$lang['running']}</div></div>":"<div class=\"state stopped\"><div class=\"state-content\">{$lang['stopped']}")."</div></div></td>
-				</tr>
-	";
-	$j++;
-}
-$content .= "
-			</table>			
+			<div id=\"instances\">
+			
+			</div>
 		</div>
 	</div>
 	<br />
 	<div id=\"newurl\" class=\"floatingdialog\">
 		<h3 class=\"center\">{$lang['newurl_title']}</h3>
 		<p style=\"text-align: center;\">{$lang['newurl_text']}</p>
-		<div class=\"form-small\">		
-			<form action=\"/panel/app/add_url_action\" method=\"post\" class=\"center\">
-				<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
-				<input type=\"hidden\" name=\"branch\" value=\"{$_SESSION['DATA'][$app['id']]['branch']}\" />
-				<fieldset>
-					<select name=\"url\">";
-foreach( $domains as $d )
-{
-	$content .= "		<optgroup label=\"{$d['hostname']}\">
-							<option value=\"{$d['hostname']}\">{$d['hostname']}</option>
-	";
-
-	$subdomains = api::send('self/subdomain/list', array('domain' => $d['hostname']));
-	foreach( $subdomains as $s )
-		$content .= "			<option value=\"{$s['hostname']}\">{$s['hostname']}</option>";
-		
-	$content .= " 			</optgroup>";
-}
-
-$content .= "
-					</select>
-					<span class=\"help-block\">{$lang['help_url']}</span>
-				</fieldset>
-				<fieldset>
-					<input autofocus type=\"submit\" value=\"{$lang['add_url']}\" />
-				</fieldset>
-			</form>
-		</div>
+		<div class=\"form-small\" id=\"urls\"></div>
 	</div>
 	<div id=\"newbranch\" class=\"floatingdialog\">
 		<h3 class=\"center\">{$lang['newbranch_title']}</h3>
@@ -299,47 +236,116 @@ $content .= "
 		<p style=\"text-align: center;\">{$lang['delete_text']}</p>
 		<a style=\"width: 150px; margin: 0 auto;\" href=\"/panel/app/del_action?id={$app['id']}\" class=\"button classic\">{$lang['delete_now']}</a>
 	</div>
+	<div id=\"alert\" class=\"floatingdialog\">
+		<h3 class=\"center\" style=\"padding-top: 5px;\">{$lang['alert']}</h3>
+		<p style=\"text-align: center;\" id=\"alertcontent\"></p>
+		<a style=\"width: 150px; margin: 0 auto;\" href=\"#\" onclick=\"$('#alert').dialog('close'); return false;\" class=\"button classic\">{$lang['close']}</a>
+	</div>
+	<div id=\"recipe\" style=\"display: none;\"></div>
 	<script>
+		memory = {$memory};
+		instances = {$instances};
+		
+		getinstances();
+		
+		setInterval(function(){getinstances();}, 2000);
+		
 		newFlexibleDialog('newurl', 550);
 		newFlexibleDialog('newbranch', 550);
 		newFlexibleDialog('settings', 550);
 		newDialog('delete', 550, 170);
 		newDialog('push', 700, 330);
+		newFlexibleDialog('alert', 550);
+		
+		function getinstances()
+		{
+			$('#instances').load('/panel/app/ajax_instances?id={$app['id']}');
+		}
+		
+		function geturls()
+		{
+			$('#loading').show();
+			$('#urls').load('/panel/app/ajax_urls', function()
+			{
+				$('#loading').hide();
+			});
+		}
+
+		function increaseInstances()
+		{
+			instances = instances+1;
+			alert(instances);
+			
+			$('#loading').show();
+			$('#recipe').load('/panel/app/instance_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."&instances=' + instances, function()
+			{
+				$('#loading').hide();
+			});
+		}
+		
+		function decreaseInstances()
+		{
+			if( instances > 0 )
+			{
+				instances = instances-1;
+				alert(instances);
+				
+				$('#loading').show();
+				$('#recipe').load('/panel/app/instance_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."&instances=' + instances, function()
+				{
+					$('#loading').hide();
+				});
+			}
+			else
+			{
+				$('#alertcontent').html(\"{$lang['stupid']}\");
+				$('#alert').dialog('open');
+			}
+		}
+		
+		function decreaseMemory()
+		{
+			if( memory > 128 )
+			{
+				memory = memory/2;
+				alert(memory);
+				
+				$('#loading').show();
+				$('#recipe').load('/panel/app/memory_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."&memory=' + memory, function()
+				{
+					$('#loading').hide();
+				});
+			}
+			else
+			{
+				$('#alertcontent').html(\"{$lang['not_less']}\");
+				$('#alert').dialog('open');
+			}
+		}
+		
+		function increaseMemory()
+		{
+			if( memory < 1024 )
+			{
+				memory = memory*2;
+				alert(memory);
+				
+				$('#loading').show();
+				$('#recipe').load('/panel/app/memory_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."&memory=' + memory, function()
+				{
+					$('#loading').hide();
+				});
+			}
+			else
+			{
+				$('#alertcontent').html(\"{$lang['not_more']}\");
+				$('#alert').dialog('open');
+			}
+		}
 	</script>	
 ";
 
 /* ========================== OUTPUT PAGE ========================== */
 $template->output($content);
-
-function secondsToTime($inputSeconds) {
-
-    $secondsInAMinute = 60;
-    $secondsInAnHour  = 60 * $secondsInAMinute;
-    $secondsInADay    = 24 * $secondsInAnHour;
-
-    // extract days
-    $days = floor($inputSeconds / $secondsInADay);
-
-    // extract hours
-    $hourSeconds = $inputSeconds % $secondsInADay;
-    $hours = floor($hourSeconds / $secondsInAnHour);
-
-    // extract minutes
-    $minuteSeconds = $hourSeconds % $secondsInAnHour;
-    $minutes = floor($minuteSeconds / $secondsInAMinute);
-
-    // extract the remaining seconds
-    $remainingSeconds = $minuteSeconds % $secondsInAMinute;
-    $seconds = ceil($remainingSeconds);
-
-    // return the final array
-    $obj = array(
-        'd' => (int) $days,
-        'h' => (int) $hours,
-        'm' => (int) $minutes,
-        's' => (int) $seconds,
-    );
-    return $obj;
-}
 
 ?>

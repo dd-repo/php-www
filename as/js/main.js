@@ -1,5 +1,5 @@
 // Main javascript
-	
+
 $(function()
 {
 	// DIALOGS //
