@@ -254,7 +254,7 @@ $content .= "
 		instances = {$instances};
 		
 		$('#loading').show();
-		$('#urls').load('/panel/app/ajax_instances?id={$app['id']}', function()
+		$('#instances').load('/panel/app/ajax_instances?id={$app['id']}', function()
 		{
 			$('#loading').hide();
 		});
