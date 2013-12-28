@@ -139,13 +139,13 @@ $content .= "
 				<a class=\"button classic\" href=\"#\" onclick=\"rebuild(); return false;\" style=\"width: 80px; height: 20px; float: right;\">
 					{$lang['rebuild']}
 				</a>
-				<a class=\"button classic\" href=\"#\" onclick=\"restart(); return false;\" style=\"margin-right: 10px; width: 80px; height: 20px; float: right;\">
+				<a class=\"button classic orange\" href=\"#\" onclick=\"restart(); return false;\" style=\"margin-right: 10px; width: 80px; height: 20px; float: right;\">
 					{$lang['restart']}
 				</a>
-				<a class=\"button classic\" href=\"#\" onclick=\"stop(); return false;\" style=\"margin-right: 10px; width: 80px; height: 20px; float: right;\">
+				<a class=\"button classic red\" href=\"#\" onclick=\"stop(); return false;\" style=\"margin-right: 10px; width: 80px; height: 20px; float: right;\">
 					{$lang['stop']}
 				</a>
-				<a class=\"button classic\" href=\"#\" onclick=\"start(); return false;\" style=\"margin-right: 10px; width: 80px; height: 20px; float: right;\">
+				<a class=\"button classic green\" href=\"#\" onclick=\"start(); return false;\" style=\"margin-right: 10px; width: 80px; height: 20px; float: right;\">
 					{$lang['start']}
 				</a>
 			</div>

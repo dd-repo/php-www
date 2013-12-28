@@ -162,6 +162,14 @@ a.button.green:hover {
 	background-color: #c1dc40;
 }
 
+a.button.red {
+	background-color: #c55b5b;
+}
+
+a.button.red:hover {
+	background-color: #eb6e6e;
+}
+
 a.button.grey {
 	background-color: #bebebe;
 }
