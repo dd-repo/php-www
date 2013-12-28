@@ -135,10 +135,21 @@ $content .= "
 			<div style=\"float: left; width: 500px; padding-top: 8px;\">
 				<h2 class=\"dark\">{$lang['branchinstances']}</h2>
 			</div>
-			<div style=\"float: right; width: 300px;\">
-				
+			<div style=\"float: right; width: 500px;\">
+				<a class=\"button classic\" href=\"#\" onclick=\"rebuild(); return false;\" style=\"width: 80px; height: 20px; float: right;\">
+					{$lang['rebuild']}
+				</a>
+				<a class=\"button classic\" href=\"#\" onclick=\"restart(); return false;\" style=\"margin-right: 10px; width: 80px; height: 20px; float: right;\">
+					{$lang['restart']}
+				</a>
+				<a class=\"button classic\" href=\"#\" onclick=\"stop(); return false;\" style=\"margin-right: 10px; width: 80px; height: 20px; float: right;\">
+					{$lang['stop']}
+				</a>
+				<a class=\"button classic\" href=\"#\" onclick=\"start(); return false;\" style=\"margin-right: 10px; width: 80px; height: 20px; float: right;\">
+					{$lang['start']}
+				</a>
 			</div>
-			<div class=\"clear\"></div>
+			<div class=\"clear\"></div><br />
 			<div id=\"instances\">
 			
 			</div>
@@ -340,6 +351,43 @@ $content .= "
 				$('#alert').dialog('open');
 			}
 		}
+		
+		function start()
+		{
+			$('#loading').show();
+			$('#recipe').load('/panel/app/start_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."', function()
+			{
+				$('#loading').hide();
+			});	
+		}
+		
+		function stop()
+		{
+			$('#loading').show();
+			$('#recipe').load('/panel/app/stop_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."', function()
+			{
+				$('#loading').hide();
+			});	
+		}
+
+		function restart()
+		{
+			$('#loading').show();
+			$('#recipe').load('/panel/app/restart_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."', function()
+			{
+				$('#loading').hide();
+			});	
+		}
+
+		function rebuild()
+		{
+			$('#loading').show();
+			$('#recipe').load('/panel/app/rebuild_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."', function()
+			{
+				$('#loading').hide();
+			});	
+		}
+		
 	</script>	
 ";
 

@@ -53,3 +53,7 @@ alert = "Information"
 close = "Fermer"
 
 mb = "Mo"
+start = "Démarrer"
+stop = "Arrêter"
+restart = "Redémarrer"
+rebuild = "Rebuild"
