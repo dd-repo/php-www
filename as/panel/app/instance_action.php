@@ -8,6 +8,8 @@ if( !defined('PROPER_START') )
 
 api::send('self/app/update', array('app'=>$_GET['id'], 'branch'=>$_GET['branch'], 'instances' => $_GET['instances']));
 
+sleep(4);
+
 echo "OK";
 
 ?>

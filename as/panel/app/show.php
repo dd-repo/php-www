@@ -14,16 +14,12 @@ if( !$_GET['branch'] && !$_SESSION['DATA'][$app['id']]['branch'] )
 else if( $_GET['branch'] )
 	$_SESSION['DATA'][$app['id']]['branch'] = $_GET['branch'];
 
-$running = false;
 $memory = 0;
-$memoryu = 0;
 $instances = 0;
 foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] as $i )
 {
-	if( $i['status'] == 'run' )
-		$running = true;
+	$memoryone = $i['memory']['quota'];
 	$memory = $memory+$i['memory']['quota'];
-	$memoryu = $memoryu+$i['memory']['usage'];
 	$instances++;
 }
 
@@ -77,7 +73,7 @@ $content .= "
 					</tr>
 					<tr>
 						<td>{$lang['memory']}</td>
-						<td><span class=\"large\">{$memoryu}Mo</span> / {$memory}Mo</td>
+						<td><span class=\"large\" id=\"memorycount\">{$memory}</span> {$lang['mb']}</td>
 						<td style=\"width: 70px; text-align: center;\">
 							<a href=\"#\" onclick=\"decreaseMemory(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/less.png\" alt=\"\" /></a>
 							<a href=\"#\" onclick=\"increaseMemory(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/add.png\" alt=\"\" /></a>
@@ -85,7 +81,7 @@ $content .= "
 					</tr>
 					<tr>
 						<td>{$lang['number']}</td>
-						<td><span class=\"large\">{$instances}</span> {$lang['instances']}</td>
+						<td><span class=\"large\" id=\"instancescount\">{$instances}</span> {$lang['instances']}</td>
 						<td style=\"width: 70px; text-align: center;\">
 							<a href=\"#\" onclick=\"decreaseInstances(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/less.png\" alt=\"\" /></a>
 							<a href=\"#\" onclick=\"increaseInstances(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/add.png\" alt=\"\" /></a>
@@ -243,7 +239,7 @@ $content .= "
 	</div>
 	<div id=\"recipe\" style=\"display: none;\"></div>
 	<script>
-		memory = {$memory};
+		memory = {$memoryone};
 		instances = {$instances};
 		
 		getinstances();
@@ -274,7 +270,8 @@ $content .= "
 		function increaseInstances()
 		{
 			instances = instances+1;
-			alert(instances);
+			$('#instancescount').html(instances);
+			$('#memorycount').html(memory*instances);
 			
 			$('#loading').show();
 			$('#recipe').load('/panel/app/instance_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."&instances=' + instances, function()
@@ -288,7 +285,8 @@ $content .= "
 			if( instances > 0 )
 			{
 				instances = instances-1;
-				alert(instances);
+				$('#instancescount').html(instances);
+				$('#memorycount').html(memory*instances);
 				
 				$('#loading').show();
 				$('#recipe').load('/panel/app/instance_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."&instances=' + instances, function()
@@ -308,7 +306,7 @@ $content .= "
 			if( memory > 128 )
 			{
 				memory = memory/2;
-				alert(memory);
+				$('#memorycount').html(memory*instances);
 				
 				$('#loading').show();
 				$('#recipe').load('/panel/app/memory_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."&memory=' + memory, function()
@@ -328,7 +326,7 @@ $content .= "
 			if( memory < 1024 )
 			{
 				memory = memory*2;
-				alert(memory);
+				$('#memorycount').html(memory*instances);
 				
 				$('#loading').show();
 				$('#recipe').load('/panel/app/memory_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."&memory=' + memory, function()
