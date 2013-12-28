@@ -3,7 +3,7 @@
 
 [FR]
 title = "Première application"
-intro = "Premiers pas"
+intro = "Introduction"
 intro_text = "Une fois inscrit à la plateforme, vous devez disposer d'un nom de domaine disponible chez un registrer à rattacher à votre compte. Vous devez ensuite le configurer pour pointer vers votre espace d'hébergement
 Another Service. Voici les paramètres à entrer :"
 primary = "Serveur DNS primaire :"
@@ -25,4 +25,4 @@ access = "Accéder à l'application"
 access_text = "Une fois le fichier uploadé, il faut maintenant attribuer une adresse à l'environnement master de votre nouvelle application. Dans la gestion d'une application, il faut cliquer sur Ajouter une adresse."
 access2_text = "Choisir ensuite l'adresse et l'environnement vers lequelle celle-ci doit pointer."
 end = "Votre application est prête à être utilisée !"
-back = "Retour à l'accueil"
+back = "Retour"

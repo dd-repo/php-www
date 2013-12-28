@@ -7,24 +7,22 @@ if( !defined('PROPER_START') )
 }
 
 $content = "
-	<div class=\"box nocol\">
-		<div class=\"header\">
+		<div class=\"head-light\">
 			<div class=\"container\">
-				<div class=\"head\">{$lang['title']}</div>
+				<div style=\"float: left; width: 500px;\">
+					<h1 class=\"dark\">{$lang['title']}</h1>
+				</div>
+				<div style=\"float: right; width: 500px;\">
+					<a class=\"button classic\" href=\"/doc\" style=\"float: right; height: 22px; width: 150px; margin: 0 auto;\">
+						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['back']}</span>
+					</a>
+				</div>
+				<div class=\"clear\"></div>
 			</div>
-		</div>
-		<div class=\"container\">		
+		</div>	
+		<div class=\"content\">		
 			<div style=\"float: left; width: 500px;\">
-				<h2>{$lang['access']}</h2>
-			</div>
-			<div style=\"float: right; text-align: right; width: 300px;\">
-				<a class=\"btn\" href=\"/doc\">{$lang['back']}</a>		
-			</div>
-			<div class=\"clearfix\"></div>
-			<br />
-			<div style=\"float: left; width: 500px;\">
-				<h4 class=\"colored\">{$lang['addresses']}</h4>
-				<br />
+				<h2 class=\"dark\">{$lang['addresses']}</h2>
 				<table>
 					<tr>
 						<th>{$lang['service']}</th>
@@ -48,10 +46,7 @@ $content = "
 					</tr>				
 				</table>
 				<br /><br />
-				<h2>{$lang['contact']}</h2>
-				<br />
-				<h4 class=\"colored\">{$lang['addresses']}</h4>
-				<br />
+				<h2 class=\"dark\">{$lang['contact']}</h2>
 				<table>
 					<tr>
 						<th>{$lang['service']}</th>
@@ -76,8 +71,7 @@ $content = "
 				</table>
 			</div>
 			<div style=\"float: right; width: 500px;\">
-				<h4 class=\"colored\">{$lang['dns']}</h4>
-				<br />
+				<h2 class=\"dark\">{$lang['dns']}</h2>
 				<table>
 					<tr>
 						<th>{$lang['serv']}</th>
@@ -96,8 +90,7 @@ $content = "
 					</tr>
 				</table>
 				<br /><br />
-				<h4 class=\"colored\">{$lang['connection']}</h4>
-				<br />
+				<h2 class=\"dark\">{$lang['connection']}</h2>
 				<table>
 					<tr>
 						<th>{$lang['service']}</th>
@@ -146,10 +139,9 @@ $content = "
 					</tr>						
 				</table>
 			</div>
+			<div class=\"clear\"></div>
 		</div>
-		<div class=\"clearfix\"></div>
-		<br />
-	</div>
+		<br /><br />
 ";
 
 /* ========================== OUTPUT PAGE ========================== */

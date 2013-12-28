@@ -7,20 +7,21 @@ if( !defined('PROPER_START') )
 }
 
 $content = "
-	<div class=\"box nocol\">
-		<div class=\"header\">
+		<div class=\"head-light\">
 			<div class=\"container\">
-				<div class=\"head\">{$lang['title']}</div>
+				<div style=\"float: left; width: 500px;\">
+					<h1 class=\"dark\">{$lang['title']}</h1>
+				</div>
+				<div style=\"float: right; width: 500px;\">
+					<a class=\"button classic\" href=\"/doc\" style=\"float: right; height: 22px; width: 150px; margin: 0 auto;\">
+						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['back']}</span>
+					</a>
+				</div>
+				<div class=\"clear\"></div>
 			</div>
 		</div>
-		<div class=\"container\">		
-			<div style=\"float: left; width: 500px;\">
-				<h2>{$lang['intro']}</h2>
-			</div>
-			<div style=\"float: right; text-align: right; width: 300px;\">
-				<a class=\"btn\" href=\"/doc\">{$lang['back']}</a>		
-			</div>
-			<div class=\"clearfix\"></div>
+		<div class=\"content\">		
+			<h3>{$lang['intro']}</h3>
 			<p class=\"large\">{$lang['intro_text']}</p>
 			<br />
 			<table>
@@ -68,7 +69,7 @@ $content = "
 				</tr>	
 			</table>
 			<br />
-			<h2>{$lang['tutorials']}</h2>
+			<h3>{$lang['tutorials']}</h3>
 			<div style=\"width: 500px; float: left;\">
 				<div style=\"border-left: 3px solid #555555; padding-left: 10px; margin: 20px 0 30px 0;\">
 					<a href=\"/doc/wordpress\"><h4 class=\"colored\">{$lang['wordpress']}</h4></a>
@@ -90,7 +91,7 @@ $content = "
 				</div>	
 			</div>
 		</div>
-		<div class=\"clearfix\"></div>
+		<div class=\"clear\"></div><br />
 	</div>
 ";
 

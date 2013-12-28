@@ -253,7 +253,11 @@ $content .= "
 		memory = {$memoryone};
 		instances = {$instances};
 		
-		getinstances();
+		$('#loading').show();
+		$('#urls').load('/panel/app/ajax_instances?id={$app['id']}', function()
+		{
+			$('#loading').hide();
+		});
 		
 		setInterval(function(){getinstances();}, 2000);
 		
