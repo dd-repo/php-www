@@ -6,20 +6,29 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-if( isset($_POST['pass']) && (!isset($_POST['confirm']) || $_POST['pass'] != $_POST['confirm']) )
-	throw new SiteException("Password mismatch", 400, "Password and confirmation do not match");
+try
+{
+	if( isset($_POST['password']) && $_POST['password'] != $_POST['confirm'] )
+		throw new SiteException("Password mismatch", 400, "Password and confirmation do not match");
 
-$params = array();
-$params['pass'] = $_POST['pass'];
-		
-api::send('self/update', $params, $_POST['user'] . ':' . $_POST['token']);
+	$params = array();
+	$params['password'] = $_POST['password'];
+
+	api::send('self/update', $params, $_POST['user'] . ':' . $_POST['token']);
+}
+catch(Exception $e)
+{
+	$template->redirect($_SERVER['HTTP_REFERER'] . (strstr($_SERVER['HTTP_REFERER'], 'echangepassword')===false?"?echangepassword":""));
+}
 
 $_SESSION['MESSAGE']['TYPE'] = 'success';
 $_SESSION['MESSAGE']['TEXT']= $lang['message'];
-			
+
+unset($_SESSION['CHANGEPASS']);
+
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	template::redirect('/change_password');
+	template::redirect('/');
 
 ?>
