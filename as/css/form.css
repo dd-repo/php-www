@@ -44,6 +44,10 @@ input:focus, select:focus, textarea:focus {
 	outline: #2e9fff solid 1px;
 }
 
+input[type="text"]:disabled {
+	background: #dddddd;
+}
+
 input[type=button]:focus, input[type=image]:focus, input[type=submit]:focus {
 	outline: 0;
 }

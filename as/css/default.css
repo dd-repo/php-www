@@ -322,11 +322,11 @@ h4 {
 
 h4.colored {
 	font-size: 18px;
-	color: #de5711;
+	color: #2475ae;
 }
 
 a h4.colored:hover {
-	color: #eb782b;
+	color: #2c8dd2;
 }
 
 span.title {

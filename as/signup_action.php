@@ -77,7 +77,7 @@ $content = "
 					<input id=\"plan\" type=\"hidden\" name=\"plan\" value=\"{$_SESSION['JOIN_PLAN']}\" />
 					<fieldset>
 						<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_USER']?"{$_SESSION['JOIN_USER']}":"{$lang['name']}")."\" name=\"username\" onfocus=\"this.value = this.value=='{$lang['name']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['name']}' : this.value; this.value=='{$lang['name']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
-						".(isset($_GET['eregisteradd'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$lang['error_user']}</span>":"<span class=\"help-block\" style=\"color: #bc0000;\">{$lang['tipname']}</span>")."
+						".(isset($_GET['eregisteradd'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$lang['error_user']}</span>":"<span class=\"help-block\">{$lang['tipname']}</span>")."
 					</fieldset>
 					<fieldset>
 						<input id=\"email\" type=\"text\" value=\"{$_SESSION['JOIN_EMAIL']}\" name=\"email\" />

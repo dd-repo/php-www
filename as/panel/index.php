@@ -60,9 +60,9 @@ $content = "
 					<div id=\"formapp\" style=\"display: none; position: relative; padding: 30px 10px 10px 10px;\">
 						<a href=\"#\" style=\"display: block; position: absolute; top: 5px; left: 5px;\" onclick=\"showNew(); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/arrowLeft.png\" alt=\"\" /></a>
 						<div class=\"form-small\">		
-							<form action=\"/panel/app/add_action\" method=\"post\" class=\"center\">
+							<form action=\"/panel/app/add\" method=\"post\" class=\"center\">
 								<fieldset>
-									<input class=\"auto\" type=\"text\" value=\"{$lang['name']}\" name=\"subdomain\" onfocus=\"this.value = this.value=='{$lang['name']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['name']}' : this.value; this.value=='{$lang['name']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+									<input class=\"auto\" type=\"text\" value=\"{$lang['name']}\" name=\"tag\" onfocus=\"this.value = this.value=='{$lang['name']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['name']}' : this.value; this.value=='{$lang['name']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
 									<span class=\"help-block\">{$lang['tipapp']}</span>
 								</fieldset>
 								<fieldset>
