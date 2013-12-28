@@ -6,6 +6,8 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
+$domains = api::send('self/domains/list');
+
 $app = api::send('self/app/list', array('id'=>$_GET['id']));
 $app = $app[0];
 
@@ -79,7 +81,7 @@ $content .= "
 					<tr>
 						<td>{$lang['memory']}</td>
 						<td><span class=\"large\">{$memoryu}Mo</span> / {$memory}Mo</td>
-						<td align=\"center\">
+						<td style=\"width: 70px; text-align: center;\">
 							<a href=\"/panel/app/memory_less_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/less.png\" alt=\"\" /></a>
 							<a href=\"/panel/app/memory_plus_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/add.png\" alt=\"\" /></a>
 						</td>
@@ -87,7 +89,7 @@ $content .= "
 					<tr>
 						<td>{$lang['number']}</td>
 						<td><span class=\"large\">{$instances}</span> {$lang['instances']}</td>
-						<td align=\"center\">
+						<td style=\"width: 70px; text-align: center;\">
 							<a href=\"/panel/app/instance_less_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/less.png\" alt=\"\" /></a>
 							<a href=\"/panel/app/instance_plus_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/add.png\" alt=\"\" /></a>
 						</td>
@@ -105,7 +107,7 @@ $content .= "
 					<h2 class=\"dark\">{$lang['uris']}</h2>
 				</div>
 				<div style=\"float: right; width: 100px;\">
-					<a class=\"button classic\" href=\"#\" onclick=\"$('#new').dialog('open');\" style=\"width: 22px; height: 22px; float: right;\">
+					<a class=\"button classic\" href=\"#\" onclick=\"$('#newurl').dialog('open');\" style=\"width: 22px; height: 22px; float: right;\">
 						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
 					</a>
 				</div>
@@ -124,7 +126,7 @@ if( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['urls'] )
 		$content .= "
 					<tr>
 						<td><a href=\"http://{$u}\">{$u}</a></td>
-						<td align=\"center\">
+						<td style=\"width: 30px; text-align: center;\">
 							<a href=\"/panel/app/del_url_action?id={$app['id']}&url={$u}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
 						</td>
 					</tr>
@@ -183,6 +185,38 @@ $content .= "
 		</div>
 	</div>
 	<br />
+	<div id=\"newurl\" class=\"floatingdialog\">
+		<h3 class=\"center\">{$lang['newurl_title']}</h3>
+		<p style=\"text-align: center;\">{$lang['newurl_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/app/add_url_action\" method=\"post\" class=\"center\">
+				<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
+				<input type=\"hidden\" name=\"branch\" value=\"{$_SESSION['DATA'][$app['id']]['branch']}\" />
+				<fieldset>
+					<select name=\"url\">";
+foreach( $domains as $d )
+{
+	$content .= "		<optgroup label=\"{$d['hostname']}\">
+							<option value=\"{$d['hostname']}\">{$d['hostname']}</option>
+	";
+
+	$subdomains = api::send('self/subdomain/list', array('domain' => $d['hostname']));
+	foreach( $subdomains as $s )
+		$content .= "			<option value=\"{$s['hostname']}\">{$s['hostname']}</option>";
+		
+	$content .= " 			</optgroup>";
+}
+
+$content .= "
+					</select>
+					<span class=\"help-block\">{$lang['help_url']}</span>
+				</fieldset>
+				<fieldset>
+					<input autofocus type=\"submit\" value=\"{$lang['add_url']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
 	<div id=\"newbranch\" class=\"floatingdialog\">
 		<h3 class=\"center\">{$lang['newbranch_title']}</h3>
 		<p style=\"text-align: center;\">{$lang['newbranch_text']}</p>
@@ -266,6 +300,7 @@ $content .= "
 		<a style=\"width: 150px; margin: 0 auto;\" href=\"/panel/app/del_action?id={$app['id']}\" class=\"button classic\">{$lang['delete_now']}</a>
 	</div>
 	<script>
+		newFlexibleDialog('newurl', 550);
 		newFlexibleDialog('newbranch', 550);
 		newFlexibleDialog('settings', 550);
 		newDialog('delete', 550, 170);

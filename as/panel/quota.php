@@ -41,12 +41,13 @@ $disk['max'] = round($disk['max']/1024, 2) . " {$lang['gb']}";
 if( $disk['used'] >= 1024 )
 	$disk['used'] = round($disk['used']/1024, 2) . " {$lang['gb']}";
 else
-	$disk['used'] = "{$disk['used']} {$lang['gb']}";
+	$disk['used'] = "{$disk['used']} {$lang['mb']}";
+	
 $mem['max'] = round($mem['max']/1024, 2) . " {$lang['gb']}";
 if( $mem['used'] >= 1024 )
 	$mem['used'] = round($mem['used']/1024, 2) . " {$lang['gb']}";
 else
-	$mem['used'] = "{$mem['used']} {$lang['gb']}";
+	$mem['used'] = "{$mem['used']} {$lang['mb']}";
 	
 $content = "
 		<div class=\"panel\">

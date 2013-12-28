@@ -51,6 +51,11 @@ push_title = "Mettre à jour le code"
 push_text = "Pour mettre à jour le code de votre application, vous disposez d'accès <i>Git</i> et <i>FTP/SFTP</i>.
 <br />N'hésitez pas à consulter la <a href='/doc/publish'>documentation</a> pour avoir plus d'information."
 
+newurl_title = "Ajouter une adresse"
+newurl_text = "Merci de sélectionner l'adresse que vous désirez lier à cette branche."
+add_url = "Ajouter"
+help_url = "Ces adresses sont tirées de vos sous-domaines disponibles."
+
 newbranch_title = "Créer une nouvelle branche"
 newbranch_text = "Merci de choisir le nom de la banche à ajouter."
 add_branch = "Ajouter"

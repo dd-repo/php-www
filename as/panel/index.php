@@ -27,7 +27,7 @@ $quota['max'] = round($quota['max']/1024, 2) . " {$lang['gb']}";
 if( $quota['used'] >= 1024 )
 	$quota['used'] = round($quota['used']/1024, 2) . " {$lang['gb']}";
 else
-	$quota['used'] = "{$quota['used']} {$lang['gb']}";
+	$quota['used'] = "{$quota['used']} {$lang['mb']}";
 		
 $content = "
 	<div class=\"panel\">
