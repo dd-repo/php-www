@@ -276,7 +276,7 @@ $content .= "
 		function geturls()
 		{
 			$('#loading').show();
-			$('#urls').load('/panel/app/ajax_urls', function()
+			$('#urls').load('/panel/app/ajax_urls?id={$app['id']}', function()
 			{
 				$('#loading').hide();
 			});

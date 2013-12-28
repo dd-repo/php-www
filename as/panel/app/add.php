@@ -84,7 +84,7 @@ $content = "
 					<br />					
 				</div>
 			</a>
-			<a href=\"#\" onclick=\"$('#runtime').val('php'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
+			<a href=\"#\" onclick=\"$('#runtime').val('python'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-python.png\" alt=\"Python\"><span class=\"large\">Python</span></p>
 					<div class=\"overline\">2.7.4</div>

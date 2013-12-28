@@ -38,7 +38,7 @@ $content = "
 				<h2 class=\"dark title\">".($userinfo['firstname']?"{$userinfo['firstname']} {$userinfo['lastname']}":"{$lang['nolastname']}")."</h2>
 			</div>
 			<div class=\"right\" style=\"width: 450px;\">
-				<span style=\"block; float: left; padding-top: 7px; font-size: 18px; color: #878787;\">{$lang['memory']}</span>
+				<span style=\"block; float: left; padding-top: 7px; font-size: 18px; color: #878787;\">{$lang['memory2']}</span>
 				<div style=\"float: right;\">
 					<div class=\"fillgraph\" style=\"margin-top: 10px;\">
 						<small style=\"width: {$percent}%;\"></small>

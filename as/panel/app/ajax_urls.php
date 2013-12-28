@@ -7,10 +7,12 @@ if( !defined('PROPER_START') )
 }
 $domains = api::send('self/domains/list');
 
+$id = security::encode($_GET['id']);
+
 $content = "
 			<form action=\"/panel/app/add_url_action\" method=\"post\" class=\"center\">
-				<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
-				<input type=\"hidden\" name=\"branch\" value=\"{$_SESSION['DATA'][$app['id']]['branch']}\" />
+				<input type=\"hidden\" name=\"id\" value=\"{$id}\" />
+				<input type=\"hidden\" name=\"branch\" value=\"{$_SESSION['DATA'][$id]['branch']}\" />
 				<fieldset>
 					<select name=\"url\">";
 foreach( $domains as $d )
