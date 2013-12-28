@@ -45,19 +45,19 @@ foreach( $app['branches'] as $key => $value )
 	$content .= "<a href=\"/panel/app/show?id={$app['id']}&branch={$key}\" class=\"branch ".($key==$_SESSION['DATA'][$app['id']]['branch']?"active":"")."\">{$key}</a>";
 
 $content .= "
-					<a href=\"#\" class=\"branch\">+</a>
+					<a href=\"#\" class=\"branch\" onclick=\"$('#newbranch').dialog('open'); return false;\">+</a>
 				</div>
 			</div>
 			<div class=\"right\" style=\"width: 600px; float: right; text-align: right;\">
 				<a class=\"action settings big\" href=\"#\" onclick=\"$('#settings').dialog('open'); return false;\">
 					{$lang['settings']}
 				</a>
-				<a class=\"action push big\" href=\"#\">
+				<a class=\"action push big\" href=\"#\" onclick=\"$('#push').dialog('open'); return false;\">
 					{$lang['push']}
 				</a>
-				<a class=\"action delete big\" href=\"#\">
+				<a class=\"action delete big\" href=\"#\" onclick=\"$('#delete').dialog('open'); return false;\">
 					{$lang['delete']}
-				</a>					
+				</a>
 			</div>
 			<div class=\"clear\"></div><br /><br />
 		</div>
@@ -183,13 +183,40 @@ $content .= "
 		</div>
 	</div>
 	<br />
-	<div id=\"new\" class=\"floatingdialog\">
-		<h3 class=\"center\">{$lang['changepass']}</h3>
-		<p style=\"text-align: center;\">{$lang['changepass_text']}</p>
+	<div id=\"newbranch\" class=\"floatingdialog\">
+		<h3 class=\"center\">{$lang['newbranch_title']}</h3>
+		<p style=\"text-align: center;\">{$lang['newbranch_text']}</p>
 		<div class=\"form-small\">		
-			<form action=\"/panel/settings/update_action\" method=\"post\" class=\"center\">
+			<form action=\"/panel/app/add_env_action\" method=\"post\" class=\"center\">
+				<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
 				<fieldset>
-					<input type=\"password\" name=\"pass\" />
+					<select name=\"branch\">
+						<option value=\"production\">production</option>
+						<option value=\"develop\">develop</option>
+						<option value=\"recipe\">recipe</option>
+						<option value=\"staging\">staging</option>
+						<option value=\"testing\">testing</option>
+					</select>
+					<span class=\"help-block\">{$lang['help_branch']}</span>
+				</fieldset>
+				<fieldset>
+					<input autofocus type=\"submit\" value=\"{$lang['add_branch']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<div id=\"settings\" class=\"floatingdialog\">
+		<h3 class=\"center\">{$lang['settings_title']}</h3>
+		<p style=\"text-align: center;\">{$lang['settings_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/app/update_action\" method=\"post\" class=\"center\">
+				<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
+				<fieldset>
+					<input type=\"text\" name=\"tag\" value=\"{$app['tag']}\" />
+					<span class=\"help-block\">{$lang['tag_help']}</span>
+				</fieldset>
+				<fieldset>
+					<input type=\"password\" name=\"newpassword\" />
 					<span class=\"help-block\">{$lang['pass_help']}</span>
 				</fieldset>
 				<fieldset>
@@ -202,8 +229,47 @@ $content .= "
 			</form>
 		</div>
 	</div>
+	<div id=\"push\" class=\"floatingdialog\">
+		<h3 class=\"center\" style=\"padding-top: 5px;\">{$lang['push_title']}</h3>
+		<p style=\"text-align: center;\">{$lang['push_text']}</p>
+		<br />
+		<table>
+			<tr>
+				<th>{$lang['type']}</th>
+				<th>{$lang['infos']}</th>
+				<th>{$lang['user']}</th>
+				<th>{$lang['port']}</th>
+			</tr>
+			<tr>
+				<td><span class=\"large\">GIT</span></td>
+				<td>ssh://git.as/~".security::get('USER')."/{$app['name']}.git</td>
+				<td>{$app['name']}</td>
+				<td>22</td>
+			</tr>
+			<tr>
+				<td><span class=\"large\">SFTP</span></td>
+				<td>sftp://ftp.anotherservice.com</td>
+				<td>{$app['name']}</td>
+				<td>22</td>
+			</tr>				
+			<tr>
+				<td><span class=\"large\">FTP</span></td>
+				<td>ftp://ftp.anotherservice.com</td>
+				<td>{$app['name']}</td>
+				<td>21</td>
+			</tr>
+		</table>
+	</div>
+	<div id=\"delete\" class=\"floatingdialog\">
+		<h3 class=\"center\" style=\"padding-top: 5px;\">{$lang['delete_title']}</h3>
+		<p style=\"text-align: center;\">{$lang['delete_text']}</p>
+		<a style=\"width: 150px; margin: 0 auto;\" href=\"/panel/app/del_action?id={$app['id']}\" class=\"button classic\">{$lang['delete_now']}</a>
+	</div>
 	<script>
-		newDialog('new', 550, 350);
+		newFlexibleDialog('newbranch', 550);
+		newFlexibleDialog('settings', 550);
+		newDialog('delete', 550, 170);
+		newDialog('push', 700, 330);
 	</script>	
 ";
 

@@ -11,6 +11,6 @@ api::send('self/app/update', array('app'=>$_POST['id'], 'branch' => $_POST['bran
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	$template->redirect('/panel/app/show?id=' . $_POST['id']);
+	$template->redirect('/panel/app/show?id=' . security::encode($_POST['id']) . '&branch=' . security::encode($_POST['branch']));
 
 ?>
