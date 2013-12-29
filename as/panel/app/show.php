@@ -29,7 +29,7 @@ $language = $expl[0];
 $content = "
 	<div class=\"panel\">
 		<div class=\"top\">
-			<div class=\"left\" style=\"width: 500px;\">
+			<div class=\"left\" style=\"width: 400px;\">
 				<img style=\"display: block; float: left; margin-right: 20px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" alt=\"\" />
 				<div style=\"float: left;\">
 					<span style=\"font-size: 25px; display: block; margin-bottom: 4px;\">{$app['tag']}</span>
@@ -43,9 +43,12 @@ $content .= "
 					<a href=\"#\" class=\"branch\" onclick=\"$('#newbranch').dialog('open'); return false;\">+</a>
 				</div>
 			</div>
-			<div class=\"right\" style=\"width: 600px; float: right; text-align: right;\">
+			<div class=\"right\" style=\"width: 700px; float: right; text-align: right;\">
 				<a class=\"action settings big\" href=\"#\" onclick=\"$('#settings').dialog('open'); return false;\">
 					{$lang['settings']}
+				</a>
+				<a class=\"action pass big\" href=\"#\" onclick=\"$('#changepass').dialog('open'); return false;\">
+					{$lang['changepass']}
 				</a>
 				<a class=\"action push big\" href=\"#\" onclick=\"$('#push').dialog('open'); return false;\">
 					{$lang['push']}
@@ -190,9 +193,32 @@ $content .= "
 			<form action=\"/panel/app/update_action\" method=\"post\" class=\"center\">
 				<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
 				<fieldset>
-					<input type=\"text\" name=\"tag\" value=\"{$app['tag']}\" />
+					<input style=\"width: 400px;\" type=\"text\" name=\"tag\" value=\"{$app['tag']}\" />
 					<span class=\"help-block\">{$lang['tag_help']}</span>
 				</fieldset>
+				<fieldset>
+					<select style=\"width: 420px;\" name=\"cache\" style=\"text-align: center;\">
+						<option ".($app['cache']!=1?"selected":"")." value=\"0\" style=\"text-align: center;\">{$lang['inactive']}</option>
+						<option ".($app['cache']==1?"selected":"")." value=\"1\" style=\"text-align: center;\">{$lang['active']}</option>
+					</select>
+					<span class=\"help-block\">{$lang['cache_help']}</span>
+				</fieldset>
+				<fieldset>
+					<input disabled style=\"width: 400px;\" type=\"text\" name=\"tag\" value=\"".($app['binary']?"{$lang['command']} {$app['binary']}":str_replace('{BRANCH}', security::encode($_SESSION['DATA'][$app['id']]['branch']), $lang['binary_' . $language]))."\" />
+					<span class=\"help-block\">{$lang['binary_help']}</span>
+				</fieldset>
+				<fieldset>	
+					<input autofocus type=\"submit\" value=\"{$lang['update']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<div id=\"changepass\" class=\"floatingdialog\">
+		<h3 class=\"center\">{$lang['changepassword_title']}</h3>
+		<p style=\"text-align: center;\">{$lang['changepassword_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/app/update_action\" method=\"post\" class=\"center\">
+				<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
 				<fieldset>
 					<input type=\"password\" name=\"newpassword\" />
 					<span class=\"help-block\">{$lang['pass_help']}</span>
@@ -264,6 +290,7 @@ $content .= "
 		newFlexibleDialog('newurl', 550);
 		newFlexibleDialog('newbranch', 550);
 		newFlexibleDialog('settings', 550);
+		newFlexibleDialog('changepass', 550);
 		newDialog('delete', 550, 170);
 		newDialog('push', 700, 330);
 		newFlexibleDialog('alert', 550);

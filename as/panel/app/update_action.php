@@ -6,10 +6,16 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
+$params = array('app'=>$_POST['id']);
+
 if( strlen($_POST['newpassword']) > 2 && $_POST['newpassword'] == $_POST['confirm'] )
-	api::send('self/app/update', array('app'=>$_POST['id'], 'tag' => $_POST['tag'], 'pass' => $_POST['newpassword']));
-else
-	api::send('self/app/update', array('app'=>$_POST['id'], 'tag' => $_POST['tag']));
+	$params['pass'] = $_POST['newpassword'];
+if( isset($_POST['tag']) )
+	$params['tag'] = $_POST['tag'];
+if( isset($_POST['cache']) )
+	$params['cache'] = $_POST['cache'];
+	
+api::send('self/app/update', $params);
 
 $_SESSION['MESSAGE']['TYPE'] = 'success';
 $_SESSION['MESSAGE']['TEXT']= $lang['success'];
