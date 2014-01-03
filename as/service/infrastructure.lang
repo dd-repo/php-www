@@ -8,7 +8,7 @@ datacenters_text = "Notre approche de l'infrastructure est avant tout d'assurer 
 d'interconnexions et les emplacements géographiques en France. Grâce à notre partenaire <a href='http://www.interxion.com'>Interxion</a>, nous disposons d'une fibre noire dédiée entre les datacenters parisiens dans lesquels
 nous sommes présents. <br /><br />De plus, Another Service dispose d'un port gigabit sur le point de peering <a href='https://www.franceix.net'>FranceIX</a>. Cela nous permet d'accroître nos capacités de transits vers 
 les principaux opérateurs français et nos autres fournisseurs comme <a href='https://www.ovh.com'>OVH</a> et <a href='https://www.online.net'>Online</a>. Notre réseau est donc entièrement redondé, les services
-tournent en parallèle dans plusieurs centres de données différent afin d'assurer une répartition des charges et une résiliance optimale."
+tournent en parallèle dans plusieurs centres de données différents afin d'assurer une répartition des charges et une résiliance optimale."
 
 virt = "Stockage et virtualisation"
 virt_text = "L'infrastructure d'Another Service repose sur un cluster de serveurs physiques <a href='http://www.proxmox.com'>Proxmox</a> qui assure la gestion et la redondance des machines virtuelles. Nous avons développé nos 

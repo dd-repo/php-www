@@ -16,6 +16,7 @@ else if( $_GET['branch'] )
 
 $memory = 0;
 $instances = 0;
+$memoryone = 0;
 foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] as $i )
 {
 	$memoryone = $i['memory']['quota'];

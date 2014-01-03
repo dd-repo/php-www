@@ -13,7 +13,7 @@ $content = "
 				<div class=\"container\" style=\"text-align: center;\">
 					<h1 class=\"dark\" style=\"text-align: center;\">{$lang['title']}</h1>
 					<br />
-					<a class=\"button classic\" href=\"/news/rss\" style=\"width: 120px; height: 23px; padding: 8px 5px 3px 8px;  margin: 0; display: inline-block; font-size: 12px;\">
+					<a class=\"button classic\" href=\"/blog/rss\" style=\"width: 120px; height: 23px; padding: 8px 5px 3px 8px;  margin: 0; display: inline-block; font-size: 12px;\">
 						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/rss.png\" />
 						<span style=\"display: block; padding-top: 3px;\">{$lang['rss']}</span>
 					</a>
