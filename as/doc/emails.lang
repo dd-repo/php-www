@@ -1,0 +1,20 @@
+[EN]
+
+
+[FR]
+title = "Utilisateurs et groupes"
+intro = "Introduction"
+intro_text = "Les <i>utilisateurs</i> sont avant tout des <span style='font-weight: bold;'>comptes mails</span>, ils ont également un accès aux <a href='/doc/cloud'>applications cloud</a> Another Service. Les groupes
+sont en revanche uniquement des éléments permettant d'ajuster les droits des utilisateurs sur les applications ou les dépôts."
+users = "Les utilisateurs"
+users_text1 = "Pour créer des utilisateurs, vous avez besoin d'un nom de domaine, une fois créé, vous pouvez en ajouter autant que nécessaire."
+users_text2 = "Pour créer un utilisateur, remplissez simplement le formulaire correspondant."
+users_text3 = "Les groupes s'ajoutent de la même manière que les utilisateurs."
+users_text4 = ""
+manage = "Gestion des utilisateurs"
+manage_text = "Vous pouvez éditer les paramètres d'un utilisateurs comme ses informations, ses redirections et ses alias. Une redirection correspond à un réacheminement des messages du compte mail vers l'adresse
+de redirection, tandis qu'un alias permet de recevoir les messages d'un autre compte mail du même domaine."
+manageg = "Gestion des groupes"
+manageg_text = "La gestion des appartenances à un groupe se passe directement dans la page de chaque utilisateur. Vous pouvez néanmoins modifier les informations basiques d'un groupe."
+
+back = "Retour"

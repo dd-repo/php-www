@@ -24,20 +24,22 @@ $content = "
 			<h3>{$lang['intro']}</h3>
 			<p class=\"large\">{$lang['intro_text']}</p>
 			<br />
-			<blockquote style=\"width: 500px; margin: 0 auto;\">
-				<p>
-					<span style=\"font-weight: bold;\">{$lang['primary']}</span> ns1.anotherservice.com - 178.32.167.250<br />
-					<span style=\"font-weight: bold;\">{$lang['secondary']}</span> ns2.anotherservice.com - 178.32.65.70
-				</p>
-			</blockquote>
+			<h3>{$lang['users']}</h3>
+			<p class=\"large\">{$lang['users_text1']}</p>
+			<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/13.png\" alt=\"1\" />
 			<br />
-			<p class=\"large\">{$lang['intro2_text']}</p>
-			<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/1.png\" alt=\"1\" />
-			<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/2.png\" alt=\"2\" />
+			<p class=\"large\">{$lang['users_text2']}</p>
+			<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/19.png\" alt=\"1\" />	
+			<br />
+			<p class=\"large\">{$lang['users_text3']}</p>
 			<br />
 			<h3>{$lang['manage']}</h3>
 			<p class=\"large\">{$lang['manage_text']}</p>
-			<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/18.png\" alt=\"1\" />
+			<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/20.png\" alt=\"1\" />
+			<br />
+			<h3>{$lang['manageg']}</h3>
+			<p class=\"large\">{$lang['manageg_text']}</p>
+			<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/21.png\" alt=\"1\" />
 			<p class=\"large\" style=\"text-align: center;\">
 				{$lang['end']}<br /><br />
 				<a class=\"button classic\" style=\"width: 120px; margin: 0 auto;\" href=\"/doc/concepts\">{$lang['back']}</a>

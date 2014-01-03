@@ -13,9 +13,9 @@ domain_text = "Dans la rubrique <a href='/panel/domain'><strong>domaines</strong
 app = "Création de l'application"
 app_text = "Pour créer une application, il faut vous rendre sur la page d'accueil de votre <a href='/panel'>panel</a>. La première étape est de choisir le type d'application que vous voulez déployer. Dans cet exemple, nous 
 traitons d'une application PHP Web simple."
-app_text_2 = "Cliquer sur <a href='/panel/app/add'>ajouter une application</a> puis sélectionner le langage et/ou le framework correspondant à vos besoins."
+app_text2 = "Remplissez le formulaire puis sélectionner le langage et/ou le framework correspondant à vos besoins."
 app_text3 = "Choisir ensuite le mot de passe de l'application qui servira pour les accès Git, SSH ou FTP, vous pouvez également ajouter une description afin d'identifier vos applications."
-app_text_4 = "La première étape est terminée, l'application est présente sur la plateforme."
+app_text4 = "La première étape est terminée, l'application est présente sur la plateforme."
 publish = "Publication du contenu"
 publish_text = "Voyons maintenant comment publier du contenu sur cette application, sur l'aperçu, il y a de nombreuses informations. Inutile de vous préoccuper des branches et des processus pour le moment."
 publish2_text = "En bas de cette page, vous avez les informations de publication. Vous pouvez publier vos données en FTP, SFTP et GIT. "
