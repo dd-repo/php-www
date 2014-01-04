@@ -34,7 +34,7 @@ $content = "
 				{$news['content']}
 <!-- FIN ARTICLE -->
 				<br />
-				<a class=\"button classic\" style=\"float: right\" href=\"https://community.olympe.in/category/annonces\">{$lang['react']}</a>
+				<a class=\"button classic\" style=\"float: right\" href=\"/blog\">{$lang['back']}</a>
 				<div class=\"clear\"></div>
 				<br />
 			</div>
