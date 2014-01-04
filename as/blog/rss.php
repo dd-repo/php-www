@@ -6,16 +6,18 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$lang = translator::getLanguage();
+header("Content-Type: text/xml");
 
 $news = api::send('news/list', array('limit'=>10), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
 $xml = "
-<?xml version=\"1.0\" encoding=\"iso-8859-1\"?><rss version=\"2.0\">
+<rss version=\"2.0\">
 	<channel> 
 		<title>{$lang['channel']}</title>
-		<link>https://www.anotherservice.com</link>
+		<link>http://www.olympe.in</link>
 		<description>{$lang['description']}</description>
+		<language>".translator::getLanguage()."</language>
+		<managingEditor>contact@olympe.in</managingEditor>
 ";
 
 foreach( $news as $n )
@@ -23,16 +25,16 @@ foreach( $news as $n )
 	$xml .= "
 			<item>
 				<title>{$n['title']}</title>
-				<link>https://www.anotherservice.com/blog/post?id={$n['id']}</link>
-				<pubDate>."date("D, d M Y H:i:s", $n['date'])." GMT</pubDate> 
+				<link>http://www.olympe.in/blog/post?id={$n['id']}</link>
+				<pubDate>".date("D, d M Y H:i:s", $n['date'])." GMT</pubDate> 
 				<description>{$n['description']}</description>
 			</item>
 	";
 }
 
-$content .= "
+$xml .= "
 	</channel>
 </rss>
 ";
 
-echo $content;
+echo $xml;
