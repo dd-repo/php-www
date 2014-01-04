@@ -1,0 +1,24 @@
+[EN]
+
+
+[FR]
+title = "Panel et outils développés"
+panel = "Le panel et l'API"
+panel_text = "Afin que chacun puisse contribuer et améliorer le panel selon ses besoins, nous avons ouvert son code source à la modification. Cela permet à la fois de faire vérifier la robustesse des procédures et des
+sécurités en place, mais également de permettre à tous les utilisateurs de développer de nouvelles fonctionnalités. Il s'agit de pages HTML/PHP (Javascript) qui interrogent 
+l'<a href='https://api.olympe.in'>API</a> dont le code est également ouvert si des fonctions supplémentaires sont nécessaires.."
+
+modules = "Modules PHP"
+modules_text = "Pour les besoins d'Olympe, notamment en terme de sécurité, nous avons eu besoin de développer deux nouvelles extensions PHP (suPHP et Override). Le premier permet de chowner le processus
+PHP à la volée (que ce soit en CGI ou en Fast-CGI) avec l'UID du propriétaire du script. Le second donne la possibilité d'écraser n'importe quelle fonction built-in de PHP avec une fonction personnalisée (quota sur <i>mail()</i>, 
+vérifications sur <i>shell_exec()</i> etc...)."
+
+phpkiller = "PHP Killer"
+phpkiller_text = "PHP Killer est un programme en JAVA permettant de surveiller le comportement des processus PHP CGI et ainsi d'assurer la fluidité de la plateforme. Il intègre notamment une horloge surveillant le temps
+d'exécution, la mémoire et le CPU utilisé par les processus. En cas d'anomalie, un système de liste blanche/grise/noire permet d'ajuster la fiabilité des scripts et donc de prévenir les erreurs ou les abus."
+
+ftpfilter = "FTP Filter"
+ftpfilter_text = "Récemment amélioré pour supporter les logs SFTP, FTP filter est un programme en JAVA qui analyse en temps réel les logs d'upload sur la plateforme et va ensuite scanner les fichiers avec un certain nombre de règles
+et d'actions définies dans la configuration. Il sert notamment à éliminer les virus et phishing les plus répandus, à émettre des alertes en cas de comportement anormal..."
+
+access = "Accéder aux codes"

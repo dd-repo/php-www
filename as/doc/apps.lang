@@ -1,0 +1,11 @@
+[EN]
+
+
+[FR]
+title = "Application"
+intro = "Création"
+intro_text1 = "Pour créer une application, il faut remplir le formulaire des informations de base de l'application."
+intro_text2 = "Puis sélectionner le langage et le framework dont vous avez besoin."
+manage = "Gestion"
+manage_text = ""
+back = "Retour"

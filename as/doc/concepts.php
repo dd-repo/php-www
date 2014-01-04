@@ -35,7 +35,7 @@ $content = "
 			<br />
 			<a href=\"/doc/apps\"><h3>{$lang['app']}</h3></a>
 			<p class=\"large\">{$lang['app_text']}</p>
-			<a href=\"/doc/apps\"><img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/3.png\" alt=\"3\" /></a>
+			<a href=\"/doc/apps\"><img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/6.png\" alt=\"3\" /></a>
 			<br />
 			<a href=\"/doc/branches\"><h3>{$lang['branches']}</h3></a>
 			<p class=\"large\">{$lang['branches_text']}</p>
