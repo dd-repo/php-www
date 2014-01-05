@@ -3,7 +3,7 @@
 [FR]
 
 by = "par"
-DATEFORMAT = "d F Y"
+DATEFORMAT = "j F Y"
 December = "décembre"
 January = "janvier"
 

@@ -7,7 +7,7 @@ rss = "S'abonner"
 follow = "Suivre"
 read = "Lire la suite"
 by = "par"
-DATEFORMAT = "d F Y"
+DATEFORMAT = "j F Y"
 December = "décembre"
 January = "janvier"
 
