@@ -14,10 +14,10 @@ $xml = "
 <rss version=\"2.0\">
 	<channel> 
 		<title>{$lang['channel']}</title>
-		<link>http://www.olympe.in</link>
+		<link>http://www.anotherservice.com</link>
 		<description>{$lang['description']}</description>
 		<language>".translator::getLanguage()."</language>
-		<managingEditor>contact@olympe.in</managingEditor>
+		<managingEditor>contact@anotherservice.com</managingEditor>
 ";
 
 foreach( $news as $n )
@@ -25,7 +25,7 @@ foreach( $news as $n )
 	$xml .= "
 			<item>
 				<title>{$n['title']}</title>
-				<link>http://www.olympe.in/blog/post?id={$n['id']}</link>
+				<link>http://www.anotherservice.com/blog/post?id={$n['id']}</link>
 				<pubDate>".date("D, d M Y H:i:s", $n['date'])." GMT</pubDate> 
 				<description>{$n['description']}</description>
 			</item>

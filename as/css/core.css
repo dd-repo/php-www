@@ -289,7 +289,6 @@ div.article {
 img.blogimage {
 	display: block;
 	margin: 0 auto;
-	width: 700px;
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	line-height: 25px;
 	padding: 10px;

@@ -26,7 +26,7 @@ foreach( $response['monitors']['monitor'] as $m )
 }
 
 $content = "
-		<div class=\"head\" style=\"background-color: #7bbb51; background-image: url('/on/images/dotgrid-black.png'); margin-bottom: 0;\">
+		<div class=\"head\" style=\"background-color: #7bbb51; background-image: url('/{$GLOBALS['CONFIG']['SITE']}/images/dotgrid-black.png'); margin-bottom: 0;\">
 			<br />
 			<h1>{$lang['online']}</h1>
 			<h2 style=\"margin: 15px 0 15px 0; color: #ffffff;\">".date('M d Y H:i')."</h2>

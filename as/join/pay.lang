@@ -27,3 +27,5 @@ offer_5_desc = "128 services inclus, 50Go d'espace disque persistant"
 offer_6_title = "Hebergement applicatif 64Go de memoire"
 offer_6_price = "1198.8"
 offer_6_desc = "256 services inclus, 50Go d'espace disque persistant"
+
+free_text = "L'offre que vous avez choisie est gratuite. Vous allez maintenant recevoir un email vous permettant de compléter votre procédure d'inscription."

@@ -19,6 +19,14 @@ $content = "
 			<table style=\"border: 0;\">
 				<tr style=\"border: 0;\">
 					<td style=\"border: 0;\">
+						<h3>{$lang['offer_99_title']}</h3>
+						<p style=\"margin-bottom: 0;\">{$lang['offer_99_desc']}</p>
+					</td>
+					<td style=\"border: 0;\"><span class=\"large\"><span class=\"colored\">{$lang['free']}</span></td>
+					<td style=\"border: 0;\"><a class=\"button classic\" href=\"#\" onclick=\"$('#plan').val('99'); $('#new').dialog('open'); return false;\">{$lang['select']}</a></td>
+				</tr>
+				<tr style=\"border: 0;\">
+					<td style=\"border: 0;\">
 						<h3>{$lang['offer_1_title']}</h3>
 						<p style=\"margin-bottom: 0;\">{$lang['offer_1_desc']}</p>
 					</td>
@@ -67,7 +75,7 @@ $content = "
 				</tr>
 			</table>
 		</div>
-		<div class=\"clear\"></div><br />
+		<div class=\"clear\"></div><br /><br />
 		
 		<div id=\"new\" style=\"display: none;\" class=\"floatingdialog\">
 			<h3 class=\"center\">{$lang['new']}</h3>

@@ -18,6 +18,11 @@ if( $result[0]['date'] < (time() - 864000) ) // 10 days
 
 switch( $result[0]['plan'] )
 {
+	case '99':
+		$ram = 256;
+		$services = 2;
+		$disk = 500;
+	break;
 	case '1':
 		$ram = 1024;
 		$services = 4;

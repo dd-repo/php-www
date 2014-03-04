@@ -12,11 +12,17 @@ try
 	$_SESSION['JOIN_EMAIL'] = $_POST['email'];
 	$_SESSION['JOIN_PLAN'] = $_POST['plan'];
 
-	api::send('registration/add', array('auth'=>'', 'user'=>$_POST['username'], 'plan' => $_POST['plan'], 'email'=>$_POST['email'], 'invitation'=>$_POST['code']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+	$registration = api::send('registration/add', array('auth'=>'', 'user'=>$_POST['username'], 'plan' => $_POST['plan'], 'email'=>$_POST['email'], 'invitation'=>$_POST['code']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 }
 catch( Exception $e )
 {
 	$template->redirect($_SERVER['HTTP_REFERER'] . (strstr($_SERVER['HTTP_REFERER'], 'eregisteradd')===false?"?eregisteradd":""));
+}
+
+if( $_POST['plan'] == '99' )
+{	
+	$email = str_replace(array('{USER}', '{EMAIL}', '{CODE}'), array(security::encode($_POST['username']), security::encode($_POST['email']), $registration['code']), $lang['content']);
+	mail($_POST['email'], $lang['subject'], str_replace(array('{TITLE}', '{CONTENT}'), array($lang['email_title'], $email), $GLOBALS['CONFIG']['MAIL_TEMPLATE']), "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\nFrom: Another Service <no-reply@anotherservice.com>\r\n");
 }
 
 $content = "
@@ -24,9 +30,13 @@ $content = "
 			<div class=\"container\" style=\"width: 1100px; margin: 0 auto; padding: 40px 0 40px 0;\">
 				<h1>{$lang['title']}</h1>
 			</div>
-		</div>	
+		</div>
 		<div class=\"content\" style=\"text-align: center;\">
 			<br />
+";
+if( $_POST['plan'] != '99' )
+{
+	$content .= "
 			<p style=\"font-size: 18px;\">{$lang['payment_text']}</p>
 			<br />
 			<br />
@@ -58,7 +68,15 @@ $content = "
 					<br />
 					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/transfer_disabled.png\" style=\"width: 150px;\" alt=\"\" />
 				</div>
+				<div class=\"clear\"></div><br />
 			</div>
+		";
+}
+else
+{
+	$content .= "{$lang['free_text']}";
+}
+$content .= "
 		</div>
 		<br />
 ";
