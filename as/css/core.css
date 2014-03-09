@@ -392,6 +392,34 @@ span.smalldate {
 	color: #fff;
 }
 
+div.grid {
+	display: block;
+	float: left;
+	text-align: center;
+	font-size: 10px;
+	margin: 0 5px 5px 0;
+}
+
+span.gridsquare  {
+	display: block;
+	float: left;
+	text-align: center;
+	font-size: 10px;
+	padding-top: 8px;
+	background-color: #9a9a9a;
+	color: #fff;
+	width: 30px;
+	height: 23px;
+}
+
+span.gridsquare.green {
+	background-color: #7bbb51;
+}
+
+span.gridsquare.orange {
+	background-color: #ee9f23;
+}
+
 img.newssmall {
 	display: block;
 	float: left;

@@ -17,6 +17,9 @@ $content = "
 		</div>	
 		<div class=\"content\">
 			<table style=\"border: 0;\">
+";
+
+/*
 				<tr style=\"border: 0;\">
 					<td style=\"border: 0;\">
 						<h3>{$lang['offer_99_title']}</h3>
@@ -25,6 +28,9 @@ $content = "
 					<td style=\"border: 0;\"><span class=\"large\"><span class=\"colored\">{$lang['free']}</span></td>
 					<td style=\"border: 0;\"><a class=\"button classic\" href=\"#\" onclick=\"$('#plan').val('99'); $('#new').dialog('open'); return false;\">{$lang['select']}</a></td>
 				</tr>
+*/
+
+$content .= "
 				<tr style=\"border: 0;\">
 					<td style=\"border: 0;\">
 						<h3>{$lang['offer_1_title']}</h3>

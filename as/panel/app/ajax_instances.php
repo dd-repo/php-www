@@ -90,7 +90,7 @@ foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] 
 					<td>{$i['port']}</td>
 					<td>".round($i['cpu']['usage']/10, 1)."% / {$i['cpu']['quota']} core</td>
 					<td>{$i['memory']['usage']}Mo / {$i['memory']['quota']}Mo</td>
-					<td>{$info['d']} {$lang['days']} {$info['h']} {$lang['hours']} {$info['m']} {$lang['minutes']} {$info['s']} {$lang['seconds']} </td>
+					<td>{$info['d']} {$lang['days']} {$info['h']} {$lang['hours']} {$info['m']} {$lang['minutes']} {$info['s']} {$lang['seconds']}</td>
 					<td>".($running?"<div class=\"state running\"><div class=\"state-content\">{$lang['running']}</div></div>":"<div class=\"state stopped\"><div class=\"state-content\">{$lang['stopped']}")."</div></div></td>
 				</tr>
 	";
