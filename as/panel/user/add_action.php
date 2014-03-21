@@ -6,7 +6,6 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-//api::send('self/domain/update', array('domain'=>$_POST['domain'], 'mailer'=>1));
 api::send('self/account/add', array('account'=>$_POST['mail'], 'domain'=>$_POST['domain'], 'pass'=>$_POST['password'], 'firstname'=>$_POST['firstname'], 'lastname'=>$_POST['lastname']));
 
 if( isset($_GET['redirect']) )

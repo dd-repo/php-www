@@ -57,6 +57,9 @@ $content = "
 								<input style=\"width: 250px;\" type=\"text\" value=\"{$arecord}\" name=\"domain_arecord\" />
 								<span class=\"help-block\">{$domain['hostname']}</span>
 							</fieldset>
+							<fieldset>
+								<input type=\"checkbox\" value=\"1\" name=\"domain_mailer\" ".($domain['mailHost']?"checked":"")." /> {$lang['mailer']}
+							</fieldset>
 							<fieldset>				
 								<input type=\"submit\" value=\"{$lang['update']}\" />
 							</fieldset>
