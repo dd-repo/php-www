@@ -1,6 +1,9 @@
 [EN]
 
 [FR]
+impossible = "Cette offre ne comprend pas assez de RAM pour votre utilisation."
+uknown = "Ce plan n'existe pas !"
+success = "Votre offre a bien été modifiée. Nous vous remercions de votre confiance."
 subject = "Modification de votre offre"
 mail = "Bonjour {NAME},<br />
 <br />
@@ -9,3 +12,4 @@ Vous disposez maintenant de <strong>{OFFER}Mo de mémoire RAM</strong> et de <st
 Nous vous remercions de votre confiance.<br /><br />
 Cordialement,<br />
 L'équipe Another Service"
+

@@ -36,7 +36,7 @@ $content = "
 							<p style=\"margin-bottom: 0;\">{$lang['offer_1_desc']}</p>
 						</td>
 						<td><span class=\"large\"><span class=\"colored\">29&euro;</span> / {$lang['month']}</span></td>
-						<td>".($quota['max']==1024?"<span class=\"large colored\">{$lang['current']}</span>":"<a class=\"button classic\" href=\"#\" onclick=\"$('#plan').val('1'); $('#new').dialog('open'); return false;\">{$lang['select']}</a>")."</td>
+						<td>".($quota['max']==1024?"<span class=\"large colored\">{$lang['current']}</span>":"<a class=\"button classic\" href=\"/panel/plans/pay?plan=1\">{$lang['select']}</a>")."</td>
 					</tr>
 					<tr>
 						<td>
@@ -44,7 +44,7 @@ $content = "
 							<p style=\"margin-bottom: 0;\">{$lang['offer_2_desc']}</p>
 						</td>
 						<td><span class=\"large\"><span class=\"colored\">99&euro;</span> / {$lang['month']}</span></td>
-						<td>".($quota['max']==4096?"<span class=\"large colored\">{$lang['current']}</span>":"<a class=\"button classic\" href=\"#\" onclick=\"$('#plan').val('2'); $('#new').dialog('open'); return false;\">{$lang['select']}</a>")."</td>
+						<td>".($quota['max']==4096?"<span class=\"large colored\">{$lang['current']}</span>":"<a class=\"button classic\" href=\"/panel/plans/pay?plan=2\">{$lang['select']}</a>")."</td>
 					</tr>
 					<tr>
 						<td>
@@ -52,7 +52,7 @@ $content = "
 							<p style=\"margin-bottom: 0;\">{$lang['offer_3_desc']}</p>
 						</td>
 						<td><span class=\"large\"><span class=\"colored\">180&euro;</span> / {$lang['month']}</span></td>
-						<td>".($quota['max']==8192?"<span class=\"large colored\">{$lang['current']}</span>":"<a class=\"button classic\" href=\"#\" onclick=\"$('#plan').val('3'); $('#new').dialog('open'); return false;\">{$lang['select']}</a>")."</td>
+						<td>".($quota['max']==8192?"<span class=\"large colored\">{$lang['current']}</span>":"<a class=\"button classic\" href=\"/panel/plans/pay?plan=3\">{$lang['select']}</a>")."</td>
 					</tr>
 					<tr>
 						<td>
@@ -60,7 +60,7 @@ $content = "
 							<p style=\"margin-bottom: 0;\">{$lang['offer_4_desc']}</p>
 						</td>
 						<td><span class=\"large\"><span class=\"colored\">320&euro;</span> / {$lang['month']}</span></td>
-						<td>".($quota['max']==16384?"<span class=\"large colored\">{$lang['current']}</span>":"<a class=\"button classic\" href=\"#\" onclick=\"$('#plan').val('4'); $('#new').dialog('open'); return false;\">{$lang['select']}</a>")."</td>
+						<td>".($quota['max']==16384?"<span class=\"large colored\">{$lang['current']}</span>":"<a class=\"button classic\" href=\"/panel/plans/pay?plan=4\">{$lang['select']}</a>")."</td>
 					</tr>
 					<tr>
 						<td>
@@ -68,7 +68,7 @@ $content = "
 							<p style=\"margin-bottom: 0;\">{$lang['offer_5_desc']}</p>
 						</td>
 						<td><span class=\"large\"><span class=\"colored\">560&euro;</span> / {$lang['month']}</span></td>
-						<td>".($quota['max']==32768?"<span class=\"large colored\">{$lang['current']}</span>":"<a class=\"button classic\" href=\"#\" onclick=\"$('#plan').val('5'); $('#new').dialog('open'); return false;\">{$lang['select']}</a>")."</td>
+						<td>".($quota['max']==32768?"<span class=\"large colored\">{$lang['current']}</span>":"<a class=\"button classic\" href=\"/panel/plans/pay?plan=5\">{$lang['select']}</a>")."</td>
 					</tr>
 					<tr>
 						<td>
@@ -76,7 +76,7 @@ $content = "
 							<p style=\"margin-bottom: 0;\">{$lang['offer_6_desc']}</p>
 						</td>
 						<td><span class=\"large\"><span class=\"colored\">999&euro;</span> / {$lang['month']}</span></td>
-						<td>".($quota['max']==65536?"<span class=\"large colored\">{$lang['current']}</span>":"<a class=\"button classic\" href=\"#\" onclick=\"$('#plan').val('6'); $('#new').dialog('open'); return false;\">{$lang['select']}</a>")."</td>
+						<td>".($quota['max']==65536?"<span class=\"large colored\">{$lang['current']}</span>":"<a class=\"button classic\" href=\"/panel/plans/pay?plan=6\">{$lang['select']}</a>")."</td>
 					</tr>
 				</table>
 			</div>

@@ -20,7 +20,11 @@ foreach( $quotas as $q )
 		$quota = $q;
 }
 
-$percent = $quota['used']*100/$quota['max'];
+if( $quota['max'] == 0 )
+	template::redirect('/panel/plans');
+
+if( $quota['max'] > 0 )
+	$percent = $quota['used']*100/$quota['max'];
 
 $quota['max'] = round($quota['max']/1024, 2) . " {$lang['gb']}";
 
