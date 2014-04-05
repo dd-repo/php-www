@@ -16,42 +16,6 @@ if( count($result) == 0 )
 if( $result[0]['date'] < (time() - 864000) ) // 10 days
 	throw new SiteException('Outdated registration', 400, 'The registration is outdated : ' . date('Y-n-j', $result[0]['date']));
 
-switch( $result[0]['plan'] )
-{
-	case '1':
-		$ram = 1024;
-		$services = 4;
-		$disk = 1000;
-	break;
-	case '2':
-		$ram = 4096;
-		$services = 16;
-		$disk = 1000;
-	break;
-	case '3':
-		$ram = 8192;
-		$services = 32;
-		$disk = 10000;
-	break;
-	case '4':
-		$ram = 16384;
-		$services = 64;
-		$disk = 10000;
-	break;
-	case '5':
-		$ram = 32768;
-		$services = 128;
-		$disk = 50000;
-	break;	
-	case '6':
-		$ram = 65536;
-		$services = 256;
-		$disk = 50000;
-	break;
-	default:
-		exit();
-}
-
 // INSERT USER
 $result = api::send('user/add', array('user'=>$_POST['username'], 'pass'=>$_POST['password'], 'email'=>$_POST['email'], 'ip'=>$_SERVER['HTTP_X_REAL_IP'], 'firstname'=>'', 'lastname'=>'', 'language'=>translator::getLanguage()), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 $uid = $result['id'];
@@ -68,11 +32,11 @@ $token = $result['token'];
 
 // ADD USER QUOTAS
 api::send('quota/user/add', array('user'=>$uid, 'quotas'=>'APPS,DOMAINS,SERVICES,MEMORY,DISK'), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-api::send('quota/user/update', array('user'=>$uid, 'quota'=>'APPS', 'max'=>200), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-api::send('quota/user/update', array('user'=>$uid, 'quota'=>'DOMAINS', 'max'=>50), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-api::send('quota/user/update', array('user'=>$uid, 'quota'=>'SERVICES', 'max'=>$services), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-api::send('quota/user/update', array('user'=>$uid, 'quota'=>'MEMORY', 'max'=>$ram), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-api::send('quota/user/update', array('user'=>$uid, 'quota'=>'DISK', 'max'=>$disk), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+api::send('quota/user/update', array('user'=>$uid, 'quota'=>'APPS', 'max'=>0), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+api::send('quota/user/update', array('user'=>$uid, 'quota'=>'DOMAINS', 'max'=>0), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+api::send('quota/user/update', array('user'=>$uid, 'quota'=>'SERVICES', 'max'=>0), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+api::send('quota/user/update', array('user'=>$uid, 'quota'=>'MEMORY', 'max'=>0), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+api::send('quota/user/update', array('user'=>$uid, 'quota'=>'DISK', 'max'=>0), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
 $tracker = "<!-- Google Code for Nouveau compte Conversion Page -->
 <script type=\"text/javascript\">
@@ -82,7 +46,7 @@ var google_conversion_language = \"en\";
 var google_conversion_format = \"3\";
 var google_conversion_color = \"ffffff\";
 var google_conversion_label = \"q-ZJCJP36AMQhbn32wM\";
-var google_conversion_value = 30;
+var google_conversion_value = 1;
 /* ]]> */
 </script>
 <script type=\"text/javascript\" src=\"https://www.googleadservices.com/pagead/conversion.js\">
