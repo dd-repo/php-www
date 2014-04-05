@@ -34,7 +34,25 @@ $content = "
 				{$news['content']}
 <!-- FIN ARTICLE -->
 				<br />
-				<a class=\"button classic\" style=\"float: right\" href=\"/blog\">{$lang['back']}</a>
+				<div class=\"comments\">
+					<h1 class=\"dark thin\">{$lang['comments']}</h1>
+					<br />
+					<div id=\"disqus_thread\"></div>
+					<script type=\"text/javascript\">
+						/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+						var disqus_developer = 0; // developer mode
+						var disqus_shortname = 'anotherservice'; // required: replace example with your forum shortname
+						var disqus_identifier = 'Blog - {$news['id']}';
+						var disqus_url = 'https://www.anotherservice.com/blog/post?id={$news['id']}';
+						/* * * DON'T EDIT BELOW THIS LINE * * */
+						(function() {
+							var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+							dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+							(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+						})();
+					</script>
+				</div>
+				<br /><br />
 				<div class=\"clear\"></div>
 				<br />
 			</div>

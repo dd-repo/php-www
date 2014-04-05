@@ -49,11 +49,11 @@ else
 		
 		if( strcmp($res, "VERIFIED") == 0 )
 		{
-			$result = api::send('registration/select', array('email'=>$custom[0]), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-			$result = $result[0];
+			//$result = api::send('registration/select', array('email'=>$custom[0]), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+			//$result = $result[0];
 
-			$email = str_replace(array('{USER}', '{EMAIL}', '{CODE}'), array($custom[1], $custom[0], $result['code']), $lang['content']);
-			mail($custom[0], $lang['subject'], str_replace(array('{TITLE}', '{CONTENT}'), array($lang['email_title'], $email), $GLOBALS['CONFIG']['MAIL_TEMPLATE']), "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\nFrom: Another Service <no-reply@anotherservice.com>\r\n");
+		//	$email = str_replace(array('{USER}', '{EMAIL}', '{CODE}'), array($custom[1], $custom[0], $result['code']), $lang['content']);
+		//	mail($custom[0], $lang['subject'], str_replace(array('{TITLE}', '{CONTENT}'), array($lang['email_title'], $email), $GLOBALS['CONFIG']['MAIL_TEMPLATE']), "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\nFrom: Another Service <no-reply@anotherservice.com>\r\n");
 			mail('contact@anotherservice.com', '[Billing] New payment succeded', $message);
 		}
 		else if( strcmp($res, "INVALID") == 0 )

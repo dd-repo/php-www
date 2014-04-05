@@ -1,38 +1,17 @@
 [EN]
 
-
 [FR]
-title = "Inscription à la plateforme"
-subtitle = "Choix des offres."
-plans = "Liste des offres"
-intro = "Si vous avez des questions sur nos offres, n'hésitez pas à consulter <a href='/service/hosting'>les détails</a> ou à nous <a href='/about/contact'>contacter</a>."
-plan = "Offre"
-price = "Tarif"
-actions = "Actions"
-month = "mois"
-offer_99_title = "<span class='colored'>256Mo</span> de mémoire"
-offer_99_desc = "2 service inclus, 500Mo d'espace disque persistant"
-offer_1_title = "<span class='colored'>1Go</span> de mémoire"
-offer_1_desc = "4 services inclus, 1Go d'espace disque persistant"
-offer_2_title = "<span class='colored'>4Go</span> de mémoire"
-offer_2_desc = "16 services inclus, 1Go d'espace disque persistant"
-offer_3_title = "<span class='colored'>8Go</span> de mémoire"
-offer_3_desc = "32 services inclus, 10Go d'espace disque persistant"
-offer_4_title = "<span class='colored'>16Go</span> de mémoire"
-offer_4_desc = "64 services inclus, 10Go d'espace disque persistant"
-offer_5_title = " <span class='colored'>32Go</span> de mémoire"
-offer_5_desc = "128 services inclus, 50Go d'espace disque persistant"
-offer_6_title = " <span class='colored'>64Go</span> de mémoire"
-offer_6_desc = "256 services inclus, 50Go d'espace disque persistant"
-current = "Offre choisie"
-select = "Souscrire"
-free = "Gratuit"
 
-new = "Inscription sur Another Service"
-new_text = "Merci de choisir votre futur nom d'utilisateur."
-name = "Utilisateur"
-tipname = "Uniquement des minuscules, des chiffres et des points."
-tipemail = "Adresse email"
-create = "Continuer"
+subject = "Confirmation de votre compte sur Another Service"
+content = "Bonjour,<br /><br />
 
-error_user = "Cet utilisateur existe déjà, merci d'en choisir un autre."
+Merci de votre inscription sur Another Service ! Vous devez cliquer sur le lien suivant pour activer votre compte :<br /><br />
+<a href='https://{DOMAIN}/confirm?email={EMAIL}&code={CODE}' style='color: #de5711;'>https://{DOMAIN}/confirm?email={EMAIL}&code={CODE}</a><br /><br />
+
+Bonne publication, et n'hésitez pas à nous contacter pour nous transmettre votre retour d'expérience.<br /><br />
+Cordialement,<br />
+L'équipe Another Service"
+
+success = "Votre requête a bien été acceptée.<br />Vous allez recevoir un email contenant le lien de confirmation."
+error_mail = "Une erreur est survenue, le mail ne peut être envoyé.<br />Merci de réessayer plus tard."
+error_api = "Le format de votre adresse email est incorrect ou cette adresse est déjà utilisée."
