@@ -16,6 +16,7 @@ $content = "
 			<p style=\"font-size: 18px;\">{$lang['thanks_text']}</p>
 		</div>
 		<br /><br />
+	</div>
 ";
 
 /* ========================== OUTPUT PAGE ========================== */
