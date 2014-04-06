@@ -130,7 +130,7 @@ foreach( $apps2 as $a )
 						<td>{$a['name']}</td>
 						<td>{$lang['app']}</td>
 						<td>{$a['homeDirectory']}</td>
-						<td><span style=\"font-weight: bold;\">{$s['size']} {$lang['mb']}</span></td>
+						<td><span style=\"font-weight: bold;\">{$a['size']} {$lang['mb']}</span></td>
 					</tr>
 	";
 }
