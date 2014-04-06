@@ -1,0 +1,17 @@
+[EN]
+
+[FR]
+title = "Sauvegardes"
+type = "Type de sauvegarde"
+name = "Nom"
+date = "Date"
+actions = "Actions"
+
+dateformat = "d/m/Y H:i:s"
+doc = "Documentation"
+delete = "Supprimer"
+delete_text = "Êtes-vous sûr de vouloir supprimer cette sauvegarde ?"
+delete_now = "Confirmer"
+type_database = "Base de données"
+type_site = "Site Internet"
+nobackup = "Vous n'avez aucune sauvegarde."

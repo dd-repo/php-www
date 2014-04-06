@@ -84,6 +84,16 @@ foreach( $services as $s )
 }
 
 	$content .= "
+					<div class=\"clear\"></div><br />
+					<a class=\"button classic\" href=\"https://pma.anotherservice.com\" style=\"width: 140px; float: left;\">
+						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['pma']}</span>
+					</a>
+					<a class=\"button classic\" href=\"https://ppa.anotherservice.com\" style=\"width: 180px; float: left; margin-left: 20px;\">
+						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['ppa']}</span>
+					</a>
+	";
+	
+$content .= "
 		</div>		
 	</div>
 ";

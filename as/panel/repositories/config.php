@@ -272,9 +272,9 @@ $content .= "
 		</div>
 	</div>
 	<script>
-		newFlexibleDialog('newapp', 550);
-		newFlexibleDialog('newuser', 550);
-		newFlexibleDialog('newgroup', 550);
+		newDialog('newapp', 550, 500);
+		newDialog('newuser', 550, 500);
+		newDialog('newgroup', 550, 500);
 		newFlexibleDialog('delete', 550);
 	</script>
 	";

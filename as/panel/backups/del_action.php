@@ -6,11 +6,11 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-api::send('self/service/del', array('service'=>$_POST['service']));
+api::send('self/backup/del', array('id'=>$_GET['id']));
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	template::redirect('/panel/services');
+	template::redirect('/panel/backups');
 
 ?>

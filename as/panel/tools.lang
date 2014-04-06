@@ -1,7 +1,7 @@
 [EN]
 
 [FR]
-title = "Services"
+title = "Outils supplémentaires"
 stats = "Statistiques Piwik"
 stats_text = "Le système de <a href='/doc/stats'>statistiques Another Service</a> est basé sur Piwik, un équivalent libre de Google Analytics. Vos domaines ont automatiquement été ajoutés lors de leur création cependant, 
 vous devez tout de même insérer le code fourni par Piwik sur vos pages."

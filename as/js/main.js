@@ -69,7 +69,7 @@ function newDialog(name, width, height)
 	$("#" + name).dialog(
 	{
 		width: width,
-		height: height,
+		maxHeight: height,
 		autoOpen: false,
 		modal: true,
 		show: {

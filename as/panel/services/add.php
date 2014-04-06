@@ -24,14 +24,14 @@ $content = "
 					<br />		
 				</div>
 			</a>
-			<a href=\"#\" onclick=\"$('#vendor').val('postgresql'); $('#version').val('9.1'); $('#new').dialog('open'); return false;\">
+			<a href=\"#\" onclick=\"$('#vendor').val('pgsql'); $('#version').val('9.1'); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
-					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-postgresql.png\" alt=\"postgresql\"><span class=\"large\">PostgreSQL</span><br /><span style=\"color: #000000;\" class=\"small\">PostgreSQL Database Service</span></p>
+					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-pgsql.png\" alt=\"postgresql\"><span class=\"large\">PostgreSQL</span><br /><span style=\"color: #000000;\" class=\"small\">PostgreSQL Database Service</span></p>
 					<div class=\"overline\">9.1</div>
 					<br />					
 				</div>
 			</a>				
-			<a href=\"#\">
+			<a href=\"#\" onclick=\"$('#vendor').val('mongo'); $('#version').val('9.1'); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-mongodb.png\" alt=\"mongodb\"><span class=\"large\">MongoDB</span><br /><span style=\"color: #000000;\" class=\"small\">MongoDB datastore</span></p>
 					<div class=\"overline\">{$lang['soon']}</div>

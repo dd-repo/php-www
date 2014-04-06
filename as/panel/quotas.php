@@ -139,11 +139,11 @@ foreach( $services2 as $s )
 {
 	$content .= "
 					<tr>
-						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/database.png\" /></td>
-						<td>{$d['name']}</td>
-						<td>{$lang['database']} {$d['type']}</td>
-						<td>/databases/{$d['name']}</td>
-						<td><span style=\"font-weight: bold;\">{$d['size']} {$lang['mb']}</span></td>
+						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" /></td>
+						<td>{$s['name']}</td>
+						<td>{$lang['service']} {$s['vendor']}</td>
+						<td>/services/{$s['name']}</td>
+						<td><span style=\"font-weight: bold;\">{$s['size']} {$lang['mb']}</span></td>
 					</tr>
 	";
 }

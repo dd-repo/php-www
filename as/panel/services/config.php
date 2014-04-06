@@ -74,7 +74,6 @@ $content .= "
 					<th style=\"text-align: center; width: 40px;\">#</th>
 					<th>{$lang['server']}</th>
 					<th>{$lang['username']}</th>
-					<th>{$lang['password']}</th>
 					<th>{$lang['service']}</th>
 					<th>{$lang['load']}</th>
 					<th style=\"width: 50px;  text-align: center;\">{$lang['actions']}</th>
@@ -83,7 +82,6 @@ $content .= "
 					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/server.png\" /></td>
 					<td>{$service['host']}</td>
 					<td>{$service['name']}</td>
-					<td>**********</td>
 					<td>{$service['name']}</td>
 					<td>
 						<div class=\"fillgraph\" style=\"margin-top: 10px;\">
