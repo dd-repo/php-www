@@ -45,7 +45,7 @@ if( count($domains) > 0 )
 							<th>{$lang['domain']}</th>
 							<th>{$lang['arecord']}</th>
 							<th>{$lang['home']}</th>
-							<th>{$lang['actions']}</th>
+							<th style=\"width: 100px; text-align: center;\">{$lang['actions']}</th>
 						</tr>
 	";
 	
@@ -71,13 +71,13 @@ if( count($domains) > 0 )
 		
 		$content .= "
 						<tr>
-							<td style=\"text-align: center; width: 40px;\"><a href=\"/panel/domain/config?id={$d['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/domain.png\" /></td>
+							<td style=\"text-align: center; width: 40px;\"><a href=\"/panel/domains/config?id={$d['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/domain.png\" /></td>
 							<td><span style=\"font-weight: bold;\">{$d['hostname']}</span></td>
 							<td><span class=\"lightlarge\">{$arecord}</a></td>
 							<td>".($d['destination']?"{$d['destination']}":"{$d['homeDirectory']}")."</td>
-							<td style=\"width: 80px; text-align: center;\">
-								<a href=\"/panel/domain/config?id={$d['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>
-								<a href=\"/panel/domain/del_action?id={$d['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+							<td style=\"width: 100px; text-align: center;\">
+								<a href=\"/panel/domains/config?id={$d['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/settings.png\" alt=\"\" /></a>
+								<a href=\"#\" onclick=\"$('#id').val('{$d['id']}'); $('#delete').dialog('open'); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/close.png\" alt=\"\" /></a>
 							</td>
 						</tr>
 		";
@@ -105,7 +105,7 @@ $content .= "
 				<h3 class=\"center\">{$lang['new']}</h3>
 				<p style=\"text-align: center;\">{$lang['new_text']}</p>
 				<div class=\"form-small\">		
-					<form action=\"/panel/domain/add_action\" method=\"post\" class=\"center\">
+					<form action=\"/panel/domains/add_action\" method=\"post\" class=\"center\">
 						<fieldset>
 							<input class=\"auto\" type=\"text\" value=\"{$lang['name']}\" name=\"domain\" onfocus=\"this.value = this.value=='{$lang['name']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['name']}' : this.value; this.value=='{$lang['name']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
 							<span class=\"help-block\">{$lang['tipname']}</span>
@@ -116,8 +116,21 @@ $content .= "
 					</form>
 				</div>
 			</div>
+			<div id=\"delete\" class=\"floatingdialog\">
+				<h3 class=\"center\">{$lang['delete']}</h3>
+				<p style=\"text-align: center;\">{$lang['delete_text']}</p>
+				<div class=\"form-small\">		
+					<form action=\"/panel/domains/del_action\" method=\"get\" class=\"center\">
+						<input id=\"id\" type=\"hidden\" value=\"\" name=\"id\" />
+						<fieldset autofocus>	
+							<input type=\"submit\" value=\"{$lang['delete_now']}\" />
+						</fieldset>
+					</form>
+				</div>
+			</div>
 			<script>
 				newFlexibleDialog('new', 550);
+				newFlexibleDialog('delete', 550);
 			</script>
 ";
 

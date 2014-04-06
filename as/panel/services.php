@@ -52,12 +52,19 @@ $content = "
 				</a>
 			</div>
 		</div>
-		<div class=\"clear\"></div><br /><br />
+		<div class=\"clear\"></div><br />
 		<div class=\"container\">
 ";
 
 if( count($services) == 0 )
-	$content .= "<p>{$lang['no_service']}</pa>";
+{
+	$content .= "
+					<span style=\"font-size: 16px;\">{$lang['noservice']}</span><br /><br />
+					<a class=\"button classic\" href=\"/doc/databases\" style=\"width: 140px;\">
+						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['doc']}</span>
+					</a>";";
+	";
+}
 
 $j = 1;
 foreach( $services as $s )
