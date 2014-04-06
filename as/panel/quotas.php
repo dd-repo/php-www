@@ -117,7 +117,7 @@ $content = "
 						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/ftp.png\" /></td>
 						<td>{$lang['cloud']}</td>
 						<td>{$lang['cloud_type']}</td>
-						<td>/dns/in/olympe/Users/".security::get('USER')."</td>
+						<td>/dns/com/anotherservice/Users/".security::get('USER')."</td>
 						<td><span style=\"font-weight: bold;\">{$me['size']} {$lang['mb']}</span></td>
 					</tr>
 ";
