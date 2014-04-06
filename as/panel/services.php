@@ -46,7 +46,7 @@ $content = "
 				<h1 class=\"dark\">{$lang['title']}</h1>
 			</div>
 			<div class=\"right\">
-				<a class=\"button classic\" href=\"/panel/service/add\" style=\"width: 200px; height: 22px; float: right;\">
+				<a class=\"button classic\" href=\"/panel/services/add\" style=\"width: 200px; height: 22px; float: right;\">
 					<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
 					<span style=\"display: block; padding-top: 3px;\">{$lang['add']}</span>
 				</a>
@@ -60,7 +60,7 @@ if( count($services) == 0 )
 {
 	$content .= "
 					<span style=\"font-size: 16px;\">{$lang['noservice']}</span><br /><br />
-					<a class=\"button classic\" href=\"/doc/databases\" style=\"width: 140px;\">
+					<a class=\"button classic\" href=\"/doc/services\" style=\"width: 140px;\">
 						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['doc']}</span>
 					</a>";";
 	";
@@ -70,7 +70,7 @@ $j = 1;
 foreach( $services as $s )
 {
 	$content .= "
-			<div class=\"service ".($j==1?"first":"")."\" onclick=\"$('#service').val('{$s['name']}'); $('#service2').val('{$s['name']}'); $('#desc').val('{$s['description']}'); $('#config').dialog('open'); return false;\">
+			<div class=\"service ".($j==1?"first":"")."\" onclick=\"window.location.href='/panel/services/config?service={$s['name']}'; return false;\">
 				<img style=\"float: left; margin: 10px 15px 0 0;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-{$s['vendor']}.png\" />
 				<span class=\"name\" style=\"margin: 5px 0 0px 0; display: block;\">{$s['description']}</span><br />
 				<span class=\"subname\">{$s['name']}</span>
@@ -86,35 +86,6 @@ foreach( $services as $s )
 	$content .= "
 		</div>		
 	</div>
-	<div id=\"config\" class=\"floatingdialog\">
-		<h3 class=\"center\">{$lang['config']}</h3>
-		<p style=\"text-align: center;\">{$lang['config_text']}</p>
-		<div class=\"form-small\">		
-			<form action=\"/panel/service/config_action\" method=\"post\" class=\"center\">
-				<input id=\"service\" type=\"hidden\" name=\"service\" value=\"\" />
-				<fieldset>
-					<input id=\"desc\" type=\"text\" value=\"\" name=\"desc\" />
-					<span class=\"help-block\">{$lang['desc_help']}</span>
-				</fieldset>
-				<fieldset>
-					<input type=\"password\" value=\"\" name=\"password\" />
-					<span class=\"help-block\">{$lang['password_help']}</span>
-				</fieldset>
-				<fieldset>	
-					<input  type=\"submit\" value=\"{$lang['update']}\" />
-				</fieldset>
-			</form>
-			<form action=\"/panel/service/del_action\" method=\"post\" class=\"center\">
-				<input id=\"service2\" type=\"hidden\" name=\"service\" value=\"\" />
-				<fieldset>	
-					<input type=\"submit\" value=\"{$lang['delete']}\"/>
-				</fieldset>
-			</form>
-		</div>
-	</div>	
-	<script>
-		newDialog('config', 550, 440);
-	</script>
 ";
 
 

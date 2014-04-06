@@ -9,19 +9,25 @@ if( !defined('PROPER_START') )
 $userinfo = api::send('self/user/list');
 $userinfo = $userinfo[0];
 		
+$month = date('F', $userinfo['date']);
+$month_translate = $lang[$month];
+	
 $content = "
 	<div class=\"panel\">
 		<div class=\"top\">
-			<div class=\"left\" style=\"width: 650px;\">
+			<div class=\"left\" style=\"width: 500px;\">
 				<h1 class=\"dark\" style=\"padding-top: 7px;\">{$lang['settings']}</h1>
-				<blockquote style=\"width: 100%;\"><p>{$lang['registered']} <span style=\"font-weight: bold;\">".date($lang['dateformat'], $userinfo['date'])."</span>.</p></blockquote>
+				<blockquote style=\"width: 100%;\"><p>{$lang['registered']} <span style=\"font-weight: bold;\">".str_replace($month, $month_translate, date($lang['DATEFORMAT'], $userinfo['date']))."</span>.</p></blockquote>
 			</div>
-			<div class=\"right\" style=\"width: 400px; float: right; text-align: right;\">
-				<a class=\"action pass big\" href=\"#\" onclick=\"$('#new').dialog('open'); return false;\">
+			<div class=\"right\" style=\"width: 550px; float: right; text-align: right;\">
+				<a class=\"action pass big\" href=\"#\" onclick=\"$('#changepass').dialog('open'); return false;\">
 					{$lang['pass']}
 				</a>
-				<a class=\"action apps big\" href=\"#\">
+				<a class=\"action apps big\" href=\"/panel/settings/tokens\">
 					{$lang['apps']}
+				</a>
+				<a class=\"action delete big\" href=\"#\" onclick=\"$('#delete').dialog('open'); return false;\">
+					{$lang['delete']}
 				</a>					
 			</div>
 			<div class=\"clear\"></div>
@@ -78,7 +84,8 @@ $content = "
 			<div class=\"clear\"></div>
 		</div>
 	</div>
-	<div id=\"new\" class=\"floatingdialog\">
+	<div id=\"changepass\" class=\"floatingdialog\">
+		<br />
 		<h3 class=\"center\">{$lang['changepass']}</h3>
 		<p style=\"text-align: center;\">{$lang['changepass_text']}</p>
 		<div class=\"form-small\">		
@@ -97,8 +104,20 @@ $content = "
 			</form>
 		</div>
 	</div>
+	<div id=\"delete\" class=\"floatingdialog\">
+		<h3 class=\"center\">{$lang['delete']}</h3>
+		<p style=\"text-align: center;\">{$lang['delete_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/settings/del_action\" method=\"post\" class=\"center\">
+				<fieldset autofocus>	
+					<input type=\"submit\" value=\"{$lang['delete_now']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
 	<script>
-		newDialog('new', 550, 350);
+		newFlexibleDialog('changepass', 550);
+		newFlexibleDialog('delete', 550);
 	</script>	
 ";
 

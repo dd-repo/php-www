@@ -1,0 +1,14 @@
+[EN]
+
+[FR]
+title = "Détails du token"
+grants = "Privilèges"
+grantname = "Nom du privilège"
+granted = "Accordé"
+tokeninfo = "Informations du token"
+tokenname = "Nom"
+tokenlease = "Expiration (AAAA-MM-JJ)"
+update = "Modifier"
+tokentoken = "Identifiant du token"
+back = "Retour aux accès"
+dateformat = "Y-m-d"

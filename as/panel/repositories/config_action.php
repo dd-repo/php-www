@@ -14,6 +14,6 @@ $_SESSION['MESSAGE']['TEXT']= $lang['success'];
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	$template->redirect('/panel/repo/config?id='.security::encode($_POST['id']));
+	$template->redirect('/panel/repositories/config?id='.security::encode($_POST['id']));
 
 ?>

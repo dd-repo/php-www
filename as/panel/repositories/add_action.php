@@ -11,6 +11,6 @@ api::send('self/repo/add', array('type'=>$_POST['type'], 'domain'=>$_POST['domai
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	$template->redirect('/panel/dev');
+	$template->redirect('/panel/repositories');
 
 ?>

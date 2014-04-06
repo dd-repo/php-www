@@ -6,10 +6,11 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$result = api::send('self/token/add', array('name'=>$_GET['name']));
+api::send('self/token/del', array('token'=>$_GET['token']));
+
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	template::redirect('/panel/settings/token_detail?token='.$result['token']);
+	template::redirect('/panel/settings/tokens');
 
 ?>

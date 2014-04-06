@@ -11,6 +11,6 @@ api::send('self/repo/update', array('id'=>$_GET['id'], 'join'=>'add', 'member'=>
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	$template->redirect('/panel/repo/config?id='.$_GET['id']);
+	$template->redirect('/panel/repositories/config?id='.$_GET['id']);
 
 ?>

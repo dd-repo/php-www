@@ -17,6 +17,8 @@ if( $_POST['standalone'] == 1 )
 
 $app = api::send('self/app/add', array('domain'=>$_POST['domain'], 'tag' => $_POST['tag'], 'runtime'=>$_POST['runtime'], 'binary'=>$_POST['binary'], 'pass'=>$_POST['pass']));
 
+api::send('self/app/update', array('app'=>$_POST['id'], 'url' => $_POST['url'], 'branch' => $_POST['branch'], 'mode'=>'add'));
+
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else

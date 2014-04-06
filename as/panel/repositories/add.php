@@ -49,7 +49,12 @@ if( count($domains) > 0 )
 }
 else
 {
-	$content .= "<p>{$lang['no_domain']}</p>";
+	$content .= "
+					<span style=\"font-size: 16px;\">{$lang['nodomain']}</span><br /><br />
+					<a class=\"button classic\" href=\"/doc/repositories\" style=\"width: 140px;\">
+						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['doc']}</span>
+					</a>";
+	
 }
 
 $content .= "
@@ -60,7 +65,7 @@ $content .= "
 		<h3 class=\"center\">{$lang['new']}</h3>
 		<p style=\"text-align: center;\">{$lang['new_text']}</p>
 		<div class=\"form-small\">		
-			<form action=\"/panel/repo/add_action\" method=\"post\" class=\"center\">
+			<form action=\"/panel/repositories/add_action\" method=\"post\" class=\"center\">
 				<input id=\"type\" type=\"hidden\" name=\"type\" value=\"\" />
 				<fieldset>
 					<input class=\"auto\" type=\"text\" value=\"{$lang['desc']}\" name=\"desc\" onfocus=\"this.value = this.value=='{$lang['desc']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['desc']}' : this.value; this.value=='{$lang['desc']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />

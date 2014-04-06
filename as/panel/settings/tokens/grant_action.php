@@ -34,6 +34,6 @@ if( count($_POST['grant']) > 0 )
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	template::redirect('/panel/token/detail?token=' . $_POST['token']);
+	template::redirect('/panel/settings/tokens/detail?token=' . $_POST['token']);
 
 ?>

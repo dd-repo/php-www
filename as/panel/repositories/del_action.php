@@ -6,11 +6,11 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-api::send('self/repo/del', array('id'=>$_GET['id']));
+api::send('self/repo/del', array('id'=>$_POST['id']));
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	template::redirect('/panel/dev');
+	template::redirect('/panel/repositories');
 
 ?>
