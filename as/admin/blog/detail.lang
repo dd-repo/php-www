@@ -1,0 +1,13 @@
+[EN]
+
+[FR]
+title = "Modifier un article"
+title_help = "Titre de l'article"
+desc_help = "En-tête de l'article"
+content_help = "Contenu de l'article"
+author_help = "Auteur de l'article"
+lang_help = "Langue de l'article"
+update = "Modifier"
+delete = "Supprimer"
+delete_text = "Êtes-vous sûr de vouloir supprimer cet article ?"
+delete_now = "Confirmer"

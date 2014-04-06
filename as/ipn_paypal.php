@@ -51,7 +51,7 @@ else
 		{
 			try
 			{
-				$quotas = api::send('quota/list', array('user'=>$custom[1]), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+				$quotas = api::send('quota/user/list', array('user'=>$custom[1]), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
 				foreach( $quotas as $q )
 				{
@@ -61,7 +61,7 @@ else
 						$dquota = $q;
 				}
 
-				switch( $custom[3] )
+				switch( $custom[2] )
 				{
 					case '1':
 						$ram = 1024;
@@ -105,7 +105,7 @@ else
 
 				if( $success === true )
 				{
-					$params = array('plan' => $_GET['plan'], 'user'=>$custom[1]);
+					$params = array('plan' => $custom[2], 'user'=>$custom[1]);
 					api::send('user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 					$params = array('user' => $custom[1], 'quota' => 'MEMORY', 'max' => $ram);
 					api::send('quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);

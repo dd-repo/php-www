@@ -12,12 +12,12 @@ try
 }
 catch(Exception $e)
 {
-	$template->redirect('/panel/domain/add?e');
+	$template->redirect('/panel/domains/add?e');
 }
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	$template->redirect('/panel/domain');
+	$template->redirect('/panel/domains');
 
 ?>

@@ -19,6 +19,6 @@ $_SESSION['MESSAGE']['TEXT']= $lang['message'];
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	$template->redirect('/panel/domain/config?id=' . $_POST['id']);
+	$template->redirect('/panel/domains/config?id=' . $_POST['id']);
 	
 ?>

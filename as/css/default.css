@@ -706,3 +706,27 @@ div.state-content {
 .stopped {
 	background: url('../images/ui-sprite.png') 0px -294px;
 }
+
+
+div.fillgraph {
+	display: block;
+	background: #e5e5e5;
+	margin: 2px 0px 8px 0px;
+	width: 300px;
+	height: 15px;
+	overflow: hidden;
+	box-shadow: inset rgba(0,0,0,0.2) 0px 1px 3px;
+}
+
+div.fillgraph small {
+	text-align: center;
+	display: block;
+	float: left;
+	height: 15px;
+	line-height: 15px;
+	font-size: 10px;
+	color: #ffffff;
+	background: #2475ae;
+	overflow: hidden;
+	box-shadow: inset rgba(0,0,0,0.2) 0px 1px 3px, inset rgba(0,0,0,0.1) 0px -20px 20px -10px;
+}

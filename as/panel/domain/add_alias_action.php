@@ -12,12 +12,12 @@ try
 }
 catch(Exception $e)
 {
-	$template->redirect('/panel/domain/config?id=' . $_POST['id'] . '&e');
+	$template->redirect('/panel/domains/config?id=' . $_POST['id'] . '&e');
 }
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	$template->redirect('/panel/domain/config?id=' . $_POST['id']);
+	$template->redirect('/panel/domains/config?id=' . $_POST['id']);
 
 ?>

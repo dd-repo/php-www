@@ -1,0 +1,17 @@
+[EN]
+
+[FR]
+error = "L'un des champs n'est pas correct !"
+type = "Type de demande :"
+quota = "Augmentation de quota"
+select = "Type de quota :"
+disk = "Espace disque"
+sites = "Nombre de sites"
+dbs = "Nombre de bases de données"
+domains = "Nombre de domaines"
+request = "Quota demandé :"
+
+subject = "Une réponse vous attend"
+content = "<p style='margin: 20px 0'>Un administrateur a répondu à votre demande sur la plateforme d'hébergement <a style='color: #de5711;' href='https://www.olympe.in'>Olympe</a>.</p>
+<p style='margin: 20px 0'>Vous pouvez y accéder en cliquant sur le lien suivant :<br /><a style='color: #de5711;' href='https://www.olympe.in/panel/messages/detail?id={ID}'>https://www.olympe.in/panel/messages/detail?id={ID}</a>.</p>
+<p style='margin: 20px 0'>Bonne continuation sur Olympe !</p>"

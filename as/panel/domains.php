@@ -6,6 +6,17 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
+$quotas =  api::send('self/quota/user/list');
+
+foreach( $quotas as $q )
+{
+	if( $q['name'] == 'MEMORY' )
+		$quota = $q;
+}
+
+if( $quota['max'] == 0 )
+	template::redirect('/panel/plans');
+	
 $domains = api::send('self/domain/list');
 
 $content = "
@@ -21,8 +32,13 @@ $content = "
 						</a>
 					</div>
 				</div>
-				<div class=\"clear\"></div><br /><br />
+				<div class=\"clear\"></div><br />
 				<div class=\"container\">
+";
+
+if( count($domains) > 0 )
+{
+	$content .= "
 					<table>
 						<tr>
 							<th></th>
@@ -31,10 +47,8 @@ $content = "
 							<th>{$lang['home']}</th>
 							<th>{$lang['actions']}</th>
 						</tr>
-";
-
-if( count($domains) > 0 )
-{
+	";
+	
 	foreach($domains as $d)
 	{
 		$arecord = "";
@@ -68,6 +82,19 @@ if( count($domains) > 0 )
 						</tr>
 		";
 	}
+	
+	$content .= "
+					</table>
+	";
+}
+else
+{
+	$content .= "
+					<span style=\"font-size: 16px;\">{$lang['nodomain']}</span><br /><br />
+					<a class=\"button classic\" href=\"/doc/domains\" style=\"width: 140px;\">
+						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['doc']}</span>
+					</a>";
+	
 }
 	
 $content .= "

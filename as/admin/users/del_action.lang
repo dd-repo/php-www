@@ -1,0 +1,7 @@
+[EN]
+
+[FR]
+subject = "Votre compte a été supprimé"
+content = "Un administrateur vient de supprimer votre compte <i>{USER}</i> du service d'hébergement <a href='https://www.anotherservice.com'>Another Service</a>.<br /><br />
+Si vous pensez que cette action est injustifiée, n'hésitez pas à nous <a href='https://www.anotherservice.com/about/contact'>contacter</a>.<br /><br />
+Nous espérons vous revoir très rapidement sur notre plateforme !"

@@ -13,6 +13,6 @@ api::send('self/alias/del', array('id'=>$_GET['id']));
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	template::redirect('/panel/domain/config?id='.$domain['id']);
+	template::redirect('/panel/domains/config?id='.$domain['id']);
 
 ?>

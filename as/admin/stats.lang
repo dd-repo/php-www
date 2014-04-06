@@ -1,0 +1,15 @@
+[EN]
+
+[FR]
+title = "Statistiques"
+users = "Inscriptions"
+user = "utilisateurs"
+sites = "sites Internet"
+domains = "noms de domaine"
+databases = "bases de données"
+dateformat = "d-M"
+dateformathour = "H:i"
+dateformatmonth = "M"
+chart1_title = "Inscriptions des dernières 24 heures"
+chart2_title = "Inscriptions du dernier mois"
+chart3_title = "Inscriptions dernière année"

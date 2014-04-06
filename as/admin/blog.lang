@@ -1,0 +1,31 @@
+[EN]
+
+[FR]
+title = "Gestion du blog"
+add = "Créer un article"
+title2 = "Titre"
+author = "Auteur"
+date = "Date"
+lang = "Langue"
+actions = "Actions"
+dateformat = "d/m/Y H:i:s"
+delete = "Supprimer"
+delete_text = "Êtes-vous sûr de vouloir supprimer cet article ?"
+delete_now = "Confirmer"
+
+author_1 = "Yann Autissier"
+author_2 = "Bruno Million"
+author_3 = "Samuel Hassine"
+author_4 = "Simon Uyttendaele"
+lang_FR = "Français"
+lang_EN = "English"
+
+title_help = "Titre de l'article"
+desc_help = "En-tête de l'article"
+desc = "Description"
+content_help = "Contenu de l'article"
+content = "Article"
+author_help = "Auteur de l'article"
+lang_help = "Langue de l'article"
+new = "Nouvel article"
+create = "Créer"

@@ -1,0 +1,23 @@
+[EN]
+
+[FR]
+title = "Quotas et limitations"
+more = "Augmenter"
+
+gb = "Go"
+mb = "Mo"
+memory = "Mémoire RAM"
+disk = "Espace disque"
+services = "Services"
+apps = "Applications"
+of = "de"
+cloud = "Cloud"
+cloud_type = "Stockage de fichiers"
+sizes = "Utilisation de l'espace disque"
+name = "Nom du service"
+type = "Type"
+path = "Chemin d'accès"
+size = "Volumétrie"
+database = "Base de données"
+app = "Application"
+user = "Compte mail"
