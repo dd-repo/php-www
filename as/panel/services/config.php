@@ -9,7 +9,7 @@ if( !defined('PROPER_START') )
 $service = api::send('self/service/list', array('service'=>$_GET['service']));
 $service = $service[0];
 
-$percent = round($service['stats'][$service['server']]*100/6000);
+$percent = round($service['stats'][$service['host']]*100/6000);
 
 if( $percent > 100 )
 	$percent = 100;

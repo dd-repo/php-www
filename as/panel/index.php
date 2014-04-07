@@ -23,6 +23,10 @@ foreach( $quotas as $q )
 if( $quota['max'] == 0 )
 	template::redirect('/panel/plans');
 
+$domains = api::send('self/domain/list');
+if( count($domains) == 0 )
+	template::redirect('/panel/domains');
+	
 if( $quota['max'] > 0 )
 	$percent = $quota['used']*100/$quota['max'];
 

@@ -22,7 +22,7 @@ $repos = api::send('self/repo/list');
 $content = "
 	<div class=\"panel\">
 		<div class=\"top\">
-			<div class=\"left\" style=\"width: 500px; padding-top: 5px;\">
+			<div class=\"left\" style=\"width: 500px;\">
 				<h1 class=\"dark\">{$lang['title']}</h1>
 			</div>
 			<div class=\"right\">
@@ -38,10 +38,7 @@ $content = "
 if( count($repos) == 0 )
 {
 	$content .= "
-					<span style=\"font-size: 16px;\">{$lang['norepo']}</span><br /><br />
-					<a class=\"button classic\" href=\"/doc/repositories\" style=\"width: 140px;\">
-						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['doc']}</span>
-					</a>";";
+					<span style=\"font-size: 16px;\">{$lang['norepo']}</span>
 	";
 }
 
@@ -63,6 +60,10 @@ foreach( $repos as $r )
 }
 
 	$content .= "
+			<div class=\"clear\"></div><br />
+			<a class=\"button classic\" href=\"/doc/repositories\" style=\"width: 140px;\">
+				<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['doc']}</span>
+			</a>
 		</div>		
 	</div>
 ";

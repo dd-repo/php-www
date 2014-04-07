@@ -22,7 +22,7 @@ $domains = api::send('self/domain/list');
 $content = "
 			<div class=\"panel\">
 				<div class=\"top\">
-					<div class=\"left\" style=\"padding-top: 5px;\">
+					<div class=\"left\">
 						<h1 class=\"dark\">{$lang['title']}</h1>
 					</div>
 					<div class=\"right\">
@@ -41,7 +41,7 @@ if( count($domains) > 0 )
 	$content .= "
 					<table>
 						<tr>
-							<th></th>
+							<th style=\"text-align: center; width: 40px;\">#</th>
 							<th>{$lang['domain']}</th>
 							<th>{$lang['arecord']}</th>
 							<th>{$lang['home']}</th>
@@ -84,7 +84,13 @@ if( count($domains) > 0 )
 	}
 	
 	$content .= "
-					</table>
+					</table><br /><br />
+					<a class=\"button classic\" href=\"/doc/domains\" style=\"width: 140px; float: left;\">
+						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['doc']}</span>
+					</a>
+					<a class=\"button classic\" href=\"/panel\" style=\"width: 140px; float: left; margin-left: 20px;\">
+						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['app']}</span>
+					</a>
 	";
 }
 else
@@ -93,12 +99,13 @@ else
 					<span style=\"font-size: 16px;\">{$lang['nodomain']}</span><br /><br />
 					<a class=\"button classic\" href=\"/doc/domains\" style=\"width: 140px;\">
 						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['doc']}</span>
-					</a>";
+					</a>
+";
 	
 }
 	
 $content .= "
-					</table>
+
 				</div>
 			</div>
 			<div id=\"new\" style=\"display: none;\" class=\"floatingdialog\">

@@ -113,44 +113,7 @@ $content = "
 				</div>
 			</a>			
 			<div class=\"clear\"></div>
-			<br />
-			<h2 class=\"dark\">{$lang['apps']}</h2>
-			<a href=\"#\" onclick=\"$('#runtime').val('php'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
-				<div class=\"nservice\">
-					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-phpworker.png\" alt=\"PHP\"><span class=\"large\">PHP (Worker)</span></p>
-					<div class=\"overline\">5.4.9</div>
-					<br />					
-				</div>
-			</a>
-			<a href=\"#\" onclick=\"$('#runtime').val('python'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
-				<div class=\"nservice\">
-					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-python.png\" alt=\"Python\"><span class=\"large\">Python</span></p>
-					<div class=\"overline\">2.7.4</div>
-					<br />					
-				</div>
-			</a>
-			<a href=\"#\">
-				<div class=\"nservice\">
-					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-java.png\" alt=\"Java\"><span class=\"large\">Java</span></p>
-					<div class=\"overline\">1.7.0</div>
-					<br />
-				</div>
-			</a>
-			<a href=\"#\" onclick=\"$('#runtime').val('ruby'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
-				<div class=\"nservice\">
-					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-ruby.png\" alt=\"Ruby\"><span class=\"large\">Ruby</span></p>
-					<div class=\"overline\">1.9.3</div>
-					<br />
-				</div>
-			</a>
-			<a href=\"#\">
-				<div class=\"nservice\">
-					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-nodejs.png\" alt=\"NodeJS\"><span class=\"large\">NodeJS</span></p>
-					<div class=\"overline\">{$lang['soon']}</div>
-					<br />					
-				</div>
-			</a>			
-			<div class=\"clear\"></div><br />
+			<br /><br />
 		</div>
 	</div>
 	<div id=\"new\" class=\"floatingdialog\">

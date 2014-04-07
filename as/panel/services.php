@@ -83,6 +83,8 @@ foreach( $services as $s )
 		$j = 1;
 }
 
+if( count($services) > 0 )
+{
 	$content .= "
 					<div class=\"clear\"></div><br />
 					<a class=\"button classic\" href=\"https://pma.anotherservice.com\" style=\"width: 140px; float: left;\">
@@ -92,6 +94,7 @@ foreach( $services as $s )
 						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['ppa']}</span>
 					</a>
 	";
+}
 	
 $content .= "
 		</div>		

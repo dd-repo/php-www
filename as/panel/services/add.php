@@ -27,7 +27,7 @@ $content = "
 			<a href=\"#\" onclick=\"$('#vendor').val('pgsql'); $('#version').val('9.1'); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-pgsql.png\" alt=\"postgresql\"><span class=\"large\">PostgreSQL</span><br /><span style=\"color: #000000;\" class=\"small\">PostgreSQL Database Service</span></p>
-					<div class=\"overline\">9.1</div>
+					<div class=\"overline\">9.3</div>
 					<br />					
 				</div>
 			</a>				
