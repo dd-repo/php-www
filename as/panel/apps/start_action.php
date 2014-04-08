@@ -6,7 +6,7 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-api::send('self/app/update', array('app'=>$_GET['id'], 'branch'=>$_GET['branch'], 'restart' => 1));
+api::send('self/app/start', array('app'=>$_GET['id'], 'branch'=>$_GET['branch']));
 
 echo "OK";
 

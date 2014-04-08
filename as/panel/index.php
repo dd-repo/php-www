@@ -68,7 +68,7 @@ $content = "
 					<div id=\"formapp\" style=\"display: none; position: relative; padding: 30px 10px 10px 10px;\">
 						<a href=\"#\" style=\"display: block; position: absolute; top: 5px; left: 5px;\" onclick=\"showNew(); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/arrowLeft.png\" alt=\"\" /></a>
 						<div class=\"form-small\">		
-							<form action=\"/panel/app/add\" method=\"post\" class=\"center\">
+							<form action=\"/panel/apps/add\" method=\"post\" class=\"center\">
 								<fieldset style=\"padding-top: 10px;\">
 									<input class=\"auto\" type=\"text\" value=\"{$lang['name']}\" name=\"tag\" onfocus=\"this.value = this.value=='{$lang['name']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['name']}' : this.value; this.value=='{$lang['name']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
 									<span class=\"help-block\">{$lang['tipapp']}</span>
@@ -145,15 +145,13 @@ else
 		$i++;
 		
 		$content .= "
-				<div class=\"app\" {$last} onclick=\"window.location.href='/panel/app/show?id={$a['id']}'; return false;\">
+				<div class=\"app\" {$last} onclick=\"window.location.href='/panel/apps/show?id={$a['id']}'; return false;\">
 					<div class=\"normal\">
 						<span style=\"color: #2475ae; font-size: 12px; display: block; position: absolute; left: 10px; top: 10px;\">{$a['name']}</span>
 						<span style=\"color: #2475ae; font-size: 12px; display: block; position: absolute; right: 10px; top: 10px;\">{$lang['size']} {$a['size']} {$lang['mb']}</span>
 						<div style=\"vertical-align: middle; display: table-cell; height: 250px; margin: 0 auto; width: 250px; text-align: center;\">
 							<div style=\"display: inline-block;\">
 								<span style=\"font-size: 25px; text-align: center; display: block; margin: 0 auto;\">{$a['tag']}</a><br />
-								<span style=\"color: #a3a3a3; font-size: 15px; text-align: center; display: block; margin: 0 auto;\">{$urls}</a>
-								<br />
 								<img class=\"language\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" alt=\"\" />
 							</div>
 						</div>						

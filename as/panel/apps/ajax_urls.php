@@ -10,7 +10,7 @@ $domains = api::send('self/domains/list');
 $id = security::encode($_GET['id']);
 
 $content = "
-			<form action=\"/panel/app/add_url_action\" method=\"post\" class=\"center\">
+			<form action=\"/panel/apps/add_url_action\" method=\"post\" class=\"center\">
 				<input type=\"hidden\" name=\"id\" value=\"{$id}\" />
 				<input type=\"hidden\" name=\"branch\" value=\"{$_SESSION['DATA'][$id]['branch']}\" />
 				<fieldset>
