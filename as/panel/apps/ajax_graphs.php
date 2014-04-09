@@ -13,23 +13,23 @@ function random_color($type)
 	switch( $type )
 	{
 		case 1:
-			$color[0] = rand(0,56);
-			$color[1] = rand(0,56);
-			$color[2] = rand(0,255);
+			$color[0] = rand(128,201);
+			$color[1] = rand(128,201);
+			$color[2] = rand(128,201);
 		break;
 		case 2:
-			$color[0] = rand(0,56);
-			$color[1] = rand(0,255);
-			$color[2] = rand(0,56);
+			$color[0] = rand(128,201);
+			$color[1] = rand(128,201);
+			$color[2] = rand(128,201);
 		break;
-		case 2:
-			$color[0] = rand(0,56);
-			$color[1] = rand(0,56);
-			$color[2] = rand(0,56);
+		case 3:
+			$color[0] = rand(128,201);
+			$color[1] = rand(128,201);
+			$color[2] = rand(128,201);
 		break;
 	}
-
-    return $color[0] . $color[1] . $color[2];
+	
+    return dechex($color[0]) . dechex($color[1]) . dechex($color[2]);
 }
 
 $app = api::send('self/app/list', array('id'=>$_GET['id']));
@@ -179,12 +179,12 @@ $content .= "
 					font: { size: 15 }
 				},
 				legend: {
-					verticalAlignment: \"top\",
-					horizontalAlignment: \"right\"
+					verticalAlignment: \"bottom\",
+					horizontalAlignment: \"center\"
 				},
 				size: {
 					width: 1100,
-					height: 200
+					height: 300
 				},
 				commonPaneSettings: {
 					border:{
@@ -232,12 +232,12 @@ $content .= "
 					font: { size: 15 }
 				},
 				legend: {
-					verticalAlignment: \"top\",
-					horizontalAlignment: \"right\"
+					verticalAlignment: \"bottom\",
+					horizontalAlignment: \"center\"
 				},
 				size: {
 					width: 1100,
-					height: 200
+					height: 300
 				},
 				commonPaneSettings: {
 					border:{

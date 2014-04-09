@@ -549,33 +549,45 @@ $content .= "
 		
 		function stop()
 		{
-			$('#loading').show();
+			initSequence(1, \"{$lang['init']}\");
+			successSeq(1);
+			initSequence(2, \"{$lang['seq_stop']}\");
 			$('#recipe').load('/panel/apps/stop_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."', function()
 			{
-				$('#loading').hide();
+				successSeq(2);
+				initSequence(3, \"{$lang['seq_end']}\");
+				successSeq(3);
+				setTimeout(function() { $('#sequence').dialog('close'); resetSeq(); }, 2000);
 			});	
 		}
 
 		function restart()
 		{
-			$('#loading').show();
+			initSequence(1, \"{$lang['init']}\");
+			successSeq(1);
+			initSequence(2, \"{$lang['seq_restart']}\");
 			$('#recipe').load('/panel/apps/restart_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."', function()
 			{
-				$('#loading').hide();
-				success();
+				successSeq(2);
+				initSequence(3, \"{$lang['seq_end']}\");
+				successSeq(3);
+				setTimeout(function() { $('#sequence').dialog('close'); resetSeq(); }, 2000);
 			});	
 		}
 
 		function rebuild()
 		{
-			$('#loading').show();
+			initSequence(1, \"{$lang['init']}\");
+			successSeq(1);
+			initSequence(2, \"{$lang['seq_rebuild']}\");
 			$('#recipe').load('/panel/apps/rebuild_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."', function()
 			{
-				$('#loading').hide();
-				
+				successSeq(2);
+				initSequence(3, \"{$lang['seq_end']}\");
+				successSeq(3);
+				setTimeout(function() { $('#sequence').dialog('close'); resetSeq(); }, 2000);
 			});	
 		}
-
 
 		$(function()
 		{
