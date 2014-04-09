@@ -372,6 +372,15 @@ div.panel a.action.bill:hover {
 	background-image: url('../images/illu/bill_hover.png');
 }
 
+div.panel a.action.log {
+	background-image: url('../images/illu/log.png');
+}
+
+div.panel a.action.log:hover {
+	color: #2c8dd2;
+	background-image: url('../images/illu/log_hover.png');
+}
+
 div.panel a.action.push {
 	background-image: url('../images/illu/push.png');
 }
@@ -493,10 +502,11 @@ div.panel a.branch {
 	display: block;
 	float: left;
 	margin-right: 5px;
-	padding: 8px;
+	padding: 10px;
 	background-color: #eaeaea;
 	border-radius: 3px;
 	color: #d69e17;
+	font-size: 18px;
 }
 
 div.panel a.branch:hover {

@@ -26,7 +26,62 @@ foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] 
 
 $expl = explode('-', $app['name']);
 $language = $expl[0];
-	
+
+$now = time();
+// Last 24 hours
+$data_day = array();
+$dayago = mktime(date('H')+1, 0, 0, date('n'), date('j'), date('Y'))-(3600*24);
+$times = api::send('self/app/graph', array('app'=>$app['name'], 'graph'=>'time', 'branch'=>$_SESSION['DATA'][$app['id']]['branch'], 'group' => 'HOUR', 'from' => $dayago, 'to' => $now, 'start' => 0, 'limit' => 1000));
+$current = $dayago;
+for( $i = 1; $i <= 24; $i++ )
+{
+	$next = $current+3600;
+	$data_day[$current]['time'] = 0;
+	$data_day[$current]['date'] = date($lang['dateformathour'], $current);
+	foreach( $times as $t )
+	{
+		if( $t['HOUR'] == date('H', $current) )
+			$data_day[$current]['time'] = round($t['average']);
+	}
+	$current = $next;
+}
+
+// Last month
+$data_month = array();
+$monthago = mktime(date('H'), 0, 0, date('n'), date('j')+1, date('Y'))-(3600*24*30);
+$times = api::send('self/app/graph', array('app'=>$app['name'], 'graph'=>'time', 'branch'=>$_SESSION['DATA'][$app['id']]['branch'], 'group' => 'DAY', 'from' => $monthago, 'to' => $now, 'start' => 0, 'limit' => 1000));
+$current = $monthago;
+for( $i = 1; $i <= 30; $i++ )
+{
+	$next = $current+(3600*24);
+	$data_month[$current]['time'] = 0;
+	$data_month[$current]['date'] = date($lang['dateformat'], $current);
+	foreach( $times as $t )
+	{
+		if( $t['DAY'] == date('d', $current) )
+			$data_month[$current]['time'] = round($t['average']);
+	}
+	$current = $next;
+}
+
+// Last year
+$data_year = array();
+$yearago = mktime(date('H'), 0, 0, date('n')+1, date('j'), date('Y'))-(3600*24*365);
+$times = api::send('self/app/graph', array('app'=>$app['name'], 'graph'=>'time', 'branch'=>$_SESSION['DATA'][$app['id']]['branch'], 'group' => 'MONTH', 'from' => $yearago, 'to' => $now, 'start' => 0, 'limit' => 1000));
+$current = $yearago;
+for( $i = 1; $i <= 12; $i++ )
+{
+	$next = $current+(3600*24*30.3);
+	$data_year[$current]['time'] = 0;
+	$data_year[$current]['date'] = date($lang['dateformatmonth'], $current);
+	foreach( $times as $t )
+	{
+		if( $t['MONTH'] == date('n', $current) )
+			$data_year[$current]['time'] = round($t['average']);
+	}
+	$current = $next;
+}
+
 $content = "
 	<div class=\"panel\">
 		<div class=\"top\">
@@ -35,6 +90,29 @@ $content = "
 				<div style=\"float: left;\">
 					<span style=\"font-size: 25px; display: block; margin-bottom: 4px;\">{$app['tag']}</span>
 					<span style=\"font-size: 15px; color: #878787; display: block; margin-bottom: 10px;\">{$app['name']}</span>
+				</div>
+			</div>
+			<div class=\"right\" style=\"width: 700px; float: right; text-align: right;\">
+				<a class=\"action settings\" href=\"#\" onclick=\"$('#settings').dialog('open'); return false;\">
+					{$lang['settings']}
+				</a>
+				<a class=\"action pass\" href=\"#\" onclick=\"$('#changepass').dialog('open'); return false;\">
+					{$lang['changepass']}
+				</a>
+				<a class=\"action push\" href=\"#\" onclick=\"$('#push').dialog('open'); return false;\">
+					{$lang['push']}
+				</a>
+				<a class=\"action log\" href=\"#\" onclick=\"$('#logs').dialog('open'); return false;\">
+					{$lang['logs']}
+				</a>
+				<a class=\"action delete\" href=\"#\" onclick=\"$('#delete').dialog('open'); return false;\">
+					{$lang['delete']}
+				</a>
+			</div>
+			<div class=\"clear\"></div><br />
+		</div>
+		<div class=\"container\">
+			<div style=\"float: left; width: 800px;\">
 ";
 
 foreach( $app['branches'] as $key => $value )
@@ -42,25 +120,23 @@ foreach( $app['branches'] as $key => $value )
 
 $content .= "
 					<a href=\"#\" class=\"branch\" onclick=\"$('#newbranch').dialog('open'); return false;\">+</a>
-				</div>
 			</div>
-			<div class=\"right\" style=\"width: 700px; float: right; text-align: right;\">
-				<a class=\"action settings big\" href=\"#\" onclick=\"$('#settings').dialog('open'); return false;\">
-					{$lang['settings']}
+			<div style=\"float: right; width: 300px;\">";
+			
+if( $_SESSION['DATA'][$app['id']]['branch'] != 'master' )
+{
+	$content .= "
+				<a class=\"button classic\" href=\"#\" onclick=\"$('#deletebranch').dialog('open'); return false;\" style=\"width: 180px; height: 22px; float: right;\">
+					<span style=\"display: block; padding-top: 3px;\">{$lang['deletebranch']}</span>
 				</a>
-				<a class=\"action pass big\" href=\"#\" onclick=\"$('#changepass').dialog('open'); return false;\">
-					{$lang['changepass']}
-				</a>
-				<a class=\"action push big\" href=\"#\" onclick=\"$('#push').dialog('open'); return false;\">
-					{$lang['push']}
-				</a>
-				<a class=\"action delete big\" href=\"#\" onclick=\"$('#delete').dialog('open'); return false;\">
-					{$lang['delete']}
-				</a>
+	";
+}
+$content .= "
 			</div>
-			<div class=\"clear\"></div><br /><br />
-		</div>
-		<div class=\"container\">
+			<div class=\"clear\"></div>
+			<br />
+			<div id=\"response1\"></div>
+			<br /><br />
 			<div style=\"float: left; width: 500px;\">
 				<div style=\"float: left; width: 200px; padding-top: 8px;\">
 					<h2 class=\"dark\">{$lang['infos']}</h2>
@@ -73,7 +149,7 @@ $content .= "
 					<tr>
 						<th>{$lang['info']}</th>
 						<th>{$lang['data']}</th>
-						<th>{$lang['actions']}</th>
+						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
 					</tr>
 					<tr>
 						<td>{$lang['memory']}</td>
@@ -154,9 +230,11 @@ $content .= "
 				</a>
 			</div>
 			<div class=\"clear\"></div><br />
-			<div id=\"instances\">
-			
-			</div>
+			<div id=\"instances\" style=\"text-align: center; padding: 10px;\"></div>
+			<div class=\"clear\"></div><br />
+			<br />
+			<h2 class=\"dark\">{$lang['graphinstances']}</h2>
+			<div id=\"graphs\" style=\"text-align: center; padding: 10px;\"></div>
 		</div>
 	</div>
 	<br />
@@ -164,7 +242,9 @@ $content .= "
 		<br />
 		<h3 class=\"center\">{$lang['newurl_title']}</h3>
 		<p style=\"text-align: center;\">{$lang['newurl_text']}</p>
-		<div class=\"form-small\" id=\"urls\"></div>
+		<div class=\"form-small\" id=\"urls\" style=\"text-align: center;\">
+		
+		</div>
 	</div>
 	<div id=\"newbranch\" class=\"floatingdialog\">
 		<br />
@@ -278,22 +358,35 @@ $content .= "
 		<a style=\"width: 150px; margin: 0 auto;\" href=\"/panel/apps/del_action?id={$app['id']}\" class=\"button classic\">{$lang['delete_now']}</a>
 		<br />
 	</div>
+	<div id=\"deletebranch\" class=\"floatingdialog\">
+		<br />
+		<h3 class=\"center\" style=\"padding-top: 5px;\">{$lang['deletebranch_title']}</h3>
+		<p style=\"text-align: center;\">{$lang['deletebranch_text']}</p>
+		<a style=\"width: 150px; margin: 0 auto;\" href=\"/panel/apps/del_env_action?id={$app['id']}&branch={$_SESSION['DATA'][$app['id']]['branch']}\" class=\"button classic\">{$lang['delete_now']}</a>
+		<br />
+	</div>
 	<div id=\"alert\" class=\"floatingdialog\">
+		<br />
 		<h3 class=\"center\" style=\"padding-top: 5px;\">{$lang['alert']}</h3>
 		<p style=\"text-align: center;\" id=\"alertcontent\"></p>
 		<a style=\"width: 150px; margin: 0 auto;\" href=\"#\" onclick=\"$('#alert').dialog('close'); return false;\" class=\"button classic\">{$lang['close']}</a>
 		<br />
 	</div>
+	<div id=\"sequence\" class=\"floatingdialog\"></div>
 	<div id=\"recipe\" style=\"display: none;\"></div>
 	<script>
 		memory = {$memoryone};
 		instances = {$instances};
 		
-		$('#loading').show();
+		$(\"#instances\").html(\"<img src='/{$GLOBALS['CONFIG']['SITE']}/images/anim_loading_16x16.gif' />\");
 		$('#instances').load('/panel/apps/ajax_instances?id={$app['id']}', function()
 		{
-			$('#loading').hide();
 			setTimeout(function() { getinstances(); }, 2000);
+		});
+
+		$(\"#graphs\").html(\"<img src='/{$GLOBALS['CONFIG']['SITE']}/images/anim_loading_16x16.gif' />\");
+		$('#graphs').load('/panel/apps/ajax_graphs?id={$app['id']}', function()
+		{
 		});
 
 		newFlexibleDialog('newurl', 550);
@@ -301,8 +394,31 @@ $content .= "
 		newFlexibleDialog('settings', 550);
 		newFlexibleDialog('changepass', 550);
 		newFlexibleDialog('delete', 550);
+		newFlexibleDialog('deletebranch', 550);
 		newFlexibleDialog('push', 700);
 		newFlexibleDialog('alert', 550);
+		newDialog('sequence', 300, 320);
+		
+		function initSequence(id, message)
+		{
+			$('#sequence').dialog('open');
+			$('#sequence').append(\"<br /><div style='margin: 0;  padding: 0; clear: left;'><img id='wait\" + id + \"' src='/{$GLOBALS['CONFIG']['SITE']}/images/anim_loading_16x16.gif' style='float: left; margin-right: 15px; display: block;' /><span style='font-size: 12px;'>\" + message + \"</span></div>\");
+		}
+		
+		function successSeq(id)
+		{
+			 $('#wait' + id).attr(\"src\", \"/{$GLOBALS['CONFIG']['SITE']}/images/icons/status_2.png\");
+		}
+
+		function failSeq(id)
+		{
+			 $('#wait' + id).attr(\"src\", \"/{$GLOBALS['CONFIG']['SITE']}/images/icons/status_4.png\");
+		}
+		
+		function resetSeq()
+		{
+			$('#sequence').html('');
+		}
 		
 		function getinstances()
 		{
@@ -314,11 +430,8 @@ $content .= "
 		
 		function geturls()
 		{
-			$('#loading').show();
-			$('#urls').load('/panel/apps/ajax_urls?id={$app['id']}', function()
-			{
-				$('#loading').hide();
-			});
+			$(\"#urls\").html(\"<img src='/{$GLOBALS['CONFIG']['SITE']}/images/anim_loading_16x16.gif' />\");
+			$('#urls').load('/panel/apps/ajax_urls?id={$app['id']}', function()	{});
 		}
 
 		function increaseInstances()
@@ -330,10 +443,15 @@ $content .= "
 			$('#instancescount').html(instances);
 			$('#memorycount').html(memory*instances);
 			
-			$('#loading').show();
+			initSequence(1, \"{$lang['init']}\");
+			successSeq(1);
+			initSequence(2, \"{$lang['seq_increase_instance']}\");
 			$('#recipe').load('/panel/apps/instance_increase_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."&instances=' + instances, function()
 			{
-				$('#loading').hide();
+				successSeq(2);
+				initSequence(3, \"{$lang['seq_end']}\");
+				successSeq(3);
+				setTimeout(function() { $('#sequence').dialog('close'); resetSeq(); }, 2000);
 			});
 		}
 		
@@ -345,10 +463,15 @@ $content .= "
 				$('#instancescount').html(instances);
 				$('#memorycount').html(memory*instances);
 				
-				$('#loading').show();
+				initSequence(1, \"{$lang['init']}\");
+				successSeq(1);
+				initSequence(2, \"{$lang['seq_decrease_instance']}\");
 				$('#recipe').load('/panel/apps/instance_decrease_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."&instances=' + instances, function()
 				{
-					$('#loading').hide();
+					successSeq(2);
+					initSequence(3, \"{$lang['seq_end']}\");
+					successSeq(3);
+					setTimeout(function() { $('#sequence').dialog('close'); resetSeq(); }, 2000);
 				});
 			}
 			else
@@ -365,10 +488,15 @@ $content .= "
 				memory = memory/2;
 				$('#memorycount').html(memory*instances);
 				
-				$('#loading').show();
+				initSequence(1, \"{$lang['init']}\");
+				successSeq(1);
+				initSequence(2, \"{$lang['seq_decrease_memory']}\");
 				$('#recipe').load('/panel/apps/memory_decrease_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."&memory=' + memory, function()
 				{
-					$('#loading').hide();
+					successSeq(2);
+					initSequence(3, \"{$lang['seq_end']}\");
+					successSeq(3);
+					setTimeout(function() { $('#sequence').dialog('close'); resetSeq(); }, 2000);
 				});
 			}
 			else
@@ -382,13 +510,20 @@ $content .= "
 		{
 			if( memory < 1024 )
 			{
+				initSequence(1, \"{$lang['init']}\");
+				successSeq(1);
+				initSequence(2, \"{$lang['seq_increase_memory']}\");
+				initSequence(3, \"{$lang['seq_restart']}\");
 				memory = memory*2;
 				$('#memorycount').html(memory*instances);
 				
-				$('#loading').show();
 				$('#recipe').load('/panel/apps/memory_increase_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."&memory=' + memory, function()
 				{
-					$('#loading').hide();
+					successSeq(2);
+					successSeq(3);
+					initSequence(4, \"{$lang['seq_end']}\");
+					successSeq(4);
+					setTimeout(function() { $('#sequence').dialog('close'); resetSeq(); }, 2000);
 				});
 			}
 			else
@@ -400,10 +535,15 @@ $content .= "
 		
 		function start()
 		{
-			$('#loading').show();
+			initSequence(1, \"{$lang['init']}\");
+			successSeq(1);
+			initSequence(2, \"{$lang['seq_start']}\");
 			$('#recipe').load('/panel/apps/start_action?id={$app['id']}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."', function()
 			{
-				$('#loading').hide();
+				successSeq(2);
+				initSequence(3, \"{$lang['seq_end']}\");
+				successSeq(3);
+				setTimeout(function() { $('#sequence').dialog('close'); resetSeq(); }, 2000);
 			});	
 		}
 		
@@ -435,6 +575,175 @@ $content .= "
 				
 			});	
 		}
+
+
+		$(function()
+		{
+			var dataSourceDay = [";
+
+foreach( $data_day as $key => $value )
+{
+	$content .= "
+			{ hour: '".date($lang['dateformathour'], $key)."', responsetime: {$value['time']} },
+	";
+}
+
+$content .= "
+			];
+			
+			var dataSourceMonth = [";
+
+foreach( $data_month as $key => $value )
+{
+	$content .= "
+			{ day: '".date($lang['dateformat'], $key)."', responsetime: {$value['time']} },
+	";
+}
+
+$content .= "
+			];
+
+			var dataSourceYear = [";
+
+foreach( $data_year as $key => $value )
+{
+	$content .= "
+			{ month: '".date($lang['dateformatmonth'], $key)."', responsetime: {$value['time']} },
+	";
+}
+
+$content .= "
+			];
+			
+			$(\"#response1\").dxChart({
+				dataSource: dataSourceDay,
+				commonSeriesSettings: {
+					argumentField: \"hour\"
+				},
+				series: [
+					{ valueField: \"responsetime\", name: \"{$lang['responsetime']}\", type: 'splineArea', 'color': '#65aadb' }
+				],
+				argumentAxis:{
+					grid:{
+						visible: true
+					}
+				},
+				valueAxis: {
+					label: {
+						customizeText: function() {
+							return this.valueText + 'ms'
+						}
+				}},
+				tooltip:{
+					enabled: true,
+					font: { size: 15 }
+				},
+				title: {
+					text: '{$lang['chart1_title']}',
+					font: { size: 15 }
+				},
+				legend: {
+					verticalAlignment: \"top\",
+					horizontalAlignment: \"right\",
+					visible: false
+				},
+				size: {
+					width: 1100,
+					height: 200
+				},
+				commonPaneSettings: {
+					border:{
+						visible: true,
+						right: false
+					}       
+				}
+			});
+
+			$(\"#response2\").dxChart({
+				dataSource: dataSourceMonth,
+				commonSeriesSettings: {
+					argumentField: \"day\"
+				},
+				series: [
+					{ valueField: \"responsetime\", name: \"{$lang['responsetime']}\", type: 'splineArea', 'color': '#65aadb' }
+				],
+				argumentAxis:{
+					grid:{
+						visible: true
+					}
+				},
+				valueAxis: {
+					label: {
+						customizeText: function() {
+							return this.valueText + 'ms'
+						}
+				}},
+				tooltip:{
+					enabled: true,
+					font: { size: 15 }
+				},
+				title: {
+					text: '{$lang['chart2_title']}',
+					font: { size: 15 }
+				},
+				legend: {
+					verticalAlignment: \"top\",
+					horizontalAlignment: \"right\",
+					visible: false
+				},
+				size: {
+					width: 1100,
+					height: 200
+				},
+				commonPaneSettings: {
+					border:{
+						visible: true,
+						right: false
+					}       
+				}
+			});
+			
+			$(\"#response3\").dxChart({
+				dataSource: dataSourceYear,
+				commonSeriesSettings: {
+					argumentField: \"month\"
+				},
+				series: [
+					{ valueField: \"responsetime\", name: \"{$lang['responsetime']}\", type: 'splineArea', 'color': '#65aadb' }
+				],
+				argumentAxis:{
+					grid:{
+						visible: true
+					},
+					label: {
+						overlappingBehavior: { mode: 'rotate', rotationAngle: 50 }
+					}
+				},
+				tooltip:{
+					enabled: true,
+					font: { size: 15 }
+				},
+				title: {
+					text: '{$lang['chart3_title']}',
+					font: { size: 15 }
+				},
+				legend: {
+					verticalAlignment: \"top\",
+					horizontalAlignment: \"right\",
+					visible: false
+				},
+				size: {
+					width: 800,
+					height: 200
+				},
+				commonPaneSettings: {
+					border:{
+						visible: true,
+						right: false
+					}       
+				}
+			});
+		});			
 		
 	</script>	
 ";

@@ -8,8 +8,6 @@ if( !defined('PROPER_START') )
 
 $users = api::send('user/list', array('limit' => 10, 'order'=>'user_date', 'order_type'=>'DESC'));
 $overquotas = api::send('quota/nearlimit', array('quota'=>'BYTES'));
-//$messages = api::send('message/list', array('topic'=>1, 'status'=>1));
-$messages = array();
 
 $content = "
 	<div class=\"admin\">
@@ -31,9 +29,6 @@ $content = "
 				<form action=\"/admin/search_action\" method=\"post\">
 					<fieldset>
 						<input class=\"auto\" style=\"width: 300px;\" type=\"text\" name=\"name\" value=\"{$lang['name']}\" onfocus=\"this.value = this.value=='{$lang['name']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['name']}' : this.value; this.value=='{$lang['name']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
-					</fieldset>
-					<fieldset>
-						<input class=\"auto\" style=\"width: 300px;\" type=\"text\" name=\"site\" value=\"{$lang['site']}\" onfocus=\"this.value = this.value=='{$lang['site']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['site']}' : this.value; this.value=='{$lang['site']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
 					</fieldset>
 					<fieldset>
 						<input class=\"auto\" style=\"width: 300px;\" type=\"text\" name=\"email\" value=\"{$lang['email']}\" onfocus=\"this.value = this.value=='{$lang['email']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['email']}' : this.value; this.value=='{$lang['email']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />

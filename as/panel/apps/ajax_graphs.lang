@@ -1,0 +1,11 @@
+[EN]
+
+[FR]
+dateformat = "d-M"
+dateformathour = "H:i"
+dateformatmonth = "M"
+memory2 = "Memoire (Mo)"
+chart1_title = "Dernières 24H"
+chart2_title = "Dernier mois"
+memory = "Mémoire"
+cpu = "CPU"

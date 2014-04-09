@@ -121,19 +121,6 @@ else if( $_POST['email'] != $lang['email'] )
 	else
 		template::redirect('/admin');
 }
-else if( $_POST['site'] != $lang['site'] )
-{
-	try
-	{
-		$site = api::send('site/select', array('site'=>$_POST['site']));
-	}
-	catch(Exception $e )
-	{
-		template::redirect('/admin?error=site');
-	}
-
-	$template->redirect('/admin/users/detail?id='.$site[0]['user']['id']);
-}
 else if( $_POST['domain'] != $lang['domain'] )
 {
 	try
