@@ -48,6 +48,7 @@ for( $i = 1; $i <= 24; $i++ )
 
 // Last month
 $data_month = array();
+/*
 $monthago = mktime(date('H'), 0, 0, date('n'), date('j')+1, date('Y'))-(3600*24*30);
 $times = api::send('self/app/graph', array('app'=>$app['name'], 'graph'=>'time', 'branch'=>$_SESSION['DATA'][$app['id']]['branch'], 'group' => 'DAY', 'from' => $monthago, 'to' => $now, 'start' => 0, 'limit' => 1000));
 $current = $monthago;
@@ -63,9 +64,11 @@ for( $i = 1; $i <= 30; $i++ )
 	}
 	$current = $next;
 }
+*/
 
 // Last year
 $data_year = array();
+/*
 $yearago = mktime(date('H'), 0, 0, date('n')+1, date('j'), date('Y'))-(3600*24*365);
 $times = api::send('self/app/graph', array('app'=>$app['name'], 'graph'=>'time', 'branch'=>$_SESSION['DATA'][$app['id']]['branch'], 'group' => 'MONTH', 'from' => $yearago, 'to' => $now, 'start' => 0, 'limit' => 1000));
 $current = $yearago;
@@ -81,6 +84,7 @@ for( $i = 1; $i <= 12; $i++ )
 	}
 	$current = $next;
 }
+*/
 
 $content = "
 	<div class=\"panel\">

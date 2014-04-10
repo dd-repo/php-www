@@ -7,28 +7,13 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-function random_color($type)
+function random_color()
 {
 	$color = array();
-	switch( $type )
-	{
-		case 1:
-			$color[0] = rand(128,201);
-			$color[1] = rand(128,201);
-			$color[2] = rand(128,201);
-		break;
-		case 2:
-			$color[0] = rand(128,201);
-			$color[1] = rand(128,201);
-			$color[2] = rand(128,201);
-		break;
-		case 3:
-			$color[0] = rand(128,201);
-			$color[1] = rand(128,201);
-			$color[2] = rand(128,201);
-		break;
-	}
-	
+	$color[0] = rand(128,201);
+	$color[1] = rand(128,201);
+	$color[2] = rand(128,201);
+		
     return dechex($color[0]) . dechex($color[1]) . dechex($color[2]);
 }
 
@@ -65,34 +50,6 @@ foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] 
 	}
 }
 
-// Last month
-$data_month = array();
-foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] as $inst )
-{
-	$monthago = mktime(date('H'), 0, 0, date('n'), date('j')+1, date('Y'))-(3600*24*30);
-	$ram = api::send('self/app/graph', array('app'=>$app['name'], 'graph'=>'memory', 'branch'=>$_SESSION['DATA'][$app['id']]['branch'], 'instance'=>$inst['id'], 'group' => 'DAY', 'from' => $monthago, 'to' => $now, 'start' => 0, 'limit' => 1000));
-	$cpu = api::send('self/app/graph', array('app'=>$app['name'], 'graph'=>'cpu', 'branch'=>$_SESSION['DATA'][$app['id']]['branch'], 'instance'=>$inst['id'], 'group' => 'DAY', 'from' => $monthago, 'to' => $now, 'start' => 0, 'limit' => 1000));
-	$current = $monthago;
-	for( $i = 1; $i <= 30; $i++ )
-	{
-		$next = $current+(3600*24);
-		$data_month[$current]['ram' . $inst['id']] = 0;
-		$data_month[$current]['cpu' . $inst['id']] = 0;
-		$data_month[$current]['date'] = date($lang['dateformat'], $current);
-		foreach( $cpu as $c )
-		{
-			if( $c['DAY'] == date('d', $current) )
-				$data_month[$current]['cpu' . $inst['id']] = $c['average'];
-		}
-		foreach( $ram as $r )
-		{
-			if( $r['DAY'] == date('d', $current) )
-				$data_month[$current]['ram' . $inst['id']] = $r['average'];
-		}
-		$current = $next;
-	}
-}
-
 $content = "
 	<div id=\"chart1\"></div>
 	<br />
@@ -119,24 +76,6 @@ foreach( $data_day as $key => $value )
 $content .= "
 			];
 			
-			var dataSourceMonth = [";
-
-foreach( $data_month as $key => $value )
-{
-	$content .= "
-			{ day: '".date($lang['dateformat'], $key)."', ";
-	
-	foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] as $i )
-	{
-		$content .= " memory{$i['id']}: " . $value['ram' . $i['id']] . ", cpu{$i['id']}: " . $value['cpu' . $i['id']] . ",";
-	}
-	
-	$content .= " }, ";
-}
-
-$content .= "
-			];
-			
 			$(\"#chart1\").dxChart({
 				dataSource: dataSourceDay,
 				commonSeriesSettings: {
@@ -147,24 +86,23 @@ $content .= "
 				},
 				series: [
 ";
-$k = 1;
+
 foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] as $i )
 {
-	$content .= "					{ valueField: \"memory{$i['id']}\", name: \"{$app['name']}-{$_SESSION['DATA'][$app['id']]['branch']}-{$i['id']} ({$lang['memory']})\", type: 'bar', 'color': '#".random_color($k)."', axis: \"memory\" },
-									{ valueField: \"cpu{$i['id']}\", name: \"{$app['name']}-{$_SESSION['DATA'][$app['id']]['branch']}-{$i['id']} ({$lang['cpu']})\", type: 'spline', 'color': '#".random_color($k)."', axis: \"cpu\" },
+	$content .= "
+					{ valueField: \"cpu{$i['id']}\", name: \"{$app['name']}-{$_SESSION['DATA'][$app['id']]['branch']}-{$i['id']} ({$lang['cpu']})\", type: 'spline', 'color': '#".random_color()."' },
 	";
-	$k++;
-	
-	if( $k == 4 )
-		$k = 1;
 }
 
 $content .= "
 				],
-				valueAxis: [
-					{ name: \"memory\", position: \"left\", grid: { visible: true }, title: { text: \"{$lang['memory2']}\" } },
-					{ name: \"cpu\", position: \"right\", grid: { visible: true }, title: { text: \"{$lang['cpu']}\" } }
-				],
+				valueAxis: {
+					label: {
+						customizeText: function() {
+							return this.valueText + '%'
+						}
+					},
+				},
 				argumentAxis:{
 					grid:{
 						visible: true
@@ -195,29 +133,26 @@ $content .= "
 			});
 
 			$(\"#chart2\").dxChart({
-				dataSource: dataSourceMonth,
+				dataSource: dataSourceDay,
 				commonSeriesSettings: {
-					argumentField: \"day\"
+					argumentField: \"hour\"
 				},
 				series: [
 ";
-$k = 1;
 foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] as $i )
 {
-	$content .= "					{ valueField: \"memory{$i['id']}\", name: \"{$app['name']}-{$_SESSION['DATA'][$app['id']]['branch']}-{$i['id']} ({$lang['memory']})\", type: 'bar', 'color': '#".random_color($k)."', axis: \"memory\" },
-									{ valueField: \"cpu{$i['id']}\", name: \"{$app['name']}-{$_SESSION['DATA'][$app['id']]['branch']}-{$i['id']} ({$lang['cpu']})\", type: 'spline', 'color': '#".random_color($k)."', axis: \"cpu\" },
+	$content .= "					{ valueField: \"memory{$i['id']}\", name: \"{$app['name']}-{$_SESSION['DATA'][$app['id']]['branch']}-{$i['id']} ({$lang['memory']})\", type: 'bar', 'color': '#".random_color()."' },
 	";
-	$k++;
-	
-	if( $k == 4 )
-		$k = 1;
 }
 $content .= "
 				],
-				valueAxis: [
-					{ name: \"memory\", position: \"left\", grid: { visible: true }, title: { text: \"{$lang['memory2']}\" } },
-					{ name: \"cpu\", position: \"right\", grid: { visible: true }, title: { text: \"{$lang['cpu']}\" } }
-				],
+				valueAxis: {
+					label: {
+						customizeText: function() {
+							return this.valueText + 'M'
+						}
+					}
+				},
 				argumentAxis:{
 					grid:{
 						visible: true
