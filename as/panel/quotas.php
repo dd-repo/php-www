@@ -127,7 +127,7 @@ foreach( $apps2 as $a )
 	$content .= "
 					<tr>
 						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/panel.png\" /></td>
-						<td>{$a['name']}</td>
+						<td>{$a['tag']}</td>
 						<td>{$lang['app']}</td>
 						<td>{$a['homeDirectory']}</td>
 						<td><span style=\"font-weight: bold;\">{$a['size']} {$lang['mb']}</span></td>
@@ -140,7 +140,7 @@ foreach( $services2 as $s )
 	$content .= "
 					<tr>
 						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" /></td>
-						<td>{$s['name']}</td>
+						<td>{$s['description']}</td>
 						<td>{$lang['service']} {$s['vendor']}</td>
 						<td>/services/{$s['name']}</td>
 						<td><span style=\"font-weight: bold;\">{$s['size']} {$lang['mb']}</span></td>

@@ -29,7 +29,10 @@ if( $_GET['instance'] )
 		foreach( preg_split("/((\r?\n)|(\r\n?))/", $instance['log']) as $line )
 		{
 			preg_match("/^\\s*([0-9\\-_:\\.]+)?(.*)$/is", trim($line), $m);
-			$logs[] = array('host'=>$instance['host'], 'date'=>$m[1], 'text'=>$m[2]);
+			
+			if( strlen(trim($m[2])) > 2 )
+				$logs[] = array('host'=>$instance['host'], 'date'=>$m[1], 'text'=>$m[2]);
+				
 			$j++;
 		}
 	}
@@ -44,13 +47,16 @@ else
 			foreach( preg_split("/((\r?\n)|(\r\n?))/", $i['log']) as $line )
 			{
 				preg_match("/^\\s*([0-9\\-_:\\.]+)?(.*)$/is", trim($line), $m);
-				$logs[] = array('host'=>$i['host'], 'date'=>$m[1], 'text'=>$m[2]);
+				if( strlen(trim($m[2])) > 2 )
+					$logs[] = array('host'=>$i['host'], 'date'=>$m[1], 'text'=>$m[2]);
 				$j++;
 			}
 		}
 	}	
 	usort($logs, "cmp");
 }
+
+$logs = array_slice($logs, 0, 100);
 
 $content .= "
 	<div class=\"panel\">
@@ -74,7 +80,7 @@ foreach( $logs as $l )
 {
 	$l['date'] = explode('.', $l['date']);
 	$l['date'] = $l['date'][0];
-	
+
 	$content .= "
 				<tr>
 					<td style=\"width: 100px;\">{$l['host']}</td>

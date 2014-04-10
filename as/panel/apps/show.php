@@ -407,7 +407,7 @@ $content .= "
 		{
 			if( id == 1 )
 			{
-				$('#sequence').html();
+				$('#sequence').html('');
 				$('#sequence').dialog('open');
 			}
 			$('#sequence').append(\"<br /><div style='margin: 0;  padding: 0; clear: left;'><img id='wait\" + id + \"' src='/{$GLOBALS['CONFIG']['SITE']}/images/anim_loading_16x16.gif' style='float: left; margin-right: 15px; display: block;' /><span style='font-size: 12px;'>\" + message + \"</span></div>\");
