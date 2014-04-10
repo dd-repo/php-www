@@ -36,10 +36,14 @@ foreach( $me['quotas'] as $q )
 	}
 }
 
-$percent_memory = $mem['used']*100/$mem['max'];
-$percent_disk = $disk['used']*100/$disk['max'];
-$percent_services = $services['used']*100/$services['max'];
-$percent_apps = $apps['used']*100/$apps['max'];
+if( $mem['max'] != 0 )
+	$percent_memory = $mem['used']*100/$mem['max'];
+if( $disk['max'] != 0 )
+	$percent_disk = $disk['used']*100/$disk['max'];
+if( $services['max'] != 0 )
+	$percent_services = $services['used']*100/$services['max'];
+if( $apps['max'] != 0 )
+	$percent_apps = $apps['used']*100/$apps['max'];
 
 $disk['max'] = round($disk['max']/1024, 2) . " {$lang['gb']}";
 if( $disk['used'] >= 1024 )

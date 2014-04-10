@@ -9,6 +9,8 @@ if( !defined('PROPER_START') )
 $app = api::send('self/app/list', array('id'=>$_GET['id']));
 $app = $app[0];
 
+$backups = array();
+
 if( !$_GET['branch'] && !$_SESSION['DATA'][$app['id']]['branch'] )
 	$_SESSION['DATA'][$app['id']]['branch'] = 'master';
 else if( $_GET['branch'] )
@@ -17,11 +19,14 @@ else if( $_GET['branch'] )
 $memory = 0;
 $instances = 0;
 $memoryone = 0;
-foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] as $i )
+if( count($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances']) > 0 )
 {
-	$memoryone = $i['memory']['quota'];
-	$memory = $memory+$i['memory']['quota'];
-	$instances++;
+	foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] as $i )
+	{
+		$memoryone = $i['memory']['quota'];
+		$memory = $memory+$i['memory']['quota'];
+		$instances++;
+	}
 }
 
 $expl = explode('-', $app['name']);
@@ -142,6 +147,82 @@ $content .= "
 			<div id=\"response1\"></div>
 			<br /><br />
 			<div style=\"float: left; width: 500px;\">
+				<div style=\"float: left; width: 400px; padding-top: 8px;\">
+					<h2 class=\"dark\">{$lang['services']}</h2>
+				</div>
+				<div style=\"float: right; width: 100px;\">
+					<a class=\"button classic\" href=\"#\" onclick=\"geturls(); $('#newservice').dialog('open'); return false;\" style=\"width: 22px; height: 22px; float: right;\">
+						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
+					</a>
+				</div>
+				<div class=\"clear\"></div><br />
+				<table>
+					<tr>
+						<th style=\"text-align: center; width: 50px;\">#</th>
+						<th>{$lang['service']}</th>
+						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
+					</tr>
+";
+
+if( count($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['services']) > 0 )
+{
+	foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['services'] as $s )
+	{
+		$content .= "
+					<tr>
+						<td style=\"text-align: center; width: 50px;\"><img style=\"width: 40px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-{$s['service_type']}.png\" /></td>
+						<td>{$s['service_description']} ({$s['branch_name']})</td>
+						<td style=\"width: 70px; text-align: center;\">
+							<a href=\"#\" onclick=\"$('#service').val('{$s['service_name']}'); $('#updateservice').dialog('open'); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>
+							<a href=\"#\" onclick=\"$('#service').val('{$s['service_name']}'); $('#deleteservice').dialog('open'); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+						</td>
+					</tr>
+		";
+	}
+}
+
+$content .= "
+				</table>
+			</div>
+			<div style=\"float: right; width: 500px;\">
+
+				<div style=\"float: left; width: 400px; padding-top: 8px;\">
+					<h2 class=\"dark\">{$lang['uris']}</h2>
+				</div>
+				<div style=\"float: right; width: 100px;\">
+					<a class=\"button classic\" href=\"#\" onclick=\"geturls(); $('#newurl').dialog('open'); return false;\" style=\"width: 22px; height: 22px; float: right;\">
+						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
+					</a>
+				</div>
+				<div class=\"clear\"></div><br />
+				<table>
+					<tr>
+						<th>{$lang['url']}</th>
+						<th>{$lang['actions']}</th>
+					</tr>
+		";
+				
+if( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['urls'] )
+{
+	foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['urls'] as $u )
+	{		
+		$content .= "
+					<tr>
+						<td><a href=\"http://{$u}\">{$u}</a></td>
+						<td style=\"width: 30px; text-align: center;\">
+							<a href=\"/panel/apps/del_url_action?id={$app['id']}&url={$u}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+						</td>
+					</tr>
+		";
+	}
+}
+		
+$content .= "
+				</table>
+			</div>
+			<div class=\"clear\"></div><br />
+			<br />
+			<div style=\"float: left; width: 500px;\">
 				<div style=\"float: left; width: 200px; padding-top: 8px;\">
 					<h2 class=\"dark\">{$lang['infos']}</h2>
 				</div>
@@ -181,34 +262,34 @@ $content .= "
 			</div>
 			<div style=\"float: right; width: 500px;\">
 				<div style=\"float: left; width: 400px; padding-top: 8px;\">
-					<h2 class=\"dark\">{$lang['uris']}</h2>
+					<h2 class=\"dark\">{$lang['backups']}</h2>
 				</div>
 				<div style=\"float: right; width: 100px;\">
-					<a class=\"button classic\" href=\"#\" onclick=\"geturls(); $('#newurl').dialog('open'); return false;\" style=\"width: 22px; height: 22px; float: right;\">
+					<a class=\"button classic\" href=\"#\" onclick=\"geturls(); $('#backup').dialog('open'); return false;\" style=\"width: 22px; height: 22px; float: right;\">
 						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
 					</a>
 				</div>
 				<div class=\"clear\"></div><br />
 				<table>
 					<tr>
-						<th>{$lang['url']}</th>
-						<th>{$lang['actions']}</th>
+						<th>{$lang['date']}</th>
+						<th>{$lang['type']}</th>
+						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
 					</tr>
-		";
-				
-if( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['urls'] )
+";
+
+foreach( $backups as $b )
 {
-	foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['urls'] as $u )
-	{		
-		$content .= "
+	$content .= "
 					<tr>
 						<td><a href=\"http://{$u}\">{$u}</a></td>
-						<td style=\"width: 30px; text-align: center;\">
-							<a href=\"/panel/apps/del_url_action?id={$app['id']}&url={$u}&branch=".security::encode($_SESSION['DATA'][$app['id']]['branch'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+						<td>Auto</td>
+						<td  style=\"width: 70px; text-align: center;\">
+							<a href=\"\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/download.png\" alt=\"\" /></a>
+							<a href=\"\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
 						</td>
 					</tr>
-		";
-	}
+	";
 }
 		
 $content .= "
@@ -264,7 +345,6 @@ $content .= "
 						<option value=\"recipe\">recipe</option>
 						<option value=\"staging\">staging</option>
 						<option value=\"testing\">testing</option>
-						<option value=\"tests\">tests</option>
 					</select>
 					<span class=\"help-block\">{$lang['help_branch']}</span>
 				</fieldset>
@@ -309,6 +389,27 @@ $content .= "
 		<div class=\"form-small\">		
 			<form action=\"/panel/apps/update_action\" method=\"post\" class=\"center\">
 				<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
+				<fieldset>
+					<input type=\"password\" name=\"newpassword\" />
+					<span class=\"help-block\">{$lang['pass_help']}</span>
+				</fieldset>
+				<fieldset>
+					<input type=\"password\" name=\"confirm\" />
+					<span class=\"help-block\">{$lang['confirm_help']}</span>
+				</fieldset>
+				<fieldset>	
+					<input autofocus type=\"submit\" value=\"{$lang['update']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<div id=\"updateservice\" class=\"floatingdialog\">
+		<br />
+		<h3 class=\"center\">{$lang['updateservice_title']}</h3>
+		<p style=\"text-align: center;\">{$lang['updateservice_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/apps/update_service_action\" method=\"post\" class=\"center\">
+				<input id=\"service\" type=\"hidden\" name=\"service\" value=\"\" />
 				<fieldset>
 					<input type=\"password\" name=\"newpassword\" />
 					<span class=\"help-block\">{$lang['pass_help']}</span>
@@ -376,6 +477,69 @@ $content .= "
 		<a style=\"width: 150px; margin: 0 auto;\" href=\"#\" onclick=\"$('#alert').dialog('close'); return false;\" class=\"button classic\">{$lang['close']}</a>
 		<br />
 	</div>
+	<div id=\"newservice\" class=\"floatingdialog\">
+		<br />
+		<h3 class=\"center\" style=\"padding-top: 5px;\">{$lang['newservice']}</h3>
+		
+";
+
+$services = api::send('self/service/list');
+
+if( count($services) > 0 )
+{
+	$content .= "
+		<p style=\"text-align: center;\">{$lang['newservice_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/apps/link_action\" method=\"post\" class=\"center\">
+				<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
+				<input type=\"hidden\" name=\"branch\" value=\"{$_SESSION['DATA'][$app['id']]['branch']}\" />
+				<fieldset>
+					<select name=\"service\" style=\"width: 320px;\">
+	";
+	foreach( $services as $s )
+	{
+		$content .= "			<option value=\"{$s['name']}\">{$s['description']} ({$s['name']})</option>
+		";
+	}
+
+	$content .= "
+					</select>
+					<span class=\"help-block\">{$lang['service_help']}</span>
+				</fieldset>
+				<fieldset>
+					<input type=\"password\" name=\"password\"  style=\"width: 300px;\"/>
+					<span class=\"help-block\">{$lang['pass_help2']}</span>
+				</fieldset>
+				<fieldset>	
+					<input autofocus type=\"submit\" value=\"{$lang['link']}\" />
+				</fieldset>
+			</form>
+	";
+}
+else
+{
+	$content .= "<p style=\"text-align: center;\">{$lang['noservice']}</p>
+	";
+}
+
+$content .= "
+		</div>
+	</div>
+	<div id=\"deleteservice\" class=\"floatingdialog\">
+		<br />
+		<h3 class=\"center\">{$lang['deleteservice']}</h3>
+		<p style=\"text-align: center;\">{$lang['deleteservice_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/apps/unlink_action\" method=\"get\" class=\"center\">
+				<input id=\"service\" type=\"hidden\" value=\"\" name=\"service\" />
+				<input type=\"hidden\" name=\"branch\" value=\"{$_SESSION['DATA'][$app['id']]['branch']}\" />
+				<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
+				<fieldset autofocus>	
+					<input type=\"submit\" value=\"{$lang['delete_now']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
 	<div id=\"sequence\" class=\"floatingdialog\"></div>
 	<div id=\"recipe\" style=\"display: none;\"></div>
 	<script>
@@ -401,6 +565,9 @@ $content .= "
 		newFlexibleDialog('deletebranch', 550);
 		newFlexibleDialog('push', 700);
 		newFlexibleDialog('alert', 550);
+		newFlexibleDialog('newservice', 550);
+		newFlexibleDialog('deleteservice', 550);
+		newFlexibleDialog('updateservice', 550);
 		newDialog('sequence', 300, 320);
 		
 		function initSequence(id, message)
