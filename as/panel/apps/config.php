@@ -15,7 +15,10 @@ $content .= "
 			<div class=\"left\" style=\"width: 700px;\">
 				<h1 class=\"dark\">{$lang['title']} {$app['name']}</h1>
 			</div>
-			<div class=\"right\" style=\"width: 300px;\">
+			<div class=\"right\" style=\"text-align: right; float: right;\">
+				<a class=\"action push\" href=\"#\" onclick=\"$('#push').dialog('open'); return false;\">
+					{$lang['push']}
+				</a>
 			</div>
 		</div>
 		<div class=\"clear\"></div><br /><br />
@@ -29,8 +32,8 @@ $content .= "
 						<span class=\"help-block\">{$lang['help_desc']}</span>
 					</fieldset>
 					<fieldset>
-						<input type=\"text\" name=\"access\" value=\"ssh://git.as/~".security::get('USER')."/{$app['name']}.git\" style=\"width: 400px;\" disabled />
-						<span class=\"help-block\">{$lang['help_access']}</span>
+						<input type=\"text\" name=\"email\" value=\"{$app['email']}\" style=\"width: 400px;\" />
+						<span class=\"help-block\">{$lang['help_mail']}</span>
 					</fieldset>
 					<fieldset>	
 						<input type=\"submit\" value=\"{$lang['update']}\" />
@@ -260,10 +263,49 @@ if( count($domains) > 0 )
 $content .= "
 		</table>
 	</div>
+	<div id=\"push\" class=\"floatingdialog\">
+		<br />
+		<h3 class=\"center\" style=\"padding-top: 5px;\">{$lang['push_title']}</h3>
+		<p style=\"text-align: center;\">{$lang['push_text']}</p>
+		<br />
+		<h2 class=\"dark\" style=\"text-align: center;\">{$lang['access']}</h2>
+		<table>
+			<tr>
+				<th>{$lang['type']}</th>
+				<th>{$lang['infos']}</th>
+				<th>{$lang['user']}</th>
+				<th>{$lang['port']}</th>
+			</tr>
+			<tr>
+				<td><span class=\"large\">SSH</span></td>
+				<td>ssh://git.as/~".security::get('USER')."/{$app['name']}.git</td>
+				<td>{$app['name']}</td>
+				<td>22</td>
+			</tr>
+		</table>
+		<br />
+		<h2 class=\"dark\" style=\"text-align: center;\">{$lang['paths']}</h2>
+		<table>
+			<tr>
+				<th>{$lang['type']}</th>
+				<th>{$lang['folder']}</th>
+			</tr>
+			<tr>
+				<td>{$lang['app']}</td>
+				<td>{$app['homeDirectory']}</td>
+			</tr>	
+			<tr>
+				<td>{$lang['git']}</td>
+				<td>".str_replace("Apps/{$app['name']}", "", $app['homeDirectory'])."var/git/{$app['name']}</td>
+			</tr>
+		</table>
+		<br />
+	</div>
 	<script>
 		newDialog('newapp', 550, 500);
 		newDialog('newuser', 550, 500);
 		newDialog('newgroup', 550, 500);
+		newFlexibleDialog('push', 900);
 	</script>
 	";
 

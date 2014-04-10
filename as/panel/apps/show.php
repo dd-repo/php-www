@@ -14,7 +14,7 @@ $backups = array();
 if( !$_GET['branch'] && !$_SESSION['DATA'][$app['id']]['branch'] )
 	$_SESSION['DATA'][$app['id']]['branch'] = 'master';
 else if( $_GET['branch'] )
-	$_SESSION['DATA'][$app['id']]['branch'] = $_GET['branch'];
+	$_SESSION['DATA'][$app['id']]['branch'] = security::encode($_GET['branch']);
 
 $memory = 0;
 $instances = 0;
@@ -225,10 +225,6 @@ $content .= "
 						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
 					</tr>
 					<tr>
-						<td>{$lang['dir']}</td>
-						<td colspan=\"2\">".str_replace("Apps/{$app['name']}", "", $app['homeDirectory'])."var/git/{$app['name']}</td>
-					</tr>
-					<tr>
 						<td>{$lang['memory']}</td>
 						<td><span class=\"large\" id=\"memorycount\">{$memory}</span> {$lang['mb']}</td>
 						<td style=\"width: 70px; text-align: center;\">
@@ -400,6 +396,7 @@ $content .= "
 		<h3 class=\"center\" style=\"padding-top: 5px;\">{$lang['push_title']}</h3>
 		<p style=\"text-align: center;\">{$lang['push_text']}</p>
 		<br />
+		<h2 class=\"dark\" style=\"text-align: center;\">{$lang['access']}</h2>
 		<table>
 			<tr>
 				<th>{$lang['type']}</th>
@@ -424,6 +421,26 @@ $content .= "
 				<td>ftp://ftp.anotherservice.com</td>
 				<td>{$app['name']}</td>
 				<td>21</td>
+			</tr>
+		</table>
+		<br />
+		<h2 class=\"dark\" style=\"text-align: center;\">{$lang['paths']}</h2>
+		<table>
+			<tr>
+				<th>{$lang['type']}</th>
+				<th>{$lang['folder']}</th>
+			</tr>
+			<tr>
+				<td>{$lang['dir']}</td>
+				<td>{$app['homeDirectory']}</td>
+			</tr>			
+			<tr>
+				<td>{$lang['currentdir']}</td>
+				<td>{$app['homeDirectory']}/{$_SESSION['DATA'][$app['id']]['branch']}</td>
+			</tr>
+			<tr>
+				<td>{$lang['git']}</td>
+				<td>".str_replace("Apps/{$app['name']}", "", $app['homeDirectory'])."var/git/{$app['name']}</td>
 			</tr>
 		</table>
 		<br />

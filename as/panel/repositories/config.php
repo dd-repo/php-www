@@ -15,9 +15,12 @@ $content .= "
 			<div class=\"left\" style=\"padding-top: 5px; width: 600px;\">
 				<h1 class=\"dark\">{$lang['title']} {$repo['name']}</h1>
 			</div>
-			<div class=\"right\" style=\"width: 400px;\">
-				<a class=\"button classic\" href=\"#\" onclick=\"$('#delete').dialog('open'); return false;\" style=\"width: 180px; height: 22px; float: right;\">
-					<span style=\"display: block; padding-top: 3px;\">{$lang['delete']}</span>
+			<div class=\"right\" style=\"text-align: right; float: right;\">
+				<a class=\"action push\" href=\"#\" onclick=\"$('#push').dialog('open'); return false;\">
+					{$lang['push']}
+				</a>
+				<a class=\"action delete\" href=\"#\" onclick=\"$('#delete').dialog('open'); return false;\">
+					{$lang['delete']}
 				</a>
 			</div>
 		</div>
@@ -32,8 +35,8 @@ $content .= "
 						<span class=\"help-block\">{$lang['help_desc']}</span>
 					</fieldset>
 					<fieldset>
-						<input type=\"text\" name=\"access\" value=\"ssh://git.as/~".security::get('USER')."/{$repo['name']}.{$repo['type']}\" style=\"width: 400px;\" disabled />
-						<span class=\"help-block\">{$lang['help_access']}</span>
+						<input type=\"text\" name=\"email\" value=\"{$repo['email']}\" style=\"width: 400px;\" />
+						<span class=\"help-block\">{$lang['help_mail']}</span>
 					</fieldset>
 					<fieldset>	
 						<input type=\"submit\" value=\"{$lang['update']}\" />
@@ -275,10 +278,45 @@ $content .= "
 			</form>
 		</div>
 	</div>
+	<div id=\"push\" class=\"floatingdialog\">
+		<br />
+		<h3 class=\"center\" style=\"padding-top: 5px;\">{$lang['push_title']}</h3>
+		<p style=\"text-align: center;\">{$lang['push_text']}</p>
+		<br />
+		<h2 class=\"dark\" style=\"text-align: center;\">{$lang['access']}</h2>
+		<table>
+			<tr>
+				<th>{$lang['type']}</th>
+				<th>{$lang['infos']}</th>
+				<th>{$lang['user']}</th>
+				<th>{$lang['port']}</th>
+			</tr>
+			<tr>
+				<td><span class=\"large\">SSH</span></td>
+				<td>ssh://git.as/~".security::get('USER')."/{$repo['name']}.git</td>
+				<td>".security::get('USER')."</td>
+				<td>22</td>
+			</tr>
+		</table>
+		<br />
+		<h2 class=\"dark\" style=\"text-align: center;\">{$lang['paths']}</h2>
+		<table>
+			<tr>
+				<th>{$lang['type']}</th>
+				<th>{$lang['folder']}</th>
+			</tr>
+			<tr>
+				<td>{$lang['git']}</td>
+				<td colspan=\"2\">{$repo['dir']}</td>
+			</tr>
+		</table>
+		<br />
+	</div>
 	<script>
 		newDialog('newapp', 550, 500);
 		newDialog('newuser', 550, 500);
 		newDialog('newgroup', 550, 500);
+		newFlexibleDialog('push', 900);
 		newFlexibleDialog('delete', 550);
 	</script>
 	";

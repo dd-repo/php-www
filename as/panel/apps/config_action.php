@@ -6,7 +6,7 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-api::send('self/app/update', array('id'=>$_POST['id'], 'tag'=>$_POST['tag']));
+api::send('self/app/update', array('id'=>$_POST['id'], 'email'=>$_POST['email'], 'tag'=>$_POST['tag']));
 
 $_SESSION['MESSAGE']['TYPE'] = 'success';
 $_SESSION['MESSAGE']['TEXT']= $lang['success'];	

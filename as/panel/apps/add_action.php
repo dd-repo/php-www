@@ -6,6 +6,9 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
+$userinfo = api::send('self/user/list');
+$userinfo = $userinfo[0];
+
 $_SESSION['APP_RUNTIME'] = $_POST['runtime'];
 $_SESSION['APP_STANDALONE'] = $_POST['runtime'];
 
@@ -22,6 +25,7 @@ $params['domain'] = $_POST['domain'];
 $params['tag'] = $_POST['tag'];
 $params['runtime'] = $_POST['runtime'];
 $params['pass'] = $_POST['pass'];
+$params['mail'] = $userinfo['email'];
 
 $app = api::send('self/app/add', $params);
 api::send('self/subdomain/add', array('domain'=>'anotherservice.net', 'subdomain'=>strtolower($app['name'])));
