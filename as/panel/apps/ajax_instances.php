@@ -72,7 +72,8 @@ try
 					<th>{$lang['cpu']}</th>
 					<th>{$lang['memory']}</th>
 					<th>{$lang['uptime']}</th>
-					<th >{$lang['status']}</th>
+					<th>{$lang['status']}</th>
+					<th style=\"width: 30px; text-align: center;\">{$lang['logs']}</th>
 				</tr>
 	";
 	$j = 0;
@@ -94,6 +95,7 @@ try
 						<td>{$i['memory']['usage']}Mo / {$i['memory']['quota']}Mo</td>
 						<td>{$info['d']} {$lang['days']} {$info['h']} {$lang['hours']} {$info['m']} {$lang['minutes']} {$info['s']} {$lang['seconds']}</td>
 						<td>".($running?"<div class=\"state running\"><div class=\"state-content\">{$lang['running']}</div></div>":"<div class=\"state stopped\"><div class=\"state-content\">{$lang['stopped']}")."</div></div></td>
+						<td style=\"width: 30px; text-align: center;\"><a href=\"/panel/apps/log?id={$app['id']}&instance={$i['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/notebook.png\" alt=\"\" /></a></td>
 					</tr>
 		";
 		$j++;

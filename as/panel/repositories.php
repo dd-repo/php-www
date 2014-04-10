@@ -18,6 +18,7 @@ if( $quota['max'] == 0 )
 	template::redirect('/panel/plans');
 	
 $repos = api::send('self/repo/list');
+$apps = api::send('self/app/list');
 
 $content = "
 	<div class=\"panel\">
@@ -35,7 +36,7 @@ $content = "
 		<div class=\"clear\"></div><br />
 		<div class=\"container\">";
 
-if( count($repos) == 0 )
+if( count($repos) == 0 && count($apps) == 0 )
 {
 	$content .= "
 					<span style=\"font-size: 16px;\">{$lang['norepo']}</span>
@@ -58,6 +59,22 @@ foreach( $repos as $r )
 	if( $j == 4 )
 		$j = 1;
 }
+foreach( $apps as $a )
+{
+	$content .= "
+			<div class=\"service ".($j==1?"first":"")."\" onclick=\"window.location.href='/panel/apps/config?id={$a['id']}'; return false;\">
+				<img style=\"float: left; margin: 10px 15px 0 0;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/repos/icon-git.png\" />
+				<span class=\"name\" style=\"margin: 5px 0 0px 0; display: block;\">{$a['tag']}</span><br />
+				<span class=\"subname\">{$a['name']}</span>
+			</div>
+	";
+	
+	$j++;
+	
+	if( $j == 4 )
+		$j = 1;
+}
+
 
 	$content .= "
 			<div class=\"clear\"></div><br />

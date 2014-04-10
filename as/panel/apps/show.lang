@@ -91,3 +91,7 @@ seq_restart = "Redémarrage de l'application"
 seq_decrease_instance = "Suppression d'une instance"
 seq_increase_instance = "Ajout d'une instance"
 seq_rebuild = "Reconstruction du docker"
+
+log_title = "Logs de l'application"
+log_text = "Sélectionner l'instance dont vous souhaitez afficher les logs."
+instance = "Instance"

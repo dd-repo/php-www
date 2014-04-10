@@ -6,33 +6,30 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$repo = api::send('self/repo/list', array('id'=>$_GET['id']));
-$repo = $repo[0];
+$app = api::send('self/app/list', array('id'=>$_GET['id']));
+$app = $app[0];
 
 $content .= "
 	<div class=\"panel\">
 		<div class=\"top\">
-			<div class=\"left\" style=\"padding-top: 5px; width: 600px;\">
-				<h1 class=\"dark\">{$lang['title']} {$repo['name']}</h1>
+			<div class=\"left\" style=\"width: 700px;\">
+				<h1 class=\"dark\">{$lang['title']} {$app['name']}</h1>
 			</div>
-			<div class=\"right\" style=\"width: 400px;\">
-				<a class=\"button classic\" href=\"#\" onclick=\"$('#delete').dialog('open'); return false;\" style=\"width: 180px; height: 22px; float: right;\">
-					<span style=\"display: block; padding-top: 3px;\">{$lang['delete']}</span>
-				</a>
+			<div class=\"right\" style=\"width: 300px;\">
 			</div>
 		</div>
 		<div class=\"clear\"></div><br /><br />
 		<div class=\"container\">
 			<div style=\"float: left; width: 530px;\">
 				<h3 class=\"colored\">{$lang['change_desc']}</h3>
-				<form action=\"/panel/repositories/config_action\" method=\"post\">
-					<input type=\"hidden\" name=\"id\" value=\"{$repo['id']}\" />
+				<form action=\"/panel/apps/config_action\" method=\"post\">
+					<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
 					<fieldset>
-						<input type=\"text\" name=\"desc\" value=\"{$repo['description']}\" style=\"width: 400px;\" />
+						<input type=\"text\" name=\"tag\" value=\"{$app['tag']}\" style=\"width: 400px;\" />
 						<span class=\"help-block\">{$lang['help_desc']}</span>
 					</fieldset>
 					<fieldset>
-						<input type=\"text\" name=\"access\" value=\"ssh://git.as/~".security::get('USER')."/{$repo['name']}.{$repo['type']}\" style=\"width: 400px;\" disabled />
+						<input type=\"text\" name=\"access\" value=\"ssh://git.as/~".security::get('USER')."/{$app['name']}.git\" style=\"width: 400px;\" disabled />
 						<span class=\"help-block\">{$lang['help_access']}</span>
 					</fieldset>
 					<fieldset>	
@@ -59,9 +56,9 @@ $content .= "
 					</tr>
 ";
 
-if( $repo['apps'] )
+if( $app['apps'] )
 {
-	foreach( $repo['apps'] as $a )
+	foreach( $app['apps'] as $a )
 	{
 		$language = explode('-', $a['name']);
 		$language = $language[0];
@@ -70,7 +67,7 @@ if( $repo['apps'] )
 					<tr>
 						<td><img style=\"float: left; margin-right: 10px; width: 50px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" /> <span style=\"display: block; padding-top: 15px;\">{$a['name']}</a></td>
 						<td align=\"center\">
-							<a href=\"/panel/repositories/deny_action?id={$_GET['id']}&member={$a['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+							<a href=\"/panel/apps/deny_action?id={$_GET['id']}&member={$a['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
 						</td>
 					</tr>";
 	}
@@ -99,15 +96,15 @@ $content .= "
 					</tr>
 ";
 
-if( $repo['users'] )
+if( $app['users'] )
 {
-	foreach( $repo['users'] as $u )
+	foreach( $app['users'] as $u )
 	{
 		$content .= "
 					<tr>
 						<td>{$u['name']}</td>
 						<td align=\"center\">
-							<a href=\"/panel/repositories/deny_action?id={$_GET['id']}&member={$u['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+							<a href=\"/panel/apps/deny_action?id={$_GET['id']}&member={$u['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
 						</td>
 					</tr>";
 	}
@@ -135,15 +132,15 @@ $content .= "
 					</tr>
 ";
 
-if( $repo['groups'] )
+if( $app['groups'] )
 {
-	foreach( $repo['groups'] as $g )
+	foreach( $app['groups'] as $g )
 	{
 		$content .= "
 					<tr>
 						<td>{$g['name']}</td>
 						<td align=\"center\">
-							<a href=\"/panel/repositories/deny_action?id={$_GET['id']}&member={$g['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+							<a href=\"/panel/apps/deny_action?id={$_GET['id']}&member={$g['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
 						</td>
 					</tr>";
 	}
@@ -176,7 +173,7 @@ if( count($apps) > 0 )
 				<tr>
 					<td>{$a['tag']} ({$a['name']})</td>
 					<td align=\"center\">
-						<a href=\"/panel/repositories/permit_action?id={$_GET['id']}&member={$a['id']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>
+						<a href=\"/panel/apps/permit_action?id={$_GET['id']}&member={$a['id']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>
 					</td>
 				</tr>
 		";
@@ -212,7 +209,7 @@ if( count($domains) > 0 )
 			<tr>
 				<td>{$u['name']}</td>
 				<td style=\"width: 35px; text-align: center;\">
-					<a href=\"/panel/repositories/permit_action?id={$_GET['id']}&member={$u['id']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>
+					<a href=\"/panel/apps/permit_action?id={$_GET['id']}&member={$u['id']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>
 				</td>
 			</tr>
 				";
@@ -251,7 +248,7 @@ if( count($domains) > 0 )
 			<tr>
 				<td>{$g['name']}</td>
 				<td align=\"center\">
-					<a href=\"/panel/repositories/permit_action?id={$_GET['id']}&member={$g['id']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>
+					<a href=\"/panel/apps/permit_action?id={$_GET['id']}&member={$g['id']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>
 				</td>
 			</tr>
 				";
@@ -263,23 +260,10 @@ if( count($domains) > 0 )
 $content .= "
 		</table>
 	</div>
-	<div id=\"delete\" class=\"floatingdialog\">
-		<h3 class=\"center\">{$lang['delete']}</h3>
-		<p style=\"text-align: center;\">{$lang['delete_text']}</p>
-		<div class=\"form-small\">		
-			<form action=\"/panel/repositories/del_action\" method=\"post\" class=\"center\">
-				<input type=\"hidden\" value=\"{$repo['id']}\" name=\"id\" />
-				<fieldset autofocus>	
-					<input type=\"submit\" value=\"{$lang['delete_now']}\" />
-				</fieldset>
-			</form>
-		</div>
-	</div>
 	<script>
 		newDialog('newapp', 550, 500);
 		newDialog('newuser', 550, 500);
 		newDialog('newgroup', 550, 500);
-		newFlexibleDialog('delete', 550);
 	</script>
 	";
 

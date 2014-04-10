@@ -12,7 +12,7 @@ $userinfo = $userinfo[0];
 $quotas =  api::send('self/quota/user/list');
 
 if( security::hasGrant('SELF_APP_SELECT') )
-	$apps = api::send('self/app/list', array());
+	$apps = api::send('self/app/list');
 
 foreach( $quotas as $q )
 {
