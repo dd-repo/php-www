@@ -146,46 +146,113 @@ $content .= "
 			<br />
 			<div id=\"response1\"></div>
 			<br /><br />
-			<div style=\"float: left; width: 500px;\">
-				<div style=\"float: left; width: 400px; padding-top: 8px;\">
-					<h2 class=\"dark\">{$lang['services']}</h2>
-				</div>
-				<div style=\"float: right; width: 100px;\">
-					<a class=\"button classic\" href=\"#\" onclick=\"geturls(); $('#newservice').dialog('open'); return false;\" style=\"width: 22px; height: 22px; float: right;\">
-						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
-					</a>
-				</div>
-				<div class=\"clear\"></div><br />
-				<table>
-					<tr>
-						<th style=\"text-align: center; width: 50px;\">#</th>
-						<th>{$lang['service']}</th>
-						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
-					</tr>
+			<div style=\"float: left; width: 400px; padding-top: 8px;\">
+				<h2 class=\"dark\">{$lang['services']}</h2>
+			</div>
+			<div style=\"float: right; width: 100px;\">
+				<a class=\"button classic\" href=\"#\" onclick=\"geturls(); $('#newservice').dialog('open'); return false;\" style=\"width: 22px; height: 22px; float: right;\">
+					<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
+				</a>
+			</div>
+			<div class=\"clear\"></div><br />
+			<table>
+				<tr>
+					<th style=\"text-align: center; width: 50px;\">#</th>
+					<th>{$lang['host2']}</th>
+					<th>{$lang['user']}</th>
+					<th>{$lang['service']}</th>
+					<th>{$lang['desc']}</th>
+					<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
+				</tr>
 ";
 
-if( count($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['services']) > 0 )
+if( $_SESSION['DATA'][$app['id']]['branch'] == 'master' )
+{
+	if( count($app['services']) > 0 )
+	{
+		foreach( $app['services'] as $s ) 
+		{
+			$content .= "
+				<tr>
+					<td style=\"text-align: center; width: 50px;\"><img style=\"width: 40px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-{$s['service_type']}.png\" /></td>
+					<td>{$s['service_host']}</td>
+					<td>{$s['service_name']}</td>
+					<td>{$s['service_name']}</td>
+					<td>{$s['service_description']}</td>
+					<td style=\"width: 70px; text-align: center;\">
+						<a href=\"#\" onclick=\"$('#service').val('{$s['service_name']}'); $('#deleteservice').dialog('open'); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+					</td>
+				</tr>
+			";	
+		}
+	}
+}
+else if( count($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['services']) > 0 )
 {
 	foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['services'] as $s )
 	{
 		$content .= "
-					<tr>
-						<td style=\"text-align: center; width: 50px;\"><img style=\"width: 40px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-{$s['service_type']}.png\" /></td>
-						<td>{$s['service_description']} ({$s['branch_name']})</td>
-						<td style=\"width: 70px; text-align: center;\">
-							<a href=\"#\" onclick=\"$('#service').val('{$s['service_name']}'); $('#updateservice').dialog('open'); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>
-							<a href=\"#\" onclick=\"$('#service').val('{$s['service_name']}'); $('#deleteservice').dialog('open'); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
-						</td>
-					</tr>
+				<tr>
+					<td style=\"text-align: center; width: 50px;\"><img style=\"width: 40px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-{$s['service_type']}.png\" /></td>
+					<td>{$s['service_host']}</td>
+					<td>{$s['service_name']}</td>
+					<td>{$s['service_name']}-{$s['branch_name']}</td>
+					<td>{$s['service_description']}</td>
+					<td style=\"width: 70px; text-align: center;\">
+						<a href=\"#\" onclick=\"$('#service').val('{$s['service_name']}'); $('#deleteservice').dialog('open'); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+					</td>
+				</tr>
 		";
 	}
 }
 
 $content .= "
+			</table>
+			<div class=\"clear\"></div><br />
+			<br />
+			<div style=\"float: left; width: 500px;\">
+				<div style=\"float: left; width: 200px; padding-top: 8px;\">
+					<h2 class=\"dark\">{$lang['infos']}</h2>
+				</div>
+				<div style=\"float: right; width: 300px;\">
+					
+				</div>
+				<div class=\"clear\"></div><br />
+				<table>
+					<tr>
+						<th>{$lang['info']}</th>
+						<th>{$lang['data']}</th>
+						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
+					</tr>
+					<tr>
+						<td>{$lang['dir']}</td>
+						<td colspan=\"2\">".str_replace("Apps/{$app['name']}", "", $app['homeDirectory'])."var/git/{$app['name']}</td>
+					</tr>
+					<tr>
+						<td>{$lang['memory']}</td>
+						<td><span class=\"large\" id=\"memorycount\">{$memory}</span> {$lang['mb']}</td>
+						<td style=\"width: 70px; text-align: center;\">
+							<a href=\"#\" onclick=\"decreaseMemory(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/less.png\" alt=\"\" /></a>
+							<a href=\"#\" onclick=\"increaseMemory(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/add.png\" alt=\"\" /></a>
+						</td>
+					</tr>
+					<tr>
+						<td>{$lang['number']}</td>
+						<td><span class=\"large\" id=\"instancescount\">{$instances}</span> {$lang['instances']}</td>
+						<td style=\"width: 70px; text-align: center;\">
+							<a href=\"#\" onclick=\"decreaseInstances(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/less.png\" alt=\"\" /></a>
+							<a href=\"#\" onclick=\"increaseInstances(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/add.png\" alt=\"\" /></a>
+						</td>
+					</tr>
+					<tr>
+						<td>{$lang['disk_persistant']}</td>
+						<td><span class=\"large\">{$app['size']}Mo</span></td>
+						<td align=\"center\">
+						</td>
+					</tr>
 				</table>
 			</div>
 			<div style=\"float: right; width: 500px;\">
-
 				<div style=\"float: left; width: 400px; padding-top: 8px;\">
 					<h2 class=\"dark\">{$lang['uris']}</h2>
 				</div>
@@ -215,81 +282,6 @@ if( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['urls'] )
 					</tr>
 		";
 	}
-}
-		
-$content .= "
-				</table>
-			</div>
-			<div class=\"clear\"></div><br />
-			<br />
-			<div style=\"float: left; width: 500px;\">
-				<div style=\"float: left; width: 200px; padding-top: 8px;\">
-					<h2 class=\"dark\">{$lang['infos']}</h2>
-				</div>
-				<div style=\"float: right; width: 300px;\">
-					
-				</div>
-				<div class=\"clear\"></div><br />
-				<table>
-					<tr>
-						<th>{$lang['info']}</th>
-						<th>{$lang['data']}</th>
-						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
-					</tr>
-					<tr>
-						<td>{$lang['memory']}</td>
-						<td><span class=\"large\" id=\"memorycount\">{$memory}</span> {$lang['mb']}</td>
-						<td style=\"width: 70px; text-align: center;\">
-							<a href=\"#\" onclick=\"decreaseMemory(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/less.png\" alt=\"\" /></a>
-							<a href=\"#\" onclick=\"increaseMemory(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/add.png\" alt=\"\" /></a>
-						</td>
-					</tr>
-					<tr>
-						<td>{$lang['number']}</td>
-						<td><span class=\"large\" id=\"instancescount\">{$instances}</span> {$lang['instances']}</td>
-						<td style=\"width: 70px; text-align: center;\">
-							<a href=\"#\" onclick=\"decreaseInstances(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/less.png\" alt=\"\" /></a>
-							<a href=\"#\" onclick=\"increaseInstances(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/add.png\" alt=\"\" /></a>
-						</td>
-					</tr>
-					<tr>
-						<td>{$lang['disk_persistant']}</td>
-						<td><span class=\"large\">{$app['size']}Mo</span></td>
-						<td align=\"center\">
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div style=\"float: right; width: 500px;\">
-				<div style=\"float: left; width: 400px; padding-top: 8px;\">
-					<h2 class=\"dark\">{$lang['backups']}</h2>
-				</div>
-				<div style=\"float: right; width: 100px;\">
-					<a class=\"button classic\" href=\"#\" onclick=\"geturls(); $('#backup').dialog('open'); return false;\" style=\"width: 22px; height: 22px; float: right;\">
-						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
-					</a>
-				</div>
-				<div class=\"clear\"></div><br />
-				<table>
-					<tr>
-						<th>{$lang['date']}</th>
-						<th>{$lang['type']}</th>
-						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
-					</tr>
-";
-
-foreach( $backups as $b )
-{
-	$content .= "
-					<tr>
-						<td><a href=\"http://{$u}\">{$u}</a></td>
-						<td>Auto</td>
-						<td  style=\"width: 70px; text-align: center;\">
-							<a href=\"\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/download.png\" alt=\"\" /></a>
-							<a href=\"\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
-						</td>
-					</tr>
-	";
 }
 		
 $content .= "
@@ -403,27 +395,6 @@ $content .= "
 			</form>
 		</div>
 	</div>
-	<div id=\"updateservice\" class=\"floatingdialog\">
-		<br />
-		<h3 class=\"center\">{$lang['updateservice_title']}</h3>
-		<p style=\"text-align: center;\">{$lang['updateservice_text']}</p>
-		<div class=\"form-small\">		
-			<form action=\"/panel/apps/update_service_action\" method=\"post\" class=\"center\">
-				<input id=\"service\" type=\"hidden\" name=\"service\" value=\"\" />
-				<fieldset>
-					<input type=\"password\" name=\"newpassword\" />
-					<span class=\"help-block\">{$lang['pass_help']}</span>
-				</fieldset>
-				<fieldset>
-					<input type=\"password\" name=\"confirm\" />
-					<span class=\"help-block\">{$lang['confirm_help']}</span>
-				</fieldset>
-				<fieldset>	
-					<input autofocus type=\"submit\" value=\"{$lang['update']}\" />
-				</fieldset>
-			</form>
-		</div>
-	</div>
 	<div id=\"push\" class=\"floatingdialog\">
 		<br />
 		<h3 class=\"center\" style=\"padding-top: 5px;\">{$lang['push_title']}</h3>
@@ -506,10 +477,6 @@ if( count($services) > 0 )
 					</select>
 					<span class=\"help-block\">{$lang['service_help']}</span>
 				</fieldset>
-				<fieldset>
-					<input type=\"password\" name=\"password\"  style=\"width: 300px;\"/>
-					<span class=\"help-block\">{$lang['pass_help2']}</span>
-				</fieldset>
 				<fieldset>	
 					<input autofocus type=\"submit\" value=\"{$lang['link']}\" />
 				</fieldset>
@@ -563,11 +530,10 @@ $content .= "
 		newFlexibleDialog('changepass', 550);
 		newFlexibleDialog('delete', 550);
 		newFlexibleDialog('deletebranch', 550);
-		newFlexibleDialog('push', 700);
+		newFlexibleDialog('push', 900);
 		newFlexibleDialog('alert', 550);
 		newFlexibleDialog('newservice', 550);
 		newFlexibleDialog('deleteservice', 550);
-		newFlexibleDialog('updateservice', 550);
 		newDialog('sequence', 300, 320);
 		
 		function initSequence(id, message)

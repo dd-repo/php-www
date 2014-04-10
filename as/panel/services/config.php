@@ -95,6 +95,40 @@ $content .= "
 				</tr>
 			</table>
 			<br /><br />
+			<h2 class=\"dark\">{$lang['subservices']}</h2>
+			<table>
+				<tr>
+					<th style=\"text-align: center; width: 40px;\">#</th>
+					<th>{$lang['service']}</th>
+					<th>{$lang['app']}</th>
+					<th>{$lang['branch']}</th>
+					<th style=\"width: 50px;  text-align: center;\">{$lang['actions']}</th>
+				</tr>
+";
+
+if( count($service['branches']) > 0  )
+{
+	foreach( $service['branches'] as $b )
+	{
+		$language = explode('-', $b['app_name']);
+		$language = $language[0];
+		
+		$content .= "
+				<tr>
+					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/server.png\" /></td>
+					<td>{$service['name']}-{$b['branch_name']}</td>
+					<td><a href=\"/panel/apps/show?id={$b['app_id']}&branch={$b['branch_name']}\"><img style=\"float: left; margin-right: 10px; width: 50px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" /></a> <span style=\"display: block; padding-top: 15px;\">{$b['app_tag']} ({$b['app_name']})</a></td>
+					<td>{$b['branch_name']}</td>
+					<td style=\"width: 50px; text-align: center;\">
+						<a href=\"#\" title=\"\" onclick=\"$('#download').dialog('open'); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/download2.png\" alt=\"\" /></a>
+					</td>
+				</tr>
+		";
+	}
+}
+$content .= "
+			</table>
+			<br /><br />
 		</div>
 	</div>
 	<div id=\"delete\" class=\"floatingdialog\">

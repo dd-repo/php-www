@@ -43,27 +43,7 @@ $content = "
 			</div>
 			<div style=\"width: 700px; float: right;\">
 				<h3 class=\"colored\">{$lang['messages']}</h3>
-				<table>
-					<tr>
-						<th style=\"width: 40px; text-align: center;\">#</th>
-						<th>{$lang['desc']}</th>
-						<th>{$lang['date']}</th>						
-					</tr>
-";
-
-foreach( $messages as $m )
-{
-	$content .= "
-					<tr>
-						<td style=\"width: 40px; text-align: center;\"><img style=\"width: 30px; height: 30px;\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$m['user']['id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$m['user']['id']}.png":"/{$GLOBALS['CONFIG']['SITE']}/images/users/user.png")."\" /></td>
-						<td><a href=\"/admin/messages/detail?id={$m['id']}\">{$m['title']}</a></td>
-						<td>".date('Y-m-d H:i', $m['date'])."</td>
-					</tr>
-	";
-}
-
-$content .= "
-				</table>
+				
 			</div>
 			<div class=\"clear\"></div>
 			<br />
