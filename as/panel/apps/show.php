@@ -681,7 +681,7 @@ $content .= "
 					successSeq(3);
 					initSequence(4, \"{$lang['seq_end']}\");
 					successSeq(4);
-					setTimeout(function() { $('#sequence').dialog('close'); resetSeq(); }, 2000);
+					restart();
 				});
 			}
 			else
