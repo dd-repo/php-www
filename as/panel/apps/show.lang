@@ -69,7 +69,7 @@ binary_help = "Commande lancée au démarrage"
 changepassword_title = "Modification du mot de passe"
 changepassword_text = "Veuillez renseigner et confirmer le nouveau mot de passe pour accéder à cette application."
 graphinstances = "Graphiques"
-deletebranch = "Supprimer cet environnement"
+deletebranch = "Supprimer l'environnement"
 deletebranch_title = "Supprimer cet environnement"
 deletebranch_text = "Êtes-vous sûr de vouloir supprimer cet environnement ?"
 

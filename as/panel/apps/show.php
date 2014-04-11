@@ -135,7 +135,7 @@ $content .= "
 if( $_SESSION['DATA'][$app['id']]['branch'] != 'master' )
 {
 	$content .= "
-				<a class=\"button classic\" href=\"#\" onclick=\"$('#deletebranch').dialog('open'); return false;\" style=\"width: 180px; height: 22px; float: right;\">
+				<a class=\"button classic\" href=\"#\" onclick=\"$('#deletebranch').dialog('open'); return false;\" style=\"width: 200px; height: 22px; float: right;\">
 					<span style=\"display: block; padding-top: 3px;\">{$lang['deletebranch']}</span>
 				</a>
 	";
