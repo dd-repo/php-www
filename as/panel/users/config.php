@@ -53,9 +53,50 @@ $content .= "
 					</fieldset>
 				</form>
 			</div>
-			<div class=\"clear\"></div><br /><br />
+			<div class=\"clear\"></div><br />
 			<div style=\"float: left; width: 530px;\">
 				<div style=\"float: left; width: 300px; padding-top: 5px;\">
+					<h3 class=\"colored\">{$lang['keys']}</h3>
+				</div>
+				<div style=\"float: right; width: 200px;\">
+					<a class=\"button classic\" href=\"#\" onclick=\"$('#new-key').dialog('open');\" style=\"width: 22px; height: 22px; float: right;\">
+						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
+					</a>
+				</div>
+				<div class=\"clear\"></div>
+				<br />
+				<table>
+					<tr>
+						<th>{$lang['key']}</th>
+						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
+					</tr>
+	";
+	
+	if( !is_array($account['keys']) && $account['keys'] )
+		$account['keys'] = array($account['keys']);
+	
+	if( $account['keys'] )
+	{
+		$i = 0;
+		foreach( $account['keys'] as $k )
+		{
+			$content .= "
+					<tr>
+						<td style=\"white-space: nowrap; overflow: hidden; text-overflow: ellipsis; \">".substr($k, 0, 40)."...</td>
+						<td style=\"width: 70px; text-align: center;\">
+							<a href=\"#\"onclick=\"$('#keyvalue').html('{$k}'); $('#key').dialog('open');\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/preview.png\" alt=\"\" /></a>
+							<a href=\"/panel/users/del_key_action?key={$i}&domain=".security::encode($_GET['domain'])."&id=".security::encode($_GET['id'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+						</td>
+					</tr>";
+			$i++;
+		}
+	}
+	
+	$content .= "		
+				</table>
+			</div>
+			<div style=\"float: right; width: 530px;\">
+			<div style=\"float: left; width: 300px; padding-top: 5px;\">
 					<h3 class=\"colored\">{$lang['redirections']}</h3>
 				</div>
 				<div style=\"float: right; width: 200px;\">
@@ -83,45 +124,7 @@ $content .= "
 					<tr>
 						<td>{$r}</td>
 						<td style=\"width: 35px; text-align: center;\">
-							<a href=\"/panel/users/del_redirection_action?redirection={$r}&domain={$_GET['domain']}&id={$_GET['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
-						</td>
-					</tr>";
-		}
-	}
-	
-	$content .= "		
-				</table>
-			</div>
-			<div style=\"float: right; width: 530px;\">
-				<div style=\"float: left; width: 300px; padding-top: 5px;\">
-					<h3 class=\"colored\">{$lang['alternates']}</h3>
-				</div>
-				<div style=\"float: right; width: 200px;\">
-					<a class=\"button classic\" href=\"#\" onclick=\"$('#new-alias').dialog('open');\" style=\"width: 22px; height: 22px; float: right;\">
-						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
-					</a>
-				</div>
-				<div class=\"clear\"></div>
-				<br />
-				<table>
-					<tr>
-						<th>{$lang['email']}</th>
-						<th style=\"width: 35px; text-align: center;\">{$lang['actions']}</th>
-					</tr>
-	";
-	
-	if( !is_array($account['alternate']) && $account['alternate'] )
-		$account['alternate'] = array($account['alternate']);
-	
-	if( $account['alternate'] )
-	{
-		foreach( $account['alternate'] as $a )
-		{
-			$content .= "
-					<tr>
-						<td>{$a}</td>
-						<td style=\"width: 35px; text-align: center;\">
-							<a href=\"/panel/users/del_alternate_action?alternate={$a}&domain={$_GET['domain']}&id={$_GET['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+							<a href=\"/panel/users/del_redirection_action?redirection={$r}&domain=".security::encode($_GET['domain'])."&id=".security::encode($_GET['id'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
 						</td>
 					</tr>";
 		}
@@ -146,7 +149,7 @@ $content .= "
 				<table>
 					<tr>
 						<th>{$lang['group']}</th>
-						<th>{$lang['actions']}</th>
+						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
 					</tr>
 	";
 
@@ -157,8 +160,46 @@ $content .= "
 			$content .= "
 					<tr>
 						<td>{$g['name']}</td>
-						<td style=\"width: 35px; text-align: center;\">
-							<a href=\"/panel/users/unjoin_action?group={$g['id']}&domain={$_GET['domain']}&id={$_GET['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+						<td style=\"width: 70px; text-align: center;\">
+							<a href=\"/panel/users/unjoin_action?group={$g['id']}&domain=".security::encode($_GET['domain'])."&id=".security::encode($_GET['id'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+						</td>
+					</tr>";
+		}
+	}
+	
+	$content .= "		
+				</table>
+			</div>
+			<div style=\"float: right; width: 530px;\">
+				<div style=\"float: left; width: 300px; padding-top: 5px;\">
+					<h3 class=\"colored\">{$lang['alternates']}</h3>
+				</div>
+				<div style=\"float: right; width: 200px;\">
+					<a class=\"button classic\" href=\"#\" onclick=\"$('#new-alias').dialog('open');\" style=\"width: 22px; height: 22px; float: right;\">
+						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
+					</a>
+				</div>
+				<div class=\"clear\"></div>
+				<br />
+				<table>
+					<tr>
+						<th>{$lang['email']}</th>
+						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
+					</tr>
+	";
+	
+	if( !is_array($account['alternate']) && $account['alternate'] )
+		$account['alternate'] = array($account['alternate']);
+	
+	if( $account['alternate'] )
+	{
+		foreach( $account['alternate'] as $a )
+		{
+			$content .= "
+					<tr>
+						<td>{$a}</td>
+						<td style=\"width: 70px; text-align: center;\">
+							<a href=\"/panel/users/del_alternate_action?alternate={$a}&domain=".security::encode($_GET['domain'])."&id=".security::enccode($_GET['id'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
 						</td>
 					</tr>";
 		}
@@ -171,6 +212,7 @@ $content .= "
 		</div>
 	</div><br />
 	<div id=\"new-redirect\" style=\"display: none;\" class=\"floatingdialog\">
+		<br />
 		<h3 class=\"center\">{$lang['new_redirect']}</h3>
 		<p style=\"text-align: center;\">{$lang['new_redirect_text']}</p>
 		<div class=\"form-small\">		
@@ -188,6 +230,7 @@ $content .= "
 		</div>
 	</div>
 	<div id=\"new-alias\" style=\"display: none;\" class=\"floatingdialog\">
+		<br />
 		<h3 class=\"center\">{$lang['new_alias']}</h3>
 		<p style=\"text-align: center;\">{$lang['new_alias_text']}</p>
 		<div class=\"form-small\">		
@@ -204,9 +247,33 @@ $content .= "
 			</form>
 		</div>
 	</div>
+	<div id=\"new-key\" style=\"display: none;\" class=\"floatingdialog\">
+		<br />
+		<h3 class=\"center\">{$lang['new_key']}</h3>
+		<p style=\"text-align: center;\">{$lang['new_key_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/users/add_key_action\" method=\"post\" class=\"center\">
+				<input type=\"hidden\" name=\"id\" value=\"{$account['id']}\" />
+				<input type=\"hidden\" name=\"domain\" value=\"".security::encode($_GET['domain'])."\" />
+				<fieldset>
+					<textarea class=\"auto\" style=\"width: 300px;\" rows=\"10\" name=\"key\" onfocus=\"this.value = this.value=='{$lang['key']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['key']}' : this.value; this.value=='{$lang['key']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\">{$lang['key']}</textarea>
+					<span class=\"help-block\">{$lang['key_help']}</span>
+				</fieldset>
+				<fieldset autofocus>	
+					<input type=\"submit\" value=\"{$lang['create']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<div id=\"key\" style=\"display: none;\" class=\"floatingdialog\">
+		<br />
+		<p id=\"keyvalue\"></p>
+	</div>
 	<script>
-		newDialog('new-redirect', 550, 250);
-		newDialog('new-alias', 550, 250);
+		newFlexibleDialog('new-redirect', 550);
+		newFlexibleDialog('new-alias', 550);
+		newFlexibleDialog('new-key', 550);
+		newFlexibleDialog('key', 550);
 	</script>	
 	";
 

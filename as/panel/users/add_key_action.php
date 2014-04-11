@@ -6,7 +6,7 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-api::send('self/account/update', array('id'=>$_POST['id'], 'domain'=>$_POST['domain'], 'mode'=>'add', 'alternate'=>$_POST['alternate'] . '@' . $_POST['domain']));
+api::send('self/account/update', array('id'=>$_POST['id'], 'domain'=>$_POST['domain'], 'mode'=>'add', 'key'=>$_POST['key']));
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
