@@ -97,6 +97,7 @@ if( count($services) > 0 )
 }
 	
 $content .= "
+		<div class=\"clear\"></div><br /><br />
 		</div>		
 	</div>
 ";

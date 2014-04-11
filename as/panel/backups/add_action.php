@@ -7,10 +7,12 @@ if( !defined('PROPER_START') )
 }
 
 $params = array();
-if( $_GET['database'] )
-	$params['database'] = $_GET['database'];
-else if( $_GET['site'] )
+if( $_GET['service'] )
+	$params['service'] = $_GET['service'];
+else if( $_GET['app'] )
 	$params['site'] = $_GET['site'];
+if( $_GET['branch'] )
+	$params['branch'] = $_GET['branch'];
 
 api::send('self/backup/add', $params);
 
