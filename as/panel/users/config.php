@@ -80,6 +80,8 @@ $content .= "
 		$i = 0;
 		foreach( $account['keys'] as $k )
 		{
+			$k = trim(str_replace("'", "\\'", $k));
+			
 			$content .= "
 					<tr>
 						<td style=\"white-space: nowrap; overflow: hidden; text-overflow: ellipsis; \">".substr($k, 0, 40)."...</td>
