@@ -10,7 +10,7 @@ $params = array();
 if( $_GET['service'] )
 	$params['service'] = $_GET['service'];
 else if( $_GET['app'] )
-	$params['site'] = $_GET['site'];
+	$params['app'] = $_GET['app'];
 if( $_GET['branch'] )
 	$params['branch'] = $_GET['branch'];
 

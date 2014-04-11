@@ -26,6 +26,7 @@ if( count($backups) > 0 )
 							<th>{$lang['type']}</th>
 							<th>{$lang['name']}</th>
 							<th>{$lang['date']}</th>
+							<th>{$lang['mode']}</th>
 							<th style=\"width: 100px; text-align: center;\">{$lang['actions']}</th>
 						</tr>";
 
@@ -37,6 +38,7 @@ if( count($backups) > 0 )
 							<td>".$lang['type_' . $b['type']]."</td>
 							<td><span style=\"font-weight: bold;\">{$b['title']}</span></td>
 							<td>".date($lang['dateformat'], $b['date'])."</td>
+							<td>".($b['auto']==1?"{$lang['auto']}":"{$lang['manual']}")."</td>
 							<td style=\"width: 100px; text-align: center;\">
 								<a href=\"{$b['url']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/download2.png\" alt=\"\" /></a>
 								<a href=\"#\" onclick=\"$('#id').val('{$b['id']}'); $('#delete').dialog('open'); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/close.png\" alt=\"\" /></a>
@@ -60,6 +62,7 @@ else
 }
 
 $content .= "
+					<br /><br />
 				</div>
 			</div>
 			<div id=\"delete\" class=\"floatingdialog\">

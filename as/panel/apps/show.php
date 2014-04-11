@@ -130,17 +130,21 @@ foreach( $app['branches'] as $key => $value )
 $content .= "
 					<a href=\"#\" class=\"branch\" onclick=\"$('#newbranch').dialog('open'); return false;\">+</a>
 			</div>
-			<div style=\"float: right; width: 300px;\">";
+			<div style=\"float: right; width: 300px;\">			
+			";
 			
 if( $_SESSION['DATA'][$app['id']]['branch'] != 'master' )
 {
 	$content .= "
-				<a class=\"button classic\" href=\"#\" onclick=\"$('#deletebranch').dialog('open'); return false;\" style=\"width: 200px; height: 22px; float: right;\">
+				<a class=\"button classic orange\" href=\"#\" onclick=\"$('#deletebranch').dialog('open'); return false;\" style=\"width: 100px; height: 22px; float: right; margin-left: 20px;\">
 					<span style=\"display: block; padding-top: 3px;\">{$lang['deletebranch']}</span>
 				</a>
 	";
 }
-$content .= "
+$content .= "		
+				<a class=\"button classic\" href=\"#\" onclick=\"$('#backup').dialog('open'); return false;\" style=\"width: 100px; height: 22px; float: right;\">
+					<span style=\"display: block; padding-top: 3px;\">{$lang['backupbranch']}</span>
+				</a>
 			</div>
 			<div class=\"clear\"></div>
 			<br />
@@ -524,6 +528,20 @@ $content .= "
 			</form>
 		</div>
 	</div>
+	<div id=\"backup\" class=\"floatingdialog\">
+		<br />
+		<h3 class=\"center\">{$lang['backup']}</h3>
+		<p style=\"text-align: center;\">{$lang['backup_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/backups/add_action\" method=\"get\" class=\"center\">
+				<input type=\"hidden\" name=\"branch\" value=\"{$_SESSION['DATA'][$app['id']]['branch']}\" />
+				<input type=\"hidden\" name=\"app\" value=\"{$app['id']}\" />
+				<fieldset autofocus>	
+					<input type=\"submit\" value=\"{$lang['backup_now']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
 	<div id=\"sequence\" class=\"floatingdialog\"></div>
 	<div id=\"recipe\" style=\"display: none;\"></div>
 	<script>
@@ -551,6 +569,7 @@ $content .= "
 		newFlexibleDialog('alert', 550);
 		newFlexibleDialog('newservice', 550);
 		newFlexibleDialog('deleteservice', 550);
+		newFlexibleDialog('backup', 550);
 		newDialog('sequence', 300, 320);
 		
 		function initSequence(id, message)
