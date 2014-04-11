@@ -6,7 +6,7 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-api::send('self/app/update', array('id'=>$_GET['id'], 'join'=>'add', 'member'=>$_GET['member']));
+api::send('self/app/update', array('id'=>$_GET['id'], 'join'=>'add', 'member'=>$_GET['member'], 'permission'=>$_GET['permission']));
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);

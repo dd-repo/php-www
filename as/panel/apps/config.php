@@ -9,10 +9,17 @@ if( !defined('PROPER_START') )
 $app = api::send('self/app/list', array('id'=>$_GET['id']));
 $app = $app[0];
 
+$permissions = array();
+
+if( count($app['permissions']) > 0 )
+{
+	foreach( $app['permissions'] as $p )
+		$permissions[$p['permission_object']] = $p['permission_right'];
+}
 $content .= "
 	<div class=\"panel\">
 		<div class=\"top\">
-			<div class=\"left\" style=\"width: 700px;\">
+			<div class=\"left\" style=\"padding-top: 5px; width: 700px;\">
 				<h1 class=\"dark\">{$lang['title']} {$app['name']}</h1>
 			</div>
 			<div class=\"right\" style=\"text-align: right; float: right;\">
@@ -28,7 +35,7 @@ $content .= "
 				<form action=\"/panel/apps/config_action\" method=\"post\">
 					<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
 					<fieldset>
-						<input type=\"text\" name=\"tag\" value=\"{$app['tag']}\" style=\"width: 400px;\" />
+						<input type=\"text\" name=\"desc\" value=\"{$app['tag']}\" style=\"width: 400px;\" />
 						<span class=\"help-block\">{$lang['help_desc']}</span>
 					</fieldset>
 					<fieldset>
@@ -55,7 +62,8 @@ $content .= "
 				<table>
 					<tr>
 						<th>{$lang['app']}</th>
-						<th>{$lang['actions']}</th>
+						<th>{$lang['permissions']}</th>
+						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
 					</tr>
 ";
 
@@ -66,10 +74,14 @@ if( $app['apps'] )
 		$language = explode('-', $a['name']);
 		$language = $language[0];
 		
+		if( !$permissions[$a['id']] )
+			$permissions[$a['id']] = 'rwx';
+		
 		$content .= "
 					<tr>
 						<td><img style=\"float: left; margin-right: 10px; width: 50px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" /> <span style=\"display: block; padding-top: 15px;\">{$a['name']}</a></td>
-						<td align=\"center\">
+						<td>".$lang['perm_' . $permissions[$a['id']]]."</td>
+						<td style=\"width: 70px; text-align: center;\">
 							<a href=\"/panel/apps/deny_action?id={$_GET['id']}&member={$a['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
 						</td>
 					</tr>";
@@ -95,7 +107,8 @@ $content .= "
 				<table>
 					<tr>
 						<th>{$lang['user']}</th>
-						<th>{$lang['actions']}</th>
+						<th>{$lang['permissions']}</th>
+						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
 					</tr>
 ";
 
@@ -103,10 +116,14 @@ if( $app['users'] )
 {
 	foreach( $app['users'] as $u )
 	{
+		if( !$permissions[$u['id']] )
+			$permissions[$u['id']] = 'rwx';
+			
 		$content .= "
 					<tr>
 						<td>{$u['name']}</td>
-						<td align=\"center\">
+						<td>".$lang['perm_' . $permissions[$u['id']]]."</td>
+						<td style=\"width: 70px; text-align: center;\">
 							<a href=\"/panel/apps/deny_action?id={$_GET['id']}&member={$u['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
 						</td>
 					</tr>";
@@ -131,7 +148,8 @@ $content .= "
 				<table>
 					<tr>
 						<th>{$lang['group']}</th>
-						<th>{$lang['actions']}</th>
+						<th>{$lang['permissions']}</th>
+						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
 					</tr>
 ";
 
@@ -139,10 +157,14 @@ if( $app['groups'] )
 {
 	foreach( $app['groups'] as $g )
 	{
+		if( !$permissions[$g['id']] )
+			$permissions[$g['id']] = 'rwx';
+			
 		$content .= "
 					<tr>
 						<td>{$g['name']}</td>
-						<td align=\"center\">
+						<td>".$lang['perm_' . $permissions[$g['id']]]."</td>
+						<td style=\"width: 70px; text-align: center;\">
 							<a href=\"/panel/apps/deny_action?id={$_GET['id']}&member={$g['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
 						</td>
 					</tr>";
@@ -159,13 +181,12 @@ $content .= "
 	<div id=\"newapp\" class=\"floatingdialog\" style=\"padding: 30px;\">
 		<h3 class=\"center\">{$lang['add_apps']}</h3>
 		<p style=\"text-align: center;\">{$lang['add_apps_text']}</p>
-			<table>
-				<tr>
-					<th>{$lang['app']}</th>
-					<th>{$lang['actions']}</th>
-				</tr>
+		<div class=\"form-small\">
+			<form action=\"/panel/apps/permit_action\" method=\"get\" class=\"center\">
+				<input type=\"hidden\" name=\"id\" value=\"".security::encode($_GET['id'])."\" />
+				<fieldset>
+					<select name=\"member\">
 ";
-
 $apps = api::send('self/app/list');
 
 if( count($apps) > 0 )
@@ -173,29 +194,36 @@ if( count($apps) > 0 )
 	foreach($apps as $a)
 	{
 		$content .= "
-				<tr>
-					<td>{$a['tag']} ({$a['name']})</td>
-					<td align=\"center\">
-						<a href=\"/panel/apps/permit_action?id={$_GET['id']}&member={$a['id']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>
-					</td>
-				</tr>
-		";
+						<option value=\"{$a['id']}\">{$a['tag']} ({$a['name']})</option>";
 	}
 }
-		
+
 $content .= "
-			</table>
+					</select>
+					<span class=\"help-block\">{$lang['help_app']}</span>
+				</fieldset>
+				<fieldset>
+					<select name=\"permission\">
+						<option value=\"rx\">{$lang['readonly']}</option>
+						<option value=\"rwx\">{$lang['readwrite']}</option>
+					</select>
+					<span class=\"help-block\">{$lang['help_permission']}</span>
+				</fieldset>	
+				<fieldset autofocus>	
+					<input type=\"submit\" value=\"{$lang['grant']}\" />
+				</fieldset>
+			</form>
+		</div>
 	</div>
 	<div id=\"newuser\" class=\"floatingdialog\" style=\"padding: 30px;\">
 		<h3 class=\"center\">{$lang['add_users']}</h3>
 		<p style=\"text-align: center;\">{$lang['add_users_text']}</p>
-		<table>
-			<tr>
-				<th>{$lang['user']}</th>
-				<th>{$lang['actions']}</th>
-			</tr>
+		<div class=\"form-small\">
+			<form action=\"/panel/apps/permit_action\" method=\"get\" class=\"center\">
+				<input type=\"hidden\" name=\"id\" value=\"".security::encode($_GET['id'])."\" />
+				<fieldset>
+					<select name=\"member\">
 ";
-
 $domains = api::send('self/domain/list');
 
 if( count($domains) > 0 )
@@ -209,32 +237,39 @@ if( count($domains) > 0 )
 			foreach( $users as $u )
 			{
 				$content .= "
-			<tr>
-				<td>{$u['name']}</td>
-				<td style=\"width: 35px; text-align: center;\">
-					<a href=\"/panel/apps/permit_action?id={$_GET['id']}&member={$u['id']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>
-				</td>
-			</tr>
-				";
+						<option value=\"{$u['id']}\">{$u['mail']}</option>";
 			}
 		}
 	}
 }
-		
+
 $content .= "
-		</table>
+					</select>
+					<span class=\"help-block\">{$lang['help_user']}</span>
+				</fieldset>
+				<fieldset>
+					<select name=\"permission\">
+						<option value=\"rx\">{$lang['readonly']}</option>
+						<option value=\"rwx\">{$lang['readwrite']}</option>
+					</select>
+					<span class=\"help-block\">{$lang['help_permission']}</span>
+				</fieldset>	
+				<fieldset autofocus>	
+					<input type=\"submit\" value=\"{$lang['grant']}\" />
+				</fieldset>
+			</form>
+		</div>
 	</div>
 	<div id=\"newgroup\" class=\"floatingdialog\" style=\"padding: 30px;\">
 		<h3 class=\"center\">{$lang['add_groups']}</h3>
 		<p style=\"text-align: center;\">{$lang['add_groups_text']}</p>
 		<br />
-		<table>
-			<tr>
-				<th>{$lang['group']}</th>
-				<th>{$lang['actions']}</th>
-			</tr>
+		<div class=\"form-small\">
+			<form action=\"/panel/apps/permit_action\" method=\"get\" class=\"center\">
+				<input type=\"hidden\" name=\"id\" value=\"".security::encode($_GET['id'])."\" />
+				<fieldset>
+					<select name=\"member\">
 ";
-
 $domains = api::send('self/domain/list');
 
 if( count($domains) > 0 )
@@ -248,20 +283,28 @@ if( count($domains) > 0 )
 			foreach( $groups as $g )
 			{
 				$content .= "
-			<tr>
-				<td>{$g['name']}</td>
-				<td align=\"center\">
-					<a href=\"/panel/apps/permit_action?id={$_GET['id']}&member={$g['id']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>
-				</td>
-			</tr>
-				";
+						<option value=\"{$g['id']}\">{$g['mail']}</option>";
 			}
 		}
 	}
 }
-		
+
 $content .= "
-		</table>
+					</select>
+					<span class=\"help-block\">{$lang['help_group']}</span>
+				</fieldset>
+				<fieldset>
+					<select name=\"permission\">
+						<option value=\"rx\">{$lang['readonly']}</option>
+						<option value=\"rwx\">{$lang['readwrite']}</option>
+					</select>
+					<span class=\"help-block\">{$lang['help_permission']}</span>
+				</fieldset>	
+				<fieldset autofocus>	
+					<input type=\"submit\" value=\"{$lang['grant']}\" />
+				</fieldset>
+			</form>
+		</div>
 	</div>
 	<div id=\"push\" class=\"floatingdialog\">
 		<br />
@@ -279,7 +322,7 @@ $content .= "
 			<tr>
 				<td><span class=\"large\">SSH</span></td>
 				<td>ssh://git.as/~".security::get('USER')."/{$app['name']}.git</td>
-				<td>{$app['name']}</td>
+				<td>".security::get('USER')."</td>
 				<td>22</td>
 			</tr>
 		</table>
@@ -291,20 +334,16 @@ $content .= "
 				<th>{$lang['folder']}</th>
 			</tr>
 			<tr>
-				<td>{$lang['app']}</td>
-				<td>{$app['homeDirectory']}</td>
-			</tr>	
-			<tr>
 				<td>{$lang['git']}</td>
-				<td>".str_replace("Apps/{$app['name']}", "", $app['homeDirectory'])."var/git/{$app['name']}</td>
+				<td colspan=\"2\">{$app['homeDirectory']}</td>
 			</tr>
 		</table>
 		<br />
 	</div>
 	<script>
-		newDialog('newapp', 550, 500);
-		newDialog('newuser', 550, 500);
-		newDialog('newgroup', 550, 500);
+		newFlexibleDialog('newapp', 550);
+		newFlexibleDialog('newuser', 550);
+		newFlexibleDialog('newgroup', 550);
 		newFlexibleDialog('push', 900);
 	</script>
 	";
