@@ -11,7 +11,7 @@ if( $_GET['service'] )
 	$params['service'] = $_GET['service'];
 else if( $_GET['app'] )
 	$params['app'] = $_GET['app'];
-if( $_GET['branch'] )
+if( $_GET['branch'] && $_GET['branch'] != 'no' )
 	$params['branch'] = $_GET['branch'];
 
 api::send('self/backup/add', $params);

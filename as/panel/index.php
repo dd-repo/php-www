@@ -155,8 +155,8 @@ else
 								<img class=\"language\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" alt=\"\" />
 							</div>
 						</div>						
-						<span style=\"color: #38b700; font-size: 12px; display: block; position: absolute; left: 10px; bottom: 10px;\">{$lang['cpu']} {$instances} {$lang['cores']}</span>
-						<span style=\"color: #38b700; font-size: 12px; display: block; position: absolute; right: 10px; bottom: 10px;\">{$lang['memory']} {$memory} {$lang['mb']}</span>
+						<span style=\"color: #a5a5a5; font-size: 12px; display: block; position: absolute; left: 10px; bottom: 10px;\">{$lang['cpu']} {$instances} {$lang['cores']}</span>
+						<span style=\"color: #a5a5a5; font-size: 12px; display: block; position: absolute; right: 10px; bottom: 10px;\">{$lang['memory']} {$memory} {$lang['mb']}</span>
 					</div>
 				</div>
 		";

@@ -6,45 +6,43 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
+require_once('as/doc/menu.php');
+
 $content = "
 		<div class=\"head-light\">
 			<div class=\"container\">
-				<div style=\"float: left; width: 500px;\">
-					<h1 class=\"dark\">{$lang['title']}</h1>
-				</div>
-				<div style=\"float: right; width: 500px;\">
-					<a class=\"button classic\" href=\"/doc/concepts\" style=\"float: right; height: 22px; width: 150px; margin: 0 auto;\">
-						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['back']}</span>
-					</a>
-				</div>
+				<h1 class=\"dark\" style=\"float: left;\">{$lang['title']}</h1>
+				<form id=\"searchform\" action=\"/doc/search\" method=\"get\"><input type=\"submit\" style=\"display: none;\" /><input  name=\"keyword\"  class=\"auto\" style=\"width: 380px; font-size: 15px; float: right;\" type=\"text\" id=\"search\" value=\"{$GLOBALS['lang']['search']}\" onfocus=\"this.value = this.value=='{$GLOBALS['lang']['search']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$GLOBALS['lang']['search']}' : this.value; this.value=='{$GLOBALS['lang']['search']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" /></form>
 				<div class=\"clear\"></div>
 			</div>
-		</div>
+		</div>	
 		<div class=\"content\">		
-			<h3>{$lang['intro']}</h3>
-			<p class=\"large\">{$lang['intro_text']}</p>
-			<br />
-			<blockquote style=\"width: 500px; margin: 0 auto;\">
-				<p>
-					<span style=\"font-weight: bold;\">{$lang['primary']}</span> ns1.anotherservice.com - 178.32.167.250<br />
-					<span style=\"font-weight: bold;\">{$lang['secondary']}</span> ns2.anotherservice.com - 178.32.65.70
-				</p>
-			</blockquote>
-			<br />
-			<p class=\"large\">{$lang['intro2_text']}</p>
-			<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/1.png\" alt=\"1\" />
-			<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/2.png\" alt=\"2\" />
-			<br />
-			<h3>{$lang['manage']}</h3>
-			<p class=\"large\">{$lang['manage_text']}</p>
-			<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/18.png\" alt=\"1\" />
-			<p class=\"large\" style=\"text-align: center;\">
-				{$lang['end']}<br /><br />
-				<a class=\"button classic\" style=\"width: 120px; margin: 0 auto;\" href=\"/doc/concepts\">{$lang['back']}</a>
-			</p>
+			<div class=\"left small\">
+				<div class=\"sidemenu\">
+					{$menu}
+				</div>					
+			</div>
+			<div class=\"right big\">
+				<h3>{$lang['intro']}</h3>
+				<p>{$lang['intro_text']}</p>
+				<br />
+				<h3>{$lang['create']}</h3>
+				<p>{$lang['create_text']}</p>
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/1.png\" alt=\"7\" />
+				<p>{$lang['create_text2']}</p>
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/2.png\" alt=\"9\" />
+				<p>{$lang['create_text3']}</p>
+				<blockquote style=\"width: 500px; margin: 0 auto;\">
+					<p>
+						<span style=\"font-weight: bold;\">{$lang['primary']}</span> ns1.anotherservice.com - 178.32.167.250<br />
+						<span style=\"font-weight: bold;\">{$lang['secondary']}</span> ns2.anotherservice.com - 178.32.65.70
+					</p>
+				</blockquote>
+				<p>{$lang['create_text4']}</p>
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/18.png\" alt=\"10\" />
+			</div>
+			<div class=\"clear\"></div><br /><br />
 		</div>
-		<div class=\"clear\"></div><br />
-	</div>
 ";
 
 /* ========================== OUTPUT PAGE ========================== */

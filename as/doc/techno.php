@@ -24,53 +24,51 @@ $content = "
 			</div>
 			<div class=\"right big\">
 				<h3>{$lang['intro']}</h3>
-				<p>{$lang['intro_text']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/3.png\" alt=\"3\" />
+				<p class=\"large\">{$lang['intro_text']}</p>
 				<br />
 				<h3>{$lang['languages']}</h3>
-				<p>{$lang['languages_text']}</p>
 				<table>
 					<tr>
 						<th style=\"text-align: center; width: 50px;\">#</th>
 						<th style=\"width: 110px;\">{$lang['name']}</th>
 						<th style=\"width: 210px;\">{$lang['info']}</th>
 						<th style=\"width: 40px;\">{$lang['version']}</th>
-						<th style=\"width: 40px; text-align: center;\">{$lang['doc']}</th>
+						<th style=\"width: 200px;\">{$lang['site']}</th>
 					</tr>
 					<tr>
-						<td style=\"text-align: center;\"><a href=\"/doc/php\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-php.png\" style=\"width: 40px;\" alt=\"PHP\"></a></td>
+						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-php.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
 						<td>PHP</td>
 						<td>{$lang['script']}</td>
 						<td>5.5.3</td>
-						<td style=\"text-align: center;\"><a href=\"/doc/php\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
+						<td><a href=\"http://www.php.net\">http://www.php.net</a></td>
 					</tr>
 					<tr>
-						<td style=\"text-align: center;\"><a href=\"/doc/ruby\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-ruby.png\" style=\"width: 40px;\" alt=\"Ruby\"></a></td>
+						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-ruby.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
 						<td>Ruby</td>
 						<td>{$lang['script']}</td>
 						<td>1.9.3</td>
-						<td style=\"text-align: center;\"><a href=\"/doc/ruby\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
+						<td><a href=\"http://www.php.net\">http://www.ruby-lang.org</a></td>
 					</tr>
 					<tr>
-						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-python.png\" style=\"width: 40px;\" alt=\"Python\"></td>
+						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-python.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
 						<td>Python</td>
 						<td>{$lang['script']}</td>
 						<td></td>
-						<td style=\"text-align: center;\"></td>
+						<td></td>
 					</tr>
 					<tr>
 						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-nodejs.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
 						<td>NodeJS</td>
 						<td>{$lang['script']}</td>
 						<td></td>
-						<td style=\"text-align: center;\"></td>
+						<td></td>
 					</tr>
 					<tr>
 						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-java.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
 						<td>Java</td>
 						<td>{$lang['prog']}</td>
 						<td></td>
-						<td style=\"text-align: center;\"></td>
+						<td></td>
 					</tr>
 				</table>
 				<br />
@@ -81,14 +79,14 @@ $content = "
 						<th style=\"width: 110px;\">{$lang['name']}</th>
 						<th style=\"width: 210px;\">{$lang['info']}</th>
 						<th style=\"width: 40px;\">{$lang['version']}</th>
-						<th style=\"width: 40px; text-align: center;\">{$lang['doc']}</th>
+						<th style=\"width: 200px;\">{$lang['site']}</th>
 					</tr>
 					<tr>
 						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubyrails.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
 						<td>Ruby on Rails</td>
 						<td>{$lang['frameruby']}</td>
 						<td>4.0.4</td>
-						<td style=\"text-align: center;\"></td>
+						<td><a href=\"http://rubyonrails.org\">http://rubyonrails.org</a></td>
 					</tr>
 					<tr>
 						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubysinatra.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
@@ -118,6 +116,59 @@ $content = "
 						<td></td>
 						<td></td>
 					</tr>
+				</table>
+				<br />
+				<h3>{$lang['services']}</h3>
+				<table>
+					<tr>
+						<th style=\"text-align: center; width: 50px;\">#</th>
+						<th style=\"width: 110px;\">{$lang['name']}</th>
+						<th style=\"width: 210px;\">{$lang['info']}</th>
+						<th style=\"width: 40px;\">{$lang['version']}</th>
+						<th style=\"width: 200px;\">{$lang['site']}</th>
+					</tr>
+					<tr>
+						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-mysql.png\" style=\"width: 40px;\" alt=\"MySQL\"></td>
+						<td>MySQL MariaDB</td>
+						<td>{$lang['db']}</td>
+						<td>5.5</td>
+						<td><a href=\"http://www.mariadb.com\">http://www.mariadb.com</a></td>
+					</tr>
+					<tr>
+						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-pgsql.png\" style=\"width: 40px;\" alt=\"PostgeSQL\"></td>
+						<td>PostgreSQL</td>
+						<td>{$lang['db']}</td>
+						<td>9.3</td>
+						<td><a href=\"http://www.postgresql.com\">http://www.postgresql.com</a></td>
+					</tr>
+					<tr>
+						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-mongodb.png\" style=\"width: 40px;\" alt=\"MongoDB\"></td>
+						<td>MongoDB</td>
+						<td>{$lang['key']}</td>
+						<td>{$lang['soon']}</td>
+						<td>{$lang['soon']}</td>
+					</tr>	
+					<tr>
+						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-redis.png\" style=\"width: 40px;\" alt=\"Redis\"></td>
+						<td>Redis</td>
+						<td>{$lang['key']}</td>
+						<td>{$lang['soon']}</td>
+						<td>{$lang['soon']}</td>
+					</tr>	
+					<tr>
+						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-memcached.png\" style=\"width: 40px;\" alt=\"Memcached\"></td>
+						<td>MemCached</td>
+						<td>{$lang['key']}</td>
+						<td>{$lang['soon']}</td>
+						<td>{$lang['soon']}</td>
+					</tr>
+					<tr>
+						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-rabbitmq.png\" style=\"width: 40px;\" alt=\"RabbitMQ\"></td>
+						<td>RabbitMQ</td>
+						<td>{$lang['queue']}</td>
+						<td>{$lang['soon']}</td>
+						<td>{$lang['soon']}</td>
+					</tr>	
 				</table>
 				<br />
 			</div>

@@ -1,0 +1,15 @@
+[EN]
+
+
+[FR]
+title = "Qu'est-ce que Another Service ?"
+intro = "Une plateforme pour vos applications"
+intro_text = "Another Service est un <a href='https://www.anotherservice.com'>hébergeur cloud</a> pour les applications critiques et les environnements de développement. Nous propulsons une plateforme
+permettant de déployer de <a href='/service/offer'>nombreux langages</a> et des <a href='/service/offer'>services variés</a>. Vous pouvez gérer les environnements et les ressources qui y sont allouées
+de manière simple et efficace."
+intro_text2 = "Nous proposons une suite complète d'outils pour la gestion de vos noms de domaine et de vos comptes mails mais également des <a href='/doc/cloud'>applications cloud</a> : calendriers, carnets d'adresse, synchronisation de fichiers..."
+
+who = "Qui est Another Service ?"
+who_text = "Another Service est une marque commerciale de la société <a href='http://sys.as'>SYS</a>, est entreprise de droit français. Fondée en 2010, nous sommes spécialisés dans les infrastructures Open Source haute disponibilité
+et la sécurité des systèmes d'information."
+who_text2 = "Le siège de la société est situé en France, à Paris dans le X<sup>e</sup> arrondissement. N'hésitez pas à nous <a href='/about/contact'>contacter</a> si vous avez d'autres questions."

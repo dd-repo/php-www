@@ -3,12 +3,14 @@
 
 [FR]
 title = "Noms de domaine"
-intro = "Création"
-intro_text = "Sur Another Service, l'ensemble des services et des applications sont liés à vos noms de domaines. Une fois inscrit à la plateforme, vous devez disposer 
-d'un nom de domaine disponible chez un registrer à rattacher à votre compte. Voici les paramètres à entrer :"
+intro = "Introduction"
+intro_text = "Les noms de domaines vous permettent d'associer une ou plusieurs adresses supplémentaires aux applications que vous avez déployées."
+create = "Créer un domaine"
+create_text = "Pour lier un nom de domaine à votre compte, vous n'avez pas besoin d'en modifier les DNS immédiatement, vous pouvez très bien tester le bon fonctionnement de vos applications avant toute migration.
+Pour ajouter un domaine, il suffit d'aller dans la rubrique domaine :"
+create_text2 = "Puis de remplir le formulaire :"
+create_text3 = "Une fois le domaine ajouté dans le panel, vous devez modifier les serveurs DNS de votre nom de domaine chez votre fournisseur avec les paramètres suivants :"
 primary = "Serveur DNS primaire :"
 secondary = "Serveur DNS secondaire :"
-intro2_text = "Pour créer un nom de domaine, il suffit de remplir le formulaire de la rubrique <a href='/panel/domain'>domaines</a> du panel."
-manage = "Gestion"
-manage_text = "Un domaine est défini par ses paramètres MX (primaire et secondaire), son enregistrement A et ses différents sous-domaines. Vous pouvez aussi créer des <a href='/doc/emails'>comptes mails</a> associés."
+create_text4 = "Une fois rattaché à votre compte Another Service, vous pourrez gérer tous les paramètres de votre nom de domaine (sous-domaines, sites, comptes mails, redirections...) depuis l'interface de gestion."
 back = "Retour"

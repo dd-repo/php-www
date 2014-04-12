@@ -1,12 +1,9 @@
 [EN]
 
 [FR]
-title = "Documentation Another Service"
+title = "Questions fréquentes"
 
-faq = "Questions fréquentes"
-questions = "Vous n'avez trouvé aucune réponse à vos questions ?"
-answers = "Essayez le moteur de recherche ou demandez au <a href='https://support.anotherservice.com'>support technique</a> !"
-
+popular = "Populaires"
 question_1 = "Comment transférer mon application ?"
 question_2 = "Quelles sont les adresses des serveurs DNS ?"
 question_3 = "Qu'est-ce qu'un environnement ?"
@@ -46,3 +43,4 @@ statswhere = "Les statistiques de votre site sont disponibles sur notre <a href=
 finance = "Olympe est entièrement autofinancé, son infrastructure et les serveurs qu'elle possède sont maintenu grâce à l'aide des <a href='/about/partners'>partenaires</a> et de l'ensemble de l'<a href='/about/team'>équipe</a>."
 opensource = "Olympe est investi dans l'Open Source via de <a href='/org'>multiples initiatives</a> mais également dans sa démarche de développement et d'administration système. Nous publions l'ensemble des <a href='/developers/tools'>outils</a> 
 que nous avons créés dans le cadre du service."
+host = "Nom d'hôte"

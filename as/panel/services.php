@@ -74,6 +74,7 @@ foreach( $services as $s )
 				<img style=\"float: left; margin: 10px 15px 0 0;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-{$s['vendor']}.png\" />
 				<span class=\"name\" style=\"margin: 5px 0 0px 0; display: block;\">{$s['description']}</span><br />
 				<span class=\"subname\">{$s['name']}</span>
+				<span style=\"color: #a5a5a5; font-size: 12px; display: block; position: absolute; right: 10px; bottom: 10px;\">{$s['size']} {$lang['mb']}</span>
 			</div>
 	";
 	

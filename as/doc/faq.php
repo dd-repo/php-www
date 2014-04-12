@@ -23,55 +23,9 @@ $content = "
 					</div>					
 				</div>
 				<div class=\"right big\">
-					<span style=\"font-size: 25px; color: #555555; font-weight: bold;\">{$lang['questions']}</span>
-					<br /><br />
-					<span style=\"font-size: 20px; color: #555555;\">{$lang['answers']}</span>
-					<br /><br /><br />
-					<div style=\"float: left; width: 370px;\">
-						<div style=\" padding-left: 10px; margin: 0 0 30px 0;\">
-							<h3 class=\"grey bordered\">{$lang['started']}</h3>
-							<ol>
-								<li><a href=\"/doc/what\">{$lang['what']}</a></li>
-								<li><a href=\"/doc/techno\">{$lang['techno']}</a></li>
-								<li><a href=\"/doc/info\">{$lang['infos']}</a></li>
-								<li><a href=\"/doc/first\">{$lang['first']}</a></li>
-							</ol>
-						</div>
-						<div style=\"padding-left: 10px; margin: 20px 0 30px 0;\">
-							<h3 class=\"grey bordered\">{$lang['advanced']}</h3>
-							<ol>
-								<li><a href=\"/doc/env\">{$lang['env']}</a></li>
-								<li><a href=\"/doc/process\">{$lang['process']}</a></li>
-								<li><a href=\"/doc/repositories\">{$lang['repositories']}</a></li>
-								<li><a href=\"/doc/cloud\">{$lang['cloud']}</a></li>
-							</ol>
-						</div>
-					</div>
-					<div style=\"float: right; width: 370px;\">
-						<div style=\"padding-left: 10px; margin: 0 0 30px 0;\">
-							<h3 class=\"grey bordered\">{$lang['features']}</h3>
-							<ol>
-								<li><a href=\"/doc/apps\">{$lang['apps']}</a></li>
-								<li><a href=\"/doc/domains\">{$lang['domains']}</a></li>
-								<li><a href=\"/doc/services\">{$lang['services']}</a></li>
-								<li><a href=\"/doc/users\">{$lang['users']}</a></li>	
-							</ol>	
-						</div>
-						<div style=\"padding-left: 10px; margin: 20px 0 30px 0;\">
-							<h3 class=\"grey bordered\">{$lang['account']}</h3>
-							<ol>
-								<li><a href=\"/doc/tools\">{$lang['tools']}</a></li>
-								<li><a href=\"/doc/backups\">{$lang['backups']}</a></li>
-								<li><a href=\"/doc/quotas\">{$lang['quotas']}</a></li>	
-								<li><a href=\"/doc/tokens\">{$lang['tokens']}</a></li>
-							</ol>			
-						</div>						
-					</div>
-					<div class=\"clear\"></div>
-					<div class=\"separator\" style=\"width: 600px;\"></div>
 					<div style=\"position: relative;\">
-						<h3 class=\"grey\" id=\"title\">{$lang['faq']}</h3>
-						<div id=\"hiddentitle\" style=\"display: none;\">{$lang['faq']}</div>
+						<h3 class=\"grey\" id=\"title\">{$lang['popular']}</h3>
+						<div id=\"hiddentitle\" style=\"display: none;\">{$lang['popular']}</div>
 						<div class=\"faq\">
 							<div id=\"questions\">
 								<div style=\"float: left; width: 400px;\">

@@ -90,7 +90,7 @@ $content .= "
 						<span class=\"quota\"><span style='font-weight: bold;'>{$service['stats'][$service['host']]}</span> {$lang['services']}</span>
 					</td>
 					<td style=\"width: 50px; text-align: center;\">
-						<a href=\"#\" title=\"\" onclick=\"$('#download').dialog('open'); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/download2.png\" alt=\"\" /></a>
+						<a href=\"#\" title=\"\" onclick=\"$('#branch').val('no'); $('#download').dialog('open'); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/download2.png\" alt=\"\" /></a>
 					</td>
 				</tr>
 			</table>
@@ -120,7 +120,7 @@ if( count($service['branches']) > 0  )
 					<td><a href=\"/panel/apps/show?id={$b['app_id']}&branch={$b['branch_name']}\"><img style=\"float: left; margin-right: 10px; width: 50px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" /></a> <span style=\"display: block; padding-top: 15px;\">{$b['app_tag']} ({$b['app_name']})</a></td>
 					<td>{$b['branch_name']}</td>
 					<td style=\"width: 50px; text-align: center;\">
-						<a href=\"#\" title=\"\" onclick=\"$('#download').dialog('open'); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/download2.png\" alt=\"\" /></a>
+						<a href=\"#\" title=\"\" onclick=\"$('#branch').val('{$b['branch_name']}'); $('#download').dialog('open'); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/download2.png\" alt=\"\" /></a>
 					</td>
 				</tr>
 		";
@@ -149,6 +149,7 @@ $content .= "
 		<p style=\"text-align: center;\">{$lang['backup_text']}</p>
 		<div class=\"form-small\">		
 			<form action=\"/panel/backups/add_action\" method=\"get\" class=\"center\">
+				<input id=\"branch\" type=\"hidden\" value=\"\" name=\"branch\" />
 				<input type=\"hidden\" value=\"{$service['name']}\" name=\"service\" />
 				<fieldset autofocus>	
 					<input type=\"submit\" value=\"{$lang['backup_now']}\" />
