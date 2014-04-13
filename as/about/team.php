@@ -32,10 +32,10 @@ $content = "
 				<span style=\"color: #a8a8a8; font-size: 12px;\">usyms@anotherservice.com</span><br />
 			</div>
 			<div style=\"float: left; text-align: center; width: 275px;\">
-				<a href=\"https://twitter.com/suytt\"><img class=\"photo\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/team/3.png\" /></a><br />
-				<span style=\"color: #2475ae; font-size: 20px;\" id=\"Simon Uyttendaele\">Simon Uyttendaele</span><br />
-				<span style=\"color: #a8a8a8; font-size: 12px;\">{$lang['simon']}</span><br />
-				<span style=\"color: #a8a8a8; font-size: 12px;\">usyms@anotherservice.com</span><br />
+				<a href=\"/about/contact\"><img class=\"photo\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/team/you.png\" /></a><br />
+				<span style=\"color: #2475ae; font-size: 20px;\" id=\"You\">{$lang['you']}</span><br />
+				<span style=\"color: #a8a8a8; font-size: 12px;\">{$lang['you_position']}</span><br />
+				<span style=\"color: #a8a8a8; font-size: 12px;\">vous@anotherservice.com</span><br />
 			</div>
 			<div class=\"clear\"></div>
 			<br />

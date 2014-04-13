@@ -13,9 +13,11 @@ apply = "Contactez-nous"
 yann = "Ingénieur<br />Co-fondateur" 
 samuel = "Ingénieur<br />Co-fondateur"
 simon = "Ingénieur<br />Co-fondateur"
+you_position = "Joker<br />Equipe Another Service"
 
 hiring = "Nous recrutons !"
 hiring_text = "Nos projets et nos activités sont variés (développement, administration, sécurité, réseau, télécom...), notre esprit est tourné vers l'Open Source et le partage
 de connaissance. Another Service est à la recherche de nouveaux talents."
 contact = "Contactez-nous"
 help = "Rejoignez notre équipe !"
+you = "Vous ?"
