@@ -107,7 +107,7 @@ $content = "
 						<td>Tomcat</td>
 						<td>{$lang['framejava']}</td>
 						<td>7.0.42</td>
-						<td></td>
+						<td><a href=\"http://tomcat.apache.org\">http://tomcat.apache.org</a></td>
 					</tr>
 				</table>
 				<br />

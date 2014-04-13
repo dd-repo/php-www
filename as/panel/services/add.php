@@ -31,10 +31,10 @@ $content = "
 					<br />					
 				</div>
 			</a>				
-			<a href=\"#\" onclick=\"$('#vendor').val('mongo'); $('#version').val('9.1'); $('#new').dialog('open'); return false;\">
+			<a href=\"#\" onclick=\"$('#vendor').val('mongodb'); $('#version').val('2.4.9'); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-mongodb.png\" alt=\"mongodb\"><span class=\"large\">MongoDB</span><br /><span style=\"color: #000000;\" class=\"small\">MongoDB datastore</span></p>
-					<div class=\"overline\">{$lang['soon']}</div>
+					<div class=\"overline\">2.4.9</div>
 					<br />					
 				</div>
 			</a>

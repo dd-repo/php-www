@@ -69,9 +69,9 @@ $content .= "
 							<select name=\"type\">		
 									<option value=\"admin\">{$lang['admin']}</option>
 									<option value=\"blank\">{$lang['blank']}</option>
-									<option value=\"dba\">{$lang['dba']}</option>
-									<option value=\"site\">{$lang['site']}</option>
-									<option value=\"domain\">{$lang['domain']}</option>
+									<option value=\"apps\">{$lang['apps']}</option>
+									<option value=\"services\">{$lang['services']}</option>
+									<option value=\"domains\">{$lang['domains']}</option>
 							</select>
 							<span class=\"help-block\">{$lang['tiptype']}</span>
 						</fieldset>

@@ -25,13 +25,13 @@ $content = "
 			<div class=\"right big\">
 				<h3>{$lang['intro']}</h3>
 				<p>{$lang['intro_text']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/23.png\" alt=\"23\" />
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/44.png\" alt=\"44\" />
 				<br />
 				<h3>{$lang['create']}</h3>
 				<p>{$lang['create_text']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/24.png\" alt=\"24\" />
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/42.png\" alt=\"42\" />
 				<p>{$lang['create_text2']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/25.png\" alt=\"25\" />
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/43.png\" alt=\"43\" />
 			</div>
 			<div class=\"clear\"></div><br /><br />
 		</div>
