@@ -70,7 +70,7 @@ $content = "
 						<td style=\"text-align: center;\"><a href=\"/doc/apps/javatomcat\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-javatomcat.png\" style=\"width: 40px;\" alt=\"Tomcat\"></a></td>
 						<td>Tomcat</td>
 						<td>{$lang['framejava']}</td>
-						<td></td>
+						<td>7.0.42</td>
 						<td style=\"text-align: center;\"><a href=\"/doc/apps/javatomcat\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
 					</tr>
 				</table>

@@ -106,7 +106,7 @@ $content = "
 						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-javatomcat.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
 						<td>Tomcat</td>
 						<td>{$lang['framejava']}</td>
-						<td></td>
+						<td>7.0.42</td>
 						<td></td>
 					</tr>
 				</table>

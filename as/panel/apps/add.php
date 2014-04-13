@@ -41,29 +41,29 @@ $content = "
 			</a>						
 			<a href=\"#\" onclick=\"$('#runtime').val('rubyrails'); $('#standalone').val(0); $('#binary').hide(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
-					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubyrails.png\" alt=\"Ruby\"><span class=\"large\">Ruby on Rails</span></p>
+					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubyrails.png\" alt=\"Ruby on Rails\"><span class=\"large\">Ruby on Rails</span></p>
 					<div class=\"overline\">4.0.4</div>
 					<br />
 				</div>
 			</a>
 			<a href=\"#\" onclick=\"$('#runtime').val('rubysinatra'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
-					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubysinatra.png\" alt=\"Ruby\"><span class=\"large\">Ruby Sinatra</span></p>
+					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubysinatra.png\" alt=\"Ruby Sinatra\"><span class=\"large\">Ruby Sinatra</span></p>
 					<div class=\"overline\">1.4.5</div>
 					<br />					
 				</div>
 			</a>
 			<a href=\"#\" onclick=\"$('#runtime').val('pythondjango'); $('#standalone').val(0); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
-					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-pythondjango.png\" alt=\"Ruby\"><span class=\"large\">Python Django</span></p>
+					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-pythondjango.png\" alt=\"Python Django\"><span class=\"large\">Python Django</span></p>
 					<div class=\"overline\">1.6.2</div>
 					<br />					
 				</div>			
 			</a>
-			<a href=\"#\">
+			<a href=\"#\" onclick=\"$('#runtime').val('javatomcat'); $('#standalone').val(0); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
-					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-javatomcat.png\" alt=\"PHP\"><span class=\"large\">Java Tomcat</span></p>
-					<div class=\"overline\">{$lang['soon']}</div>
+					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-javatomcat.png\" alt=\"Tomcat\"><span class=\"large\">Java Tomcat</span></p>
+					<div class=\"overline\">7.0.42</div>
 					<br />					
 				</div>
 			</a>
@@ -72,7 +72,7 @@ $content = "
 			<h2 class=\"dark\">{$lang['standalone']}</h2>
 			<a href=\"#\" onclick=\"$('#runtime').val('phpworker'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
-					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-phpworker.png\" alt=\"PHP\"><span class=\"large\">PHP (Worker)</span></p>
+					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-phpworker.png\" alt=\"PHP (Worker)\"><span class=\"large\">PHP (Worker)</span></p>
 					<div class=\"overline\">5.5.3</div>
 					<br />					
 				</div>

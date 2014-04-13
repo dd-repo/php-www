@@ -30,17 +30,17 @@ $content = "
 				<p>{$lang['create_text']}</p>
 				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/4.png\" alt=\"4\" />
 				<p>{$lang['create_text2']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/40.png\" alt=\"40\" />
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/41.png\" alt=\"41\" />
 				<p>{$lang['create_text3']}</p>
 				<blockquote style=\"width: 700px; margin: 0 auto;\">
 					<p>
-						<span style=\"font-weight: bold;\">{$lang['sftp']}</span> sftp://pythondjango-xxxxxx@ftp.anotherservice.com/master<br />
-						<span style=\"font-weight: bold;\">{$lang['git']}</span> ssh://pythondjango-xxxxxx@git.as/~utilisateur/pythondjango-xxxxxxx.git
+						<span style=\"font-weight: bold;\">{$lang['sftp']}</span> sftp://javatomcat-xxxxxx@ftp.anotherservice.com/master<br />
+						<span style=\"font-weight: bold;\">{$lang['git']}</span> ssh://javatomcat-xxxxxx@git.as/~utilisateur/javatomcat-xxxxxxx.git
 					</p>
 				</blockquote>
 				<p>{$lang['create_text4']}</p>
 				<pre>
-					<code>git clone https://github.com/AnotherService/python-django-hello_world</code></pre>
+					<code>git clone https://github.com/AnotherService/java-tomcat-hello_world</code></pre>
 				<p>{$lang['create_text6']}</p>
 				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/25.png\" alt=\"25\" />
 				<p>{$lang['create_text7']}</p>
