@@ -123,7 +123,7 @@ $content = "
 						<td style=\"text-align: center;\"><a href=\"/doc/apps/java\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-java.png\" style=\"width: 40px;\" alt=\"JAVA\"></a></td>
 						<td>Java</td>
 						<td>{$lang['prog']}</td>
-						<td></td>
+						<td>1.7.0</td>
 						<td style=\"text-align: center;\"><a href=\"/doc/apps/java\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
 					</tr>
 				</table>

@@ -61,14 +61,14 @@ $content = "
 						<td>NodeJS</td>
 						<td>{$lang['script']}</td>
 						<td>0.10.26</td>
-						<td></td>
+						<td><a href=\"http://www.nodejs.org\">http://www.nodejs.org</a></td>
 					</tr>
 					<tr>
 						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-java.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
 						<td>Java</td>
 						<td>{$lang['prog']}</td>
-						<td></td>
-						<td></td>
+						<td>1.7.0</td>
+						<td><a href=\"http://www.java.com\">http://www.java.com</a></td>
 					</tr>
 				</table>
 				<br />

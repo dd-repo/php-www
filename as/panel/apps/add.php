@@ -91,7 +91,7 @@ $content = "
 					<br />					
 				</div>
 			</a>
-			<a href=\"#\">
+			<a href=\"#\" onclick=\"$('#runtime').val('java'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-java.png\" alt=\"Java\"><span class=\"large\">Java</span></p>
 					<div class=\"overline\">1.7.0</div>
