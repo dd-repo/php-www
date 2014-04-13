@@ -213,6 +213,38 @@ $content .= "
 			<div class=\"clear\"></div>
 		</div>
 	</div><br />
+	<div id=\"join\" style=\"display: none;\" class=\"floatingdialog\">
+		<br />
+		<h3 class=\"center\">{$lang['join']}</h3>
+		<p style=\"text-align: center;\">{$lang['join_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/users/join_action\" method=\"get\" class=\"center\">
+				<input type=\"hidden\" name=\"id\" value=\"{$account['id']}\" />
+				<input type=\"hidden\" name=\"domain\" value=\"".security::encode($_GET['domain'])."\" />
+				<fieldset>
+					<select name=\"gid\">
+";
+$groups = api::send('self/team/list', array('domain'=>$_GET['domain']));
+
+if( count($groups) > 0 )
+{
+	foreach($groups as $g)
+	{
+		$content .= "
+						<option value=\"{$g['id']}\">{$g['name']}</option>
+		";
+	}
+}
+$content .= "
+					</select>
+					<span class=\"help-block\">{$lang['group_help']}</span>
+				</fieldset>
+				<fieldset autofocus>	
+					<input type=\"submit\" value=\"{$lang['join_now']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
 	<div id=\"new-redirect\" style=\"display: none;\" class=\"floatingdialog\">
 		<br />
 		<h3 class=\"center\">{$lang['new_redirect']}</h3>
@@ -272,6 +304,7 @@ $content .= "
 		<p id=\"keyvalue\"></p>
 	</div>
 	<script>
+		newFlexibleDialog('join', 550);
 		newFlexibleDialog('new-redirect', 550);
 		newFlexibleDialog('new-alias', 550);
 		newFlexibleDialog('new-key', 550);

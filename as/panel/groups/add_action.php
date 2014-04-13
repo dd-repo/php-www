@@ -11,6 +11,6 @@ api::send('self/team/add', array('team'=>$_POST['mail'], 'domain'=>$_POST['domai
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	$template->redirect('/panel/user/list?domain=' . $_POST['domain']);
+	$template->redirect('/panel/users/list?domain=' . security::encode($_POST['domain']));
 
 ?>

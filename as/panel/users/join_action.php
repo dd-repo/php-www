@@ -11,6 +11,6 @@ api::send('self/account/update', array('id'=>$_GET['id'], 'domain'=>$_GET['domai
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-	$template->redirect('/panel/user/config?id='.$_GET['id'].'&domain='.$_GET['domain']);
+	$template->redirect('/panel/users/config?id='.security::encode($_GET['id']).'&domain='.security::encode($_GET['domain']));
 
 ?>

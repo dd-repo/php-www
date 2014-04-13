@@ -7,7 +7,7 @@ intro = "Introduction"
 intro_text = "Les noms de domaines vous permettent d'associer une ou plusieurs adresses supplémentaires aux applications que vous avez déployées."
 create = "Créer un domaine"
 create_text = "Pour lier un nom de domaine à votre compte, vous n'avez pas besoin d'en modifier les DNS immédiatement, vous pouvez très bien tester le bon fonctionnement de vos applications avant toute migration.
-Pour ajouter un domaine, il suffit d'aller dans la rubrique domaine :"
+Pour ajouter un domaine, il suffit d'aller dans la <a href='/panel/domains'>rubrique appropriée</a> :"
 create_text2 = "Puis de remplir le formulaire :"
 create_text3 = "Une fois le domaine ajouté dans le panel, vous devez modifier les serveurs DNS de votre nom de domaine chez votre fournisseur avec les paramètres suivants :"
 primary = "Serveur DNS primaire :"

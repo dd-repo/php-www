@@ -11,7 +11,7 @@ api::send('self/team/del', array('domain'=>$_GET['domain'],'id'=>$_POST['group']
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else
-		$template->redirect('/panel/users/list?domain=' . $_GET['domain']);
+		$template->redirect('/panel/users/list?domain=' . security::encode($_GET['domain']));
 
 ?>
 
