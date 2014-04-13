@@ -35,25 +35,30 @@ $content = "
 				</pre>
 				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/26.png\" alt=\"26\" />
 				<p>{$lang['create_text2']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/32.png\" alt=\"32\" />
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/38.png\" alt=\"38\" />
 				<p>{$lang['create_text3']}</p>
 				<blockquote style=\"width: 700px; margin: 0 auto;\">
 					<p>
-						<span style=\"font-weight: bold;\">{$lang['sftp']}</span> sftp://ruby-xxxxxx@ftp.anotherservice.com/master<br />
-						<span style=\"font-weight: bold;\">{$lang['git']}</span> ssh://ruby-xxxxxx@git.as/~utilisateur/ruby-xxxxxxx.git
+						<span style=\"font-weight: bold;\">{$lang['sftp']}</span> sftp://rubysinatra-xxxxxx@ftp.anotherservice.com/master<br />
+						<span style=\"font-weight: bold;\">{$lang['git']}</span> ssh://rubysinatra-xxxxxx@git.as/~utilisateur/rubysinatra-xxxxxxx.git
 					</p>
 				</blockquote>
 				<p>{$lang['create_text4']}</p>
 				<pre>
-					<code>require 'webrick'
-server = WEBrick::HTTPServer.new(:Port => 8080)
-server.mount_proc('/') {|request, response| response.body = \"".htmlspecialchars("<html><div style='text-align: center; font-size: 20px;'><br /><br />Hello, World!</div></html>")."\"}
-trap(\"INT\") {server.shutdown}
-server.start</code>
+					<code>#!/usr/bin/env ruby
+require 'rubygems'
+require 'sinatra'
+
+set :bind, '0.0.0.0'
+set :port, 8080
+
+get '/' do
+  'Hello, world!'
+end</code>
 				</pre>
 				<p>{$lang['create_text5']}</p>
-				<pre><code>git clone ssh://ruby-xxxxxx@git.as/~utilisateur/ruby-xxxxxxx.git
-cd ruby-xxxxxxx.git
+				<pre><code>git clone ssh://rubysinatra-xxxxxx@git.as/~utilisateur/rubysinatra-xxxxxxx.git
+cd rubysinatra-xxxxxxx.git
 git add server.rb
 git commit -a -m \"First commit\"
 git push origin master</code></pre>

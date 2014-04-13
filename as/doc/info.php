@@ -38,6 +38,14 @@ $content = "
 							<td>ns2.anotherservice.com</td>
 							<td>178.32.65.70</td>
 						</tr>
+						<tr>
+							<td>ns1.anotherservice.com</td>
+							<td>2001:41d0:9b:9000::1:254</td>
+						</tr>
+						<tr>
+							<td>ns2.anotherservice.com</td>
+							<td>2001:41d0:9b:9000::2:254</td>
+						</tr>
 					</table>
 					<br /><br />
 					<h2 class=\"dark\">{$lang['addresses']}</h2>

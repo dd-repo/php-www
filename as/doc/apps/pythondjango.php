@@ -29,38 +29,22 @@ $content = "
 				<h3>{$lang['create']}</h3>
 				<p>{$lang['create_text']}</p>
 				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/4.png\" alt=\"4\" />
-				<p>{$lang['create_text1']}</p>
-				<pre>
-					<code>ruby server.rb</code>
-				</pre>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/26.png\" alt=\"26\" />
 				<p>{$lang['create_text2']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/32.png\" alt=\"32\" />
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/40.png\" alt=\"40\" />
 				<p>{$lang['create_text3']}</p>
 				<blockquote style=\"width: 700px; margin: 0 auto;\">
 					<p>
-						<span style=\"font-weight: bold;\">{$lang['sftp']}</span> sftp://ruby-xxxxxx@ftp.anotherservice.com/master<br />
-						<span style=\"font-weight: bold;\">{$lang['git']}</span> ssh://ruby-xxxxxx@git.as/~utilisateur/ruby-xxxxxxx.git
+						<span style=\"font-weight: bold;\">{$lang['sftp']}</span> sftp://pythondjango-xxxxxx@ftp.anotherservice.com/master<br />
+						<span style=\"font-weight: bold;\">{$lang['git']}</span> ssh://pythondjango-xxxxxx@git.as/~utilisateur/python-xxxxxxx.git
 					</p>
 				</blockquote>
 				<p>{$lang['create_text4']}</p>
 				<pre>
-					<code>require 'webrick'
-server = WEBrick::HTTPServer.new(:Port => 8080)
-server.mount_proc('/') {|request, response| response.body = \"".htmlspecialchars("<html><div style='text-align: center; font-size: 20px;'><br /><br />Hello, World!</div></html>")."\"}
-trap(\"INT\") {server.shutdown}
-server.start</code>
-				</pre>
-				<p>{$lang['create_text5']}</p>
-				<pre><code>git clone ssh://ruby-xxxxxx@git.as/~utilisateur/ruby-xxxxxxx.git
-cd ruby-xxxxxxx.git
-git add server.rb
-git commit -a -m \"First commit\"
-git push origin master</code></pre>
+					<code>git clone https://github.com/AnotherService/python-django-hello_world</code></pre>
 				<p>{$lang['create_text6']}</p>
 				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/25.png\" alt=\"25\" />
 				<p>{$lang['create_text7']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/30.png\" alt=\"30\" />
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/39.png\" alt=\"39\" />
 			</div>
 			<div class=\"clear\"></div><br /><br />
 		</div>

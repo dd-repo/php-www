@@ -40,14 +40,11 @@ $content = "
 				</blockquote>
 				<p>{$lang['create_text4']}</p>
 				<pre>
-					<code>git clone https://github.com/appfog/af-ruby-rails helloworld
-					wget https://github.com/appfog/af-ruby-rails/archive/master.zip
-					</code>
+					<code>git clone https://github.com/appfog/af-ruby-rails</code>
 				</pre>
 				<p>{$lang['create_text5']}</p>
 				<pre><code>git clone ssh://rubyrails-xxxxxx@git.as/~utilisateur/rubyrails-xxxxxxx.git
 cd rubyrails-xxxxxxx.git
-cp -a ../helloworld/* .
 git add *
 git commit -a -m \"First commit\"
 git push origin master</code></pre>

@@ -58,7 +58,7 @@ if __name__ == '__main__':
 				<p>{$lang['create_text5']}</p>
 				<pre><code>git clone ssh://python-xxxxxx@git.as/~utilisateur/python-xxxxxxx.git
 cd python-xxxxxxx.git
-git add *
+git add server.py
 git commit -a -m \"First commit\"
 git push origin master</code></pre>
 				<p>{$lang['create_text6']}</p>

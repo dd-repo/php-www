@@ -452,7 +452,7 @@ $content .= "
 	<div id=\"delete\" class=\"floatingdialog\">
 		<h3 class=\"center\" style=\"padding-top: 5px;\">{$lang['delete_title']}</h3>
 		<p style=\"text-align: center;\">{$lang['delete_text']}</p>
-		<a style=\"width: 150px; margin: 0 auto;\" href=\"/panel/apps/del_action?id={$app['id']}\" class=\"button classic\">{$lang['delete_now']}</a>
+		<a style=\"width: 150px; margin: 0 auto;\" href=\"/panel/apps/del_action?id={$app['id']}&name={$app['name']}\" class=\"button classic\">{$lang['delete_now']}</a>
 		<br />
 	</div>
 	<div id=\"deletebranch\" class=\"floatingdialog\">

@@ -46,26 +46,19 @@ $content = "
 					<br />
 				</div>
 			</a>
-			<a href=\"#\">
+			<a href=\"#\" onclick=\"$('#runtime').val('rubysinatra'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubysinatra.png\" alt=\"Ruby\"><span class=\"large\">Ruby Sinatra</span></p>
-					<div class=\"overline\">{$lang['soon']}</div>
+					<div class=\"overline\">1.4.5</div>
 					<br />					
 				</div>
 			</a>
-			<a href=\"#\">
+			<a href=\"#\" onclick=\"$('#runtime').val('pythondjango'); $('#standalone').val(0); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-pythondjango.png\" alt=\"Ruby\"><span class=\"large\">Python Django</span></p>
-					<div class=\"overline\">{$lang['soon']}</div>
+					<div class=\"overline\">1.6.2</div>
 					<br />					
 				</div>			
-			</a>
-			<a href=\"#\" onclick=\"$('#runtime').val('pythonwsgi'); $('#standalone').val(0); $('#binary').hide(); $('#new').dialog('open'); return false;\">
-				<div class=\"nservice\">
-					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-pythonwsgi.png\" alt=\"Ruby\"><span class=\"large\">Python WSGI</span></p>
-					<div class=\"overline\">2.7.4</div>
-					<br />					
-				</div>
 			</a>
 			<a href=\"#\">
 				<div class=\"nservice\">
@@ -77,7 +70,7 @@ $content = "
 			<div class=\"clear\"></div>
 			<br />
 			<h2 class=\"dark\">{$lang['standalone']}</h2>
-			<a href=\"#\" onclick=\"$('#runtime').val('php'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
+			<a href=\"#\" onclick=\"$('#runtime').val('phpworker'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-phpworker.png\" alt=\"PHP\"><span class=\"large\">PHP (Worker)</span></p>
 					<div class=\"overline\">5.5.3</div>

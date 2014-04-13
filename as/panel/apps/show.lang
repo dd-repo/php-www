@@ -9,6 +9,7 @@ branch = "Environnement"
 
 binary_php = "apache2 -DNO_DETACH -k start"
 binary_rubyrails = "/usr/bin/ruby script/rails server -e {BRANCH} -p 8080"
+binary_django = "/usr/bin/python manage.py runserver 0.0.0.0:8080"
 binary = "Commande"
 memory = "Mémoire RAM"
 cpu = "CPU"

@@ -7,6 +7,7 @@ if( !defined('PROPER_START') )
 }
 
 api::send('self/app/del', array('id'=>$_GET['id']));
+api::send('self/subdomain/del', array('domain'=>'anotherservice.net', 'subdomain'=>strtolower($_GET['name'])));
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);

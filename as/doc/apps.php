@@ -56,22 +56,15 @@ $content = "
 						<td style=\"text-align: center;\"><a href=\"/doc/apps/rubysinatra\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubysinatra.png\" style=\"width: 40px;\" alt=\"Ruby Sinatra\"></a></td>
 						<td>Sinatra</td>
 						<td>{$lang['frameruby']}</td>
-						<td></td>
+						<td>1.4.5</td>
 						<td style=\"text-align: center;\"><a href=\"/doc/apps/rubysinatra\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
 					</tr>
 					<tr>
 						<td style=\"text-align: center;\"><a href=\"/doc/apps/pythondjango\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-pythondjango.png\" style=\"width: 40px;\" alt=\"Python Django\"></a></td>
 						<td>Django</td>
 						<td>{$lang['framepython']}</td>
-						<td></td>
+						<td>1.6.2</td>
 						<td style=\"text-align: center;\"><a href=\"/doc/apps/pythondjango\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
-					</tr>
-					<tr>
-						<td style=\"text-align: center;\"><a href=\"/doc/apps/pythonwsgi\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-pythonwsgi.png\" style=\"width: 40px;\" alt=\"Python WSGI\"></a></td>
-						<td>WSGI</td>
-						<td>{$lang['framepython']}</td>
-						<td></td>
-						<td style=\"text-align: center;\"><a href=\"/doc/apps/pythonwsgi\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
 					</tr>
 					<tr>
 						<td style=\"text-align: center;\"><a href=\"/doc/apps/javatomcat\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-javatomcat.png\" style=\"width: 40px;\" alt=\"Tomcat\"></a></td>

@@ -6,7 +6,7 @@ title = "Application Java"
 intro = "Introduction"
 intro_text = "Les applications Java sont déployées sur notre plateforme dans un environnement <i>Java 1.9.3</i>."
 create = "Créer l'application"
-create_text = "Sélectionner langage <i>Java</i> dans la liste des options disponibles :"
+create_text = "Sélectionner le langage <i>Java</i> dans la liste des options disponibles :"
 create_text1 = "Dans la ligne de commande, mettez simplement la commande que vous voulez executer à la racine de votre application pour la lancer, dans notre cas, nous utilisons la commande éxécutant le fichier <i>server.jar</i> :"
 create_text2 = "Par défaut, un environnement 'master' est créé, vous pourrez par la suite ajouter d'autres <a href='/doc/env'>environnements et branches</a>. Attention <span style='font-weight:bold;'>il est normal
 que le processus Java ne démarrre pas de lui-même</span> car aucune application n'est encore présente."
