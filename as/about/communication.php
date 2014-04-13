@@ -15,7 +15,7 @@ $content = "
 		<div class=\"content\">
 			<div style=\"float: left;  width: 770px;\">
 				<h2 class=\"dark\">{$lang['events']}</h2>
-				<a href=\"http://www.solutionslinux.fr\"><img style=\"display: block; float: left; margin-right: 20px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/events/1.png\" /></a>
+				<a href=\"http://www.solutionslinux.fr\"><img style=\"display: block; float: left; width: 200px; margin-right: 20px; padding: 5px; border: 1px solid #d6d6d6; border-radius: 3px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/events/1.png\" /></a>
 				<span style=\"font-size: 18px;\">{$lang['event1_title']}</span><br />
 				<span style=\"color: #9b9b9b;\">{$lang['published']} {$lang['event1_date']}</span>
 				<p>{$lang['event1_extract']}</p>
