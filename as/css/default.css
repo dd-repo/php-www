@@ -541,6 +541,11 @@ code {
 	font-size: 12px;
 	letter-spacing: 1px;
 	line-height: 20px;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
 }
 
 code span {
@@ -551,12 +556,13 @@ blockquote {
 	background: #f9f9f9;
 	border-left: 4px solid #ccc;
 	margin: 0;
-	padding: 2px 0px 2px 20px;
+	padding: 10px;
 	font-size: 12px;
 	letter-spacing: 1px;
 }
 
 blockquote p {
+	display: inline;
 	line-height: 20px;
 }
 

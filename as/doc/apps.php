@@ -27,52 +27,7 @@ $content = "
 				<p>{$lang['intro_text']}</p>
 				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/3.png\" alt=\"3\" />
 				<br />
-				<h3>{$lang['languages']}</h3>
 				<p>{$lang['languages_text']}</p>
-				<table>
-					<tr>
-						<th style=\"text-align: center; width: 50px;\">#</th>
-						<th style=\"width: 110px;\">{$lang['name']}</th>
-						<th style=\"width: 210px;\">{$lang['info']}</th>
-						<th style=\"width: 40px;\">{$lang['version']}</th>
-						<th style=\"width: 40px; text-align: center;\">{$lang['doc']}</th>
-					</tr>
-					<tr>
-						<td style=\"text-align: center;\"><a href=\"/doc/php\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-php.png\" style=\"width: 40px;\" alt=\"PHP\"></a></td>
-						<td>PHP</td>
-						<td>{$lang['script']}</td>
-						<td>5.5.3</td>
-						<td style=\"text-align: center;\"><a href=\"/doc/php\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
-					</tr>
-					<tr>
-						<td style=\"text-align: center;\"><a href=\"/doc/ruby\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-ruby.png\" style=\"width: 40px;\" alt=\"Ruby\"></a></td>
-						<td>Ruby</td>
-						<td>{$lang['script']}</td>
-						<td>1.9.3</td>
-						<td style=\"text-align: center;\"><a href=\"/doc/ruby\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
-					</tr>
-					<tr>
-						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-python.png\" style=\"width: 40px;\" alt=\"Python\"></td>
-						<td>Python</td>
-						<td>{$lang['script']}</td>
-						<td></td>
-						<td style=\"text-align: center;\"></td>
-					</tr>
-					<tr>
-						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-nodejs.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
-						<td>NodeJS</td>
-						<td>{$lang['script']}</td>
-						<td></td>
-						<td style=\"text-align: center;\"></td>
-					</tr>
-					<tr>
-						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-java.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
-						<td>Java</td>
-						<td>{$lang['prog']}</td>
-						<td></td>
-						<td style=\"text-align: center;\"></td>
-					</tr>
-				</table>
 				<br />
 				<h3>{$lang['frameworks']}</h3>
 				<table>
@@ -84,41 +39,95 @@ $content = "
 						<th style=\"width: 40px; text-align: center;\">{$lang['doc']}</th>
 					</tr>
 					<tr>
-						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubyrails.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/php\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-php.png\" style=\"width: 40px;\" alt=\"PHP\"></a></td>
+						<td>PHP (Web)</td>
+						<td>{$lang['script']}</td>
+						<td>5.5.3</td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/php\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
+					</tr>
+					<tr>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/rubyrails\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubyrails.png\" style=\"width: 40px;\" alt=\"Ruby on Rails\"></a></td>
 						<td>Ruby on Rails</td>
 						<td>{$lang['frameruby']}</td>
 						<td>4.0.4</td>
-						<td style=\"text-align: center;\"></td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/rubyrails\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
 					</tr>
 					<tr>
-						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubysinatra.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/rubysinatra\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubysinatra.png\" style=\"width: 40px;\" alt=\"Ruby Sinatra\"></a></td>
 						<td>Sinatra</td>
 						<td>{$lang['frameruby']}</td>
 						<td></td>
-						<td></td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/rubysinatra\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
 					</tr>
 					<tr>
-						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-pythondjango.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/pythondjango\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-pythondjango.png\" style=\"width: 40px;\" alt=\"Python Django\"></a></td>
 						<td>Django</td>
 						<td>{$lang['framepython']}</td>
 						<td></td>
-						<td></td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/pythondjango\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
 					</tr>
 					<tr>
-						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-pythonwsgi.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/pythonwsgi\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-pythonwsgi.png\" style=\"width: 40px;\" alt=\"Python WSGI\"></a></td>
 						<td>WSGI</td>
 						<td>{$lang['framepython']}</td>
 						<td></td>
-						<td></td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/pythonwsgi\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
 					</tr>
 					<tr>
-						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-javatomcat.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/javatomcat\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-javatomcat.png\" style=\"width: 40px;\" alt=\"Tomcat\"></a></td>
 						<td>Tomcat</td>
 						<td>{$lang['framejava']}</td>
 						<td></td>
-						<td></td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/javatomcat\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
 					</tr>
 				</table>
+				<br /><br />
+				<h3>{$lang['languages']}</h3>
+				<table>
+					<tr>
+						<th style=\"text-align: center; width: 50px;\">#</th>
+						<th style=\"width: 110px;\">{$lang['name']}</th>
+						<th style=\"width: 210px;\">{$lang['info']}</th>
+						<th style=\"width: 40px;\">{$lang['version']}</th>
+						<th style=\"width: 40px; text-align: center;\">{$lang['doc']}</th>
+					</tr>
+					<tr>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/phpworker\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-php.png\" style=\"width: 40px;\" alt=\"PHP\"></a></td>
+						<td>PHP (Worker)</td>
+						<td>{$lang['script']}</td>
+						<td>5.5.3</td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/phpworker\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
+					</tr>
+					<tr>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/ruby\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-ruby.png\" style=\"width: 40px;\" alt=\"Ruby\"></a></td>
+						<td>Ruby</td>
+						<td>{$lang['script']}</td>
+						<td>1.9.3</td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/ruby\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
+					</tr>
+					<tr>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/python\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-python.png\" style=\"width: 40px;\" alt=\"Python\"></a></td>
+						<td>Python</td>
+						<td>{$lang['script']}</td>
+						<td>2.7.5</td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/python\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
+					</tr>
+					<tr>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/nodejs\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-nodejs.png\" style=\"width: 40px;\" alt=\"NodeJS\"></a></td>
+						<td>NodeJS</td>
+						<td>{$lang['script']}</td>
+						<td>0.10.26</td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/nodejs\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
+					</tr>
+					<tr>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/java\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-java.png\" style=\"width: 40px;\" alt=\"JAVA\"></a></td>
+						<td>Java</td>
+						<td>{$lang['prog']}</td>
+						<td></td>
+						<td style=\"text-align: center;\"><a href=\"/doc/apps/java\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" alt=\"\" /></a></td>
+					</tr>
+				</table>
+
 				<br />
 			</div>
 			<div class=\"clear\"></div><br /><br />

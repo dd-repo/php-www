@@ -28,7 +28,7 @@ $content = "
 			<a href=\"#\" onclick=\"$('#runtime').val('php'); $('#standalone').val(0); $('#binary').hide(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-php.png\" alt=\"PHP\"><span class=\"large\">PHP (Web)</span></p>
-					<div class=\"overline\">5.4.9</div>
+					<div class=\"overline\">5.5.3</div>
 					<br />					
 				</div>
 			</a>
@@ -42,7 +42,7 @@ $content = "
 			<a href=\"#\" onclick=\"$('#runtime').val('rubyrails'); $('#standalone').val(0); $('#binary').hide(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubyrails.png\" alt=\"Ruby\"><span class=\"large\">Ruby on Rails</span></p>
-					<div class=\"overline\">4.0.2</div>
+					<div class=\"overline\">4.0.4</div>
 					<br />
 				</div>
 			</a>
@@ -80,7 +80,7 @@ $content = "
 			<a href=\"#\" onclick=\"$('#runtime').val('php'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-phpworker.png\" alt=\"PHP\"><span class=\"large\">PHP (Worker)</span></p>
-					<div class=\"overline\">5.4.9</div>
+					<div class=\"overline\">5.5.3</div>
 					<br />					
 				</div>
 			</a>
@@ -105,11 +105,11 @@ $content = "
 					<br />
 				</div>
 			</a>
-			<a href=\"#\">
+			<a href=\"#\" onclick=\"$('#runtime').val('nodejs'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-nodejs.png\" alt=\"NodeJS\"><span class=\"large\">NodeJS</span></p>
-					<div class=\"overline\">{$lang['soon']}</div>
-					<br />					
+					<div class=\"overline\">0.10.26</div>
+					<br />
 				</div>
 			</a>			
 			<div class=\"clear\"></div>

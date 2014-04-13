@@ -39,12 +39,12 @@ foreach( $app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['instances'] 
 		foreach( $cpu as $c )
 		{
 			if( $c['HOUR'] == date('H', $current) )
-				$data_day[$current]['cpu' . $inst['id']] = $c['average'];
+				$data_day[$current]['cpu' . $inst['id']] = round($c['average']/10);
 		}
 		foreach( $ram as $r )
 		{
 			if( $r['HOUR'] == date('H', $current) )
-				$data_day[$current]['ram' . $inst['id']] = $r['average'];
+				$data_day[$current]['ram' . $inst['id']] = round($r['average']);
 		}
 		$current = $next;
 	}

@@ -47,20 +47,20 @@ $content = "
 						<td>Ruby</td>
 						<td>{$lang['script']}</td>
 						<td>1.9.3</td>
-						<td><a href=\"http://www.php.net\">http://www.ruby-lang.org</a></td>
+						<td><a href=\"http://www.ruby-lang.org\">http://www.ruby-lang.org</a></td>
 					</tr>
 					<tr>
 						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-python.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
 						<td>Python</td>
 						<td>{$lang['script']}</td>
-						<td></td>
-						<td></td>
+						<td>2.7.5</td>
+						<td><a href=\"http://www.python.org\">http://www.python.org</a></td>
 					</tr>
 					<tr>
 						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-nodejs.png\" style=\"width: 40px;\" alt=\"PHP\"></td>
 						<td>NodeJS</td>
 						<td>{$lang['script']}</td>
-						<td></td>
+						<td>0.10.26</td>
 						<td></td>
 					</tr>
 					<tr>
