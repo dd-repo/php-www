@@ -9,7 +9,6 @@ if( !defined('PROPER_START') )
 $fh = fopen("http://api.uptimerobot.com/getMonitors?apiKey={$GLOBALS['CONFIG']['UPTIME_TOKEN']}&format=json&customUptimeRatio=7-30-365&logs=1", 'r');
 $response = stream_get_contents($fh);
 fclose($fh);
-
 $response = json_decode(str_replace(array('jsonUptimeRobotApi(', ')'), array('', ''), $response), true);
 
 foreach( $response['monitors']['monitor'] as $m )
@@ -20,15 +19,21 @@ foreach( $response['monitors']['monitor'] as $m )
 		$up7 = $expl[0];
 		$up30 = $expl[1];
 		$up365 = $expl[2];
-		
+		$status = $m['status'];
 		$logs = $m['log'];
 	}
 }
 
+require_once 'as/status/vendor/autoload.php';
+
+$client = new Redmine\Client('https://projets.anotherservice.com', 'admin', $GLOBALS['CONFIG']['REDMINE_TOKEN']);
+$issues = $client->api('issue')->all(array('project_id' => 'as-infra'));
+$issues = $issues['issues'];
+
 $content = "
-		<div class=\"head\" style=\"background-color: #7bbb51; background-image: url('/{$GLOBALS['CONFIG']['SITE']}/images/dotgrid-black.png'); margin-bottom: 0;\">
+		<div class=\"head\" style=\"background-color: ".($status!=2?"#ca0101":"#7bbb51")."; background-image: url('/{$GLOBALS['CONFIG']['SITE']}/images/dotgrid-black.png'); margin-bottom: 0;\">
 			<br />
-			<h1>{$lang['online']}</h1>
+			<h1>".($status!=2?"{$lang['offline']}":"{$lang['online']}")."</h1>
 			<h2 style=\"margin: 15px 0 15px 0; color: #ffffff;\">".date('M d Y H:i')."</h2>
 			<div style=\"width: 800px; margin: 0 auto; color: #ffffff; text-align: center; font-size: 14px; line-height: 20px;\">
 				{$lang['monitor']}
@@ -36,17 +41,17 @@ $content = "
 			<div style=\"margin: 0 auto; margin-top: 20px; width: 1100px; text-align: center;\">
 			</div>
 			<div class=\"clear\"></div>
-			<br /><br /><br />
+			<br /><br />
 			<div style=\"margin: 0 auto; width: 1100px;\">
 				<div style=\"float: left;\">
-					<div class=\"fillgraph\">
-						<div class=\"fill\" style=\"width: {$up30}%;\"></div>
+					<div class=\"filluptimeout\">
+						<div class=\"filluptime\" style=\"width: {$up30}%;\"></div>
 					</div>
 					<span style=\"color: #ffffff; text-align: center; display: block; margin: 0 auto; margin-top: 5px; font-size: 14px;\">{$lang['30days']} <span style=\"font-weight: bold;\">{$up30}%</span></span>
 				</div>
 				<div style=\"float: right;\">
-					<div class=\"fillgraph\">
-						<div class=\"fill\" style=\"width: {$up365}%;\"></div>
+					<div class=\"filluptimeout\">
+						<div class=\"filluptime\" style=\"width: {$up365}%;\"></div>
 					</div>
 					<span style=\"color: #ffffff; text-align: center; display: block; margin: 0 auto; margin-top: 5px; font-size: 14px;\">{$lang['365days']} <span style=\"font-weight: bold;\">{$up365}%</span></span>
 				</div>
@@ -55,6 +60,42 @@ $content = "
 		</div>
 		<div class=\"clear\"></div>		
 		<div class=\"content\">
+			<h3 style=\"color: #a4a4a4;\">{$lang['issues']}</h3>
+			<table>
+				<tr>
+					<th style=\"color: #a4a4a4; text-align: center; width: 40px;\">#</th>
+					<th style=\"color: #a4a4a4;\">{$lang['type']}</th>
+					<th style=\"color: #a4a4a4;\">{$lang['title']}</th>
+					<th style=\"color: #a4a4a4;\">{$lang['priority']}</th>
+					<th style=\"color: #a4a4a4;\">{$lang['date']}</th>
+					<th style=\"color: #a4a4a4;\">{$lang['status']}</th>
+					<th style=\"color: #a4a4a4;\">{$lang['updated']}</th>
+				</tr>
+";
+
+if( count($issues) > 0 )
+{
+	foreach( $issues as $i )
+	{
+		$content .= "
+				<tr>
+					<td style=\"text-align: center; width: 40px;\"><a href=\"https://projets.olympe.in/issues/{$i['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" /></a></td>
+					<td>".$lang['tracker_' . $i['tracker']['id']]."</td>
+					<td><a href=\"https://projets.olympe.in/issues/{$i['id']}\">{$i['subject']}</a></td>
+					<td>".$lang['priority_' . $i['priority']['id']]."</td>
+					<td>".date($lang['dateformatsimple'], strtotime($i['start_date']))."</td>
+					<td>".$lang['status2_' . $i['status']['id']]."</td>
+					<td>".date($lang['dateformat'], strtotime($i['updated_on']))."</td>
+				</tr>
+		";
+	}
+}
+
+
+
+$content .= "
+			</table>
+			<br /><br />
 			<div style=\"float: left; width: 500px;\">
 				<h4>{$lang['last7days']}</h4>
 				<br />

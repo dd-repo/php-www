@@ -165,15 +165,15 @@ $content = "
 							</div>
 							<div id=\"answer-8\" class=\"answer\">
 								<div style=\"position: absolute; right: 0; top: 0;\"><a href=\"#\" onclick=\"showQuestions(8); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a></div>
-								<p>{$lang['capture']}</p>
+								<p>{$lang['boot']}</p>
 							</div>
 							<div id=\"answer-9\" class=\"answer\">
 								<div style=\"position: absolute; right: 0; top: 0;\"><a href=\"#\" onclick=\"showQuestions(9); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a></div>
-								<p>{$lang['finance']}</p>
+								<p>{$lang['groups']}</p>
 							</div>
 							<div id=\"answer-10\" class=\"answer\">
 								<div style=\"position: absolute; right: 0; top: 0;\"><a href=\"#\" onclick=\"showQuestions(10); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a></div>
-								<p>{$lang['opensource']}</p>
+								<p>{$lang['deploy']}</p>
 							</div>
 						</div>
 					</div>

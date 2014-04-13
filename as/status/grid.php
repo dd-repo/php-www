@@ -73,9 +73,10 @@ $content .= "
 			<br />
 		</div>
 		<script>
-		 $(function() {
+		$(function() {
 ";
 
+$j = 1;
 foreach( $instances as $key => $value )
 {
 	if( is_array($value) )
@@ -83,19 +84,22 @@ foreach( $instances as $key => $value )
 		foreach( $value as $i )
 		{	
 			$content .= "
-			getinstances('{$i['app']}-{$i['branch']}-{$i['id']}');
-			setInterval(function(){ getinstances('{$i['app']}-{$i['branch']}-{$i['id']}'); }, 60000);
+				setTimeout(function() { getinstances('{$i['app']}-{$i['branch']}-{$i['id']}'); }, 2000);
 			";
+			$j++;
 		}
 	}
 }
 
 $content .= "
-			function getinstances(instance)
-			{
-				$('#' + instance).load('/status/ajax_instance?key=' + instance);
-			}		
-		});
+				function getinstances(instance)
+				{
+					$('#' + instance).load('/status/ajax_instance?key=' + instance, function()
+					{
+						setTimeout(function() { getinstances(instance); }, 20000);
+					});
+				}
+			});
 		</script>
 ";
 

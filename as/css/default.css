@@ -620,6 +620,18 @@ blockquote p {
 	display: none;
 }
 
+div.filluptimeout {
+	background-color: #3c4e5a;
+	height: 4px;
+	margin: 3px auto;
+	width: 400px;
+}
+
+div.filluptime {
+	background-color: #ffffff;
+	height: 100%;
+}
+
 #loading {
     display: none;
     width: 75px;

@@ -1,6 +1,11 @@
 [EN]
 
 [FR]
-menu_last = "Derniers articles"
-menu_press = "Presse"
-menu_archives = "Archives"
+menu_overview = "A propos"
+menu_contact = "Contact"
+menu_team = "Equipe"
+menu_partners = "Partenaires"
+menu_legal = "Conditions"
+menu_reference = "Références"
+menu_news = "Actualités"
+menu_communication = "Communication"

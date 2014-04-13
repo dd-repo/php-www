@@ -39,3 +39,8 @@ de connexion</a>."
 rebuild = "Sur notre plateforme, les <a href='/doc/apps'>applications</a> tournent dans des conteneurs appelés <i>dockers</i>. Nous maintenons régulièrement à jour les images préfabriquées de ces dockers avec
 les dernières version de Python, PHP, Ruby etc... Lorsqu'une image est mise à jour, les dockers de vos applications doivent être reconstruits afin de prendre en compte ces mises à jour."
 subdomain = "Les sous-domaines par défaut ne pointent vers aucun espace. Vous devez les lier à une <a href='/doc/apps'>application</a> afin qu'ils deviennent accessibles."
+boot = "Si les processus de votre application ne démarrent pas, il peut y avoir plusieurs raisons à cela. Vous pouvez vérifier les <a href='/panel'>logs</a> de votre application qui vous indiqueront de quelle type d'erreur
+il s'agit. Dans le cas où vous ne trouveriez pas la cause, n'hésitez pas à contacter notre <a href='https://support.anotherservice.com'>support technique</a> qui vous donnera plus de détails."
+groups = "Les <a href='/doc/users'>groupes d'utilisateurs</a> peuvent être utilisés pour gérer les droits d'accès aux <a href='/doc/repositories'>dépôts</a> et aux <a href='/doc/apps'>applications</a>. 
+Ainsi, vous pouvez créer un groupe de développeurs ou d'administrateur ayant accès à certaines applications en lecture ou en écriture."
+deploy = "Grâce à notre plateforme, vous pouvez déployer très facilement votre <a href='/doc/apps'>application</a> localement, pour cela suivre ce <a href='/doc/apps/deploy'>tutoriel</a>."

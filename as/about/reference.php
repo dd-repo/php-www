@@ -54,6 +54,21 @@ $content = "
 						<div class=\"inref\"><div><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/showcases/orlane.png\" alt=\"\" /></div></div>
 					</div>
 				</a>
+				<a href=\"https//www.bienprevoir.fr\">
+					<div class=\"reference white\" style=\"background-color: #fdfbfb;\">
+						<div class=\"inref\"><div><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/showcases/bienprevoir.png\" alt=\"\" /></div></div>
+					</div>
+				</a>
+				<a href=\"http://www.provence-luberon-news.com\">
+					<div class=\"reference white\" style=\"background-color: #ffffff; margin-right: 80px;\">
+						<div class=\"inref\"><div><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/showcases/pln.png\" alt=\"\" /></div></div>
+					</div>
+				</a>
+				<a href=\"http://www.antillesexception.com\">
+					<div class=\"reference white\" style=\"background-color: #ffffff; margin-right: 80px;\">
+						<div class=\"inref\"><div><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/showcases/antilles.png\" alt=\"\" /></div></div>
+					</div>
+				</a>
 				<a href=\"http://www.phidias.fr\">
 					<div class=\"reference white\" style=\"background-color: #fdfbfb;\">
 						<div class=\"inref\"><div><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/showcases/phidias.png\" alt=\"\" /></div></div>

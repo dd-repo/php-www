@@ -55,7 +55,7 @@ console.log('Server running at http://0.0.0.0:8080/');</code>
 				<p>{$lang['create_text5']}</p>
 				<pre><code>git clone ssh://nodejs-xxxxxx@git.as/~utilisateur/nodejs-xxxxxxx.git
 cd nodejs-xxxxxxx.git
-git add *
+git add server.js
 git commit -a -m \"First commit\"
 git push origin master</code></pre>
 				<p>{$lang['create_text6']}</p>

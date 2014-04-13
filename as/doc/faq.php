@@ -55,14 +55,20 @@ $content = "
 										<th>{$lang['user']}</th>
 									</tr>
 									<tr>	
+										<td>Git</td>
+										<td>ssh://anotherservice.com</td>
+										<td>22</td>
+										<td><i>{$lang['name']}</i></td>
+									</tr>
+									<tr>	
 										<td>FTP</td>
-										<td>ftp.olympe.in</td>
+										<td>ftp.anotherservice.com</td>
 										<td>21</td>
 										<td><i>{$lang['name']}</i></td>
 									</tr>
 									<tr>	
 										<td>SFTP</td>
-										<td>ftp.olympe.in</td>
+										<td>ftp.anotherservice.com</td>
 										<td>22</td>
 										<td><i>{$lang['name']}</i></td>
 									</tr>
@@ -81,23 +87,23 @@ $content = "
 									</tr>
 									<tr>
 										<td>{$lang['ns1']}</td>
-										<td>ns1.olympe.in</td>
-										<td>178.32.167.243</td>
+										<td>ns1.anotherservice.com</td>
+										<td>178.32.167.250</td>
 									</tr>
 									<tr>
 										<td>{$lang['ns2']}</td>
-										<td>ns2.olympe.in</td>
-										<td>178.32.65.67</td>
+										<td>ns2.anotherservice.com</td>
+										<td>178.32.65.70</td>
 									</tr>
 								</table>
 							</div>
 							<div id=\"answer-3\" class=\"answer\">
 								<div style=\"position: absolute; right: 0; top: 0;\"><a href=\"#\" onclick=\"showQuestions(3); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a></div>
-								<p>{$lang['dir']}</p>
+								<p>{$lang['envi']}</p>
 							</div>
 							<div id=\"answer-4\" class=\"answer\">
 								<div style=\"position: absolute; right: 0; top: 0;\"><a href=\"#\" onclick=\"showQuestions(4); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a></div>
-								<p>{$lang['phperrors']}</p>
+								<p>{$lang['errors']}</p>
 							</div>
 							<div id=\"answer-5\" class=\"answer\">
 								<div style=\"position: absolute; right: 0; top: 0;\"><a href=\"#\" onclick=\"showQuestions(5); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a></div>
@@ -105,41 +111,23 @@ $content = "
 							</div>
 							<div id=\"answer-6\" class=\"answer\">
 								<div style=\"position: absolute; right: 0; top: 0;\"><a href=\"#\" onclick=\"showQuestions(6); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a></div>
-								<p>{$lang['admindb']}</p>
-								<br />
-								<table>
-									<tr>
-										<th>{$lang['service']}</th>
-										<th>{$lang['desc']}</th>
-										<th>{$lang['address']}</th>
-									</tr>
-									<tr>
-										<td>PHPMyAdmin</td>
-										<td>{$lang['mysql']}</td>
-										<td><a href=\"https://pma.olympe.in\">https://pma.olympe.in</a></td>
-									</tr>
-									<tr>
-										<td>PHPPgAdmin</td>
-										<td>{$lang['pgsql']}</td>
-										<td><a href=\"https://pma.olympe.in\">https://ppa.olympe.in</a></td>
-									</tr>
-								</table>
+								<p>{$lang['rebuild']}</p>
 							</div>
 							<div id=\"answer-7\" class=\"answer\">
 								<div style=\"position: absolute; right: 0; top: 0;\"><a href=\"#\" onclick=\"showQuestions(7); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a></div>
-								<p>{$lang['statswhere']}</p>
+								<p>{$lang['subdomain']}</p>
 							</div>
 							<div id=\"answer-8\" class=\"answer\">
 								<div style=\"position: absolute; right: 0; top: 0;\"><a href=\"#\" onclick=\"showQuestions(8); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a></div>
-								<p>{$lang['capture']}</p>
+								<p>{$lang['boot']}</p>
 							</div>
 							<div id=\"answer-9\" class=\"answer\">
 								<div style=\"position: absolute; right: 0; top: 0;\"><a href=\"#\" onclick=\"showQuestions(9); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a></div>
-								<p>{$lang['finance']}</p>
+								<p>{$lang['groups']}</p>
 							</div>
 							<div id=\"answer-10\" class=\"answer\">
 								<div style=\"position: absolute; right: 0; top: 0;\"><a href=\"#\" onclick=\"showQuestions(10); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a></div>
-								<p>{$lang['opensource']}</p>
+								<p>{$lang['deploy']}</p>
 							</div>
 						</div>
 					</div>
