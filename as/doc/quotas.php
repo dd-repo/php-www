@@ -26,33 +26,9 @@ $content = "
 				<h3>{$lang['intro']}</h3>
 				<p>{$lang['intro_text']}</p>
 				<br />
-				<h3>{$lang['default']}</h3>
-				<table>
-					<tr>
-						<th>{$lang['name']}</th>
-						<th>{$lang['max']}</th>
-					</tr>
-					<tr>
-						<td>{$lang['sites']}</td>
-						<td>1</td>					
-					</tr>
-					<tr>
-						<td>{$lang['databases']}</td>
-						<td>3</td>
-					</tr>
-					<tr>
-						<td>{$lang['disk']}</td>
-						<td>500 {$lang['mb']}</td>
-					</tr>	
-					<tr>
-						<td>{$lang['sent']}</td>
-						<td>100</td>
-					</tr>
-				</table>
-				<br /><br />
 				<h3>{$lang['overview']}</h3>
 				<p>{$lang['overview_text']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/26.png\" alt=\"26\" />
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/69.png\" alt=\"69\" />
 			</div>
 			<div class=\"clear\"></div><br /><br />
 		</div>

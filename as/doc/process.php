@@ -25,21 +25,12 @@ $content = "
 			<div class=\"right big\">
 				<h3>{$lang['intro']}</h3>
 				<p>{$lang['intro_text']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/52.png\" alt=\"52\" />
 				<br />
 				<h3>{$lang['infos']}</h3>
-				<p>{$lang['infos_text']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/53.png\" alt=\"53\" />
-				<br />
-				<h3>{$lang['create']}</h3>
-				<p>{$lang['create_text']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/56.png\" alt=\"56\" />
-				<br />
-				<h3>{$lang['push']}</h3>
-				<p>{$lang['push_text']}</p>
-				<pre><code>git branch production
-git checkout production
-git push origin production</code></pre>
+				<p>{$lang['infos_text2']}</p>
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/54.png\" alt=\"54\" />
+				<p>{$lang['infos_text3']}</p>
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/55.png\" alt=\"55\" />
 			</div>
 			<div class=\"clear\"></div><br /><br />
 		</div>

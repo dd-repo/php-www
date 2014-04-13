@@ -138,8 +138,8 @@ $content = "
 						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-mongodb.png\" style=\"width: 40px;\" alt=\"MongoDB\"></td>
 						<td>MongoDB</td>
 						<td>{$lang['key']}</td>
-						<td>{$lang['soon']}</td>
-						<td>{$lang['soon']}</td>
+						<td>2.4.9</td>
+						<td><a href=\"http://www.mongodb.org\">http://www.mongodb.org</a></td>
 					</tr>	
 					<tr>
 						<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-redis.png\" style=\"width: 40px;\" alt=\"Redis\"></td>

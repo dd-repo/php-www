@@ -4,8 +4,9 @@
 [FR]
 title = "Quotas et limitations"
 intro = "Introduction"
-intro_text = "Sur Olympe, nous n'avons pas pour rôle de brider les ressources dont vous pouvez avoir besoin pour construire votre site Internet, la politique de quota est donc mise en place uniquement pour prévenir les abus. En cas
-de <a href='/panel/messages'>demande justifiée</a>, notre équipe augmentera les limites de votre espace (espace disque, bases de données, domaines...)"
+intro_text = "Sur Another Service, nous n'avons pas pour habitude de brider les ressources dont vous pouvez avoir besoin pour faire tourner votre application. Evidemment, vous êtes limité par l'offre
+que vous avez choisie en terme de ressources allouées aux processus de vos applications. Pour autant, même si votre application vient à dépasser cette limite nous nous contentons de vous avertir
+et de trouver avec vous une solution durable plutôt que de bloquer la progression de la mémoire. Même chose concernant l'espace disque et les autres types de quota."
 
 default = "Quotas par défaut"
 name = "Nom du quota"
