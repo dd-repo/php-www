@@ -26,19 +26,19 @@ $content = "
 				<h3>{$lang['intro']}</h3>
 				<p>{$lang['intro_text']}</p>
 				<br />
-				<h3>{$lang['backup_site']}</h3>
-				<p>{$lang['backup_site_text']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/28.png\" alt=\"28\" />
-				<p>{$lang['backup_site_text2']}</p>
+				<h3>{$lang['backup_app']}</h3>
+				<p>{$lang['backup_app_text']}</p>
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/66.png\" alt=\"66\" />
+				<p>{$lang['backup_app_text2']}</p>
 				<br />
-				<h3>{$lang['backup_database']}</h3>
-				<p>{$lang['backup_database_text']}</p>			
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/29.png\" alt=\"29\" />
-				<p>{$lang['backup_database_text2']}</p>
+				<h3>{$lang['backup_service']}</h3>
+				<p>{$lang['backup_service_text']}</p>			
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/67.png\" alt=\"67\" />
+				<p>{$lang['backup_service_text2']}</p>
 				<br />
 				<h3>{$lang['backups']}</h3>
 				<p>{$lang['backups_text']}</p>	
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/30.png\" alt=\"30\" />
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/68.png\" alt=\"68\" />
 			</div>
 			<div class=\"clear\"></div><br /><br />
 		</div>

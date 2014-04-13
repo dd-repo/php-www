@@ -28,9 +28,13 @@ $content = "
 				<br />
 				<h3>{$lang['stats']}</h3>
 				<p>{$lang['stats_text']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/11.png\" alt=\"11\" />
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/62.png\" alt=\"62\" />
 				<p>{$lang['stats_text2']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/12.png\" alt=\"12\" />
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/63.png\" alt=\"63\" />
+				<br />
+				<h3>{$lang['awstats']}</h3>
+				<p>{$lang['awstats_text']}</p>
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/64.png\" alt=\"64\" />	
 			</div>
 			<div class=\"clear\"></div><br /><br />
 		</div>

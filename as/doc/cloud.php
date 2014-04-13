@@ -28,12 +28,12 @@ $content = "
 				<br />
 				<h3>{$lang['cloud']}</h3>
 				<p>{$lang['cloud_text']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/13.png\" alt=\"13\" />
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/61.png\" alt=\"61\" />
 				<p>{$lang['cloud_text2']}</p>
 				<br />
 				<h3>{$lang['client']}</h3>
 				<p>{$lang['client_text']}</p>
-				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/22.png\" alt=\"22\" />
+				<img class=\"doc\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/doc/65.png\" alt=\"65\" />
 			</div>
 			<div class=\"clear\"></div><br /><br />
 		</div>

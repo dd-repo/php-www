@@ -4,10 +4,14 @@
 [FR]
 title = "Application cloud"
 intro = "Introduction"
-intro_text = "Le <a href='https://cloud.olympe.in'>cloud Olympe</a> (encore en version bêta), est une application fournie avec votre espace d'hébergement comprenant de multiples fonctionnalités de stockage et d'organisation."
+intro_text = "Le <a href='https://cloud.anotherservice.com'>cloud Another Service</a> est une suite d'applications fournie avec votre espace d'hébergement comprenant de multiples fonctionnalités de stockage et d'organisation."
 cloud = "Stockage et applications OwnCloud"
-cloud_text = "Olympe propulse la version 7 d'OwnCloud, une suite complète comprenant : la synchronisation de fichiers (similaire à Dropbox, avec un client installé sur l'ordinateur ou le téléphone), les calendriers partagés,
+cloud_text = "Another Service propulse la version 7 d'OwnCloud, une suite complète comprenant : la synchronisation de fichiers (similaire à Dropbox, avec un client installé sur l'ordinateur ou le téléphone), les calendriers partagés,
 les carnets d'adresse etc..."
-cloud_text2 = "Pour accéder à <a href='https://cloud.olympe.in'>OwnCloud</a>, vous devez vous connecter avec vos identifiants Olympe."
+cloud_text2 = "Les accès à <a href='https://cloud.anotherservice.com'>OwnCloud</a> sont ouverts pour :
+<ol>
+	<li>Votre compte Another Service. Utilisateur <i>votre_compte@anotherservice.com</i> et votre mot de passe.</li>
+	<li>Les utilisateurs de vos domaines. Utilisateur <i>utilisateur@votre_domaine.com</i> et le mot de passe de l'utilisateur.</li>
+</ol>"
 client = "Installation du client"
 client_text = "Afin de synchroniser automatiquement les fichiers de vos pérophériques avec notre plateforme, vous devez <a href='http://owncloud.org/sync-clients'>télécharger</a> le client OwnCloud."
