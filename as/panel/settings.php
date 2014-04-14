@@ -45,6 +45,13 @@ $content = "
 							<input type=\"text\" name=\"email\" value=\"{$userinfo['email']}\" style=\"width: 250px;\" />
 							<span class=\"help-block\">{$lang['mail_help']}</span>
 						</fieldset>
+						<fieldset>
+							<select name=\"report\" style=\"width: 270px;\">
+								<option ".($userinfo['report']=='1'?"selected":"")." value=\"1\">{$lang['reportactive']}</option>
+								<option ".($userinfo['report']!='1'?"selected":"")." value=\"0\">{$lang['reportinactive']}</option>
+							</select>
+							<span class=\"help-block\">{$lang['report_help']}</span>
+						</fieldset>			
 					</div>
 					<div style=\"float: right;\">
 						<fieldset>

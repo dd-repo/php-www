@@ -20,7 +20,9 @@ if( isset($_POST['language']) && strlen($_POST['language']) > 0 )
 	$params['language'] = $_POST['language'];
 if( isset($_POST['pass']) && strlen($_POST['pass']) > 0 )
 	$params['pass'] = $_POST['pass'];
-
+if( isset($_POST['report']) && strlen($_POST['report']) > 0 )
+	$params['report'] = $_POST['report'];
+	
 try
 {
 	api::send('self/user/update', $params);

@@ -121,7 +121,7 @@ $content = "
 			<div class=\"clear\"></div><br />
 		</div>
 		<div class=\"container\">
-			<div style=\"float: left; width: 800px;\">
+			<div style=\"float: left; width: 600px;\">
 ";
 
 foreach( $app['branches'] as $key => $value )
@@ -130,7 +130,7 @@ foreach( $app['branches'] as $key => $value )
 $content .= "
 					<a href=\"#\" class=\"branch\" onclick=\"$('#newbranch').dialog('open'); return false;\">+</a>
 			</div>
-			<div style=\"float: right; width: 300px;\">			
+			<div style=\"float: right; width: 500px;\">			
 			";
 			
 if( $_SESSION['DATA'][$app['id']]['branch'] != 'master' )
@@ -141,8 +141,11 @@ if( $_SESSION['DATA'][$app['id']]['branch'] != 'master' )
 				</a>
 	";
 }
-$content .= "		
-				<a class=\"button classic\" href=\"#\" onclick=\"$('#backup').dialog('open'); return false;\" style=\"width: 100px; height: 22px; float: right;\">
+$content .= "
+				<a class=\"button classic\" href=\"#\" onclick=\"$('#monitoring').dialog('open'); return false;\" style=\"width: 100px; height: 22px; float: right; margin-left: 20px;\">
+					<span style=\"display: block; padding-top: 3px;\">{$lang['monitoring']}</span>
+				</a>
+				<a class=\"button classic\" href=\"#\" onclick=\"$('#backup').dialog('open'); return false;\" style=\"width: 100px; height: 22px; float: right; \">
 					<span style=\"display: block; padding-top: 3px;\">{$lang['backupbranch']}</span>
 				</a>
 			</div>
@@ -413,6 +416,34 @@ $content .= "
 			</form>
 		</div>
 	</div>
+	<div id=\"monitoring\" class=\"floatingdialog\">
+		<br />
+		<h3 class=\"center\">{$lang['monitoring_title']}</h3>
+		<p style=\"text-align: center;\">{$lang['monitoring_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/apps/monitoring_action\" method=\"post\" class=\"center\">
+				<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
+				<input type=\"hidden\" name=\"branch\" value=\"{$_SESSION['DATA'][$app['id']]['branch']}\" />
+				<fieldset>
+					<select style=\"width: 420px;\" name=\"monitor\" style=\"text-align: center;\">
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['monitor']!=1?"selected":"")." value=\"0\" style=\"text-align: center;\">{$lang['monitorinactive']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['monitor']==1?"selected":"")." value=\"1\" style=\"text-align: center;\">{$lang['monitoractive']}</option>
+					</select>
+					<span class=\"help-block\">{$lang['monitor_help']}</span>
+				</fieldset>					
+				<fieldset>
+					<select style=\"width: 420px;\" name=\"alert\" style=\"text-align: center;\">
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['alert']!=1?"selected":"")." value=\"0\" style=\"text-align: center;\">{$lang['alertinactive']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['alert']==1?"selected":"")." value=\"1\" style=\"text-align: center;\">{$lang['alertactive']}</option>
+					</select>
+					<span class=\"help-block\">{$lang['alert_help']}</span>
+				</fieldset>
+				<fieldset>	
+					<input autofocus type=\"submit\" value=\"{$lang['update']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
 	<div id=\"push\" class=\"floatingdialog\">
 		<br />
 		<h3 class=\"center\" style=\"padding-top: 5px;\">{$lang['push_title']}</h3>
@@ -588,6 +619,7 @@ $content .= "
 		newFlexibleDialog('newservice', 550);
 		newFlexibleDialog('deleteservice', 550);
 		newFlexibleDialog('backup', 550);
+		newFlexibleDialog('monitoring', 550);
 		newDialog('sequence', 300, 320);
 		
 		function initSequence(id, message)
