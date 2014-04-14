@@ -453,7 +453,49 @@ $content .= "
 		<h3 class=\"center\" style=\"padding-top: 5px;\">{$lang['push_title']}</h3>
 		<p style=\"text-align: center;\">{$lang['push_text']}</p>
 		<br />
-		<h2 class=\"dark\" style=\"text-align: center;\">{$lang['access']}</h2>
+		<div style=\"float: left; width: 300px; padding-top: 5px;\">
+			<h2 class=\"dark\">{$lang['keys']}</h2>
+		</div>
+		<div style=\"float: right; width: 200px;\">
+			<a class=\"button classic\" href=\"#\" onclick=\"$('#new-key').dialog('open');\" style=\"width: 22px; height: 22px; float: right;\">
+				<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
+			</a>
+		</div>
+		<div class=\"clear\"></div>
+		<br />
+		<table>
+			<tr>
+				<th>{$lang['key']}</th>
+				<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
+			</tr>
+	";
+	
+	if( !is_array($app['keys']) && $app['keys'] )
+		$app['keys'] = array($app['keys']);
+	
+	if( $app['keys'] )
+	{
+		$i = 0;
+		foreach( $app['keys'] as $k )
+		{
+			$k = trim(str_replace("'", "\\'", $k));
+			
+			$content .= "
+			<tr>
+				<td style=\"white-space: nowrap; overflow: hidden; text-overflow: ellipsis; \">".substr($k, 0, 60)."...</td>
+				<td style=\"width: 70px; text-align: center;\">
+					<a href=\"#\"onclick=\"$('#keyvalue').html('{$k}'); $('#key').dialog('open');\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/preview.png\" alt=\"\" /></a>
+					<a href=\"/panel/apps/del_key_action?key={$i}&id={$app['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+				</td>
+			</tr>";
+			$i++;
+		}
+	}
+	
+	$content .= "		
+		</table>
+		<br /><br />
+		<h2 class=\"dark\">{$lang['access']}</h2>
 		<table>
 			<tr>
 				<th>{$lang['type']}</th>
@@ -480,8 +522,8 @@ $content .= "
 				<td>21</td>
 			</tr>
 		</table>
-		<br />
-		<h2 class=\"dark\" style=\"text-align: center;\">{$lang['paths']}</h2>
+		<br /><br />
+		<h2 class=\"dark\">{$lang['paths']}</h2>
 		<table>
 			<tr>
 				<th>{$lang['type']}</th>
@@ -595,6 +637,27 @@ $content .= "
 			</form>
 		</div>
 	</div>
+	<div id=\"new-key\" style=\"display: none;\" class=\"floatingdialog\">
+		<br />
+		<h3 class=\"center\">{$lang['new_key']}</h3>
+		<p style=\"text-align: center;\">{$lang['new_key_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/apps/add_key_action\" method=\"post\" class=\"center\">
+				<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
+				<fieldset>
+					<textarea class=\"auto\" style=\"width: 300px;\" rows=\"10\" name=\"key\" onfocus=\"this.value = this.value=='{$lang['key']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['key']}' : this.value; this.value=='{$lang['key']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\">{$lang['key']}</textarea>
+					<span class=\"help-block\">{$lang['key_help']}</span>
+				</fieldset>
+				<fieldset autofocus>	
+					<input type=\"submit\" value=\"{$lang['create']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<div id=\"key\" style=\"display: none;\" class=\"floatingdialog\">
+		<br />
+		<p id=\"keyvalue\"></p>
+	</div>
 	<div id=\"sequence\" class=\"floatingdialog\"></div>
 	<div id=\"recipe\" style=\"display: none;\"></div>
 	<script>
@@ -624,6 +687,8 @@ $content .= "
 		newFlexibleDialog('deleteservice', 550);
 		newFlexibleDialog('backup', 550);
 		newFlexibleDialog('monitoring', 550);
+		newFlexibleDialog('new-key', 550);
+		newFlexibleDialog('key', 550);
 		newDialog('sequence', 300, 320);
 		
 		function initSequence(id, message)
@@ -822,6 +887,12 @@ $content .= "
 
 		$(function()
 		{
+			";
+			
+if( isset($_GET['key']) )
+	$content .= "$('#push').dialog('open');";
+	
+$content .= "
 			var dataSourceDay = [";
 
 foreach( $data_day as $key => $value )
