@@ -119,7 +119,7 @@ $content = "
 						<input type=\"hidden\" name=\"return\" value=\"https://www.anotherservice.com/panel/plans/landing\" />
 						<input type=\"hidden\" name=\"cancel_return\" value=\"https://www.anotherservice.com/panel/plans/landing\" />
 						<input type=\"hidden\" name=\"notify_url\" value=\"https://www.anotherservice.com/ipn_paypal\" />
-						<input type=\"hidden\" name=\"custom\" value=\"{$userinfo['mail']} {$userinfo['name']} ".security::encode($_GET['plan'])."\" />
+						<input type=\"hidden\" name=\"custom\" value=\"{$userinfo['email']} {$userinfo['name']} ".security::encode($_GET['plan'])."\" />
 						<img alt=\"\" border=\"0\" src=\"https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif\" width=\"1\" height=\"1\" />
 					</form>
 					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/paypal.png\" style=\"width: 150px;\" alt=\"\" />
