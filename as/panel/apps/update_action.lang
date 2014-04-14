@@ -2,3 +2,4 @@
 
 [FR]
 success = "Votre application a bien été mise à jour."
+error_file = "Vous n'avez uploadé qu'un seul des deux fichiers, le certificat n'a pas été mis à jour, merci d'envoyer les deux fichiers du certificat en une seule fois."

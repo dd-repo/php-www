@@ -351,7 +351,7 @@ $content .= "
 		<h3 class=\"center\">{$lang['settings_title']}</h3>
 		<p style=\"text-align: center;\">{$lang['settings_text']}</p>
 		<div class=\"form-small\">		
-			<form action=\"/panel/apps/update_action\" method=\"post\" class=\"center\">
+			<form action=\"/panel/apps/update_action\" method=\"post\" class=\"center\" enctype=\"multipart/form-data\">
 				<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
 				<fieldset>
 					<input style=\"width: 400px;\" type=\"text\" name=\"tag\" value=\"{$app['tag']}\" />
@@ -367,6 +367,24 @@ $content .= "
 				<fieldset>
 					<input disabled style=\"width: 400px;\" type=\"text\" name=\"tag\" value=\"".($app['binary']?"{$lang['command']} {$app['binary']}":str_replace('{BRANCH}', security::encode($_SESSION['DATA'][$app['id']]['branch']), $lang['binary_' . $language]))."\" />
 					<span class=\"help-block\">{$lang['binary_help']}</span>
+				</fieldset>
+				<fieldset>
+					<input disabled style=\"width: 400px;\" type=\"text\" name=\"certificate\" value=\"".($app['certificate']?"{$app['certificate']}-crt+ca.pem":"{$lang['nocertficiate']}")."\" />
+					<span class=\"help-block\">{$lang['certificate_help']}</span>
+				</fieldset>
+				<fieldset>
+					<div style=\"margin: 0 auto; width: 400px;\">
+						<div style=\"float: left; width: 200px;\">
+							<input type=\"button\" value=\"{$lang['upload1']}\" style=\"width: 150px;\" onclick=\"$('#certificate1').trigger('click'); return false;\" />
+							<input id=\"certificate1\" type=\"file\" name=\"certificate1\" style=\"display: none;\"/>
+							<span class=\"help-block\">{$lang['certificate1_help']}</span>
+						</div>
+						<div style=\"float: right; width: 200px;\">
+							<input type=\"button\" value=\"{$lang['upload2']}\" style=\"width: 150px;\" onclick=\"$('#certificate2').trigger('click'); return false;\" />
+							<input id=\"certificate2\" type=\"file\" name=\"certificate2\" style=\"display: none;\"/>
+							<span class=\"help-block\">{$lang['certificate2_help']}</span>
+						</div>
+					</div>
 				</fieldset>
 				<fieldset>	
 					<input autofocus type=\"submit\" value=\"{$lang['update']}\" />
