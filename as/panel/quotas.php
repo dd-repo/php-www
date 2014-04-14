@@ -64,7 +64,7 @@ $content = "
 					<h1 class=\"dark\">{$lang['title']}</h1>
 				</div>
 				<div class=\"right\">
-					<a class=\"button classic\" href=\"/panel/plans\" style=\"width: 200px; height: 22px; float: right;\">
+					<a class=\"button classic\" href=\"/panel/raise\" style=\"width: 200px; height: 22px; float: right;\">
 						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
 						<span style=\"display: block; padding-top: 3px;\">{$lang['more']}</span>
 					</a>		
