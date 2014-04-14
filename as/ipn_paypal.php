@@ -130,7 +130,7 @@ else
 				if( $success === true )
 				{
 					if( $diskplan === true )
-						$params = array('plan' => $custom[2], 'plan_type' => 'disk');
+						$params = array('plan' => $custom[2], 'plan_type' => 'disk', 'user'=>$custom[1]);
 					else
 						$params = array('plan' => $custom[2], 'user'=>$custom[1]);
 					api::send('user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
