@@ -6,7 +6,10 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$params = array('app'=>$_POST['id'], 'branch'=>$_POST['branch'], 'alert'=>$_POST['alert'], 'monitor'=>$_POST['monitor']);
+if( strlen($_POST['regex']) < 1 )
+	$_POST['regex'] = 0;
+
+$params = array('app'=>$_POST['id'], 'branch'=>$_POST['branch'], 'alert'=>$_POST['alert'], 'regex'=>$_POST['regex'], 'monitor'=>$_POST['monitor']);
 
 api::send('self/app/update', $params);
 

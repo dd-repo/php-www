@@ -438,6 +438,10 @@ $content .= "
 					</select>
 					<span class=\"help-block\">{$lang['alert_help']}</span>
 				</fieldset>
+				<fieldset>
+					<input style=\"width: 400px;\" type=\"text\" name=\"regex\" value=\"{$app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['regex']}\" />
+					<span class=\"help-block\">{$lang['regex_help']}</span>
+				</fieldset>	
 				<fieldset>	
 					<input autofocus type=\"submit\" value=\"{$lang['update']}\" />
 				</fieldset>
