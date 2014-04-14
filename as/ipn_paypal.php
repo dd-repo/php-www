@@ -92,34 +92,91 @@ else
 						$services = 128;
 						$disk = 50000;
 						$success = true;
-					break;	
+					break;
 					case '6':
 						$ram = 65536;
 						$services = 256;
 						$disk = 50000;
-						$success = true;
 					break;
+					case '8':
+						$disk = 10000;
+						$success = true;
+						$diskplan = true;
+					break;
+					case '9':
+						$disk = 50000;
+						$success = true;	
+						$diskplan = true;
+					break;
+					case '10':
+						$disk = 100000;
+						$success = true;
+						$diskplan = true;
+					break;
+					case '11':
+						$disk = 500000;
+						$success = true;	
+						$diskplan = true;
+					break;
+					case '12':
+						$disk = 1000000;
+						$success = true;
+						$diskplan = true;
+					break;	
 					default:
 						$success = false;
 				}
 
 				if( $success === true )
 				{
-					$params = array('plan' => $custom[2], 'user'=>$custom[1]);
+					if( $diskplan === true )
+						$params = array('plan' => $custom[2], 'plan_type' => 'disk');
+					else
+						$params = array('plan' => $custom[2], 'user'=>$custom[1]);
 					api::send('user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-					$params = array('user' => $custom[1], 'quota' => 'MEMORY', 'max' => $ram);
-					api::send('quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-					$params = array('user' => $custom[1], 'quota' => 'SERVICES', 'max' => $services);
-					api::send('quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 					
-					if( $dquota['max'] <= $disk )
+					if( $diskplan !== true )
 					{
-						$params = array('user' => $custom[1], 'quota' => 'DISK', 'max' => $disk);
+						$params = array('user' => $custom[1], 'quota' => 'MEMORY', 'max' => $ram);
+						api::send('quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+						$params = array('user' => $custom[1], 'quota' => 'SERVICES', 'max' => $services);
+						api::send('quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+					}
+					
+					$quotas = api::send('quota/list', array('user' => $custom[1]), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+					foreach( $quotas as $q )
+					{
+						if( $q['name'] == 'DISK' )
+							$dquota = $q;
+					}
+
+					if( $diskplan === true )
+					{
+						$params = array('user' =>  $custom[1], 'quota' => 'DISK', 'max' => $disk);
 						api::send('/quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 					}
-									
+					else
+					{
+						if( $dquota['max'] <= $disk )
+						{
+							$params = array('user' =>  $custom[1], 'quota' => 'DISK', 'max' => $disk);
+							api::send('/quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+						}	
+					}
+					
+					$quotas = api::send('quota/list', array('user' => $custom[1]), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+					foreach( $quotas as $q )
+					{
+						if( $q['name'] == 'DISK' )
+							$dquota = $q;
+						if( $q['name'] == 'MEMORY' )
+							$mquota = $q;
+						if( $q['name'] == 'SERVICES' )
+							$squota = $q;
+					}
+					
 					// SEND MAIL
-					$mail = str_replace(array('{OFFER}', '{SERVICES}', '{NAME}'), array($ram, $services, $custom[1]), $lang['mail']);
+					$mail = str_replace(array('{RAM}', '{SERVICES}', '{DISK}', '{NAME}'), array($mquota['max'], $squota['max'], $dquota['max'], $custom[1]), $lang['mail']);
 					$result = mail($custom[0], $lang['subject'], str_replace(array('{TITLE}', '{CONTENT}'), array($lang['subject'], $mail), $GLOBALS['CONFIG']['MAIL_TEMPLATE']), "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\nFrom: Another Service <no-reply@anotherservice.com>\r\nBcc: contact@anotherservice.com\r\n");
 					mail('contact@anotherservice.com', '[Billing] New payment succeded', $message);
 				}
