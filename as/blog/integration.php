@@ -12,7 +12,7 @@ if( !defined('PROPER_START') )
 $content = "
 			<div class=\"head-light\">
 				<div class=\"container\" style=\"text-align: center;\">
-					<h1 class=\"dark\" style=\"text-align: center;\">Heureuse année 2014 !</h1>
+					<h1 class=\"dark\" style=\"text-align: center;\">Partenariat avec les Flash de la Courneuve</h1>
 					<br />
 					<div style=\"width: 305px; margin: 0 auto;\">
 						<span style=\"color: #797979; font-size: 14px; display: block; float: left; padding-top: 7px;\">25 décembre 2013 par</span>
@@ -25,71 +25,71 @@ $content = "
 			<div class=\"content\" style=\"width: 850px;\">
 <!-- DESCRIPTION -->
 				<p style='color: #8e8e8e; text-align: justify;'>
-					L'ensemble de l'équipe Another Service vous souhaite une heureuse année 2014 ! A cette occasion, nous avons mis à jour notre site Internet et notre panel afin de mieux répondre aux demandes 
-					formulées par nos clients, notamment sur la gestion des applications et des environnements de développement.
+					Another Service vient de concrétiser son premier partenariat dans le domaine sportif et devient sponsor de l'équipe de football américain des <a href='http://www.flashfootball.org'>Flash de la Courneuve</a>. Après
+					des discussions avec notre partenaire <a href='http://www.interxion.fr'>Interxion</a>, nous avons mis en place un programme permettant d'accompagner le club sur ses besoins croissants
+					en terme de technologies et de réseau.
 				</p>
 				<br />
-				<img class='blogimage' src='/as/images/news/1/panel.png' />
-				<span class='legend'>Le nouveau panel Another Service</span>
+				<img class='blogimage' src='/as/images/news/2/flash.png' />
+				<span class='legend'>Affiche du premier match des Flash de la saison 2014</span>
 				<br />
 				<p style='color: #8e8e8e; text-align: justify;'>
-					Sur le plan de l'infrastructure et des fonctionnalités, nous avons également fait de nombreuses évolutions. La migration de <a href='http://www.cloudfoundry.org'>CloudFoundry</a> vers 
-					<a href='http://www.docker.io'>Docker.io</a> s'est déroulée sans problème et de nombreux nouveaux services seront disponibles dans les prochaines semaines.
+					Engagé sur le terrain de l'insertion et de la jeunesse en Seine-Saint-Denis, le club historique vient de fêter ses trente ans et désire développer son positionnement numérique notamment grâce à 
+					la retransmission de ses matches en direct.
 				</p>
 <!-- END DESCRIPTION -->
 				<br /><br />
 <!-- ARTICLE -->
-				<h2 class='dark'>Applications et branches</h2>
+				<h2 class='dark'>Notre démarche</h2>
 				<p style='text-align: justify;'>
-					Dorénavant, chaque application possède des branches (développement, production, recette...)  et chaque branche a ses propres processus isolés. Vous pouvez visualiser en temps réel l'état des processus ainsi
-					que leur consommation de CPU ou de mémoire. De même, vous pouvez entièrement gérer les conteneurs (lancement, arrêt, redémarrage, reconstruction...) de votre application, en fonction de la branche
-					sur laquelle vous vous trouvez.
+					Another Service soutient déjà l'association <a href='https://www.olympe.in'>Olympe</a> ainsi que de nombreuses initiatives à but non lucratif. Nous avons à coeur de partager nos connaissances et notre savoir, de mettre à disposition
+					nos compétences au profit de projets nécessitant un savoir-faire approfondi dans les domaines des technologies de l'information. L'approche des Flash de la Courneuve est à la fois orientée vers une action locale
+					en faveur de l'insertion ainsi qu'axée autour de l'insertion des jeunes par le sport, c'est avant tout cet esprit que nous soutenons en mettant à disposition nos ressources et notre infrastructure.
 				</p>
 				<br />
-				<img class='blogimage' src='/as/images/news/1/instances.png' />
-				<span class='legend'>Contrôle des instances d'une branche</span>
+				<img class='blogimage' src='/as/images/news/2/30.png' />
+				<span class='legend'>Les 30 ans du Flash</span>
 				<br />
+				<h2 class='dark'>Implantation dans le nouveau datacenter</h2>
 				<p style='text-align: justify;'>
-					Pour chaque branche, vous pouvez ajuster le nombre d'instances et la mémoire qui leur est allouée. Ainsi, en cas de forte charge, vous avez la possibilité d'augmenter temporairement les limites 
-					de votre application pour assurer la fluidité de votre site.
+					Nous apportons notre savoir-faire à la fois pour les besoins quotidiens du club mais également pour la mise en oeuvre de leurs nouveaux moyens de retransmission vidéo. Another Service s'implante donc dans 
+					le nouveau datacentre Interxion de La Courneuve (Paris 7) afin de couvrir les besoins des Flash. Nous avons terminé l'installation d'une nouvelle baie, d'une connexion multi-homée 100Mbs ainsi 
+					que d'une liaison dédiée fibre noire vers Paris 2. 
 				</p>
 				<br />
-				<img class='blogimage' style='width: 380px;' src='/as/images/news/1/adjust.png' />
-				<span class='legend'>Ajustement des ressources d'une branche</span>
-				<br />
-				<h2 class='dark'>Migration vers Docker.io</h2>
-				<p style='text-align: justify;'>
-					Après une année passée sur CloudFoundry, nous avons décidé de migrer vers une solution plus flexible qui nous permet de créer des conteneurs préfabriqués pour les langages, les frameworks et les applications
-					elles-mêmes. Les dockers sont en réalité des conteneurs LXC, dont l'image est éphémère. Les templates peuvent être mis à jour comme des dépôts Git (possibilité de rollback sur des versions antérieures, 
-					commit des différences uniquement...).
-				</p>
-				<br />
-				<img class='blogimage' style='width: 682px;' src='/as/images/news/1/docker.png' />
-				<span class='legend'>Docker.io : <a href='http://www.docker.io'>http://www.docker.io</a></span>
+				<img class='blogimage' src='/as/images/news/2/paris7.png' />
+				<span class='legend'>Hall du datacenter Interxion Paris 7</span>
 				<br />
 				<p style='text-align: justify;'>
-					Nous reviendrons sur cette migration ainsi que sur les scripts que nous avons développés pour gérer les dockers dans une série d'articles sur ce blog. 
+					Ce nouveau positionnement nous permet également d'améliorer la résilience de notre réseau parisien et est l'occasion pour nous d'investir dans de nouveaux équipements de routage et de sécurité.
 				</p>
 				<br />
-				<h2 class='dark'>Développement de notre réseau</h2>
+				<h2 class='dark'>Déploiement des antennes</h2>
 				<p style='text-align: justify;'>
-					Another Service est membre du RIPE depuis trois ans, nous avons récemment accéléré les procédures afin de renforcer notre indépendance vis-à-vis de nos fournisseurs actuels. Des sous-réseaux IPv4 et IPv6 
-					nous ont été alloué, ainsi que le numéro d'AS 62260. Nous avons commencé à installer du matériel réseau supplémentaire dans les datacenters au sein desquels nous possédons des espaces.
+					Lors de nos premières interventions, nous avons évalué la faisabilité de plusieurs scenarii concernant la liaison entre le stade Géo André de la Courneuve et le centre de données situé à quelques centaines de mètres.
+					Les travaux pour tirer une fibre ont été écarté et une solution d'antenne longue portée a été retenue. Nous avons donc procéder au déploiement d'antennes 10Gbs ayant une portée de plusieurs kilomètres en faisceau 
+					direct.
 				</p>
 				<br />
-				<img class='blogimage' style='width: 301px;' src='/as/images/news/1/server.png' />
-				<span class='legend'>Quelques serveurs à Interxion Paris 2</span>
-				<br />
-				<h2 class='dark'>Les perspectives</h2>
-				<p style='text-align: justify;'>
-					Nous allons progressivement activer tous les <a href='/doc/languages'>langages</a> et tous les services <a href='/doc/services'>services</a> prévus. Nous améliorerons également les outils de suivis et de 
-					statistiques (temps de réponse des applications, disponibilité...). Les investissements sur l'infrastructure seront poursuivis, afin de continuer à accroître la qualité de notre service et de garantir
-					des disponibilités et des performances toujours meilleures.
-				</p>
+				<img class='blogimage' style='width: 301px;' src='/as/images/news/2/antenne.png' />
+				<span class='legend'>L'antenne du côté du stade</span>
 				<br />
 				<p style='text-align: justify;'>
-					Merci et bonne année 2014 !
+					Une fois la liaison en place et les équipements déployés, les caméras du stade ont été reliées au réseau global de notre infrastructure afin d'assurer la retransmission du flux vidéo.
 				</p>
+				<br />
+				<h2 class='dark'>Premier match diffusé</h2>
+				<p style='text-align: justify;'>
+					Le championnat de football américain élite, malgré la faible médiatisation de ce sport, est tout de même suivi par de nombreux aficionados. La diffusion du premier match a eu lieu le 15 mars dernier, 
+					plus de 15 000 personnes ont pu regarder les Flash donner une <a href='http://www.footballamericain.com/fffa/2014-j3-la-courneuve-flash-vs-pessac-kangourous/30-ans-cela-se-fete.html'>leçon aux Kangs de Nice</a> (36-0).
+				</p>
+				<br />
+				<img class='blogimage' src='/as/images/news/2/match.png' />
+				<span class='legend'>Photo du match du 15 mars</span>
+				<br />
+				<p style='text-align: justify;'>
+					Nous souhaitons beaucoup de réussite à cette équipe et envisageons d'autres collaborations par la suite car les besoins ne cessent d'évoluer.
+				</p>				
 <!-- FIN ARTICLE -->
 				<br />
 			</div>

@@ -50,7 +50,6 @@ foreach( $news as $n )
 				</div>
 				<br />
 				<div class=\"separator\"></div>
-				<br />
 	";
 }
 

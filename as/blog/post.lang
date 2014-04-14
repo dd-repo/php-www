@@ -24,3 +24,5 @@ author_3 = "Simon Uyttendaele"
 comments = "Commentaires"
 react = "Réagir à cet article"
 back = "Retour"
+
+as = "Another Service - "
