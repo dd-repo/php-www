@@ -105,7 +105,8 @@ else
 }
 	
 $content .= "
-
+				<div class=\"clear\"></div>
+				<br /><br />
 				</div>
 			</div>
 			<div id=\"new\" style=\"display: none;\" class=\"floatingdialog\">
