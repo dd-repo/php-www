@@ -143,7 +143,7 @@ else
 						api::send('quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 					}
 					
-					$quotas = api::send('quota/list', array('user' => $custom[1]), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+					$quotas = api::send('quota/user/list', array('user' => $custom[1]), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 					foreach( $quotas as $q )
 					{
 						if( $q['name'] == 'DISK' )
@@ -164,7 +164,7 @@ else
 						}	
 					}
 					
-					$quotas = api::send('quota/list', array('user' => $custom[1]), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+					$quotas = api::send('quota/user/list', array('user' => $custom[1]), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 					foreach( $quotas as $q )
 					{
 						if( $q['name'] == 'DISK' )
