@@ -7,7 +7,13 @@ if( !defined('PROPER_START') )
 }
 
 $users = api::send('user/list', array('limit' => 10, 'order'=>'user_date', 'order_type'=>'DESC'));
-$overquotas = api::send('quota/nearlimit', array('quota'=>'BYTES'));
+$overquotas = api::send('quota/nearlimit', array('quota'=>'DISK'));
+
+require_once 'as/status/vendor/autoload.php';
+
+$client = new Redmine\Client('https://projets.anotherservice.com', $GLOBALS['CONFIG']['REDMINE_TOKEN']);
+$issues = $client->api('issue')->all(array('project_id' => 'support', 'limit' => 5,  'sort' => 'updated_on:desc' ));
+$issues = $issues['issues'];
 
 $content = "
 	<div class=\"admin\">
@@ -42,8 +48,31 @@ $content = "
 				</form>
 			</div>
 			<div style=\"width: 700px; float: right;\">
-				<h3 class=\"colored\">{$lang['messages']}</h3>
-				
+				<h3 class=\"colored\">{$lang['support']}</h3>
+				<table>
+					<tr>
+						<th style=\"width: 40px; text-align: center;\">#</th>
+						<th style=\"width: 200px;\">{$lang['client']}</th>
+						<th>{$lang['subject']}</th>
+						<th style=\"width: 90px;\">{$lang['date']}</th>						
+					</tr>
+";
+
+foreach( $issues as $i )
+{
+	$content .= "
+					<tr>
+						<td style=\"text-align: center;\"><a href=\"https://support.anotherservice.com/issues/{$i['id']}\"><img style=\"width: 25px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" /></a></td>
+						<td>{$i['project']['name']}</td>
+						<td>{$i['subject']}</td>
+						<td>".date('Y-m-d', strtotime($i['updated_on']))."</td>
+					</tr>
+	";
+}
+
+$content .= "
+				</table>
+				<br />
 			</div>
 			<div class=\"clear\"></div>
 			<br />

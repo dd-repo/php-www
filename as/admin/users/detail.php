@@ -30,7 +30,7 @@ $content = "
 			<div class=\"clear\"></div><br />
 			<div class=\"container\">
 				<div style=\"width: 700px; float: left;\">
-					<h2 class=\"dark\" id=\"sites\">{$lang['sites']}</h2>
+					<h2 class=\"dark\" id=\"sites\">{$lang['apps']}</h2>
 					<table>
 						<tr>
 							<th style=\"width: 60px; text-align: center;\">{$lang['id']}</th>
@@ -49,10 +49,10 @@ if( security::hasGrant('APP_SELECT') )
 		$content .= "
 						<tr>
 							<td style=\"width: 60px; text-align: center;\">{$a['id']}</td>
-							<td><a href=\"http://{$s['hostname']}\">{$s['hostname']}</a></td>
+							<td>{$a['name']}</td>
 							<td>{$a['size']} {$lang['mb']}</td>
 							<td style=\"width: 50px; text-align: center;\">
-								<a href=\"/admin/sites/del_action?user={$_GET['id']}&site={$a['id']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+								<a href=\"/admin/apps/del_action?user={$_GET['id']}&app={$a['id']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
 							</td>
 						</tr>";
 	}
@@ -78,11 +78,29 @@ if( security::hasGrant('DOMAIN_SELECT') )
 	
 	foreach( $domains as $d )
 	{		
+		$arecord = "";
+		if( is_array($d['aRecord']) )
+		{
+			$i = 1;
+			$max = count($d['aRecord']);
+			foreach( $d['aRecord'] as $a )
+			{
+				if( $i == $max )
+					$arecord .= "{$a}";
+				else
+					$arecord .= "{$a}, ";
+					
+				$i++;
+			}
+		}
+		else
+			$arecord = $d['aRecord'];
+			
 		$content .= "
 						<tr>
 							<td style=\"width: 60px; text-align: center;\">{$d['id']}</td>
 							<td>{$d['hostname']}</td>
-							<td>{$d['aRecord']}</td>
+							<td>{$arecord}</td>
 							<td>".($d['destination']?"{$d['destination']}":"{$d['homeDirectory']}")."</td>
 							<td style=\"width: 50px; text-align: center;\">
 								<a href=\"/admin/domains/del_action?user={$_GET['id']}&domain={$d['hostname']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
@@ -397,9 +415,9 @@ foreach( $apps as $a )
 {
 	$content .= "
 				<tr>
-					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/site.png\" /></td>
-					<td>{$a['hostname']}</td>
-					<td>{$lang['site']}</td>
+					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/app.png\" /></td>
+					<td>{$a['name']}</td>
+					<td>{$lang['app']}</td>
 					<td>{$a['homeDirectory']}</td>
 					<td><span style=\"font-weight: bold;\">{$a['size']} {$lang['mb']}</span></td>
 				</tr>
@@ -410,10 +428,10 @@ foreach( $services as $s )
 {
 	$content .= "
 				<tr>
-					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/database.png\" /></td>
+					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" /></td>
 					<td>{$s['name']}</td>
 					<td>{$lang['service2']} {$s['type']}</td>
-					<td>/databases/{$s['name']}</td>
+					<td>/services/{$s['name']}</td>
 					<td><span style=\"font-weight: bold;\">{$s['size']} {$lang['mb']}</span></td>
 				</tr>
 	";
@@ -447,9 +465,9 @@ $content .= "
 				<script type=\"text/javascript\">
 					/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 					var disqus_developer = 0; // developer mode
-					var disqus_shortname = 'olympeadmin'; // required: replace example with your forum shortname
+					var disqus_shortname = 'anotherserviceadmin'; // required: replace example with your forum shortname
 					var disqus_identifier = 'User - {$user['name']}';
-					var disqus_url = 'https://www.olympe.in/admin/users/detail?id={$user['id']}';
+					var disqus_url = 'https://www.anotherservice.com/admin/users/detail?id={$user['id']}';
 					/* * * DON'T EDIT BELOW THIS LINE * * */
 					(function() {
 						var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

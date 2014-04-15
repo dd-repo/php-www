@@ -6,6 +6,7 @@ if( isset($GLOBALS['lang']) && is_object($GLOBALS['lang']) )
 // initialize the menu
 $menu = array(
 	array('text'=>"menu_home", 'icon'=>"iDownload", 'link'=>"/admin"),
+	array('text'=>"menu_users", 'icon'=>"iDownload", 'link'=>"/admin/users"),
 	array('text'=>"menu_domains", 'icon'=>"iDownload", 'link'=>"/admin/domains"),
 	array('text'=>"menu_groups", 'icon'=>"iUsers", 'link'=>"/admin/groups"),
 	array('text'=>"menu_grants", 'icon'=>"iKey", 'link'=>"/admin/grants"),

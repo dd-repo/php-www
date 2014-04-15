@@ -504,43 +504,29 @@ $content .= "
 				<th>{$lang['port']}</th>
 			</tr>
 			<tr>
-				<td><span class=\"large\">GIT</span></td>
+				<td><span class=\"large\">Git</span></td>
 				<td>ssh://git.as/~".security::get('USER')."/{$app['name']}.git</td>
 				<td>{$app['name']}</td>
 				<td>22</td>
 			</tr>
 			<tr>
-				<td><span class=\"large\">SFTP</span></td>
-				<td>sftp://ftp.anotherservice.com</td>
+				<td><span class=\"large\">SFTP / FTP</span></td>
+				<td>(s)ftp://ftp.anotherservice.com</td>
 				<td>{$app['name']}</td>
-				<td>22</td>
-			</tr>				
+				<td>22 / 21</td>
+			</tr>	
 			<tr>
-				<td><span class=\"large\">FTP</span></td>
-				<td>ftp://ftp.anotherservice.com</td>
-				<td>{$app['name']}</td>
-				<td>21</td>
-			</tr>
-		</table>
-		<br /><br />
-		<h2 class=\"dark\">{$lang['paths']}</h2>
-		<table>
-			<tr>
-				<th>{$lang['type']}</th>
-				<th>{$lang['folder']}</th>
-			</tr>
-			<tr>
-				<td>{$lang['dir']}</td>
-				<td>{$app['homeDirectory']}</td>
+				<td><span class=\"large\">{$lang['dir']}</span></td>
+				<td colspan=\"3\">{$app['homeDirectory']}</td>
 			</tr>			
 			<tr>
-				<td>{$lang['currentdir']}</td>
-				<td>{$app['homeDirectory']}/{$_SESSION['DATA'][$app['id']]['branch']}</td>
+				<td><span class=\"large\">{$lang['currentdir']}</span></td>
+				<td colspan=\"3\">{$app['homeDirectory']}/{$_SESSION['DATA'][$app['id']]['branch']}</td>
 			</tr>
 			<tr>
-				<td>{$lang['git']}</td>
-				<td>".str_replace("Apps/{$app['name']}", "", $app['homeDirectory'])."var/git/{$app['name']}</td>
-			</tr>
+				<td><span class=\"large\">{$lang['git']}</span></td>
+				<td colspan=\"3\">".str_replace("Apps/{$app['name']}", "", $app['homeDirectory'])."var/git/{$app['name']}</td>
+			</tr>			
 		</table>
 		<br />
 	</div>

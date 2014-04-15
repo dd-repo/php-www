@@ -117,7 +117,7 @@ deleteservice_text = "Êtes-vous sûr de vouloir supprimer ce service ?"
 dir = "Application"
 git = "Dépôt Git"
 currentdir = "Environnement courant"
-access = "Accès distants"
+access = "Accès distants et chemins absolus"
 paths = "Chemins absolus"
 folder = "Dossier cible"
 

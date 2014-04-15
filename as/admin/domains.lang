@@ -1,0 +1,10 @@
+[EN]
+
+[FR]
+title = "Noms de domaine"
+domain = "Nom de domaine"
+arecord = "Enregistrement DNS"
+actions = "Actions"
+delete = "Supprimer ce domaine"
+delete_text = "Êtes-vous sûr de vouloir supprimer ce nom de domaine ?<br />Attention : toutes les applications liées à ce domaine seront supprimées !"
+delete_now = "Supprimer"
