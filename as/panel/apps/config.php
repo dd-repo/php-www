@@ -16,6 +16,23 @@ if( count($app['permissions']) > 0 )
 	foreach( $app['permissions'] as $p )
 		$permissions[$p['permission_object']] = $p['permission_right'];
 }
+
+if( is_array($app['email']) )
+{
+	$i = 1;
+	$count = count($app['email']);
+	foreach( $app['email'] as $e )
+	{
+			$email .= $e;
+			if( $i != $count )
+				$email .= ',';
+			
+		$i++;
+	}
+}
+else
+	$email = $app['email'];
+	
 $content .= "
 	<div class=\"panel\">
 		<div class=\"top\">
@@ -39,7 +56,7 @@ $content .= "
 						<span class=\"help-block\">{$lang['help_desc']}</span>
 					</fieldset>
 					<fieldset>
-						<input type=\"text\" name=\"email\" value=\"{$app['email']}\" style=\"width: 400px;\" />
+						<input type=\"text\" name=\"email\" value=\"{$email}\" style=\"width: 400px;\" />
 						<span class=\"help-block\">{$lang['help_mail']}</span>
 					</fieldset>
 					<fieldset>	

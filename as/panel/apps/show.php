@@ -9,8 +9,6 @@ if( !defined('PROPER_START') )
 $app = api::send('self/app/list', array('id'=>$_GET['id']));
 $app = $app[0];
 
-$backups = array();
-
 if( !$_GET['branch'] && !$_SESSION['DATA'][$app['id']]['branch'] )
 	$_SESSION['DATA'][$app['id']]['branch'] = 'master';
 else if( $_GET['branch'] )
@@ -611,14 +609,21 @@ $content .= "
 	</div>
 	<div id=\"backup\" class=\"floatingdialog\">
 		<br />
-		<h3 class=\"center\">{$lang['backup']}</h3>
+		<h3 class=\"center\">{$lang['backup_title']}</h3>
 		<p style=\"text-align: center;\">{$lang['backup_text']}</p>
 		<div class=\"form-small\">		
-			<form action=\"/panel/backups/add_action\" method=\"get\" class=\"center\">
+			<form action=\"/panel/apps/backup_action\" method=\"post\" class=\"center\">
+				<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
 				<input type=\"hidden\" name=\"branch\" value=\"{$_SESSION['DATA'][$app['id']]['branch']}\" />
-				<input type=\"hidden\" name=\"app\" value=\"{$app['id']}\" />
-				<fieldset autofocus>	
-					<input type=\"submit\" value=\"{$lang['backup_now']}\" />
+				<fieldset>
+					<select style=\"width: 420px;\" name=\"backup\" style=\"text-align: center;\">
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['backup']!==0?"selected":"")." value=\"1\" style=\"text-align: center;\">{$lang['backupactive']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['backup']===0?"selected":"")." value=\"0\" style=\"text-align: center;\">{$lang['backupinactive']}</option>
+					</select>
+					<span class=\"help-block\">{$lang['backup_help']}</span>
+				</fieldset>	
+				<fieldset>	
+					<input autofocus type=\"submit\" value=\"{$lang['update']}\" />
 				</fieldset>
 			</form>
 		</div>

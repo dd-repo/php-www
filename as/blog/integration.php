@@ -12,7 +12,7 @@ if( !defined('PROPER_START') )
 $content = "
 			<div class=\"head-light\">
 				<div class=\"container\" style=\"text-align: center;\">
-					<h1 class=\"dark\" style=\"text-align: center;\">Partenariat avec les Flash de la Courneuve</h1>
+					<h1 class=\"dark\" style=\"text-align: center;\">Salt et Gearman pour opérer un cloud privé</h1>
 					<br />
 					<div style=\"width: 305px; margin: 0 auto;\">
 						<span style=\"color: #797979; font-size: 14px; display: block; float: left; padding-top: 7px;\">25 décembre 2013 par</span>
@@ -25,27 +25,32 @@ $content = "
 			<div class=\"content\" style=\"width: 850px;\">
 <!-- DESCRIPTION -->
 				<p style='color: #8e8e8e; text-align: justify;'>
-					Another Service vient de concrétiser son premier partenariat dans le domaine sportif et devient sponsor de l'équipe de football américain des <a href='http://www.flashfootball.org'>Flash de la Courneuve</a>. Après
-					des discussions avec notre partenaire <a href='http://www.interxion.fr'>Interxion</a>, nous avons mis en place un programme permettant d'accompagner le club sur ses besoins croissants
-					en terme de technologies et de réseau.
+					Lors des dernières évolutions de notre infrastructure, nous nous sommes notamment penchés sur les besoins croissants de notre <a href='https://api.anotherservice.com'>API</a> en matière d'interaction avec notre infrastructure,
+					notamment pour le lancement des commandes, la supervision des processus et l'ensemble des tâches de maintenance et de vérification de la plateforme (quotas, mises à jour, reconstruction des dockers...).
 				</p>
 				<br />
 				<img class='blogimage' src='/as/images/news/2/flash.png' />
 				<span class='legend'>Affiche du premier match des Flash de la saison 2014</span>
 				<br />
 				<p style='color: #8e8e8e; text-align: justify;'>
-					Engagé sur le terrain de l'insertion et de la jeunesse en Seine-Saint-Denis, le club historique vient de fêter ses trente ans et désire développer son positionnement numérique notamment grâce à 
-					la retransmission de ses matches en direct.
+					Nous avons d'abord cherché des solutions proposant des API REST ou, à minima, une ligne de commande assez robuste et avons finalement opté pour une solution alternative, permettant une interactivité et une fiabilité 
+					intéressante pour la gestion d'un cloud privé à grande échelle, avec Salt et Gearman. <a href='http://www.saltstack.com'>Salt</a> est un gestionnaire de configuration unifiée permettant de créer des gabarits de 
+					configuration et d'actions afin de faciliter les déploiements de masse, tandis que Gearman est un middleware permettant de gérer des listes de tâches synchrones ou asynchrones pouvant être réalisées par plusieurs workers en parallèle.
 				</p>
 <!-- END DESCRIPTION -->
 				<br /><br />
 <!-- ARTICLE -->
-				<h2 class='dark'>Notre démarche</h2>
-				<p style='text-align: justify;'>
-					Another Service soutient déjà l'association <a href='https://www.olympe.in'>Olympe</a> ainsi que de nombreuses initiatives à but non lucratif. Nous avons à coeur de partager nos connaissances et notre savoir, de mettre à disposition
-					nos compétences au profit de projets nécessitant un savoir-faire approfondi dans les domaines des technologies de l'information. L'approche des Flash de la Courneuve est à la fois orientée vers une action locale
-					en faveur de l'insertion ainsi qu'axée autour de l'insertion des jeunes par le sport, c'est avant tout cet esprit que nous soutenons en mettant à disposition nos ressources et notre infrastructure.
-				</p>
+				<h2 class='dark'>Implémentation</h2>
+				<p style='text-align: justify;'>					
+					L'implémentation de base est assez simple, prenons un exemple sur la distribution Ubuntu :
+					<pre>
+					<code>sudo apt-get update
+sudo apt-get -f install python-software-properties gearman-job-server
+sudo add-apt-repository ppa:saltstack/salt
+sudo apt-get -f install salt-master salt-minion
+</code>
+					</pre>
+									</p>
 				<br />
 				<img class='blogimage' src='/as/images/news/2/30.png' />
 				<span class='legend'>Les 30 ans du Flash</span>
