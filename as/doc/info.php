@@ -78,8 +78,8 @@ $content = "
 						</tr>
 						<tr>
 							<td>{$lang['pgsql']}</td>
-							<td>psql.anotherservice.com</td>
-							<td>5432</td>
+							<td>pgsql.anotherservice.com</td>
+							<td>5433</td>
 						</tr>
 						<tr>
 							<td>{$lang['mongo']}</td>
@@ -129,19 +129,39 @@ $content = "
 						<tr>
 							<th>{$lang['service']}</th>
 							<th>{$lang['address']}</th>
-						</tr>					
+						</tr>		
 						<tr>
 							<td>{$lang['smtp']}</td>
 							<td>mail.anotherservice.com</td>
-							<td>465</td>
+							<td>25</td>
+						</tr>						
+						<tr>
+							<td>{$lang['smtptls']}</td>
+							<td>mail.anotherservice.com</td>
+							<td>587</td>
 						</tr>
 						<tr>
 							<td>{$lang['pop']}</td>
 							<td>mail.anotherservice.com</td>
-							<td>995</td>
+							<td>110</td>
 						</tr>
 						<tr>
 							<td>{$lang['imap']}</td>
+							<td>mail.anotherservice.com</td>
+							<td>143</td>
+						</tr>
+						<tr>
+							<td>{$lang['smtps']}</td>
+							<td>mail.anotherservice.com</td>
+							<td>465</td>
+						</tr>
+						<tr>
+							<td>{$lang['pops']}</td>
+							<td>mail.anotherservice.com</td>
+							<td>995</td>
+						</tr>
+						<tr>
+							<td>{$lang['imaps']}</td>
 							<td>mail.anotherservice.com</td>
 							<td>993</td>
 						</tr>
