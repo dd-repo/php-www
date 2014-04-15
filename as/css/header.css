@@ -48,7 +48,7 @@ div.header div.content div.menu ul  li a {
 	display: block;
 	color: #b2c0cA;
 	margin: 0px 4px 0 4px;
-	padding: 10px 11px 10px 11px;
+	padding: 10px 9px 10px 9px;
 }
 
 div.header div.content div.menu ul  li a:hover {
@@ -63,7 +63,7 @@ div.header div.content div.menu ul  li a.active {
 div.header div.content div.menu ul  li.nlogin a {
 	height: 10px;
 	margin: 0 0 0 20px;
-	padding: 10px 12px 12px 12px;
+	padding: 10px 9px 12px 9px;
 	font-size: 14px;
 	color: #ffffff;
 	-webkit-border-radius: 4px;
@@ -82,8 +82,8 @@ div.header div.content div.menu ul  li.npanel a {
 	background-position: 0% 50%;
 	background-repeat: no-repeat;
 	background-size: 1px 100%;
-	padding-left: 35px;
-	margin-left: 20px;
+	padding-left: 25px;
+	margin-left: 15px;
 }
 
 
@@ -106,7 +106,7 @@ div.header div.content div.menu ul  li.nlogout a:hover {
 div.header div.content div.menu ul  li.nsignup a {
 	height: 10px;
 	margin: 0 0 0 20px;
-	padding: 10px 12px 12px 12px;
+	padding: 10px 9px 12px 9px;
 	font-size: 14px;
 	color: #ffffff;
 	-webkit-border-radius: 4px;

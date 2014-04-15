@@ -1,0 +1,22 @@
+[EN]
+
+
+[FR]
+title = "Application Ruby Sinatra"
+intro = "Introduction"
+intro_text = "Les applications Ruby Sinatra sont déployées sur notre plateforme dans un environnement <i>Ruby 1.9.3</i> avec <i>Sinatra 1.4.5</i>."
+create = "Créer l'application"
+create_text = "Sélectionner framework <i>Ruby Sinatra</i> dans la liste des options disponibles :"
+create_text1 = "Dans la ligne de commande, mettez simplement la commande que vous voulez executer à la racine de votre application pour la lancer, dans notre cas, nous utilisons la commande éxécutant le fichier <i>server.rb</i> :"
+create_text2 = "Par défaut, un environnement 'master' est créé, vous pourrez par la suite ajouter d'autres <a href='/doc/env'>environnements et branches</a>. Attention <span style='font-weight:bold;'>il est normal
+que le processus Ruby Sinatra ne démarrre pas de lui-même</span> car aucune application n'est encore présente."
+create_text3 = "Vous êtes maintenant prêts à transférer les données de votre application, au choix vous pouvez utiliser le SFTP ou GIT pour mettre en ligne les fichiers. Nous voyons ici comment mettre à jour la branche
+master (plus d'informations sur les <a href='/doc/info'>accès</a>)."
+sftp = "Accès SFTP "
+git = "Accès GIT :"
+create_text4 = "Attention, votre application Ruby Sinatra <span style='font-weight:bold;'>doit écouter sur le port <i>8080</i></span>. Créons
+donc le fichier <i>server.rb</i> :"
+create_text5 = "Il faut ensuite transférer ensuite le fichier, exemple en Git :"
+create_text6 = "Après l'upload du fichier, il suffit de redémarrer le processus de l'application dans votre panel et d'attendre la construction et l'installation des gems (en fonction de l'application cela peut prendre quelques minutes) :"
+create_text7 = "Une fois le fichier en place dans le dossier master (via git push ou l'accès SFTP) et le processus redémarré, vous pouvez aller observer le résultat sur <i>http://rubysinatra-xxxxx.anotherservice.net</i>."
+back = "Retour"

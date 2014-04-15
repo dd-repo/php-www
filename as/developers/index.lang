@@ -1,0 +1,14 @@
+[EN]
+
+
+[FR]
+title = "Espace développeurs"
+api = "API de management"
+api_text = "Pour la gestion des applications sur Another Service, nous avons développé une <a href='/developers/api'>API REST</a> (réponses en JSON, XML ou HTML). Cette API permet de contrôler intégralement les
+comptes, gérer et créer des applications, des noms de domaine etc...<br /><br />Vous pouvez ainsi automatiser certaines tâches de créations ou d'informations et développer vos propres outils de gestion
+de charge ou de procédure de mise en production."
+
+sources = "Outils, panel et codes sources"
+sources_text = "Notre équipe partage ses expériences en matière d'infrastructure et de développement sur son <a href='/blog'>blog</a>. Nous tentons d'aborder les problématiques que nous rencontrons en tant qu'opérateur et hébergeur 
+haute disponibilité.<br /><br />Nous avons également publié les <a href='https://github.com/AnotherService'>outils</a> que nous avons créés (API, scripts...). Les <a href='https://github.com/AnotherService'>codes sources</a> 
+sont donc ouverts et accessibles, vous pouvez par ailleurs contribuer à leur amélioration."

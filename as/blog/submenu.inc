@@ -5,9 +5,12 @@ if( isset($GLOBALS['lang']) && is_object($GLOBALS['lang']) )
 
 // initialize the menu
 $menu = array(
-	array('text'=>"menu_last", 'default'=>true, 'link'=>"/blog"),
-	array('text'=>"menu_press", 'link'=>"/blog/press"),
-	array('text'=>"menu_archives", 'link'=>"/blog/archive")
+	array('text'=>"menu_news", 'link'=>"/blog"),
+	array('text'=>"menu_overview", 'default'=>true, 'link'=>"/about"),
+	array('text'=>"menu_reference", 'link'=>"/about/reference"),
+	array('text'=>"menu_contact", 'link'=>"/about/contact"),
+	array('text'=>"menu_communication", 'link'=>"/about/communication"),
+	array('text'=>"menu_team", 'link'=>"/about/team")
 );
 
 return $menu;

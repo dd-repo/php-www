@@ -1,0 +1,13 @@
+[EN]
+
+[FR]
+title = "Paramètres du groupe"
+change_pass = "Modifier le mot de passe"
+password = "Mot de passe"
+password2 = "Confirmation"
+update = "Mettre à jour"
+change_info = "Modifier les informations"
+firstname = "Prénom ou description"
+lastname = "Nom ou description secondaire"
+group = "Groupe"
+back = "Retour"

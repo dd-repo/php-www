@@ -6,6 +6,8 @@ if( !defined('PROPER_START') )
 	exit;
 }
 	
+$_SERVER['HTTP_REFERER'] = str_replace('&erecovery', '', $_SERVER['HTTP_REFERER']);
+
 if( isset($_POST['antispam']) && $_POST['antispam'] == $_SESSION['ANTISPAM'] )
 {
 	try
@@ -15,10 +17,9 @@ if( isset($_POST['antispam']) && $_POST['antispam'] == $_SESSION['ANTISPAM'] )
 	}
 	catch(Exception $e)
 	{
-		$template->redirect('/' . $GLOBALS['CONFIG']['LOGIN_PAGE'] . '?e');
 	}
 }
-else
-	$template->redirect('/' . $GLOBALS['CONFIG']['LOGIN_PAGE'] . '?e');
+
+$template->redirect($_SERVER['HTTP_REFERER'] . (strstr($_SERVER['HTTP_REFERER'], 'elogin')===false?"?elogin":""));
 
 ?>

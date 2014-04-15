@@ -1,0 +1,14 @@
+[EN]
+
+
+[FR]
+title = "Statistiques"
+intro = "Introduction"
+intro_text = "En plus de l'espace d'hébergement, Another Service fournit d'autres outils vous permettant de mieux gérer votre site Internet."
+stats = "Les statistiques Piwik"
+stats_text = "Les statistiques côté client sont basées sur <a href='http://www.piwik.com'>Piwik</a>, un équivalent Open Source de Google Analytics. A chaque fois que vous ajoutez un nom de domaine, une entrée dans Piwik est automatiquement ajoutée."
+stats_text2 = "Pour que les statistiques fonctionnent, vous devez vous rendre dans <a href='http://stats.anotherservice.com'>Piwik</a> et vous identifier avec votre nom d'utilisateur Another Service et le mot de passe de votre compte. 
+Vous devez sélectionner le site concerné, et cliquer sur \"Afficher le code\". Ce code de tracking est, comme celui de Google Analytics, à insérer sur votre site."
+awstats = "Les statistiques Awstats"
+awstats_text = "Les statistiques côté serveur sont basées sur <a href='http://awstats.sourceforge.net'>Awstats</a> un logiciel libre d'analyse de logs web. Ces statistiques sont générées automatiquement par nom de domaine
+par notre plateforme, pour y accéder, il suffit de vous rendre sur le sous-domaine <i>http://stats.votre_domaine.com</i>."

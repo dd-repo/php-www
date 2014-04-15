@@ -6,48 +6,81 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$news = api::send('busit/news/list', array(), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+$news = api::send('news/list', array('id'=>$_GET['id']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+$news = $news[0];
+
+$month = date('F', $news['date']);
+$month_translate = $lang[$month];
+	
+$lang['TITLE'] = $lang['as'] . $news['title'];
 
 $content = "
 			<div class=\"head-light\">
 				<div class=\"container\" style=\"text-align: center;\">
-					<h1 class=\"dark\" style=\"text-align: center;\">{$lang['title']}</h1>
+					<h1 class=\"dark\" style=\"text-align: center;\">{$news['title']}</h1>
 					<br />
-					<a class=\"button classic\" href=\"/news/rss\" style=\"width: 120px; height: 23px; padding: 8px 5px 3px 8px;  margin: 0; display: inline-block; font-size: 12px;\">
-						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/rss.png\" />
-						<span style=\"display: block; padding-top: 3px;\">{$lang['rss']}</span>
-					</a>
-					<a class=\"button classic\" href=\"http://twitter.com/Bus_IT\" style=\"width: 120px; height: 23px; padding: 8px 5px 3px 8px; margin: 0 0 0 10px; display: inline-block; font-size: 12px;\">
-						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/twitter.png\" />
-						<span style=\"display: block; padding-top: 3px;\">{$lang['follow']}</span>
-					</a>
+					<div style=\"width: 305px; margin: 0 auto;\">
+						<span style=\"color: #797979; font-size: 14px; display: block; float: left; padding-top: 7px;\">".str_replace($month, $month_translate, date($lang['DATEFORMAT'], $news['date']))." {$lang['by']}</span>
+						<img style=\"display: block; float: left; margin-left: 10px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/team/{$news['author']}.png\" class=\"author\" />
+						<a style=\"display: block; float: left; padding-top: 8px; margin-left: 10px;\" href=\"/about/team#".$lang['author_' . $news['author']]."\">".$lang['author_' . $news['author']]."</a>
+						<div class=\"clear\"></div>
+						<div style=\"margin: 0 auto; width: 260px; margin-top: 25px;\">
+							<div style=\"float: left; width: 80px;\">
+								<div class=\"fb-like\" data-href=\"https://www.anotherservice.com/blog/post?id={$news['id']}\" data-width=\"\" data-height=\"\" data-colorscheme=\"light\" data-layout=\"button_count\" data-action=\"like\" data-show-faces=\"true\" data-send=\"false\"></div>
+							</div>
+							<div style=\"float: left; width: 80px; margin-left: 10px;\">
+								<a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-via=\"anotherservice\">Tweet</a>
+							</div>
+							<div style=\"float: left; width: 80px; margin-left: 10px;\">
+								<div class=\"g-plusone\" data-size=\"medium\"></div>
+							</div>
+							<div class=\"clear\"></div>
+						</div>
+					</div>
 				</div>
 			</div>	
-			<div class=\"content\">
-";
-
-foreach( $news as $n )
-{
-	$content .= "
-				<div class=\"article\">
-					<a href=\"/blog/read?id=1\"><h1 class=\"dark\" style=\"text-align: center;\">{$n['news_title']}</h1></a>
-					<span class=\"date\">".date($lang['DATEFORMAT'], $n['news_date']).", {$lang['by']} <a href='/blog/author?id=1'>{$n['news_author']}</a></span>
-					<br /><br />
-					<img class=\"blogimage\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/news/{$n['news_id']}.png\"/>
-					<div style=\"text-align: left; width: 800px; margin: 0 auto; margin-top: 20px; font-size: 16px;\">
-						{$n['news_description']}
-						<p style=\"text-align: right;\"><a href=\"/blog/read?id=1\">{$lang['read']}</a></p>
-					</div>
-					<div class=\"clear\"></div>
+			<div class=\"content\" style=\"width: 850px;\">
+<!-- DESCRIPTION -->
+				{$news['description']}
+<!-- END DESCRIPTION -->
+				<br /><br />
+<!-- ARTICLE -->
+				{$news['content']}
+<!-- FIN ARTICLE -->
+				<br />
+				<div class=\"comments\">
+					<h1 class=\"dark thin\">{$lang['comments']}</h1>
+					<br />
+					<div id=\"disqus_thread\"></div>
+					<script type=\"text/javascript\">
+						/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+						var disqus_developer = 0; // developer mode
+						var disqus_shortname = 'anotherservice'; // required: replace example with your forum shortname
+						var disqus_identifier = 'Blog - {$news['id']}';
+						var disqus_url = 'https://www.anotherservice.com/blog/post?id={$news['id']}';
+						/* * * DON'T EDIT BELOW THIS LINE * * */
+						(function() {
+							var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+							dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+							(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+						})();
+					</script>
 				</div>
-	";
-}
-
-$content .= "
-				
-				<p style=\"text-align: center; margin-top: 40px;\">Newer posts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href=\"/blog/previous\">Older posts</a></p>
-				<p style=\"text-align: center;\">You can also browse the <a href=\"/blog/archive\">blog archive</a>.</p>
+				<br /><br />
+				<div class=\"clear\"></div>
+				<br />
 			</div>
+			<script type=\"text/javascript\">
+				window.___gcfg = {lang: 'fr'};
+		
+				(function() {
+					var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+					po.src = 'https://apis.google.com/js/plusone.js';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+				})();
+				
+				!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+			</script>
 ";
 
 /* ========================== OUTPUT PAGE ========================== */

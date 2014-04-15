@@ -10,8 +10,11 @@ $userinfo = api::send('self/user/list');
 $userinfo = $userinfo[0];
 
 if( $_FILES['avatar']['error'] == UPLOAD_ERR_OK )
-	move_uploaded_file($_FILES['avatar']['tmp_name'], 'on/images/users/'.$userinfo['id'].'.png'); 
-
+{
+	$resizer = new resizer($_FILES['avatar']['tmp_name'], 256, 256);
+	$resizer->save('as/images/users/', $userinfo['id'].'.png', resizer::PNG);
+}
+	
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else

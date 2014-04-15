@@ -16,14 +16,26 @@ if( isset($_POST['firstname']) && strlen($_POST['firstname']) > 0 )
 	$params['firstname'] = $_POST['firstname'];
 if( isset($_POST['lastname']) && strlen($_POST['lastname']) > 0 )
 	$params['lastname'] = $_POST['lastname'];
+if( isset($_POST['language']) && strlen($_POST['language']) > 0 )
+	$params['language'] = $_POST['language'];
 if( isset($_POST['pass']) && strlen($_POST['pass']) > 0 )
 	$params['pass'] = $_POST['pass'];
+if( isset($_POST['report']) && strlen($_POST['report']) > 0 )
+	$params['report'] = $_POST['report'];
 	
-api::send('self/user/update', $params);
+try
+{
+	api::send('self/user/update', $params);
+	$_SESSION['MESSAGE']['TYPE'] = 'success';
+	$_SESSION['MESSAGE']['TEXT']= $lang['success'];	
 
-$_SESSION['MESSAGE']['TYPE'] = 'success';
-$_SESSION['MESSAGE']['TEXT']= $lang['success'];	
-			
+}
+catch(Exception $e )
+{
+	$_SESSION['MESSAGE']['TYPE'] = 'error';
+	$_SESSION['MESSAGE']['TEXT']= $lang['error'];		
+}
+
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
 else

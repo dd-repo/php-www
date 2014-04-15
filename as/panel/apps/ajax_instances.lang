@@ -1,0 +1,20 @@
+[EN]
+
+[FR]
+running = "OK"
+stopped = "NOK"
+id = "ID"
+uptime = "Uptime"
+days = "j"
+hours = "h"
+minutes = "m"
+seconds = "s"
+user = "Utilisateur"
+port = "Port"
+path = "Chemin"
+host = "Hôte"
+type = "Type"
+memory = "Mémoire RAM"
+cpu = "CPU"
+status = "Statut"
+logs = "Logs"

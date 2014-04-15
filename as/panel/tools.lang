@@ -1,0 +1,19 @@
+[EN]
+
+[FR]
+title = "Outils supplémentaires"
+stats = "Statistiques Piwik"
+stats_text = "Le système de <a href='/doc/stats'>statistiques Another Service</a> est basé sur Piwik, un équivalent libre de Google Analytics. Vos domaines ont automatiquement été ajoutés lors de leur création cependant, 
+vous devez tout de même insérer le code fourni par Piwik sur vos pages."
+stats_text2 = "Vous pouvez vous connecter à l'interface Piwik avec les mêmes identifiants que le panel et ainsi découvrir toutes les fonctionnalités 
+offertes par notre outil de statistiques."
+cloud = "Application clouds"
+cloud_text = "Another Service propulse une plateforme de type <i>OwnCloud</i> avec de <a href='/doc/cloud'>nombreuses fonctionnalités</a> : stockage de fichiers, calendriers et contacts partagés, galeries photos, 
+lecteurs de musique..."
+cloud_text2 = "Ce service est à la fois accessible avec vos identifiants Another Service (nom d'utilisateur : <i>compte@anotherservice.com</i>) et avec l'ensemble des utilisateurs de vos domaines (nom d'utilisateur <i>compte@domaine.com</i>)."
+stats_awstats = "Statistiques Awstats"
+stats_awstats_text = "Avec moins de fonctionnalité que Piwik mais une analyse directe des logs d'accès de votre site, nous générons également automatiquement des statistiques Awstats pour chacun de vos domaines. 
+Ces statistiques comprennent de nombreuses informations concernant vos visiteurs et sont basées sur les informations internes au serveur."
+stats_awstats_text2 = "Pour accéder aux statistiques Awstats, il suffit de vous rendre sur le sous domaine <i>stats</i> de votre domaine. Exemple : <a href='#'>stats.votre-domaine.com</a>."
+piwik = "Accéder à Piwik"
+owncloud = "Accéder à Owncloud"

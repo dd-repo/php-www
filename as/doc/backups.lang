@@ -1,0 +1,16 @@
+[EN]
+
+
+[FR]
+title = "Sauvegardes"
+intro = "Introduction"
+intro_text = "Sur notre plateforme, un système de sauvegardes et d'archives est en place. Vous pouvez générer des sauvegardes manuellement depuis votre panel mais le système <span style='font-weight:bold;'>génère automatiquement une sauvegarde de votre
+application et des services associés</span> tous les jours (uniquement les environnements 'master' et 'production')."
+backup_app = "Sauvegarde de vos environnement"
+backup_app_text = "Pour créer une archive de votre environnement, vous devez vous trouver dans sa page de configuration :"
+backup_app_text2 = "Puis en cliquant sur <i>Sauvegarde</i>, vous pouvez créer une nouvelle archive et la télécharger ensuite."
+backup_service = "Sauvegarde d'un service"
+backup_service_text = "Pour créer une archive de votre service, vous devez aller dans sa page de configuration."
+backup_service_text2 = "Vous avez ensuite un bouton vous permettant de créer une archive."
+backups = "Télécharger les archives"
+backups_text = "Pour télécharger une archive, il suffit de sélectionner celle que vous désirez."

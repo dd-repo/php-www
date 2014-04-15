@@ -1,0 +1,23 @@
+[EN]
+
+
+[FR]
+title = "Dépôts de développement"
+intro = "Introduction"
+intro_text = "Sur Another Service, chaque application possède son propre dépôt Git et des branches correspondant aux environnements. Cependant, vous pouvez également créer des dépôts à part
+pour vos propres besoins, vous avez le choix entre les dépôts suivants."
+list = "Types de dépôt"
+name = "Nom"
+info = "Information"
+version = "Version"
+site = "Site"
+git = "Contrôle de version et branches"
+svn = "Contrôle de version"
+mercurial = "Contrôle de version"
+
+create = "Créer un dépôt"
+create_text = "Pour créer un dépôt, il faut vous rendre dans la <a href='/panel/repositories'>rubrique appropriée</a> de votre panel :"
+create_text1 = "Choisissez ensuite le type de dépôt que vous désirez créer :"
+create_text2 = "Puis de remplir le formulaire :"
+create_text3 = "Une fois le dépôt créé, vous pouvez ensuite gérer l'ensemble des paramètres. Vous avez notamment la possibilité d'ajuster finalement les droits de chaque application/utilisateur/groupe sur ce dépôt (lecture ou lecture/écriture)."
+back = "Retour"

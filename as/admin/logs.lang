@@ -1,0 +1,15 @@
+[EN]
+
+[FR]
+title = "Logs de la plateforme"
+search = "Rechercher"
+delete = "Supprimer"
+delete_text = "Vous ne poouvez pas supprimer des logs."
+
+user = "Utilisateur"
+method = "Méthode"
+params = "Paramètres"
+date = "Date"
+ip = "Adresse IP"
+actions = "Actions"
+dateformat = "d/m/Y H:i:s"

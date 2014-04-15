@@ -8,20 +8,26 @@ if( !defined('PROPER_START') )
 
 $userinfo = api::send('self/user/list');
 $userinfo = $userinfo[0];
-		
+
+$month = date('F', $userinfo['date']);
+$month_translate = $lang[$month];
+	
 $content = "
 	<div class=\"panel\">
 		<div class=\"top\">
-			<div class=\"left\" style=\"width: 650px;\">
+			<div class=\"left\" style=\"width: 500px;\">
 				<h1 class=\"dark\" style=\"padding-top: 7px;\">{$lang['settings']}</h1>
-				<blockquote style=\"width: 100%;\"><p>{$lang['registered']} <span style=\"font-weight: bold;\">".date($lang['dateformat'], $userinfo['date'])."</span>.</p></blockquote>
+				<blockquote style=\"width: 100%;\"><p>{$lang['registered']} <span style=\"font-weight: bold;\">".str_replace($month, $month_translate, date($lang['DATEFORMAT'], $userinfo['date']))."</span>.</p></blockquote>
 			</div>
-			<div class=\"right\" style=\"width: 400px; float: right; text-align: right;\">
-				<a class=\"action pass big\" href=\"#\" onclick=\"$('#new').dialog('open'); return false;\">
+			<div class=\"right\" style=\"width: 550px; float: right; text-align: right;\">
+				<a class=\"action pass big\" href=\"#\" onclick=\"$('#changepass').dialog('open'); return false;\">
 					{$lang['pass']}
 				</a>
-				<a class=\"action apps big\" href=\"#\">
+				<a class=\"action apps big\" href=\"/panel/settings/tokens\">
 					{$lang['apps']}
+				</a>
+				<a class=\"action delete big\" href=\"#\" onclick=\"$('#delete').dialog('open'); return false;\">
+					{$lang['delete']}
 				</a>					
 			</div>
 			<div class=\"clear\"></div>
@@ -39,6 +45,13 @@ $content = "
 							<input type=\"text\" name=\"email\" value=\"{$userinfo['email']}\" style=\"width: 250px;\" />
 							<span class=\"help-block\">{$lang['mail_help']}</span>
 						</fieldset>
+						<fieldset>
+							<select name=\"report\" style=\"width: 270px;\">
+								<option ".($userinfo['report']=='1'?"selected":"")." value=\"1\">{$lang['reportactive']}</option>
+								<option ".($userinfo['report']!='1'?"selected":"")." value=\"0\">{$lang['reportinactive']}</option>
+							</select>
+							<span class=\"help-block\">{$lang['report_help']}</span>
+						</fieldset>			
 					</div>
 					<div style=\"float: right;\">
 						<fieldset>
@@ -53,32 +66,74 @@ $content = "
 							</select>
 							<span class=\"help-block\">{$lang['lang_help']}</span>
 						</fieldset>							
+						<fieldset>
+							<input type=\"submit\" value=\"{$lang['update']}\" />
+						</fieldset>		
 					</div>
-					<div class=\"clear\"></div>
-					<fieldset>
-						<input type=\"submit\" value=\"{$lang['update']}\" />
-					</fieldset>		
 				</form>
+				<div class=\"clear\"></div>
+				<br />
+				<div style=\"float: left; width: 300px; padding-top: 5px;\">
+					<h2 class=\"dark thin\">{$lang['keys']}</h2>
+				</div>
+				<div style=\"float: right; width: 200px;\">
+					<a class=\"button classic\" href=\"#\" onclick=\"$('#new-key').dialog('open');\" style=\"width: 22px; height: 22px; float: right;\">
+						<img style=\"float: left;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/plus-white.png\" />
+					</a>
+				</div>
+				<div class=\"clear\"></div>
+				<br />
+				<table>
+					<tr>
+						<th>{$lang['key']}</th>
+						<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
+					</tr>
+	";
+	
+	if( !is_array($userinfo['keys']) && $userinfo['keys'] )
+		$userinfo['keys'] = array($userinfo['keys']);
+	
+	if( $userinfo['keys'] )
+	{
+		$i = 0;
+		foreach( $userinfo['keys'] as $k )
+		{
+			$k = trim(str_replace("'", "\\'", $k));
+			
+			$content .= "
+					<tr>
+						<td style=\"white-space: nowrap; overflow: hidden; text-overflow: ellipsis; \">".substr($k, 0, 40)."...</td>
+						<td style=\"width: 70px; text-align: center;\">
+							<a href=\"#\"onclick=\"$('#keyvalue').html('{$k}'); $('#key').dialog('open');\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/preview.png\" alt=\"\" /></a>
+							<a href=\"/panel/settings/del_key_action?key={$i}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+						</td>
+					</tr>";
+			$i++;
+		}
+	}
+	
+	$content .= "		
+				</table>
 			</div>
 			<div class=\"right border\" style=\"width: 370px; padding-left: 60px; margin-left: 40px; margin-top: 20px;\">
 				<h2 class=\"dark thin\">{$lang['avatar']}</h1>
 				<br />
 				<form action=\"/panel/settings/upload_action\" method=\"post\" enctype=\"multipart/form-data\">
-					<input type=\"hidden\" name=\"id\" value=\"{$connector['connector_id']}\" />
 					<fieldset>
-						<img style=\"width: 100px; height: 100px;\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$userinfo['id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$userinfo['id']}.png":"/{$GLOBALS['CONFIG']['SITE']}/images/users/user.png")."\" /><br /><br />
+						<img style=\"width: 140px; height: 140px;\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$userinfo['id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$userinfo['id']}.png":"/{$GLOBALS['CONFIG']['SITE']}/images/users/user.png")."\" /><br /><br />
 						<input type=\"file\" name=\"avatar\" />
 						<span class=\"help-block\">{$lang['avatar_100']}</span>
 					</fieldset>
 					<fieldset>
 						<input type=\"submit\" value=\"{$lang['update']}\" />
 					</fieldset>		
-				</form>
+				</form>		
 			</div>
 			<div class=\"clear\"></div>
 		</div>
 	</div>
-	<div id=\"new\" class=\"floatingdialog\">
+	<div id=\"changepass\" class=\"floatingdialog\">
+		<br />
 		<h3 class=\"center\">{$lang['changepass']}</h3>
 		<p style=\"text-align: center;\">{$lang['changepass_text']}</p>
 		<div class=\"form-small\">		
@@ -97,8 +152,42 @@ $content = "
 			</form>
 		</div>
 	</div>
+	<div id=\"delete\" class=\"floatingdialog\">
+		<h3 class=\"center\">{$lang['delete']}</h3>
+		<p style=\"text-align: center;\">{$lang['delete_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/settings/del_action\" method=\"post\" class=\"center\">
+				<fieldset autofocus>	
+					<input type=\"submit\" value=\"{$lang['delete_now']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<div id=\"new-key\" style=\"display: none;\" class=\"floatingdialog\">
+		<br />
+		<h3 class=\"center\">{$lang['new_key']}</h3>
+		<p style=\"text-align: center;\">{$lang['new_key_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/panel/settings/add_key_action\" method=\"post\" class=\"center\">
+				<fieldset>
+					<textarea class=\"auto\" style=\"width: 300px;\" rows=\"10\" name=\"key\" onfocus=\"this.value = this.value=='{$lang['key']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['key']}' : this.value; this.value=='{$lang['key']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\">{$lang['key']}</textarea>
+					<span class=\"help-block\">{$lang['key_help']}</span>
+				</fieldset>
+				<fieldset autofocus>	
+					<input type=\"submit\" value=\"{$lang['create']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<div id=\"key\" style=\"display: none;\" class=\"floatingdialog\">
+		<br />
+		<p id=\"keyvalue\"></p>
+	</div>
 	<script>
-		newDialog('new', 550, 350);
+		newFlexibleDialog('changepass', 550);
+		newFlexibleDialog('delete', 550);
+		newFlexibleDialog('new-key', 550);
+		newFlexibleDialog('key', 550);
 	</script>	
 ";
 

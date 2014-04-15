@@ -1,0 +1,11 @@
+[EN]
+
+[FR]
+dateformat = "d-M"
+dateformathour = "H:i"
+dateformatmonth = "M"
+memory2 = "Memoire (Mo)"
+chart1_title = "Consommation CPU des dernières 24H"
+chart2_title = "Consommation RAM des dernières 24H"
+memory = "Mémoire"
+cpu = "CPU"

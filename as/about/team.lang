@@ -10,10 +10,14 @@ job = "Nous recrutons"
 job_text = "Vous êtes passionné, vous avez des idées ou vous êtes à la recherche de nouveaux défis ? Nous avons certainement une place pour vous."
 apply = "Contactez-nous"
 
-yann = "Ingénieur système et réseau diplômé de l'Ecole Centrale Marseille, Yann Autissier a d'abord travaillé comme directeur technique au sein de la société <a href='http://www.internethic.com'>Internethic</a>. 
-Il apporte aujourd'hui son expertise auprès de nos clients et participe au maintien de l'infrastructure d'hébergement. Investi dans la promotion du libre et de l'open-source, Yann est également le trésorier de l'association 
-<a href='http://www.libertis.org'>Libertis</a>, regroupant les SSLL de la région PACA."
-sam = "Ingénieur réseau et sécurité, analyste stratégique (géopolitique de l'information, gestion des risques...), Samuel Hassine est dîplomé de l'Institut d'Etudes Politiques d'Aix-en-Provence et 
-de l'Université Paris VI. Il conseille nos clients sur la conception de Systèmes d'Information ou d'infrastructure. Il s'occupe de la mise en oeuvre de la plateforme d'hébergement et du développement du panel et de l'API."
-simon = "Simon Uyttendaele, diplômé en Réseaux et Télécomunications et titulaire d'un master en Intelligence Artificielle, se charge du développement 'nouvelle génération' des applications. 
-Il conforte Another Service au niveau de la sécurité et de la tracabilité des opérations effectuées sur le réseau, afin de répondre de manière claire et rapide à toute éventualité."
+yann = "Ingénieur<br />Co-fondateur" 
+samuel = "Ingénieur<br />Co-fondateur"
+simon = "Ingénieur<br />Co-fondateur"
+you_position = "Joker<br />Equipe Another Service"
+
+hiring = "Nous recrutons !"
+hiring_text = "Nos projets et nos activités sont variés (développement, administration, sécurité, réseau, télécom...), notre esprit est tourné vers l'Open Source et le partage
+de connaissance. Another Service est à la recherche de nouveaux talents."
+contact = "Contactez-nous"
+help = "Rejoignez notre équipe !"
+you = "Vous ?"

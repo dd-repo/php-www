@@ -1,0 +1,26 @@
+[EN]
+
+
+[FR]
+title = "Technologies utilisées"
+intro = "Introduction"
+intro_text = "Nous améliorons notre service au quotidien et tentons de maintenir l'ensemble des technologies que nous utilisons avec les versions les plus récentes."
+languages = "Langages supportés"
+language = "Langage"
+script = "Langage de script"
+
+name = "Nom"
+info = "Information"
+version = "Version"
+site = "Adresse"
+db = "Base de données relationnelle"
+key = "Stockage clé/valeur"
+queue = "Gestionnaire de queues"
+admin = "Administration"
+pma = "Gestion des bases MySQL"
+ppa = "Gestion des bases PostgreSQL"
+frameworks = "Frameworks"
+prog = "Langage de programmation"
+frameruby = "Framework Ruby"
+framepython = "Framework Python"
+framejava = "Frameword Java"

@@ -162,6 +162,14 @@ a.button.green:hover {
 	background-color: #c1dc40;
 }
 
+a.button.red {
+	background-color: #c55b5b;
+}
+
+a.button.red:hover {
+	background-color: #eb6e6e;
+}
+
 a.button.grey {
 	background-color: #bebebe;
 }
@@ -277,6 +285,11 @@ h3 {
 	padding: 0;
 }
 
+h3.bordered {
+	padding-bottom: 5px;
+	border-bottom: 1px solid #c5c5c5;
+}
+
 h3.center {
 	text-align: center;
 }
@@ -314,11 +327,11 @@ h4 {
 
 h4.colored {
 	font-size: 18px;
-	color: #de5711;
+	color: #2475ae;
 }
 
 a h4.colored:hover {
-	color: #eb782b;
+	color: #2c8dd2;
 }
 
 span.title {
@@ -528,6 +541,11 @@ code {
 	font-size: 12px;
 	letter-spacing: 1px;
 	line-height: 20px;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
 }
 
 code span {
@@ -538,12 +556,13 @@ blockquote {
 	background: #f9f9f9;
 	border-left: 4px solid #ccc;
 	margin: 0;
-	padding: 2px 0px 2px 20px;
+	padding: 10px;
 	font-size: 12px;
 	letter-spacing: 1px;
 }
 
 blockquote p {
+	display: inline;
 	line-height: 20px;
 }
 
@@ -601,6 +620,18 @@ blockquote p {
 	display: none;
 }
 
+div.filluptimeout {
+	background-color: #3c4e5a;
+	height: 4px;
+	margin: 3px auto;
+	width: 400px;
+}
+
+div.filluptime {
+	background-color: #ffffff;
+	height: 100%;
+}
+
 #loading {
     display: none;
     width: 75px;
@@ -631,18 +662,18 @@ div.fill {
 
 img.photo {
 	display: block;
-	float: left;
+	margin: 0 auto;
 	padding: 10px;
 	border: 1px solid #e5e5e5;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	margin-right: 10px;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	border-radius: 100%;
 	-webkit-transition: all 0.2s;
 	-moz-transition: all 0.2s;
 	-ms-transition: all 0.2s;
 	-o-transition: all 0.2s;
 	transition: all 0.2s;
+	width: 100px;
 }
 
 img.photo:hover {
@@ -673,5 +704,76 @@ span.large {
 }
 
 img.language {
-	height: 60px;
+	height: 80px;
+}
+
+div.state {
+	display: inline-block;
+	height: 15px;
+	width: 15px;
+	float: left;
+	margin: 3px 3px 0 0px;
+}
+
+div.state-content {
+	margin: -1px 0 0 17px;
+	font-family: Cuprum;
+	font-size: 14px;
+	line-height: 21px;
+}
+
+.running {
+	background: url('../images/ui-sprite.png') 0px -279px;
+}
+
+.stopped {
+	background: url('../images/ui-sprite.png') 0px -294px;
+}
+
+
+div.fillgraph {
+	display: block;
+	background: #e5e5e5;
+	margin: 2px 0px 8px 0px;
+	width: 300px;
+	height: 15px;
+	overflow: hidden;
+	box-shadow: inset rgba(0,0,0,0.2) 0px 1px 3px;
+}
+
+div.fillgraph small {
+	text-align: center;
+	display: block;
+	float: left;
+	height: 15px;
+	line-height: 15px;
+	font-size: 10px;
+	color: #ffffff;
+	background: #2475ae;
+	overflow: hidden;
+	box-shadow: inset rgba(0,0,0,0.2) 0px 1px 3px, inset rgba(0,0,0,0.1) 0px -20px 20px -10px;
+}
+
+
+ul.styled {
+	list-style-type: square;
+	margin-left: 20px;
+	font-size: 14px;
+}
+
+ul.styled li {
+	margin: 5px 0 5px 0;
+	padding: 0 0 0 5px;
+	line-height: 20px;
+}
+
+ol {
+	list-style: decimal;
+	padding: 0;
+	margin: 0 0 0 15px;
+}
+
+ol li {
+	padding: 0 0 0 0;
+	margin: 0 0 15px 0;
 }

@@ -49,12 +49,142 @@ else
 		
 		if( strcmp($res, "VERIFIED") == 0 )
 		{
-			$result = api::send('registration/select', array('email'=>$custom[0]), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-			$result = $result[0];
+			try
+			{
+				$quotas = api::send('quota/user/list', array('user'=>$custom[1]), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
-			$email = str_replace(array('{USER}', '{EMAIL}', '{CODE}'), array($custom[1], $custom[0], $result['code']), $lang['content']);
-			mail($custom[0], $lang['subject'], str_replace(array('{TITLE}', '{CONTENT}'), array($lang['email_title'], $email), $GLOBALS['CONFIG']['MAIL_TEMPLATE']), "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\nFrom: Another Service <no-reply@anotherservice.com>\r\n");
-			mail('contact@anotherservice.com', '[Billing] New payment succeded', $message);
+				foreach( $quotas as $q )
+				{
+					if( $q['name'] == 'MEMORY' )
+						$quota = $q;
+					elseif( $q['name'] == 'DISK' )
+						$dquota = $q;
+				}
+
+				switch( $custom[2] )
+				{
+					case '1':
+						$ram = 1024;
+						$services = 4;
+						$disk = 1000;
+						$success = true;
+					break;
+					case '2':
+						$ram = 4096;
+						$services = 16;
+						$disk = 1000;
+						$success = true;
+					break;
+					case '3':
+						$ram = 8192;
+						$services = 32;
+						$disk = 10000;
+						$success = true;
+					break;
+					case '4':
+						$ram = 16384;
+						$services = 64;
+						$disk = 10000;
+						$success = true;
+					break;
+					case '5':
+						$ram = 32768;
+						$services = 128;
+						$disk = 50000;
+						$success = true;
+					break;
+					case '6':
+						$ram = 65536;
+						$services = 256;
+						$disk = 50000;
+					break;
+					case '8':
+						$disk = 10000;
+						$success = true;
+						$diskplan = true;
+					break;
+					case '9':
+						$disk = 50000;
+						$success = true;	
+						$diskplan = true;
+					break;
+					case '10':
+						$disk = 100000;
+						$success = true;
+						$diskplan = true;
+					break;
+					case '11':
+						$disk = 500000;
+						$success = true;	
+						$diskplan = true;
+					break;
+					case '12':
+						$disk = 1000000;
+						$success = true;
+						$diskplan = true;
+					break;	
+					default:
+						$success = false;
+				}
+
+				if( $success === true )
+				{
+					if( $diskplan === true )
+						$params = array('plan' => $custom[2], 'plan_type' => 'disk', 'user'=>$custom[1]);
+					else
+						$params = array('plan' => $custom[2], 'user'=>$custom[1]);
+					api::send('user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+					
+					if( $diskplan !== true )
+					{
+						$params = array('user' => $custom[1], 'quota' => 'MEMORY', 'max' => $ram);
+						api::send('quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+						$params = array('user' => $custom[1], 'quota' => 'SERVICES', 'max' => $services);
+						api::send('quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+					}
+					
+					$quotas = api::send('quota/user/list', array('user' => $custom[1]), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+					foreach( $quotas as $q )
+					{
+						if( $q['name'] == 'DISK' )
+							$dquota = $q;
+					}
+
+					if( $diskplan === true )
+					{
+						$params = array('user' =>  $custom[1], 'quota' => 'DISK', 'max' => $disk);
+						api::send('/quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+					}
+					else
+					{
+						if( $dquota['max'] <= $disk )
+						{
+							$params = array('user' =>  $custom[1], 'quota' => 'DISK', 'max' => $disk);
+							api::send('/quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+						}	
+					}
+					
+					$quotas = api::send('quota/user/list', array('user' => $custom[1]), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+					foreach( $quotas as $q )
+					{
+						if( $q['name'] == 'DISK' )
+							$dquota = $q;
+						if( $q['name'] == 'MEMORY' )
+							$mquota = $q;
+						if( $q['name'] == 'SERVICES' )
+							$squota = $q;
+					}
+					
+					// SEND MAIL
+					$mail = str_replace(array('{RAM}', '{SERVICES}', '{DISK}', '{NAME}'), array($mquota['max'], $squota['max'], $dquota['max'], $custom[1]), $lang['mail']);
+					$result = mail($custom[0], $lang['subject'], str_replace(array('{TITLE}', '{CONTENT}'), array($lang['subject'], $mail), $GLOBALS['CONFIG']['MAIL_TEMPLATE']), "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\nFrom: Another Service <no-reply@anotherservice.com>\r\nBcc: contact@anotherservice.com\r\n");
+					mail('contact@anotherservice.com', '[Billing] New payment succeded', $message);
+				}
+			}
+			catch( Exception $e )
+			{
+				mail('contact@anotherservice.com', '[Billing] New payment but errors', $e);
+			}
 		}
 		else if( strcmp($res, "INVALID") == 0 )
 		{

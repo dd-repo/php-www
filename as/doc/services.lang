@@ -2,17 +2,20 @@
 
 
 [FR]
-title = "Aide par service"
+title = "Services"
 intro = "Introduction"
-intro_text = "Another Service met à disposition des développeurs de nombreux services pour enrichir les applications."
-available = "Versions disponibles"
-service = "Service"
+intro_text = "Nous proposons de nombreux services des bases de données en passant par de la messagerie inter-application ou du stockage de bigdata."
+
 name = "Nom"
 info = "Information"
 version = "Version"
-soon = "Bientôt disponible"
-tutorials = "Tutoriaux"
+site = "Adresse"
 db = "Base de données relationnelle"
 key = "Stockage clé/valeur"
-queue = "Gestionnaire de queues de messages"
-back = "Retour à l'accueil"
+queue = "Gestionnaire de queues"
+
+create = "Créer un service"
+create_text = "Pour créer un service, vous devez vous rendre dans la <a href='/panel/services'>rubrique appropriée</a> de votre panel :"
+create_text2 = "Puis après avoir cliqué sur 'Créer un nouveau service', sélectionner le service que vous désirez ajouter :"
+create_text3 = "Puis remplir le formulaire :"
+create_text4 = "Une fois ajouté, vous avez les informations de connexion notées dans la vue du service, le mot de passe étant celui que vous avez choisi lors de la création (plus d'informations sur les <a href='/doc/info'>accès aux services</a>) :"

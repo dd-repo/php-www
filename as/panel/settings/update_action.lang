@@ -1,5 +1,7 @@
 [EN]
 success = "Your settings have been successfully updated."
+error = "The mail address is not correctly formated."
 
 [FR]
 success = "Vos informations ont bien été mises à jour."
+error = "Le format de votre adresse email est incorrect."

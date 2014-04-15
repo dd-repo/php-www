@@ -1,0 +1,17 @@
+[EN]
+
+[FR]
+title = "Demande"
+reply = "Répondre"
+dateformat = "d/m/Y H:i:s"
+delete = "Supprimer"
+delete_text = "Êtes-vous sûr de vouloir supprimer ce message ?"
+delete_now = "Confirmer"
+reply = "Répondre"
+content_help = "Votre message"
+send = "Envoyer"
+update = "Modifier"
+close = "Fermer"
+close_text = "Êtes-vous sûr de vouloir fermer ce topic ?"
+close_now = "Confirmer"
+open = "Ouvrir"

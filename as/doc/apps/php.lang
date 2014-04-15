@@ -1,0 +1,19 @@
+[EN]
+
+
+[FR]
+title = "Application web PHP"
+intro = "Introduction"
+intro_text = "Les applications web PHP sont déployées sur notre plateforme dans un environnement Apache, avec l'ensemble des extensions les plus courantes (voir le <a href='https://phpinfo.anotherservice.com'>PHPInfo</a>)."
+create = "Créer l'application"
+create_text = "Sélectionner le framework <i>PHP (Web)</i> dans la liste des langages disponibles :"
+create_text2 = "Par défaut, un environnement 'master' est créé, vous pourrez par la suite ajouter d'autres <a href='/doc/env'>environnements et branches</a>. Vous pouvez observer le démarrage du processus 
+de cet environnement et ajuster sa mémoire en fonction du type d'application que vous allez déployer."
+create_text3 = "Vous êtes maintenant prêts à transférer les données de votre application, au choix vous pouvez utiliser le SFTP ou GIT pour mettre en ligne les fichiers. Nous voyons ici comment mettre à jour la branche
+master (plus d'informations sur les <a href='/doc/info'>accès</a>)."
+sftp = "Accès SFTP "
+git = "Accès GIT :"
+create_text4 = "Vous pouvez créer un premier fichier <i>index.php</i> contenant :"
+create_text5 = "Il faut ensuite transférer ensuite le fichier, exemple en Git :"
+create_text6 = "Une fois le fichier en place dans le dossier master (via git push ou l'accès SFTP), vous pouvez aller observer le résultat sur <i>http://php-xxxxx.anotherservice.net</i>."
+back = "Retour"

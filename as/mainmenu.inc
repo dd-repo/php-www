@@ -16,6 +16,7 @@ $menu = array(
 	array('text'=>"nhelp", 'anonymous'=>false, 'link'=>"/doc"),
 	array('text'=>"nhelp", 'anonymous'=>true, 'link'=>"/doc"),
 	array('text'=>"npanel", 'anonymous'=>false, 'link'=>"/panel"),
+	array('text'=>"madmin", 'anonymous'=>false, 'link'=>"/admin"),
 	array('text'=>"nlogout", 'anonymous'=>false, 'link'=>"/logout"),
 	array('text'=>"nlogin", 'anonymous'=>true, 'link'=>"#", 'onclick'=>"$('#login').dialog('open'); return false;"),
 	array('text'=>"nsignup", 'anonymous'=>true, 'link'=>"#", 'onclick'=>"$('#signup').dialog('open'); return false;")	

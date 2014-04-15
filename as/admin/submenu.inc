@@ -6,11 +6,13 @@ if( isset($GLOBALS['lang']) && is_object($GLOBALS['lang']) )
 // initialize the menu
 $menu = array(
 	array('text'=>"menu_home", 'icon'=>"iDownload", 'link'=>"/admin"),
-	array('text'=>"menu_user", 'icon'=>"iUsers", 'link'=>"/admin/user"),
-	array('text'=>"menu_domain", 'icon'=>"iGlobe", 'link'=>"/admin/domain"),
-	array('text'=>"menu_group", 'icon'=>"iUsers", 'link'=>"/admin/group"),
-	array('text'=>"menu_grant", 'icon'=>"iKey", 'link'=>"/admin/grant"),
-	array('text'=>"menu_quota", 'icon'=>"iChart8", 'link'=>"/admin/quota")
+	array('text'=>"menu_domains", 'icon'=>"iDownload", 'link'=>"/admin/domains"),
+	array('text'=>"menu_groups", 'icon'=>"iUsers", 'link'=>"/admin/groups"),
+	array('text'=>"menu_grants", 'icon'=>"iKey", 'link'=>"/admin/grants"),
+	array('text'=>"menu_quotas", 'icon'=>"iChart8", 'link'=>"/admin/quotas"),
+	array('text'=>"menu_stats", 'icon'=>"iChart8", 'link'=>"/admin/stats"),
+	array('text'=>"menu_blog", 'icon'=>"iChart8", 'link'=>"/admin/blog"),
+	array('text'=>"menu_logs", 'icon'=>"iChart8", 'link'=>"/admin/logs")
 );
 
 return $menu;

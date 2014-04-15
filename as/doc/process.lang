@@ -1,0 +1,11 @@
+[EN]
+
+
+[FR]
+title = "Processus et dockers"
+intro = "Introduction"
+intro_text = "Les <a href='/doc/env'>environnements</a> de chaque application ont leurs propres processus dédiés. Vous pouvez donc les gérer très facilement dans votre panel."
+
+infos = "Informations sur les processus"
+infos_text2 = "Vous pouvez gérer les processus de votre application (démarrer, arrêter, redémarer...) :"
+infos_text3 = "Nous surveillons la consommation mémoire et CPU de vos applications sur le long terme :"

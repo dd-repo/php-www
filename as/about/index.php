@@ -27,6 +27,9 @@ $content = "
 					<p><a href=\"http://www.linkedin.com/company/2401897\">LinkedIn</a></p>
 					<p><a href=\"/blog\">{$lang['news']}</a></p>
 					<br />
+					<h4>{$lang['behind']}</h4>
+					<p>{$lang['behind_text']}</p>
+					<br />
 					<h4>{$lang['legal']}</h4>
 					<p>{$lang['legal_text']}</p>
 				</div>

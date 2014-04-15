@@ -1,0 +1,19 @@
+[EN]
+
+
+[FR]
+title = "Communication et presse"
+kit = "Logos Another Service"
+small = "Logo mini"
+normal = "Logo écriture haute définition"
+square = "Logo carré"
+big = "Logo haute définition"
+press = "Olympe dans la presse"
+published = "Publié le"
+print = "Kits et plaquettes"
+commercial = "La plaquette commerciale de la société."
+
+event1_title = "Another Service au salon Solutions Linux"
+event1_date = "5 mai 2013"
+event1_extract = "Nous serons présents les 28 et 29 mai prochains pour le salon Solutions Linux à Paris au CNIT de la Défense."
+events = "Evènements"

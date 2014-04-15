@@ -1,0 +1,27 @@
+[EN]
+
+[FR]
+index = "Accueil aide"
+started = "Premiers pas"
+what = "Qu'est-ce que Another Service ?"
+techno = "Technologies utilisées"
+infos = "Informations utiles"
+first = "Votre première application"
+
+features = "Fonctionnalités"
+apps = "Applications"
+domains = "Noms de domaine"
+services = "Services"
+users = "Utilisateurs et groupes"
+
+advanced = "Avancé"
+env = "Environnements et branches"
+process = "Processus et dockers"
+repositories = "Dépôts de développement"
+cloud = "Service cloud"
+
+account = "Compte et plateforme"
+tools = "Outils et statistiques"
+backups = "Sauvegardes"
+quotas = "Quotas et limites"
+tokens = "Droits d'accès"

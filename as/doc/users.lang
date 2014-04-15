@@ -1,0 +1,23 @@
+[EN]
+
+
+[FR]
+title = "Utilisateurs et groupes"
+intro = "Introduction"
+intro_text = "Vous pouvoir créer des utilisateurs et des groupes, vous devez posséder au moins un <a href='/doc/domains'>nom de domaine</a>. Les utilisateurs et les groupes ont plusieurs utilités sur notre plateforme."
+users2 = "<h2 class='dark'>Utilisateurs</h2>
+<ol>
+	<li>Compte mail (POP/IMAP, redirections, alias...)</li>
+	<li>Compte SSH/Git/SFTP (pour les accès aux dépôts notamment)</li>
+	<li>Compte d'accès au <a href='/doc/cloud'>cloud</a> Another Service</li>
+</ol>"
+groups = "<h2 class='dark'>Groupes</h2>
+<ol>
+	<li>Gestion des accès lecture/écriture sur les dépôts</li>
+	<li>Droits généraux sur les dossiers et les applications</li>
+</ol>"
+create = "Créer un utilisateur ou un groupe"
+create_text = "Pour créer un utilisateur, il faut vous rendre dans la <a href='/panel/users'>rubrique appropriée</a> de votre panel et sélectionner le domaine pour lequel vous souhaitez gérer les utilisateurs et les groupes :"
+create_text2 = "Puis de remplir le formulaire :"
+create_text3 = "Une fois le groupe ou l'utilisateur créé, vous pouvez ensuite gérer l'ensemble des paramètres. Dans les utilisateurs, vous pouvez notamment gérer les redirections, les alias, les clés SSH et les appartenances aux groupes :"
+back = "Retour"

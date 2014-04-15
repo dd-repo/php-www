@@ -1,11 +1,4 @@
 [EN]
-title = "Team blog"
-
-rss = "Subscribe"
-follow = "Follow"
-read = "Read more"
-by = "by"
-DATEFORMAT = "M d, Y"
 
 [FR]
 title = "Blog de l'équipe"
@@ -14,4 +7,20 @@ rss = "S'abonner"
 follow = "Suivre"
 read = "Lire la suite"
 by = "par"
-DATEFORMAT = "d M, Y"
+DATEFORMAT = "j F Y"
+January = "janvier"
+February = "février"
+March = "mars"
+April = "avril"
+May = "mai"
+June = "juin"
+July = "juillet"
+August = "août"
+September = "septembre"
+October = "octobre"
+November = "novembre"
+December = "décembre"
+
+author_1 = "Yann Autissier"
+author_2 = "Samuel Hassine"
+author_3 = "Simon Uyttendaele"

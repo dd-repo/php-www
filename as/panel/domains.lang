@@ -1,0 +1,22 @@
+[EN]
+
+[FR]
+title = "Noms de domaine"
+domain = "Domaine"
+arecord = "Enregistrement A"
+home = "Dossier"
+actions = "Actions"
+add = "Ajouter un domaine"
+doc = "Documentation"
+new = "Nouveau nom de domaine"
+name = "domaine.com"
+tipname = "Sans le <i>www</i>. Exemples : toto.com, titi.fr"
+tipsite = "Site vers lequel le domaine pointera"
+folder = "dossier de destination"
+foldertip = "Nom du dossier de destination<br />Si vide, le domaine pointera à la racine du site."
+create = "Créer"
+nodomain = "Avant de pouvoir créer une première application, vous devez ajouter un nom de domaine.<br /><i>Pas d'obligation de modifier les DNS dans l'immédiat</i>."
+delete = "Supprimer ce domaine"
+delete_text = "Êtes-vous sûr de vouloir supprimer ce nom de domaine ?<br />Attention : toutes les applications liées à ce domaine seront supprimées !"
+delete_now = "Supprimer"
+app = "Applications"
