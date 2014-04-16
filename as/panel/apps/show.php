@@ -627,7 +627,7 @@ $content .= "
 					<span class=\"help-block\">{$lang['backup_help']}</span>
 				</fieldset>	
 				<fieldset>	
-					<input autofocus type=\"submit\" value=\"{$lang['update']}\" />
+					<input autofocus type=\"submit\" value=\"{$lang['backup_now']}\" />
 				</fieldset>
 			</form>
 		</div>
