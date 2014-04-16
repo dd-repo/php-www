@@ -431,8 +431,9 @@ $content .= "
 				</fieldset>					
 				<fieldset>
 					<select style=\"width: 420px;\" name=\"alert\" style=\"text-align: center;\">
-						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['alert']!=1?"selected":"")." value=\"0\" style=\"text-align: center;\">{$lang['alertinactive']}</option>
-						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['alert']==1?"selected":"")." value=\"1\" style=\"text-align: center;\">{$lang['alertactive']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['alert']==0?"selected":"")." value=\"0\" style=\"text-align: center;\">{$lang['alertinactive']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['alert']==1?"selected":"")." value=\"1\" style=\"text-align: center;\">{$lang['alertowner']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['alert']==2?"selected":"")." value=\"1\" style=\"text-align: center;\">{$lang['alertall']}</option>
 					</select>
 					<span class=\"help-block\">{$lang['alert_help']}</span>
 				</fieldset>
@@ -617,8 +618,10 @@ $content .= "
 				<input type=\"hidden\" name=\"branch\" value=\"{$_SESSION['DATA'][$app['id']]['branch']}\" />
 				<fieldset>
 					<select style=\"width: 420px;\" name=\"backup\" style=\"text-align: center;\">
-						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['backup']!==0?"selected":"")." value=\"1\" style=\"text-align: center;\">{$lang['backupactive']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['backup']===2?"selected":"")." value=\"2\" style=\"text-align: center;\">{$lang['backupdaily']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['backup']===1?"selected":"")." value=\"1\" style=\"text-align: center;\">{$lang['backuphebdo']}</option>
 						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['backup']===0?"selected":"")." value=\"0\" style=\"text-align: center;\">{$lang['backupinactive']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['backup']===99?"selected":"")." value=\"99\" style=\"text-align: center;\">{$lang['backupnow']}</option>
 					</select>
 					<span class=\"help-block\">{$lang['backup_help']}</span>
 				</fieldset>	

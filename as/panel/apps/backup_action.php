@@ -6,8 +6,8 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-if( strlen($_POST['regex']) < 1 )
-	$_POST['regex'] = 0;
+if( $_POST['backup'] == 99 )
+	$template->redirect('/panel/backups/add_action?app=' . security::encode($_POST['id']) . '&branch=' . security::encode($_POST['branch']));
 
 $params = array('app'=>$_POST['id'], 'backup'=>$_POST['backup'], 'branch'=>$_POST['branch']);
 
