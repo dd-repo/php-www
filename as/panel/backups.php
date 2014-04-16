@@ -27,7 +27,7 @@ if( count($backups) > 0 )
 							<th>{$lang['name']}</th>
 							<th>{$lang['date']}</th>
 							<th>{$lang['mode']}</th>
-							<th style=\"width: 100px; text-align: center;\">{$lang['actions']}</th>
+							<th style=\"width: 130px; text-align: center;\">{$lang['actions']}</th>
 						</tr>";
 
 	foreach( $backups as $b )
@@ -39,9 +39,10 @@ if( count($backups) > 0 )
 							<td><span style=\"font-weight: bold;\">{$b['title']}</span></td>
 							<td>".date($lang['dateformat'], $b['date'])."</td>
 							<td>".($b['auto']==1?"{$lang['auto']}":"{$lang['manual']}")."</td>
-							<td style=\"width: 100px; text-align: center;\">
-								<a href=\"{$b['url']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/download2.png\" alt=\"\" /></a>
-								<a href=\"#\" onclick=\"$('#id').val('{$b['id']}'); $('#delete').dialog('open'); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/close.png\" alt=\"\" /></a>
+							<td style=\"width: 130px; text-align: center;\">
+								<a href=\"{$b['url']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/download2.png\" alt=\"\" /></a>
+								<a href=\"#\" onclick=\"$('#id2').val('{$b['id']}'); $('#restore').dialog('open'); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/arrowLeft.png\" alt=\"\" /></a>
+								<a href=\"#\" onclick=\"$('#id').val('{$b['id']}'); $('#delete').dialog('open'); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/close.png\" alt=\"\" /></a>
 							</td>
 						</tr>
 		";
@@ -77,8 +78,22 @@ $content .= "
 					</form>
 				</div>
 			</div>
+			<div id=\"restore\" class=\"floatingdialog\">
+				<br />
+				<h3 class=\"center\">{$lang['restore']}</h3>
+				<p style=\"text-align: center;\">{$lang['restore_text']}</p>
+				<div class=\"form-small\">		
+					<form action=\"/panel/backups/restore_action\" method=\"get\" class=\"center\">
+						<input id=\"id2\" type=\"hidden\" value=\"\" name=\"id\" />
+						<fieldset autofocus>	
+							<input type=\"submit\" value=\"{$lang['restore_now']}\" />
+						</fieldset>
+					</form>
+				</div>
+			</div>
 			<script>
 				newFlexibleDialog('delete', 550);
+				newFlexibleDialog('restore', 550);
 			</script>
 ";
 
