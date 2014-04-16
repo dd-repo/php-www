@@ -5,6 +5,7 @@ if( !defined('PROPER_START') )
 	header("HTTP/1.0 403 Forbidden");
 	exit;
 }
+
 try
 {
 	api::send('self/account/update', array('id'=>$_POST['id'], 'domain'=>$_POST['domain'], 'mode'=>'add', 'redirection'=>$_POST['redirection']));
