@@ -6,7 +6,10 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-api::send('self/backup/restore', array('id'=>$_GET['id']));
+api::send('self/backup/restore', array('id'=>$_GET['id'], 'branch'=>$_GET['branch']));
+
+$_SESSION['MESSAGE']['TYPE'] = 'success';
+$_SESSION['MESSAGE']['TEXT']= $lang['success'];	
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);

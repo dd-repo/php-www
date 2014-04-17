@@ -165,7 +165,7 @@ $content .= "
 					<th style=\"text-align: center; width: 50px;\">#</th>
 					<th>{$lang['host2']}</th>
 					<th>{$lang['user']}</th>
-					<th>{$lang['service']}</th>
+					<th>{$lang['base']}</th>
 					<th>{$lang['desc']}</th>
 					<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
 				</tr>
@@ -182,7 +182,7 @@ if( $_SESSION['DATA'][$app['id']]['branch'] == 'master' )
 					<td style=\"text-align: center; width: 50px;\"><img style=\"width: 40px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-{$s['service_type']}.png\" /></td>
 					<td>{$s['service_host']}</td>
 					<td>{$s['service_name']}</td>
-					<td>{$s['service_name']}</td>
+					<td>{$s['service_name']}-master</td>
 					<td>{$s['service_description']}</td>
 					<td style=\"width: 70px; text-align: center;\">
 						<a href=\"#\" onclick=\"$('#service').val('{$s['service_name']}'); $('#deleteservice').dialog('open'); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>

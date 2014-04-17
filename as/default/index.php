@@ -10,7 +10,7 @@ $content = "
 			<div class=\"head\">
 				<br />
 				<h1 style=\"margin: 15px 0 5px 0;\">{$lang['intro']}</h1>
-				<h2 style=\"margin: 40px 0 10px 0; color: #abdcff; letter-spacing: 1px;\">{$lang['intro_text']}</h2>
+				<h2 style=\"margin: 20px 0 10px 0; color: #abdcff; letter-spacing: 1px;\">{$lang['intro_text']}</h2>
 				<br />
 ";
 
@@ -44,6 +44,7 @@ $content .= "
 						</fieldset>
 						<fieldset>
 							<input class=\"auto\" type=\"password\" value=\"{$lang['password']}\" name=\"password\" onfocus=\"this.value = this.value=='{$lang['password']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['password']}' : this.value; this.value=='{$lang['password']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\"/>
+							".(isset($_GET['elogin'])?"<span class=\"help-block\" style=\"color: #bc0000;\">{$lang['auth']}</span>":"<span class=\"help-block\">{$lang['register']}</span>")."
 						</fieldset>
 						<input autofocus type=\"submit\" style=\"margin-bottom: 0; margin-top: 5px;\"  value=\"{$lang['login']}\" />											
 					</form>
@@ -64,6 +65,23 @@ $content .= "
 					</form>
 				</div>
 			</div>
+			<div class=\"lines\">
+				<div class=\"lines-content\">
+					<div class=\"hservice\">
+						<a href=\"/service/hosting\" class=\"hservice\"><h3 class=\"red\" style=\"padding-top: 100px;\">{$lang['service']}</h3></a>
+						<p>{$lang['service_text']}</p>
+					</div>
+					<div class=\"hconsulting\">
+						<a href=\"/service/consulting\" class=\"hconsulting\"><h3 class=\"blue\"  style=\"padding-top: 100px;\">{$lang['advice']}</h3></a>
+						<p>{$lang['advice_text']}</p>
+					</div>
+					<div class=\"hopen\">
+						<a href=\"/developers\" class=\"hopen\"><h3 class=\"orange\"  style=\"padding-top: 100px;\">{$lang['open']}</h3></a>
+						<p>{$lang['open_text']}</p>
+					</div>
+				</div>
+			</div>
+			<div class=\"separator light\"></div>
 			<div class=\"content\">
 				<div class=\"left\">
 					<h3>{$lang['services']}</h3>
@@ -133,10 +151,7 @@ $content .= "
 				<br />
 				<br />
 			</div>
-			<script>
-				$(\"#stats\").text('loading...');
-				$(\"#stats\").load(\"/default/stats\");
-			
+			<script>			
 				function showLogin()
 				{
 					if( $(\"#signupform\").css('display') != 'none' )
