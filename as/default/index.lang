@@ -37,4 +37,4 @@ service_text = "Another Service est une plateforme d'<a href='/service/hosting'>
 open = "Open Source"
 open_text = "Le code de notre plateforme et de <a href='/developers'>nos outils</a> est public, l'<a href='/service/infrastructure'>infrastructure</a> est basée sur des technologies ouvertes."
 advice = "Conseils"
-advice_text = "Notre société accompagne les <a href='/about/references'>entreprises</a> dans leur adaptation aux plateformes PaaS/SaaS."
+advice_text = "Notre société accompagne les <a href='/about/reference'>entreprises</a> dans leur adaptation aux plateformes PaaS/SaaS."
