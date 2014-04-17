@@ -9,7 +9,7 @@ $menu = array(
 	array('text'=>"menu_overview", 'default'=>true, 'link'=>"/about"),
 	array('text'=>"menu_reference", 'link'=>"/about/reference"),
 	array('text'=>"menu_contact", 'link'=>"/about/contact"),
-	array('text'=>"menu_communication", 'link'=>"/about/communication"),
+	array('text'=>"menu_press", 'link'=>"/about/press"),
 	array('text'=>"menu_team", 'link'=>"/about/team")
 );
 
