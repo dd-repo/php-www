@@ -91,7 +91,7 @@ foreach( $backups as $b )
 					<form action=\"/panel/backups/restore_action\" method=\"get\" class=\"center\">
 						<input type=\"hidden\" value=\"{$b['id']}\" name=\"id\" />
 	";
-	if( $b['type'] != 'app' && $b['type'] != 'full' )
+	if( $b['type'] != 'app' && $b['type'] != 'full' && strlen($b['service_name']) > 5 )
 	{
 		$branch = explode('-', $b['service_name']);
 		$branch = $branch[2];
