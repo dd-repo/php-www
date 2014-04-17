@@ -109,7 +109,7 @@ foreach( $backups as $b )
 			foreach( $service['branches'] as $b )
 			{
 				$content .= "
-										<option ".($branch==$b['branch']?"selected":"")." value=\"{$b['branch']}\">{$b['branch']}</option>
+										<option ".($branch==$b['branch_name']?"selected":"")." value=\"{$b['branch_name']}\">{$b['branch_name']}</option>
 				";
 			}
 		}

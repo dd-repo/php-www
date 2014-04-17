@@ -72,7 +72,7 @@ $content .= "
 						<p>{$lang['service_text']}</p>
 					</div>
 					<div class=\"hconsulting\">
-						<a href=\"/service/consulting\" class=\"hconsulting\"><h3 class=\"blue\"  style=\"padding-top: 100px;\">{$lang['advice']}</h3></a>
+						<a href=\"/service/consulting\" class=\"hconsulting\"><h3 class=\"green\"  style=\"padding-top: 100px;\">{$lang['advice']}</h3></a>
 						<p>{$lang['advice_text']}</p>
 					</div>
 					<div class=\"hopen\">
@@ -95,7 +95,7 @@ $content .= "
 							<span class=\"circle\"></span>
 						</div>
 						<div class=\"terminal-text\">
-							<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen1.png\" alt=\"map\" style=\"display: block; padding: 5px 0 0 5px;\" />
+							<a href='/service/hosting'><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen1.png\" alt=\"map\" style=\"display: block; padding: 5px 0 0 5px;\" /></a>
 						</div>
 					</div>
 				</div>
@@ -108,7 +108,7 @@ $content .= "
 							<span class=\"circle\"></span>
 						</div>
 						<div class=\"terminal-text\">
-							<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen2.png\" alt=\"map\" style=\"display: block; padding: 10px 0 0 10px;\" />
+							<a href='/service/offer'><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen2.png\" alt=\"map\" style=\"display: block; padding: 10px 0 0 10px;\" /></a>
 						</div>
 					</div>
 				</div>
