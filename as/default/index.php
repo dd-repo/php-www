@@ -81,7 +81,20 @@ $content .= "
 					</div>
 				</div>
 			</div>
-			<div class=\"separator light\"></div>
+			<div class=\"separator\"></div>
+			<div class=\"customers\" style=\"margin-bottom: 0; padding-bottom: 0;\">
+				<blockquote style=\"margin-bottom: 0; padding-bottom: 0;\">
+					<p>{$lang['demo']}</p>
+				</blockquote>
+				<br />
+				<div style=\"text-align: center;\">
+					<a class=\"button classic\" href=\"#\" onclick=\"$('#logindemo').dialog('open'); return false;\" style=\"height: 22px; width: 200px; margin: 0 auto;\">
+						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['login']}</span>
+					</a>
+					<p>{$lang['demo2']}</p>
+				</div>
+			</div>		
+			<div class=\"separator\"></div>
 			<div class=\"content\">
 				<div class=\"left\">
 					<h3>{$lang['services']}</h3>

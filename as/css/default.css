@@ -569,7 +569,7 @@ blockquote p {
 .customers blockquote {
 	width: 800px;
 	margin: 0 auto;
-	margin-top: 25px;
+	margin-top: 10px;
 	padding-left: 0;
 	border-left: none;
 	font-weight: 200;

@@ -4,6 +4,7 @@ $(function()
 {
 	// DIALOGS //
 	newFlexibleDialog('login', 350);
+	newFlexibleDialog('logindemo', 350);
 	newFlexibleDialog('signup', 350);
 	newFlexibleDialog('register', 350);
 	newFlexibleDialog('message', 250);
