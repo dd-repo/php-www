@@ -75,7 +75,7 @@ $content .= "
 					<th>{$lang['server']}</th>
 					<th>{$lang['username']}</th>
 					<th>{$lang['base']}</th>
-					<th>{$lang['app']}</th>
+					<th style=\"width: 260px;\">{$lang['app']}</th>
 					<th style=\"width: 50px;  text-align: center;\">{$lang['actions']}</th>
 				</tr>
 				<tr>
