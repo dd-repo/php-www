@@ -91,11 +91,12 @@ foreach( $backups as $b )
 					<form action=\"/panel/backups/restore_action\" method=\"get\" class=\"center\">
 						<input type=\"hidden\" value=\"{$b['id']}\" name=\"id\" />
 	";
-	if( $b['type'] != 'app' && $b['type'] != 'full' && strlen($b['service_name']) > 5 )
-	{
-		$branch = explode('-', $b['service_name']);
-		$branch = $branch[2];
-		$service = api::send('self/service/list', array('service'=>$branch[0] . '-' . $branch[1]));
+	if( $b['type'] != 'app' && $b['type'] != 'full' )
+	{		
+		$branches = explode('-', $b['service_name']);
+		$branch = $branches[2];
+		
+		$service = api::send('self/service/list', array('service'=>$branches[0] . '-' . $branches[1]));
 		$service = $service[0];
 
 		$content .= "
