@@ -165,12 +165,29 @@ if( security::hasGrant('SERVICE_SELECT') )
 		$content .= "
 						<tr>
 							<td>{$s['vendor']}</td>
-							<td>{$s['name']}</td>
+							<td>{$s['name']}-master</td>
 							<td>{$s['size']} {$lang['mb']}</td>
 							<td style=\"width: 50px; text-align: center;\">
 								<a href=\"/admin/services/del_action?user={$_GET['id']}&service={$s['name']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
 							</td>
 						</tr>";
+		if( count($s['branches']) > 0 )
+		{
+			foreach( $s['branches'] as $b )
+			{
+				$content .= "
+						<tr>
+							<td>{$s['vendor']}</td>
+							<td>{$s['name']}-{$b['branch_name']}</td>
+							<td>{$b['size']} {$lang['mb']}</td>
+							<td style=\"width: 50px; text-align: center;\">
+								<a href=\"/admin/services/del_action?user={$_GET['id']}&service={$s['name']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+							</td>
+						</tr>						
+						
+				";
+			}
+		}
 	}
 }
 
@@ -431,10 +448,26 @@ foreach( $services as $s )
 					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" /></td>
 					<td>{$s['name']}</td>
 					<td>{$lang['service2']} {$s['type']}</td>
-					<td>/services/{$s['name']}</td>
+					<td>/services/{$s['name']}-master</td>
 					<td><span style=\"font-weight: bold;\">{$s['size']} {$lang['mb']}</span></td>
 				</tr>
 	";
+	if( count($s['branches']) > 0 )
+	{
+		foreach( $s['branches'] as $b )
+		{
+			$content .= "
+					<tr>
+						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" /></td>
+						<td>{$s['description']}</td>
+						<td>{$lang['service']} {$s['vendor']}</td>
+						<td>/services/{$s['name']}-{$b['branch_name']}</td>
+						<td><span style=\"font-weight: bold;\">{$b['size']} {$lang['mb']}</span></td>
+					</tr>						
+					
+			";
+		}
+	}
 }
 
 foreach( $domains as $d )
