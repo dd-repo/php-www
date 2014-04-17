@@ -69,7 +69,7 @@ $content = "
 						<div class=\"inref\"><div><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/showcases/orlane.png\" alt=\"\" /></div></div>
 					</div>
 				</a>
-				<a href=\"https//www.bienprevoir.fr\">
+				<a href=\"http://www.bienprevoir.fr\">
 					<div class=\"reference white\" style=\"background-color: #fdfbfb;\">
 						<div class=\"inref\"><div><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/showcases/bienprevoir.png\" alt=\"\" /></div></div>
 					</div>
