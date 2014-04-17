@@ -24,9 +24,9 @@ $content = "
 						 <div class=\"inref\"><div><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/showcases/bnpparibas.png\" alt=\"\"/></div></div>
 					</div>
 				</a>
-				<a href=\"http://www.iprotego.com\">
+				<a href=\"http://www.bpce.fr\">
 					<div class=\"reference white\" style=\"background-color: #ffffff;\">
-						<div class=\"inref\"><div><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/showcases/iprotego.png\" alt=\"\" /></div></div>
+						 <div class=\"inref\"><div><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/showcases/bpce.png\" alt=\"\"/></div></div>
 					</div>
 				</a>
 				<a href=\"http://www.wyplay.com\">
@@ -43,10 +43,10 @@ $content = "
 					<div class=\"reference white\" style=\"background-color: #ffffff;\">
 						<div class=\"inref\"><div><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/showcases/monaco.png\" alt=\"\" /></div></div>
 					</div>
-				</a>	
-				<a href=\"http://www.bpce.fr\">
+				</a>
+				<a href=\"http://www.iprotego.com\">
 					<div class=\"reference white\" style=\"background-color: #ffffff; margin-right: 80px;\">
-						 <div class=\"inref\"><div><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/showcases/bpce.png\" alt=\"\"/></div></div>
+						<div class=\"inref\"><div><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/showcases/iprotego.png\" alt=\"\" /></div></div>
 					</div>
 				</a>
 				<a href=\"http://www.akeance.com\">
