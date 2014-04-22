@@ -12,7 +12,7 @@ if( $_POST['password'] )
 	$_SESSION['APP_PASS'] = security::encode($_POST['password']);
 if( $_POST['tag'] )
 	$_SESSION['APP_TAG'] = security::encode($_POST['tag']);
-				
+
 $content = "
 	<div class=\"panel\">
 		<div class=\"top\">
@@ -25,7 +25,7 @@ $content = "
 		<div class=\"clear\"></div><br />
 		<div class=\"container\">
 			<h2 class=\"dark\">{$lang['frameworks']}</h2>
-			<a href=\"#\" onclick=\"$('#runtime').val('php'); $('#standalone').val(0); $('#binary').hide(); $('#new').dialog('open'); return false;\">
+			<a href=\"#\" onclick=\"$('#runtime').val('php55'); $('#standalone').val(0); $('#binary').hide(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-php.png\" alt=\"PHP\"><span class=\"large\">PHP (Web)</span></p>
 					<div class=\"overline\">5.5.3</div>
@@ -39,66 +39,66 @@ $content = "
 					<br />					
 				</div>
 			</a>						
-			<a href=\"#\" onclick=\"$('#runtime').val('rubyrails'); $('#standalone').val(0); $('#binary').hide(); $('#new').dialog('open'); return false;\">
+			<a href=\"#\" onclick=\"$('#runtime').val('rails40'); $('#standalone').val(0); $('#binary').hide(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubyrails.png\" alt=\"Ruby on Rails\"><span class=\"large\">Ruby on Rails</span></p>
 					<div class=\"overline\">4.0.4</div>
 					<br />
 				</div>
 			</a>
-			<a href=\"#\" onclick=\"$('#runtime').val('rubysinatra'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
+			<a href=\"#\" onclick=\"$('#runtime').val('sinatra14'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubysinatra.png\" alt=\"Ruby Sinatra\"><span class=\"large\">Ruby Sinatra</span></p>
 					<div class=\"overline\">1.4.5</div>
 					<br />					
 				</div>
 			</a>
-			<a href=\"#\" onclick=\"$('#runtime').val('pythondjango'); $('#standalone').val(0); $('#new').dialog('open'); return false;\">
+			<a href=\"#\" onclick=\"$('#runtime').val('django16'); $('#standalone').val(0); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-pythondjango.png\" alt=\"Python Django\"><span class=\"large\">Python Django</span></p>
 					<div class=\"overline\">1.6.2</div>
 					<br />					
 				</div>			
 			</a>
-			<a href=\"#\" onclick=\"$('#runtime').val('javatomcat'); $('#standalone').val(0); $('#new').dialog('open'); return false;\">
+			<a href=\"#\" onclick=\"$('#runtime').val('tomcat70'); $('#standalone').val(0); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-javatomcat.png\" alt=\"Tomcat\"><span class=\"large\">Java Tomcat</span></p>
 					<div class=\"overline\">7.0.42</div>
-					<br />					
+					<br />
 				</div>
 			</a>
 			<div class=\"clear\"></div>
 			<br />
 			<h2 class=\"dark\">{$lang['standalone']}</h2>
-			<a href=\"#\" onclick=\"$('#runtime').val('phpworker'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
+			<a href=\"#\" onclick=\"$('#runtime').val('phpworker55'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-phpworker.png\" alt=\"PHP (Worker)\"><span class=\"large\">PHP (Worker)</span></p>
 					<div class=\"overline\">5.5.3</div>
 					<br />					
 				</div>
 			</a>
-			<a href=\"#\" onclick=\"$('#runtime').val('python'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
+			<a href=\"#\" onclick=\"$('#runtime').val('python27'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-python.png\" alt=\"Python\"><span class=\"large\">Python</span></p>
 					<div class=\"overline\">2.7.4</div>
 					<br />					
 				</div>
 			</a>
-			<a href=\"#\" onclick=\"$('#runtime').val('java'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
+			<a href=\"#\" onclick=\"$('#runtime').val('java17'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-java.png\" alt=\"Java\"><span class=\"large\">Java</span></p>
 					<div class=\"overline\">1.7.0</div>
 					<br />
 				</div>
 			</a>
-			<a href=\"#\" onclick=\"$('#runtime').val('ruby'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
+			<a href=\"#\" onclick=\"$('#runtime').val('ruby19'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-ruby.png\" alt=\"Ruby\"><span class=\"large\">Ruby</span></p>
 					<div class=\"overline\">1.9.3</div>
 					<br />
 				</div>
 			</a>
-			<a href=\"#\" onclick=\"$('#runtime').val('nodejs'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
+			<a href=\"#\" onclick=\"$('#runtime').val('nodejs010'); $('#standalone').val(1); $('#binary').show(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-nodejs.png\" alt=\"NodeJS\"><span class=\"large\">NodeJS</span></p>
 					<div class=\"overline\">0.10.26</div>

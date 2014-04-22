@@ -51,6 +51,7 @@ foreach( $repos as $r )
 				<img style=\"float: left; margin: 10px 15px 0 0;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/repos/icon-{$r['type']}.png\" />
 				<span class=\"name\" style=\"margin: 5px 0 0px 0; display: block;\">{$r['description']}</span><br />
 				<span class=\"subname\">{$r['name']}</span>
+				<span style=\"color: #a5a5a5; font-size: 12px; display: block; position: absolute; right: 10px; bottom: 10px;\">{$r['size']} {$lang['mb']}</span>
 			</div>
 	";
 	
@@ -66,6 +67,7 @@ foreach( $apps as $a )
 				<img style=\"float: left; margin: 10px 15px 0 0;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/repos/icon-git.png\" />
 				<span class=\"name\" style=\"margin: 5px 0 0px 0; display: block;\">{$a['tag']}</span><br />
 				<span class=\"subname\">{$a['name']}</span>
+				<span style=\"color: #a5a5a5; font-size: 12px; display: block; position: absolute; right: 10px; bottom: 10px;\">{$a['size']} {$lang['mb']}</span>
 			</div>
 	";
 	

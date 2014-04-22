@@ -27,7 +27,7 @@ if( count($backups) > 0 )
 							<th>{$lang['name']}</th>
 							<th>{$lang['date']}</th>
 							<th>{$lang['mode']}</th>
-							<th style=\"width: 100px; text-align: center;\">{$lang['actions']}</th>
+							<th style=\"width: 130px; text-align: center;\">{$lang['actions']}</th>
 						</tr>";
 
 	foreach( $backups as $b )
@@ -39,9 +39,10 @@ if( count($backups) > 0 )
 							<td><span style=\"font-weight: bold;\">{$b['title']}</span></td>
 							<td>".date($lang['dateformat'], $b['date'])."</td>
 							<td>".($b['auto']==1?"{$lang['auto']}":"{$lang['manual']}")."</td>
-							<td style=\"width: 100px; text-align: center;\">
-								<a href=\"{$b['url']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/download2.png\" alt=\"\" /></a>
-								<a href=\"#\" onclick=\"$('#id').val('{$b['id']}'); $('#delete').dialog('open'); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/close.png\" alt=\"\" /></a>
+							<td style=\"width: 130px; text-align: center;\">
+								<a href=\"{$b['url']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/download2.png\" alt=\"\" /></a>
+								<a href=\"#\" onclick=\"$('#restore{$b['id']}').dialog('open'); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/arrowLeft.png\" alt=\"\" /></a>
+								<a href=\"#\" onclick=\"$('#id').val('{$b['id']}'); $('#delete').dialog('open'); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/close.png\" alt=\"\" /></a>
 							</td>
 						</tr>
 		";
@@ -77,8 +78,66 @@ $content .= "
 					</form>
 				</div>
 			</div>
+";
+
+foreach( $backups as $b )
+{
+	$content .= "
+			<div id=\"restore{$b['id']}\" class=\"floatingdialog\">
+				<br />
+				<h3 class=\"center\">{$lang['restore']}</h3>
+				<p style=\"text-align: center;\">{$lang['restore_text']}</p>
+				<div class=\"form-small\">		
+					<form action=\"/panel/backups/restore_action\" method=\"get\" class=\"center\">
+						<input type=\"hidden\" value=\"{$b['id']}\" name=\"id\" />
+	";
+	if( $b['type'] != 'app' && $b['type'] != 'full' )
+	{		
+		$branches = explode('-', $b['service_name']);
+		$branch = $branches[2];
+		
+		$service = api::send('self/service/list', array('service'=>$branches[0] . '-' . $branches[1]));
+		$service = $service[0];
+
+		$content .= "
+							<fieldset>	
+								<select name=\"branch\">
+									<option ".($branch=='master'?"selected":"")." value=\"master\">master</option>
+		";
+		if( count($service['branches']) > 0  )
+		{
+			foreach( $service['branches'] as $b )
+			{
+				$content .= "
+										<option ".($branch==$b['branch_name']?"selected":"")." value=\"{$b['branch_name']}\">{$b['branch_name']}</option>
+				";
+			}
+		}
+		$content .= "
+		
+								</select>
+							</fieldset>
+		";
+	}
+	$content .= "
+						<fieldset autofocus>	
+							<input type=\"submit\" value=\"{$lang['restore_now']}\" />
+						</fieldset>
+					</form>
+				</div>
+			</div>
+	";
+}
+$content .= "
 			<script>
 				newFlexibleDialog('delete', 550);
+";
+foreach( $backups as $b )
+{
+	$content .= "
+				newFlexibleDialog('restore{$b['id']}', 550);";
+}
+$content .= "
 			</script>
 ";
 

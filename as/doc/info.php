@@ -23,7 +23,7 @@ $content = "
 				</div>					
 			</div>
 			<div class=\"right big\">
-				<div style=\"float: left; width: 380px;\">
+				<div style=\"float: left; width: 410px;\">
 					<h2 class=\"dark\">{$lang['dns']}</h2>
 					<table>
 						<tr>
@@ -32,55 +32,23 @@ $content = "
 						</tr>
 						<tr>
 							<td>ns1.anotherservice.com</td>
-							<td>178.32.167.250</td>
+							<td>178.32.167.250<br />2001:41d0:9b:9000::1:254</td>
 						</tr>
 						<tr>
 							<td>ns2.anotherservice.com</td>
-							<td>178.32.65.70</td>
+							<td>178.32.65.70<br />2001:41d0:9b:9000::2:254</td>
 						</tr>
 						<tr>
-							<td>ns1.anotherservice.com</td>
-							<td>2001:41d0:9b:9000::1:254</td>
+							<td>mx1.anotherservice.com</td>
+							<td>178.32.167.250<br />2001:41d0:9b:9000::1:254</td>
 						</tr>
 						<tr>
-							<td>ns2.anotherservice.com</td>
-							<td>2001:41d0:9b:9000::2:254</td>
+							<td>mx2.anotherservice.com</td>
+							<td>178.32.65.70<br />2001:41d0:9b:9000::2:254</td>
 						</tr>
-					</table>
-					<br /><br />
-					<h2 class=\"dark\">{$lang['addresses']}</h2>
-					<table>
-						<tr>
-							<th>{$lang['service']}</th>
-							<th>{$lang['address']}</th>
-						</tr>
-						<tr>
-							<td>PHP Info</td>
-							<td><a href=\"https://phpinfo.anotherservice.com\">https://phpinfo.anotherservice.com</a></td>
-						</tr>
-						<tr>
-							<td>{$lang['webmail']}</td>
-							<td><a href=\"https://mail.anotherservice.com\">https://mail.anhotherservice.com</a></td>
-						</tr>
-						<tr>
-							<td>{$lang['cloud']}</td>
-							<td><a href=\"https://cloud.anotherservice.com\">https://cloud.anotherservice.com</a></td>
-						</tr>
-						<tr>
-							<td>{$lang['pma']}</td>
-							<td><a href=\"https://pma.anotherservice.com\">https://pma.anotherservice.com</a></td>
-						</tr>
-						<tr>
-							<td>{$lang['ppa']}</td>
-							<td><a href=\"https://ppa.anotherservice.com\">https://ppa.anotherservice.com</a></td>
-						</tr>
-						<tr>
-							<td>{$lang['stats']}</td>
-							<td><a href=\"https://stats.anotherservice.com\">https://stats.anotherservice.com</a></td>
-						</tr>				
-					</table>
+					</table>					
 				</div>
-				<div style=\"float: right; width: 380px;\">
+				<div style=\"float: right; width: 380px; float: right;\">
 					<h2 class=\"dark\">{$lang['connection']}</h2>
 					<table>
 						<tr>
@@ -100,41 +68,106 @@ $content = "
 						</tr>
 						<tr>
 							<td>{$lang['ssh']}</td>
-							<td>anotherservice.com</td>
+							<td>ssh.anotherservice.com</td>
 							<td>22</td>
 						</tr>
 						<tr>
 							<td>{$lang['mysql']}</td>
-							<td>sql.anotherservice.com</td>
+							<td>mysql.anotherservice.com</td>
 							<td>3306</td>
 						</tr>
 						<tr>
 							<td>{$lang['pgsql']}</td>
-							<td>psql.anotherservice.com</td>
-							<td>5432</td>
+							<td>pgsql.anotherservice.com</td>
+							<td>5433</td>
 						</tr>
 						<tr>
 							<td>{$lang['mongo']}</td>
 							<td>mongo.anotherservice.com</td>
 							<td>27017</td>
+						</tr>						
+					</table>
+				</div>
+				<div class=\"clear\"></div>
+				<br /><br />
+				<div style=\"float: left; width: 410px;\">
+					<h2 class=\"dark\">{$lang['addresses']}</h2>
+					<table>
+						<tr>
+							<th>{$lang['service']}</th>
+							<th>{$lang['address']}</th>
 						</tr>
+						<tr>
+							<td>PHP Info</td>
+							<td><a href=\"https://phpinfo.anotherservice.com\">https://phpinfo.anotherservice.com</a></td>
+						</tr>
+						<tr>
+							<td>{$lang['webmail']}</td>
+							<td><a href=\"https://mail.anotherservice.com\">https://mail.anotherservice.com</a></td>
+						</tr>
+						<tr>
+							<td>{$lang['cloud']}</td>
+							<td><a href=\"https://cloud.anotherservice.com\">https://cloud.anotherservice.com</a></td>
+						</tr>
+						<tr>
+							<td>{$lang['pma']}</td>
+							<td><a href=\"https://pma.anotherservice.com\">https://pma.anotherservice.com</a></td>
+						</tr>
+						<tr>
+							<td>{$lang['ppa']}</td>
+							<td><a href=\"https://ppa.anotherservice.com\">https://ppa.anotherservice.com</a></td>
+						</tr>
+						<tr>
+							<td>{$lang['stats']}</td>
+							<td><a href=\"https://stats.anotherservice.com\">https://stats.anotherservice.com</a></td>
+						</tr>				
+					</table>	
+				</div>
+				<div style=\"float: right; width: 380px; float: right;\">
+					<h2 class=\"dark\">{$lang['messaging']}</h2>
+					<table>
+						<tr>
+							<th>{$lang['service']}</th>
+							<th>{$lang['address']}</th>
+						</tr>		
 						<tr>
 							<td>{$lang['smtp']}</td>
 							<td>mail.anotherservice.com</td>
-							<td>465</td>
+							<td>25</td>
+						</tr>						
+						<tr>
+							<td>{$lang['smtptls']}</td>
+							<td>mail.anotherservice.com</td>
+							<td>587</td>
 						</tr>
 						<tr>
 							<td>{$lang['pop']}</td>
 							<td>mail.anotherservice.com</td>
-							<td>995</td>
+							<td>110</td>
 						</tr>
 						<tr>
 							<td>{$lang['imap']}</td>
 							<td>mail.anotherservice.com</td>
+							<td>143</td>
+						</tr>
+						<tr>
+							<td>{$lang['smtps']}</td>
+							<td>mail.anotherservice.com</td>
+							<td>465</td>
+						</tr>
+						<tr>
+							<td>{$lang['pops']}</td>
+							<td>mail.anotherservice.com</td>
+							<td>995</td>
+						</tr>
+						<tr>
+							<td>{$lang['imaps']}</td>
+							<td>mail.anotherservice.com</td>
 							<td>993</td>
-						</tr>						
+						</tr>
 					</table>
 				</div>
+				<div class=\"clear\"></div><br /><br />
 			</div>
 			<div class=\"clear\"></div><br /><br />
 		</div>

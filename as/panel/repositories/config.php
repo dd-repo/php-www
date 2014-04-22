@@ -16,6 +16,23 @@ if( count($repo['permissions']) > 0 )
 	foreach( $repo['permissions'] as $p )
 		$permissions[$p['permission_object']] = $p['permission_right'];
 }
+
+if( is_array($repo['email']) )
+{
+	$i = 1;
+	$count = count($repo['email']);
+	foreach( $repo['email'] as $e )
+	{
+			$email .= $e;
+			if( $i != $count )
+				$email .= ',';
+			
+		$i++;
+	}
+}
+else
+	$email = $repo['email'];
+	
 $content .= "
 	<div class=\"panel\">
 		<div class=\"top\">
@@ -42,7 +59,7 @@ $content .= "
 						<span class=\"help-block\">{$lang['help_desc']}</span>
 					</fieldset>
 					<fieldset>
-						<input type=\"text\" name=\"email\" value=\"{$repo['email']}\" style=\"width: 400px;\" />
+						<input type=\"text\" name=\"email\" value=\"{$email}\" style=\"width: 400px;\" />
 						<span class=\"help-block\">{$lang['help_mail']}</span>
 					</fieldset>
 					<fieldset>	

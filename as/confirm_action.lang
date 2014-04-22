@@ -3,10 +3,10 @@
 [FR]
 title = "Confirmation"
 subtitle = "Votre compte a bien été créé."
-success = "L'enregistrement de votre compte est à présent terminé. Nous vous remercions de l'intérêt que vous portez à la plateforme Another Service. Vous pouvez maintenant accéder au <a href='/panel'>panel</a>."
+success = "L'enregistrement de votre compte est à présent terminé. Nous vous remercions de l'intérêt que vous portez à la plateforme Another Service. Vous pouvez maintenant accéder au <a href='https://www.anotherservice.com/panel'>panel</a>."
 user = "Nom d'utilisateur : <strong>{USER}</strong>
 <br />Mot de passe : <strong>{PASS}</strong>"
-thanks = "<br /><br /><a class='btn' href='https://www.anotherservice.com/login'>Accéder au panel</a><br /><br />
+thanks = "<br /><br /><a class='btn' href='https://www.anotherservice.com/panel'>Accéder au panel</a><br /><br />
 <h2>Support technique</h2>
 Vous pouvez accéder au support technique et à l'ensemble des informations concernant la plateforme Another Service sur notre <a href='https://support.anotherservice.com'>espace de support</a>."
 login = "Connexion au panel"
