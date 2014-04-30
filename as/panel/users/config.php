@@ -12,10 +12,10 @@ $account = $account[0];
 $content .= "
 	<div class=\"panel\">
 		<div class=\"top\">
-			<div class=\"left\" style=\"padding-top: 5px; width: 600px;\">
-				<h1 class=\"dark\">{$lang['user']} {$account['mail']}</h1>
+			<div class=\"left\" style=\"padding-top: 5px; width: 650px;\">
+				<h1 class=\"dark\">{$account['mail']}</h1>
 			</div>
-			<div class=\"right\" style=\"width: 400px;\">
+			<div class=\"right\" style=\"width: 350px;\">
 				<a class=\"button classic\" href=\"/panel/users/list?domain=".security::encode($_GET['domain'])."\" style=\"width: 180px; height: 22px; float: right;\">
 					<span style=\"display: block; padding-top: 3px;\">{$lang['back']}</span>
 				</a>
