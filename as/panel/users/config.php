@@ -201,7 +201,7 @@ $content .= "
 					<tr>
 						<td>{$a}</td>
 						<td style=\"width: 70px; text-align: center;\">
-							<a href=\"/panel/users/del_alternate_action?alternate={$a}&domain=".security::encode($_GET['domain'])."&id=".security::enccode($_GET['id'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+							<a href=\"/panel/users/del_alternate_action?alternate={$a}&domain=".security::encode($_GET['domain'])."&id=".security::encode($_GET['id'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
 						</td>
 					</tr>";
 		}
