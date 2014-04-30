@@ -51,6 +51,9 @@ $content .= "
 						<input type=\"text\" name=\"lastname\" value=\"{$account['lastname']}\" style=\"width: 400px;\" />
 						<span class=\"help-block\">{$lang['lastname']}</span>
 					</fieldset>
+					<fieldset>
+						<input type=\"checkbox\" name=\"ssh\" value=\"1\" ".($account['ssh']==1?"checked":"")." />&nbsp;&nbsp;&nbsp;{$lang['ssh']}
+					</fieldset>
 				</form>
 			</div>
 			<div class=\"clear\"></div><br />
