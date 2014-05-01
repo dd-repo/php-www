@@ -6,14 +6,14 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$account = api::send('self/account/list', array('id'=>$_GET['id'], 'domain' => $_GET['domain']));
-$account = $account[0];
+$team = api::send('self/team/list', array('id'=>$_GET['id'], 'domain' => $_GET['domain']));
+$team = $team[0];
 
 $content .= "
 	<div class=\"panel\">
 		<div class=\"top\">
 			<div class=\"left\" style=\"padding-top: 5px; width: 600px;\">
-				<h1 class=\"dark\">{$lang['group']} {$account['name']}</h1>
+				<h1 class=\"dark\">{$lang['group']} {$team['name']}</h1>
 			</div>
 			<div class=\"right\" style=\"width: 400px;\">
 				<a class=\"button classic\" href=\"/panel/users/list?domain=".security::encode($_GET['domain'])."\" style=\"width: 180px; height: 22px; float: right;\">
@@ -44,11 +44,11 @@ $content .= "
 				<h3 class=\"colored\">{$lang['change_info']}</h3>
 				<form action=\"/panel/groups/config_action\" method=\"post\">
 					<fieldset>
-						<input type=\"text\" name=\"firstname\" value=\"{$account['firstname']}\" style=\"width: 400px;\" />
+						<input type=\"text\" name=\"firstname\" value=\"{$team['firstname']}\" style=\"width: 400px;\" />
 						<span class=\"help-block\">{$lang['firstname']}</span>
 					</fieldset>
 					<fieldset>
-						<input type=\"text\" name=\"lastname\" value=\"{$account['lastname']}\" style=\"width: 400px;\" />
+						<input type=\"text\" name=\"lastname\" value=\"{$team['lastname']}\" style=\"width: 400px;\" />
 						<span class=\"help-block\">{$lang['lastname']}</span>
 					</fieldset>
 				</form>
