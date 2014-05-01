@@ -39,6 +39,7 @@ $content .= "
 					<fieldset>
 						<input type=\"submit\" value=\"{$lang['update']}\" />
 					</fieldset>
+				</form>
 			</div>
 			<div style=\"width: 420px; float: right;\">
 				<h3 class=\"colored\">{$lang['change_info']}</h3>
@@ -53,6 +54,7 @@ $content .= "
 					</fieldset>
 				</form>
 			</div>
+			<div class=\"clear\"></div><br /><br />
 		</div>
 	</div>
 	";
