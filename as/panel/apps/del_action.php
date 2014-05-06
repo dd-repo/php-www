@@ -6,8 +6,15 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-api::send('self/app/del', array('id'=>$_GET['id']));
-api::send('self/subdomain/del', array('domain'=>'anotherservice.net', 'subdomain'=>strtolower($_GET['name'])));
+try
+{
+	api::send('self/app/del', array('id'=>$_GET['id']));
+	api::send('self/subdomain/del', array('domain'=>'anotherservice.net', 'subdomain'=>strtolower($_GET['name'])));
+}
+catch(Exception $e)
+{
+	
+}
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
