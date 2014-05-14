@@ -29,9 +29,6 @@ $content = "
 					<br />
 					<h4>{$lang['behind']}</h4>
 					<p>{$lang['behind_text']}</p>
-					<br />
-					<h4>{$lang['legal']}</h4>
-					<p>{$lang['legal_text']}</p>
 				</div>
 				<div class=\"clear\"></div>
 				<br /><br />

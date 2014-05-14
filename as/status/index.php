@@ -13,7 +13,7 @@ $response = json_decode(str_replace(array('jsonUptimeRobotApi(', ')'), array('',
 
 foreach( $response['monitors']['monitor'] as $m )
 {
-	if( $m['id'] == '776006446' )
+	if( $m['id'] == '776180966' )
 	{
 		$expl = explode('-', $m['customuptimeratio']);
 		$up7 = $expl[0];
@@ -79,7 +79,7 @@ if( count($issues) > 0 )
 	{
 		$content .= "
 				<tr>
-					<td style=\"text-align: center; width: 40px;\"><a href=\"https://projets.olympe.in/issues/{$i['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" /></a></td>
+					<td style=\"text-align: center; width: 40px;\"><a href=\"https://projets.anotherservice.com/issues/{$i['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" /></a></td>
 					<td>".$lang['tracker_' . $i['tracker']['id']]."</td>
 					<td><a href=\"https://projets.olympe.in/issues/{$i['id']}\">{$i['subject']}</a></td>
 					<td>".$lang['priority_' . $i['priority']['id']]."</td>

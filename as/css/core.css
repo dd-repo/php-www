@@ -20,7 +20,6 @@ div.core div.head-light div.container {
 	margin: 0 auto;
 	padding: 30px 0 15px 0;
 }
-
 div.core  div.lines {
 	margin: 0 auto;
 	padding: 0;
@@ -48,10 +47,10 @@ div.core div.lines-content img {
 	margin-bottom: 20px;
 }
 
-div.core div.lines-content div.hfree{
+div.core div.lines-content div.hservice {
 }
 
-div.core div.lines-content div.hinnovation {
+div.core div.lines-content div.hconsulting {
 	margin-left: 95px;
 }
 

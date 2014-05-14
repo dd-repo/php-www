@@ -74,35 +74,24 @@ $content .= "
 					<th style=\"text-align: center; width: 40px;\">#</th>
 					<th>{$lang['server']}</th>
 					<th>{$lang['username']}</th>
-					<th>{$lang['service']}</th>
-					<th>{$lang['load']}</th>
+					<th>{$lang['base']}</th>
+					<th style=\"width: 260px;\">{$lang['app']}</th>
 					<th style=\"width: 50px;  text-align: center;\">{$lang['actions']}</th>
 				</tr>
 				<tr>
 					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/server.png\" /></td>
 					<td>{$service['host']}</td>
 					<td>{$service['name']}</td>
-					<td>{$service['name']}</td>
-					<td>
-						<div class=\"fillgraph\" style=\"margin-top: 10px;\">
-							<small style=\"width: {$percent}%;\"></small>
-						</div>
-						<span class=\"quota\"><span style='font-weight: bold;'>{$service['stats'][$service['host']]}</span> {$lang['services']}</span>
-					</td>
+					<td>{$service['name']}-master</td>
+";
+$language = explode('-', $service['app_name']);
+$language = $language[0];
+
+$content .= "
+					<td>".($service['app']==0?"{$lang['noapp']}":"<a href=\"/panel/apps/show?id={$service['app']}\"><img style=\"float: left; margin-right: 10px; width: 50px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" /></a> <span style=\"display: block; padding-top: 15px;\">{$service['app_tag']}</a></td>")."
 					<td style=\"width: 50px; text-align: center;\">
-						<a href=\"#\" title=\"\" onclick=\"$('#branch').val('no'); $('#download').dialog('open'); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/download2.png\" alt=\"\" /></a>
+						<a href=\"#\" title=\"\" onclick=\"$('#branch').val('master'); $('#download').dialog('open'); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/download2.png\" alt=\"\" /></a>
 					</td>
-				</tr>
-			</table>
-			<br /><br />
-			<h2 class=\"dark\">{$lang['subservices']}</h2>
-			<table>
-				<tr>
-					<th style=\"text-align: center; width: 40px;\">#</th>
-					<th>{$lang['service']}</th>
-					<th>{$lang['app']}</th>
-					<th>{$lang['branch']}</th>
-					<th style=\"width: 50px;  text-align: center;\">{$lang['actions']}</th>
 				</tr>
 ";
 
@@ -116,9 +105,10 @@ if( count($service['branches']) > 0  )
 		$content .= "
 				<tr>
 					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/server.png\" /></td>
-					<td>{$service['name']}-{$b['branch_name']}</td>
-					<td><a href=\"/panel/apps/show?id={$b['app_id']}&branch={$b['branch_name']}\"><img style=\"float: left; margin-right: 10px; width: 50px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" /></a> <span style=\"display: block; padding-top: 15px;\">{$b['app_tag']} ({$b['app_name']})</a></td>
-					<td>{$b['branch_name']}</td>
+					<td>{$service['host']}</td>
+					<td>{$service['name']}</td>
+					<td>{$service['name']}-{$b['branch_name']}</td>					
+					<td><a href=\"/panel/apps/show?id={$b['app_id']}&branch={$b['branch_name']}\"><img style=\"float: left; margin-right: 10px; width: 50px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" /></a> <span style=\"display: block; padding-top: 15px;\">{$b['app_tag']}</a></td>
 					<td style=\"width: 50px; text-align: center;\">
 						<a href=\"#\" title=\"\" onclick=\"$('#branch').val('{$b['branch_name']}'); $('#download').dialog('open'); return false;\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/download2.png\" alt=\"\" /></a>
 					</td>

@@ -10,7 +10,7 @@ $content = "
 			<div class=\"head\">
 				<br />
 				<h1 style=\"margin: 15px 0 5px 0;\">{$lang['intro']}</h1>
-				<h2 style=\"margin: 40px 0 10px 0; color: #abdcff; letter-spacing: 1px;\">{$lang['intro_text']}</h2>
+				<h2 style=\"margin: 20px 0 10px 0; color: #abdcff; letter-spacing: 1px;\">{$lang['intro_text']}</h2>
 				<br />
 ";
 
@@ -64,6 +64,36 @@ $content .= "
 					</form>
 				</div>
 			</div>
+			<div class=\"lines\">
+				<div class=\"lines-content\">
+					<div class=\"hservice\">
+						<a href=\"/service/hosting\" class=\"hservice\"><h3 class=\"red\" style=\"padding-top: 100px;\">{$lang['service']}</h3></a>
+						<p>{$lang['service_text']}</p>
+					</div>
+					<div class=\"hconsulting\">
+						<a href=\"/service/consulting\" class=\"hconsulting\"><h3 class=\"green\"  style=\"padding-top: 100px;\">{$lang['advice']}</h3></a>
+						<p>{$lang['advice_text']}</p>
+					</div>
+					<div class=\"hopen\">
+						<a href=\"/developers\" class=\"hopen\"><h3 class=\"orange\"  style=\"padding-top: 100px;\">{$lang['open']}</h3></a>
+						<p>{$lang['open_text']}</p>
+					</div>
+				</div>
+			</div>
+			<div class=\"separator\"></div>
+			<div class=\"customers\" style=\"margin-bottom: 0; padding-bottom: 0;\">
+				<blockquote style=\"margin-bottom: 0; padding-bottom: 0;\">
+					<p>{$lang['demo']}</p>
+				</blockquote>
+				<br />
+				<div style=\"text-align: center;\">
+					<a class=\"button classic\" href=\"#\" onclick=\"$('#logindemo').dialog('open'); return false;\" style=\"height: 22px; width: 200px; margin: 0 auto;\">
+						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['login']}</span>
+					</a>
+					<p>{$lang['demo2']}</p>
+				</div>
+			</div>		
+			<div class=\"separator\"></div>
 			<div class=\"content\">
 				<div class=\"left\">
 					<h3>{$lang['services']}</h3>
@@ -77,7 +107,7 @@ $content .= "
 							<span class=\"circle\"></span>
 						</div>
 						<div class=\"terminal-text\">
-							<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen1.png\" alt=\"map\" style=\"display: block; padding: 5px 0 0 5px;\" />
+							<a href='/service/hosting'><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen1.png\" alt=\"map\" style=\"display: block; padding: 5px 0 0 5px;\" /></a>
 						</div>
 					</div>
 				</div>
@@ -90,7 +120,7 @@ $content .= "
 							<span class=\"circle\"></span>
 						</div>
 						<div class=\"terminal-text\">
-							<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen2.png\" alt=\"map\" style=\"display: block; padding: 10px 0 0 10px;\" />
+							<a href='/service/offer'><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen2.png\" alt=\"map\" style=\"display: block; padding: 10px 0 0 10px;\" /></a>
 						</div>
 					</div>
 				</div>
@@ -133,10 +163,7 @@ $content .= "
 				<br />
 				<br />
 			</div>
-			<script>
-				$(\"#stats\").text('loading...');
-				$(\"#stats\").load(\"/default/stats\");
-			
+			<script>			
 				function showLogin()
 				{
 					if( $(\"#signupform\").css('display') != 'none' )

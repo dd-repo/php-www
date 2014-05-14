@@ -14,9 +14,8 @@ delete_text = "Êtes-vous sûr de vouloir supprimer cet article ?"
 delete_now = "Confirmer"
 
 author_1 = "Yann Autissier"
-author_2 = "Bruno Million"
-author_3 = "Samuel Hassine"
-author_4 = "Simon Uyttendaele"
+author_2 = "Samuel Hassine"
+author_3 = "Simon Uyttendaele"
 lang_FR = "Français"
 lang_EN = "English"
 

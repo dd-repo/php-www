@@ -12,10 +12,10 @@ $account = $account[0];
 $content .= "
 	<div class=\"panel\">
 		<div class=\"top\">
-			<div class=\"left\" style=\"padding-top: 5px; width: 600px;\">
-				<h1 class=\"dark\">{$lang['user']} {$account['mail']}</h1>
+			<div class=\"left\" style=\"padding-top: 5px; width: 650px;\">
+				<h1 class=\"dark\">{$account['mail']}</h1>
 			</div>
-			<div class=\"right\" style=\"width: 400px;\">
+			<div class=\"right\" style=\"width: 350px;\">
 				<a class=\"button classic\" href=\"/panel/users/list?domain=".security::encode($_GET['domain'])."\" style=\"width: 180px; height: 22px; float: right;\">
 					<span style=\"display: block; padding-top: 3px;\">{$lang['back']}</span>
 				</a>
@@ -50,6 +50,9 @@ $content .= "
 					<fieldset>
 						<input type=\"text\" name=\"lastname\" value=\"{$account['lastname']}\" style=\"width: 400px;\" />
 						<span class=\"help-block\">{$lang['lastname']}</span>
+					</fieldset>
+					<fieldset>
+						<input type=\"checkbox\" name=\"ssh\" value=\"1\" ".($account['ssh']==1?"checked":"")." />&nbsp;&nbsp;&nbsp;{$lang['ssh']}
 					</fieldset>
 				</form>
 			</div>
@@ -201,7 +204,7 @@ $content .= "
 					<tr>
 						<td>{$a}</td>
 						<td style=\"width: 70px; text-align: center;\">
-							<a href=\"/panel/users/del_alternate_action?alternate={$a}&domain=".security::encode($_GET['domain'])."&id=".security::enccode($_GET['id'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+							<a href=\"/panel/users/del_alternate_action?alternate={$a}&domain=".security::encode($_GET['domain'])."&id=".security::encode($_GET['id'])."\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
 						</td>
 					</tr>";
 		}

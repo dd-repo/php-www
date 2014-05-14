@@ -146,10 +146,27 @@ foreach( $services2 as $s )
 						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" /></td>
 						<td>{$s['description']}</td>
 						<td>{$lang['service']} {$s['vendor']}</td>
-						<td>/services/{$s['name']}</td>
+						<td>/services/{$s['name']}-master</td>
 						<td><span style=\"font-weight: bold;\">{$s['size']} {$lang['mb']}</span></td>
 					</tr>
 	";
+	
+	if( count($s['branches']) > 0 )
+	{
+		foreach( $s['branches'] as $b )
+		{
+			$content .= "
+					<tr>
+						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" /></td>
+						<td>{$s['description']}</td>
+						<td>{$lang['service']} {$s['vendor']}</td>
+						<td>/services/{$s['name']}-{$b['branch_name']}</td>
+						<td><span style=\"font-weight: bold;\">{$b['size']} {$lang['mb']}</span></td>
+					</tr>						
+					
+			";
+		}
+	}
 }
 
 foreach( $domains2 as $d )

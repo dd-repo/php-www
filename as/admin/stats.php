@@ -61,8 +61,8 @@ for( $i = 1; $i <= 12; $i++ )
 }
 
 $users = api::send('user/list', array('count'=>1), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-$sites = api::send('site/list', array('count'=>1), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-$dbs = api::send('database/list', array('count'=>1), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+$apps = api::send('app/list', array('count'=>1), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+$services = api::send('service/list', array('count'=>1), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 $domains = api::send('domain/list', array('count'=>1), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
 $content = "
@@ -77,16 +77,16 @@ $content = "
 				<span style=\"font-size: 14px; display: block; color: #a2a2a2;\">{$lang['user']}</span>
 			</div>
 			<div style=\"width: 260px; float: left; text-align: center; margin-left: 20px;\">
-				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/site-big.png\" style=\"width: 80px;\"/>
+				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/app-big.png\" style=\"width: 80px;\"/>
 				<br />
-				<span style=\"font-size: 40px; display: block; margin: 10px 0 10px 0;\">{$sites['count']}</span>
-				<span style=\"font-size: 14px; display: block; color: #a2a2a2;\">{$lang['sites']}</span>
+				<span style=\"font-size: 40px; display: block; margin: 10px 0 10px 0;\">{$apps['count']}</span>
+				<span style=\"font-size: 14px; display: block; color: #a2a2a2;\">{$lang['apps']}</span>
 			</div>
 			<div style=\"width: 260px; float: left; text-align: center; margin-left: 20px;\">
-				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/database-big.png\" style=\"width: 80px;\" />
+				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service-big.png\" style=\"width: 80px;\" />
 				<br />
-				<span style=\"font-size: 40px; display: block; margin: 10px 0 10px 0;\">{$dbs['count']}</span>
-				<span style=\"font-size: 14px; display: block; color: #a2a2a2;\">{$lang['databases']}</span>
+				<span style=\"font-size: 40px; display: block; margin: 10px 0 10px 0;\">{$services['count']}</span>
+				<span style=\"font-size: 14px; display: block; color: #a2a2a2;\">{$lang['services']}</span>
 			</div>
 			<div style=\"width: 260px; float: left; text-align: center; margin-left: 20px;\">
 				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/domain-big.png\" style=\"width: 80px;\" />
@@ -145,7 +145,7 @@ $content .= "
 					argumentField: \"hour\"
 				},
 				series: [
-					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'bar', 'color': '#de5711' }
+					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'bar', 'color': '#2475ae' }
 				],
 				argumentAxis:{
 					grid:{
@@ -183,7 +183,7 @@ $content .= "
 					argumentField: \"day\"
 				},
 				series: [
-					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'line', 'color': '#de5711' }
+					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'line', 'color': '#2475ae' }
 				],
 				argumentAxis:{
 					grid:{
@@ -221,7 +221,7 @@ $content .= "
 					argumentField: \"month\"
 				},
 				series: [
-					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'splineArea', 'color': '#e28d61' }
+					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'splineArea', 'color': '#68aad9' }
 				],
 				argumentAxis:{
 					grid:{

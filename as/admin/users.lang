@@ -1,0 +1,14 @@
+[EN]
+
+[FR]
+title = "Utilisateurs"
+username = "Utilisateur"
+date = "Date"
+overquota = "Overquota"
+disk = "Utilisé"
+max = "Max"
+messages = "Messages non répondus"
+add = "Créer un utilisateur"
+desc = "Sujet"
+type = "Type"
+ip = "Adresse IP"

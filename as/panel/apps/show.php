@@ -9,8 +9,6 @@ if( !defined('PROPER_START') )
 $app = api::send('self/app/list', array('id'=>$_GET['id']));
 $app = $app[0];
 
-$backups = array();
-
 if( !$_GET['branch'] && !$_SESSION['DATA'][$app['id']]['branch'] )
 	$_SESSION['DATA'][$app['id']]['branch'] = 'master';
 else if( $_GET['branch'] )
@@ -167,7 +165,7 @@ $content .= "
 					<th style=\"text-align: center; width: 50px;\">#</th>
 					<th>{$lang['host2']}</th>
 					<th>{$lang['user']}</th>
-					<th>{$lang['service']}</th>
+					<th>{$lang['base']}</th>
 					<th>{$lang['desc']}</th>
 					<th style=\"width: 70px; text-align: center;\">{$lang['actions']}</th>
 				</tr>
@@ -184,7 +182,7 @@ if( $_SESSION['DATA'][$app['id']]['branch'] == 'master' )
 					<td style=\"text-align: center; width: 50px;\"><img style=\"width: 40px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/icon-{$s['service_type']}.png\" /></td>
 					<td>{$s['service_host']}</td>
 					<td>{$s['service_name']}</td>
-					<td>{$s['service_name']}</td>
+					<td>{$s['service_name']}-master</td>
 					<td>{$s['service_description']}</td>
 					<td style=\"width: 70px; text-align: center;\">
 						<a href=\"#\" onclick=\"$('#service').val('{$s['service_name']}'); $('#deleteservice').dialog('open'); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
@@ -433,8 +431,9 @@ $content .= "
 				</fieldset>					
 				<fieldset>
 					<select style=\"width: 420px;\" name=\"alert\" style=\"text-align: center;\">
-						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['alert']!=1?"selected":"")." value=\"0\" style=\"text-align: center;\">{$lang['alertinactive']}</option>
-						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['alert']==1?"selected":"")." value=\"1\" style=\"text-align: center;\">{$lang['alertactive']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['alert']==0?"selected":"")." value=\"0\" style=\"text-align: center;\">{$lang['alertinactive']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['alert']==1?"selected":"")." value=\"1\" style=\"text-align: center;\">{$lang['alertowner']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['alert']==2?"selected":"")." value=\"2\" style=\"text-align: center;\">{$lang['alertall']}</option>
 					</select>
 					<span class=\"help-block\">{$lang['alert_help']}</span>
 				</fieldset>
@@ -504,43 +503,29 @@ $content .= "
 				<th>{$lang['port']}</th>
 			</tr>
 			<tr>
-				<td><span class=\"large\">GIT</span></td>
+				<td><span class=\"large\">Git</span></td>
 				<td>ssh://git.as/~".security::get('USER')."/{$app['name']}.git</td>
 				<td>{$app['name']}</td>
 				<td>22</td>
 			</tr>
 			<tr>
-				<td><span class=\"large\">SFTP</span></td>
-				<td>sftp://ftp.anotherservice.com</td>
+				<td><span class=\"large\">SFTP / FTP</span></td>
+				<td>(s)ftp://ftp.anotherservice.com</td>
 				<td>{$app['name']}</td>
-				<td>22</td>
-			</tr>				
+				<td>22 / 21</td>
+			</tr>	
 			<tr>
-				<td><span class=\"large\">FTP</span></td>
-				<td>ftp://ftp.anotherservice.com</td>
-				<td>{$app['name']}</td>
-				<td>21</td>
-			</tr>
-		</table>
-		<br /><br />
-		<h2 class=\"dark\">{$lang['paths']}</h2>
-		<table>
-			<tr>
-				<th>{$lang['type']}</th>
-				<th>{$lang['folder']}</th>
-			</tr>
-			<tr>
-				<td>{$lang['dir']}</td>
-				<td>{$app['homeDirectory']}</td>
+				<td><span class=\"large\">{$lang['dir']}</span></td>
+				<td colspan=\"3\">{$app['homeDirectory']}</td>
 			</tr>			
 			<tr>
-				<td>{$lang['currentdir']}</td>
-				<td>{$app['homeDirectory']}/{$_SESSION['DATA'][$app['id']]['branch']}</td>
+				<td><span class=\"large\">{$lang['currentdir']}</span></td>
+				<td colspan=\"3\">{$app['homeDirectory']}/{$_SESSION['DATA'][$app['id']]['branch']}</td>
 			</tr>
 			<tr>
-				<td>{$lang['git']}</td>
-				<td>".str_replace("Apps/{$app['name']}", "", $app['homeDirectory'])."var/git/{$app['name']}</td>
-			</tr>
+				<td><span class=\"large\">{$lang['git']}</span></td>
+				<td colspan=\"3\">".str_replace("Apps/{$app['name']}", "", $app['homeDirectory'])."var/git/{$app['name']}</td>
+			</tr>			
 		</table>
 		<br />
 	</div>
@@ -625,14 +610,24 @@ $content .= "
 	</div>
 	<div id=\"backup\" class=\"floatingdialog\">
 		<br />
-		<h3 class=\"center\">{$lang['backup']}</h3>
+		<h3 class=\"center\">{$lang['backup_title']}</h3>
 		<p style=\"text-align: center;\">{$lang['backup_text']}</p>
 		<div class=\"form-small\">		
-			<form action=\"/panel/backups/add_action\" method=\"get\" class=\"center\">
+			<form action=\"/panel/apps/backup_action\" method=\"post\" class=\"center\">
+				<input type=\"hidden\" name=\"id\" value=\"{$app['id']}\" />
 				<input type=\"hidden\" name=\"branch\" value=\"{$_SESSION['DATA'][$app['id']]['branch']}\" />
-				<input type=\"hidden\" name=\"app\" value=\"{$app['id']}\" />
-				<fieldset autofocus>	
-					<input type=\"submit\" value=\"{$lang['backup_now']}\" />
+				<fieldset>
+					<select style=\"width: 420px;\" name=\"backup\" style=\"text-align: center;\">
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['backup']==98?"selected":"")." value=\"98\" style=\"text-align: center;\">{$lang['backupnow']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['backup']==99?"selected":"")." value=\"99\" style=\"text-align: center;\">{$lang['backupnowfull']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['backup']==2?"selected":"")." value=\"2\" style=\"text-align: center;\">{$lang['backupdaily']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['backup']==1?"selected":"")." value=\"1\" style=\"text-align: center;\">{$lang['backuphebdo']}</option>
+						<option ".($app['branches'][$_SESSION['DATA'][$app['id']]['branch']]['backup']==0?"selected":"")." value=\"0\" style=\"text-align: center;\">{$lang['backupinactive']}</option>
+					</select>
+					<span class=\"help-block\">{$lang['backup_help']}</span>
+				</fieldset>	
+				<fieldset>	
+					<input autofocus type=\"submit\" value=\"{$lang['backup_now']}\" />
 				</fieldset>
 			</form>
 		</div>
