@@ -290,7 +290,6 @@ $content .= "
 				<fieldset>
 					<select name=\"member\">
 ";
-$domains = api::send('self/domain/list');
 
 if( count($domains) > 0 )
 {
