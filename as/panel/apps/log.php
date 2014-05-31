@@ -65,7 +65,7 @@ $content .= "
 				<h1 class=\"dark\">{$lang['title']} {$app['name']}</h1>
 			</div>
 			<div class=\"right\" style=\"width: 400px;\">
-				<a class=\"button classic\" href=\"/panel/apps/config?id=".security::encode($_GET['id'])."\" style=\"width: 180px; height: 22px; float: right;\">
+				<a class=\"button classic\" href=\"/panel/apps/show?id=".security::encode($_GET['id'])."\" style=\"width: 180px; height: 22px; float: right;\">
 					<span style=\"display: block; padding-top: 3px;\">{$lang['back']}</span>
 				</a>
 			</div>
