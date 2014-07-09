@@ -65,11 +65,15 @@ $content = "
 								<option ".($userinfo['language']=='ES'?"selected":"")." value=\"ES\">Espa&ntilde;ol</option>
 							</select>
 							<span class=\"help-block\">{$lang['lang_help']}</span>
-						</fieldset>							
+						</fieldset>
 						<fieldset>
-							<input type=\"submit\" value=\"{$lang['update']}\" />
-						</fieldset>		
+							<textarea name=\"address\" style=\"width: 250px; height: 100px;\">{$userinfo['address']}</textarea>
+							<span class=\"help-block\">{$lang['address_help']}</span>
+						</fieldset>						
 					</div>
+					<fieldset>
+						<input type=\"submit\" value=\"{$lang['update']}\" />
+					</fieldset>		
 				</form>
 				<div class=\"clear\"></div>
 				<br />

@@ -22,6 +22,8 @@ if( isset($_POST['pass']) && strlen($_POST['pass']) > 0 )
 	$params['pass'] = $_POST['pass'];
 if( isset($_POST['report']) && strlen($_POST['report']) > 0 )
 	$params['report'] = $_POST['report'];
+if( isset($_POST['address']) && strlen($_POST['address']) > 0 )
+	$params['address'] = $_POST['address'];
 	
 try
 {

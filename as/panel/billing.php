@@ -49,17 +49,17 @@ if( count($bills) > 0 )
 
 	foreach( $bills as $b )
 	{
-		$month = date('F', $b['bill_date']);
+		$month = date('F', $b['date']);
 		$month_translate = $lang[$month];
 
 		$content .= "
 				<tr>
-					<td tyle=\"text-align: center; width: 50px;\"><a href=\"/panel/credits/view?id={$b['bill_id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/doc.png\" alt=\"\" style=\"display: block; padding-top: 5px; margin: 0 auto;\"/></a></td>
-					<td>{$b['bill_name']}</td>
-					<td>{$b['bill_ref']}</td>
-					<td>".str_replace($month, $month_translate, date($lang['DATEFORMAT'], $b['bill_date']))."</td>
-					<td>{$b['bill_amount_ati']} &euro;</td>
-					<td><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/status_{$b['bill_status']}.png\" alt=\"\" style=\"display: block; padding: 0 10px 0 0; margin: 0 auto; float: left;\"/>".$lang['status_'.$b['bill_status']]."</td>
+					<td tyle=\"text-align: center; width: 50px;\"><a href=\"/panel/billing/view?id={$b['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/doc.png\" alt=\"\" style=\"display: block; padding-top: 5px; margin: 0 auto;\"/></a></td>
+					<td>{$b['name']}</td>
+					<td>{$b['reference']}</td>
+					<td>".str_replace($month, $month_translate, date($lang['DATEFORMAT'], $b['date']))."</td>
+					<td>{$b['amount_ati']} &euro;</td>
+					<td><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/status_{$b['status']}.png\" alt=\"\" style=\"display: block; padding: 0 10px 0 0; margin: 0 auto; float: left;\"/>".$lang['status_'.$b['status']]."</td>
 				</tr>
 		";
 	}

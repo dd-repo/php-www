@@ -1,11 +1,5 @@
 [EN]
-payment = "Payment"
-choose = "Please choose which service you want use"
-paypal = "Secured paypment with Paypal"
-card = "Secured paypment by credit card"
+payment = "Credit card payment"
 
 [FR]
-payment = "Paiement"
-choose = "Sélectionner le service que vous voulez utiliser"
-paypal = "Paiement sécurisé par Paypal"
-card = "Paiement sécurisé par carte bancaire"
+payment = "Paiement par carte bancaire"

@@ -283,7 +283,7 @@ else
 					// SEND MAIL
 					$mail = str_replace(array('{RAM}', '{SERVICES}', '{DISK}', '{NAME}', '{BILL}'), array($mquota['max'], $squota['max'], $dquota['max'], $custom['user'], $bill['id']), $mailcontent);
 					$result = mail($custom['email'], $subject, str_replace(array('{TITLE}', '{CONTENT}'), array($subject, $mail), $GLOBALS['CONFIG']['MAIL_TEMPLATE']), "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\nFrom: Another Service <no-reply@anotherservice.com>\r\nBcc: contact@anotherservice.com\r\n");
-					mail('contact@anotherservice.com', '[Billing] New payment succeded', $message);
+					mail('contact@anotherservice.com', '[Billing] New payment succeded', json_encode($infos));
 				}
 			}
 			catch( Exception $e )
@@ -321,7 +321,7 @@ else
 			// SEND MAIL
 			$mail = str_replace(array('{BILL}', '{NAME}'), array($custom['bill'], $custom['user']), $mailcontent);
 			$result = mail($custom['email'], $subject, str_replace(array('{TITLE}', '{CONTENT}'), array($subject, $mail), $GLOBALS['CONFIG']['MAIL_TEMPLATE']), "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\nFrom: Another Service <no-reply@anotherservice.com>\r\nBcc: contact@anotherservice.com\r\n");
-			mail('contact@anotherservice.com', '[Billing] New payment succeded', $message);
+			mail('contact@anotherservice.com', '[Billing] New payment succeded', json_encode($infos));
 			}
 	}
 	else
