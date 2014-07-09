@@ -28,7 +28,16 @@ $content = "
 				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/status_{$bill['status']}.png\" alt=\"\" style=\"display: block; padding: 0 10px 0 0; margin: 0 auto; float: left;\" />
 				<span style=\"padding-top: 0px; display: block;\">".$lang['status_'.$bill['status']]."</span>
 			</div>
-			<div class=\"right\" style=\"float: right; text-align: right;\">
+			<div class=\"right\" style=\"width: 500px; float: right; text-align: right;\">
+				<a class=\"action edit\" href=\"#\" onclick=\"$('#add').dialog('open'); return false;\">
+					{$lang['add']}
+				</a>
+				<a class=\"action push\" href=\"#\" onclick=\"$('#send').dialog('open'); return false;\">
+					{$lang['send']}
+				</a>
+				<a class=\"action print\" href=\"#\" onclick=\"window.print(); return false;\">
+					{$lang['print']}
+				</a>
 ";
 
 if( $bill['status'] == 1 )
@@ -42,12 +51,7 @@ if( $bill['status'] == 1 )
 else
 {
 		$content .= "
-				<a class=\"action edit\" href=\"#\" onclick=\"$('#add').dialog('open'); return false;\">
-					{$lang['add']}
-				</a>
-				<a class=\"action print\" href=\"#\" onclick=\"window.print(); return false;\">
-					{$lang['print']}
-				</a>
+
 		";
 }
 
@@ -160,31 +164,14 @@ $content .= "
 	<div id=\"pay\" style=\"text-align: center;\" class=\"floatingdialog\">
 		<h3 class=\"center\">{$lang['pay']}</h3>
 		<p style=\"text-align: center;\">{$lang['pay_text']}</p>
-		<a class=\"action card big\" style=\"margin-right: 10px;\"href=\"#\" onclick=\"$('#sips').submit(); return false;\">
-			{$lang['card']}
-		</a>
-		<a class=\"action paypal big\" href=\"#\" onclick=\"$('#paypal').submit(); return false;\">
-			{$lang['paypal']}
-		</a>
-		<form action=\"https://www.paypal.com/cgi-bin/webscr\" method=\"post\" id=\"paypal\" style=\"display: none;\">
-			<input type=\"hidden\" name=\"cmd\" value=\"_xclick\" />
-			<input type=\"hidden\" name=\"business\" value=\"contact@anotherservice.com\" />  
-			<input type=\"hidden\" name=\"currency_code\" value=\"EUR\">  
-			<input type=\"hidden\" name=\"item_name\" value=\"{$bill['lines'][0]['description']}\" />
-			<input type=\"hidden\" name=\"amount\" value=\"".round($bill['amount_ati'], 2)."\" />
-			<input type=\"hidden\" name=\"return\" value=\"http://{$GLOBALS['CONFIG']['HOSTNAME']}/panel/billing\" />
-			<input type=\"hidden\" name=\"cancel_return\" value=\"http://{$GLOBALS['CONFIG']['HOSTNAME']}/panel/billing\" />
-			<input type=\"hidden\" name=\"notify_url\" value=\"https://www.anotherservice.com/ipn_paypal\" />
-			<input type=\"hidden\" name=\"custom\" value=\"{$xpay}\" />
-			<input style=\"width: 118px; height: 47px;\" type=\"image\" src=\"https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_paynowCC_LG.gif\" border=\"0\" name=\"submit\" />
-			<img alt=\"\" border=\"0\" src=\"https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif\" width=\"1\" height=\"1\" />
-		</form>
-		<form action=\"/panel/billing/pay\" method=\"post\" id=\"sips\" style=\"display: none;\">
-			<input type=\"hidden\" name=\"xpay\" value=\"{$xpay}\" />
-			<input type=\"hidden\" name=\"amount\" value=\"".str_replace('.', '', sprintf("%.2f", round($bill['amount_ati'], 2)))."\" />
-			<input type=\"hidden\" name=\"desc\" value=\"".str_replace(' ', '&nbsp;', $bill['lines'][0]['description'])."\" />
-		</form>	
-		<br /><br />
+		<div class=\"form-small\">		
+			<form action=\"/admin/billing/pay_action\" method=\"get\" class=\"center\">
+				<input id=\"id\" type=\"hidden\" value=\"\" name=\"id\" />
+				<fieldset autofocus>	
+					<input type=\"submit\" value=\"{$lang['confirm']}\" />
+				</fieldset>
+			</form>
+		</div>
 	</div>
 	<div id=\"add\" class=\"floatingdialog\">
 		<h3 class=\"center\">{$lang['add']}</h3>
@@ -218,8 +205,9 @@ $content .= "
 		</div>
 	</div>
 	<script>
-		newFlexibleDialog('pay', 550);
 		newFlexibleDialog('add', 550);
+		newFlexibleDialog('send', 550);
+		newFlexibleDialog('pay', 550);
 	</script>
 ";
 
