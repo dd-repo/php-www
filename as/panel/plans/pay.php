@@ -95,7 +95,7 @@ if( ($disk && $dquota['used'] > $disk && ($dquota['max'] <= $disk || $diskplan =
 	template::redirect($_SERVER['HTTP_REFERER']);
 }
 
-$pay = array('lang'=>translator::getLanguage(), 'ip'=>$_SERVER['REMOTE_ADDR'], 'email'=>$userinfo['email'], 'user'=>$userinfo['name'], 'plan'=>security::encode($_GET['plan']));
+$pay = array('lang'=>translator::getLanguage(), 'first'=>1, 'ip'=>$_SERVER['REMOTE_ADDR'], 'email'=>$userinfo['email'], 'user'=>$userinfo['name'], 'plan'=>security::encode($_GET['plan']));
 $xpay = base64_encode(serialize($pay));
 
 $content = "
