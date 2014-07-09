@@ -98,9 +98,9 @@ foreach( $bill['lines'] as $l )
 					<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/tag.png\" alt=\"\" style=\"display: block; margin: 0 auto;\"/></td>
 					<td style=\"padding-top: 12px;\">{$l['name']}</td>
 					<td style=\"padding-top: 12px;\">{$l['description']}</td>
+					<td style=\"padding-top: 12px;\">{$l['amount_et']} &euro;</td>
 					<td style=\"padding-top: 12px;\">".($l['amount_et']>0?"{$l['vat']}%":"")."</td>
 					<td style=\"padding-top: 12px;\">".($l['amount_et']>0?"{$l['amount_ati']} &euro;":"")."</td>
-					<td style=\"padding-top: 12px;\">{$l['amount_ati']} &euro;</td>
 				</tr>
 	";
 }
