@@ -143,8 +143,8 @@ $content = "
 	</div>
 	<form action=\"/panel/plans/card\" method=\"post\" id=\"sips\" style=\"display: none;\">
 		<input type=\"hidden\" name=\"xpay\" value=\"{$xpay}\" />
-		<input type=\"hidden\" name=\"amount\" value=\"".$lang['offer_' . security::encode($_GET['plan']) . '_price']."\" />
-		<input type=\"hidden\" name=\"desc\" value=\"".$lang['offer_' . security::encode($_GET['plan']) . '_title']."\" />
+		<input type=\"hidden\" name=\"amount\" value=\"".str_replace('.', '', sprintf("%.2f", round($lang['offer_' . security::encode($_GET['plan']) . '_price'], 2)))."\" />
+		<input type=\"hidden\" name=\"desc\" value=\"".str_replace(' ', '&nbsp;', $lang['offer_' . security::encode($_GET['plan']) . '_title'])."\" />
 	</form>	
 ";
 
