@@ -346,6 +346,10 @@ if( security::hasGrant('USER_SELECT') )
 						<span class=\"help-block\">{$lang['lastname_help']}</span>
 					</fieldset>
 					<fieldset>
+						<textarea style=\"width: 300px; height: 100px;\" name=\"address\">{$user['address']}</textarea>
+						<span class=\"help-block\">{$lang['address_help']}</span>
+					</fieldset>
+					<fieldset>
 						<input type=\"submit\" value=\"{$lang['update']}\" />
 					</fieldset>
 				</form>";

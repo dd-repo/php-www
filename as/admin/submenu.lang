@@ -2,7 +2,7 @@
 
 [FR]
 menu_home = "Accueil"
-menu_domains = "Noms de domaine"
+menu_domains = "Domaines"
 menu_groups = "Groupes"
 menu_grants = "Privilèges"
 menu_quotas = "Quotas"
@@ -10,3 +10,4 @@ menu_stats = "Statistiques"
 menu_blog = "Actualités"
 menu_logs = "Logs"
 menu_users = "Utilisateurs"
+menu_billing = "Facturation"

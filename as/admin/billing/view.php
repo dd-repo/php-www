@@ -6,13 +6,13 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$bill = api::send('self/bill/list', array('id'=>$_GET['id']));
+$bill = api::send('bill/list', array('id'=>$_GET['id']));
 $bill = $bill[0];
 
 $month = date('F', $bill['date']);
 $month_translate = $lang[$month];
 
-$userinfo = api::send('self/user/list');
+$userinfo = api::send('user/list', array('user'=>$bill['user']['id']));
 $userinfo = $userinfo[0];
 
 $vats = array();
@@ -42,6 +42,9 @@ if( $bill['status'] == 1 )
 else
 {
 		$content .= "
+				<a class=\"action edit\" href=\"#\" onclick=\"$('#add').dialog('open'); return false;\">
+					{$lang['add']}
+				</a>
 				<a class=\"action print\" href=\"#\" onclick=\"window.print(); return false;\">
 					{$lang['print']}
 				</a>
@@ -89,6 +92,7 @@ $content .= "
 					<th>{$lang['amount_et']}</th>
 					<th>{$lang['vat']}</th>
 					<th>{$lang['amount_ati']}</th>
+					<th style=\"text-align: center;\">{$lang['actions']}</th>
 				</tr>
 ";
 foreach( $bill['lines'] as $l )
@@ -98,9 +102,13 @@ foreach( $bill['lines'] as $l )
 					<td style=\"text-align: center;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/tag.png\" alt=\"\" style=\"display: block; margin: 0 auto;\"/></td>
 					<td style=\"padding-top: 12px;\">{$l['name']}</td>
 					<td style=\"padding-top: 12px;\">{$l['description']}</td>
+					<td style=\"padding-top: 12px;\">{$l['amount_et']} &euro;</td>
 					<td style=\"padding-top: 12px;\">".($l['amount_et']>0?"{$l['vat']}%":"")."</td>
 					<td style=\"padding-top: 12px;\">".($l['amount_et']>0?"{$l['amount_ati']} &euro;":"")."</td>
-					<td style=\"padding-top: 12px;\">{$l['amount_ati']} &euro;</td>
+					<td style=\"padding-top: 12px; text-align: center;\">
+						".($l['amount_et']>0?"<a href=\"/admin/billing/reverse_action?id={$bill['id']}&title={$l['name']}&amount={$l['amount_et']}&vat={$l['vat']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/arrowLeft.png\" alt=\"\" /></a>":"")."
+						<a href=\"/admin/billing/delete_action?id={$bill['id']}&lid={$l['id']}\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/close.png\" alt=\"\" /></a>
+					</td>
 				</tr>
 	";
 }
@@ -113,6 +121,7 @@ $content .= "
 					<td style=\"padding-top: 12px;\"></td>
 					<td style=\"padding-top: 12px;\">{$lang['total_et']}</td>
 					<td style=\"padding-top: 12px;\">{$bill['amount_et']} &euro;</td>
+					<td style=\"padding-top: 12px;\"></td>
 				</tr>
 ";
 
@@ -126,6 +135,7 @@ foreach( $vats as $key => $value )
 					<td style=\"padding-top: 12px;\"></td>
 					<td style=\"padding-top: 12px;\">{$lang['vat']} ({$key}%)</td>
 					<td style=\"padding-top: 12px;\">{$value} &euro;</td>
+					<td style=\"padding-top: 12px;\"></td>
 				</tr>
 	";
 }	
@@ -136,7 +146,8 @@ $content .= "
 				<td style=\"padding-top: 12px;\"></td>
 				<td style=\"padding-top: 12px;\"></td>
 				<td style=\"padding-top: 12px;\">{$lang['total_ati']}</td>
-				<td style=\"padding-top: 12px;\">{$bill['amount_ati']} &euro;</td>			
+				<td style=\"padding-top: 12px;\">{$bill['amount_ati']} &euro;</td>
+				<td style=\"padding-top: 12px;\"></td>
 			</table>
 		</div>
 	</div>
@@ -175,8 +186,40 @@ $content .= "
 		</form>	
 		<br /><br />
 	</div>
+	<div id=\"add\" class=\"floatingdialog\">
+		<h3 class=\"center\">{$lang['add']}</h3>
+		<div class=\"form-small\">		
+			<form action=\"/admin/billing/add_action\" method=\"post\" class=\"center\">
+				<input type=\"hidden\" name=\"id\" value=\"{$bill['id']}\" />
+				<fieldset>
+					<input class=\"auto\" type=\"text\" value=\"{$lang['title']}\" name=\"title\" onfocus=\"this.value = this.value=='{$lang['title']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['title']}' : this.value; this.value=='{$lang['title']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+					<span class=\"help-block\">{$lang['tiptitle']}</span>
+				</fieldset>
+				<fieldset>
+					<input class=\"auto\" type=\"text\" value=\"{$lang['desc']}\" name=\"desc\" onfocus=\"this.value = this.value=='{$lang['desc']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['desc']}' : this.value; this.value=='{$lang['desc']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+					<span class=\"help-block\">{$lang['tipdesc']}</span>
+				</fieldset>
+				<fieldset>
+					<input class=\"auto\" type=\"text\" value=\"{$lang['amount']}\" name=\"amount\" onfocus=\"this.value = this.value=='{$lang['amount']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['amount']}' : this.value; this.value=='{$lang['amount']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
+					<span class=\"help-block\">{$lang['tipamount']}</span>
+				</fieldset>
+				<fieldset>
+					<select name=\"vat\">
+						<option value=\"20\">20%</option>
+						<option value=\"5.5\">5.5%</option>
+						<option value=\"0\">0%</option>
+					</select>
+					<span class=\"help-block\">{$lang['tipvat']}</span>
+				</fieldset>
+				<fieldset autofocus>	
+					<input type=\"submit\" value=\"{$lang['create']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
 	<script>
 		newFlexibleDialog('pay', 550);
+		newFlexibleDialog('add', 550);
 	</script>
 ";
 
