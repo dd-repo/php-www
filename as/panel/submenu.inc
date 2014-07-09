@@ -13,6 +13,7 @@ $menu = array(
 	array('text'=>"menu_tools", 'link'=>"/panel/tools"),
 	array('text'=>"menu_quotas", 'link'=>"/panel/quotas"),
 	array('text'=>"menu_backups", 'link'=>"/panel/backups"),
+	array('text'=>"menu_billing", 'link'=>"/panel/billing"),
 	array('text'=>"menu_settings",'link'=>"/panel/settings"),
 );
 
