@@ -172,8 +172,7 @@ $content .= "
 		</form>
 		<form action=\"/panel/billing/pay\" method=\"post\" id=\"sips\" style=\"display: none;\">
 			<input type=\"hidden\" name=\"xpay\" value=\"{$xpay}\" />
-			<input type=\"hidden\" name=\"amount\" value=\"200\" />
-			<input type=\"hidden\" name=\"amount2\" value=\"".str_replace('.', '', sprintf("%.2f", round($bill['amount_ati'], 2)))."\" />
+			<input type=\"hidden\" name=\"amount\" value=\"".str_replace('.', '', sprintf("%.2f", round($bill['amount_ati'], 2)))."\" />
 			<input type=\"hidden\" name=\"desc\" value=\"".str_replace(' ', '&nbsp;', $bill['lines'][0]['description'])."\" />
 		</form>	
 		<br /><br />
