@@ -21,6 +21,8 @@ if( isset($_POST['pass']) && strlen($_POST['pass']) > 0 )
 if( isset($_POST['address']) && strlen($_POST['address']) > 0 )
 	$params['address'] = $_POST['address'];
 	
+$params['billing'] = $_POST['billing'];
+
 api::send('user/update', $params);
 
 if( isset($_GET['redirect']) )

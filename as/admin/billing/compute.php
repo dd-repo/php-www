@@ -16,29 +16,32 @@ $users = api::send('user/list', array('fast'=>1));
 
 foreach( $users as $u )
 {
-	$quotas = api::send('quota/user/list', array('user'=>$u['id']));
-
-	foreach( $quotas as $q )
+	if( $u['billing'] == 1 )
 	{
-		if( $q['name'] == 'MEMORY' )
-			$ram = $q['max'];
-		if( $q['name'] == 'DISK' )
-			$disk = $q['max'];
-	}
-	
-	$ramPrice = computeRam($ram);
-	$diskPrice = computeDisk($ram, $disk);
+		$quotas = api::send('quota/user/list', array('user'=>$u['id']));
 
-	if( $ramPrice['price'] > 0 )
-	{
-		$bill = api::send('bill/insert', array('user'=>$u['id']));
-	
-		api::send('bill/insertline', array('bill'=>$bill['id'], 'name'=>$ramPrice['name'], 'description'=>$ramPrice['desc'], 'amount'=>$ramPrice['price'], 'vat'=>20));
-	
-		if( $diskPrice['price'] > 0 )
-			api::send('bill/insertline', array('user'=>$u['id'], 'bill'=>$bill['id'], 'name'=>$diskPrice['name'], 'description'=>$diskPrice['desc'], 'amount'=>$diskPrice['price'], 'vat'=>20));
-	
-		api::send('bill/update', array('bill'=>$bill['id'], 'status'=>1));
+		foreach( $quotas as $q )
+		{
+			if( $q['name'] == 'MEMORY' )
+				$ram = $q['max'];
+			if( $q['name'] == 'DISK' )
+				$disk = $q['max'];
+		}
+		
+		$ramPrice = computeRam($ram);
+		$diskPrice = computeDisk($ram, $disk);
+
+		if( $ramPrice['price'] > 0 )
+		{
+			$bill = api::send('bill/insert', array('user'=>$u['id']));
+		
+			api::send('bill/insertline', array('bill'=>$bill['id'], 'name'=>$ramPrice['name'], 'description'=>$ramPrice['desc'], 'amount'=>$ramPrice['price'], 'vat'=>20));
+		
+			if( $diskPrice['price'] > 0 )
+				api::send('bill/insertline', array('user'=>$u['id'], 'bill'=>$bill['id'], 'name'=>$diskPrice['name'], 'description'=>$diskPrice['desc'], 'amount'=>$diskPrice['price'], 'vat'=>20));
+		
+			api::send('bill/update', array('bill'=>$bill['id'], 'status'=>1));
+		}
 	}
 }
 
