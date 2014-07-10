@@ -48,7 +48,7 @@ if( count($bills) > 0 )
 					<td tyle=\"text-align: center; width: 50px;\"><a href=\"/admin/billing/view?id={$b['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/doc.png\" alt=\"\" style=\"display: block; padding-top: 5px; margin: 0 auto;\"/></a></td>
 					<td>{$b['name']}</td>
 					<td>".str_replace($month, $month_translate, $b['reference'])."</td>
-					<td style=\"text-align: center; width: 50px;\"><img style=\"width: 30px; height: 30px;\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$b['user']['id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$b['user']['id']}.png":"/{$GLOBALS['CONFIG']['SITE']}/images/users/user.png")."\" /></td>
+					<td style=\"text-align: center; width: 50px;\"><a href=\"/admin/users/detail?id={$b['user']['id']}\"><img style=\"width: 30px; height: 30px;\" src=\"".(file_exists("{$GLOBALS['CONFIG']['SITE']}/images/users/{$b['user']['id']}.png")?"/{$GLOBALS['CONFIG']['SITE']}/images/users/{$b['user']['id']}.png":"/{$GLOBALS['CONFIG']['SITE']}/images/users/user.png")."\" /></a></td>
 					<td><a href=\"/admin/users/detail?id={$b['user']['id']}\">{$b['user']['name']}</a></td>
 					<td>".str_replace($month, $month_translate, date($lang['DATEFORMAT'], $b['date']))."</td>
 					<td>{$b['amount_ati']} &euro;</td>
