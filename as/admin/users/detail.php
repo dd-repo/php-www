@@ -350,10 +350,6 @@ if( security::hasGrant('USER_SELECT') )
 						<span class=\"help-block\">{$lang['address_help']}</span>
 					</fieldset>
 					<fieldset>
-						<textarea style=\"width: 300px; height: 100px;\" name=\"address\">{$user['address']}</textarea>
-						<span class=\"help-block\">{$lang['address_help']}</span>
-					</fieldset>
-					<fieldset>
 						<select name=\"billing\" style=\"width: 320px\">
 							<option value=\"1\" ".($user['billing']==1?"selected":"").">{$lang['billing']}</option>
 							<option value=\"0\" ".($user['billing']==0?"selected":"").">{$lang['nobilling']}</option>
