@@ -30,18 +30,16 @@ foreach( $users as $u )
 		
 		$ramPrice = computeRam($ram);
 		$diskPrice = computeDisk($ram, $disk);
-
-		if( $ramPrice['price'] > 0 )
-		{
-			$bill = api::send('bill/insert', array('user'=>$u['id']));
 		
+		$bill = api::send('bill/insert', array('user'=>$u['id']));
+		
+		if( $ramPrice['price'] > 0 )
 			api::send('bill/insertline', array('bill'=>$bill['id'], 'name'=>$ramPrice['name'], 'description'=>$ramPrice['desc'], 'amount'=>$ramPrice['price'], 'vat'=>20));
 		
-			if( $diskPrice['price'] > 0 )
-				api::send('bill/insertline', array('user'=>$u['id'], 'bill'=>$bill['id'], 'name'=>$diskPrice['name'], 'description'=>$diskPrice['desc'], 'amount'=>$diskPrice['price'], 'vat'=>20));
+		if( $diskPrice['price'] > 0 )
+			api::send('bill/insertline', array('user'=>$u['id'], 'bill'=>$bill['id'], 'name'=>$diskPrice['name'], 'description'=>$diskPrice['desc'], 'amount'=>$diskPrice['price'], 'vat'=>20));
 		
-			api::send('bill/update', array('bill'=>$bill['id'], 'status'=>1));
-		}
+		api::send('bill/update', array('bill'=>$bill['id'], 'status'=>1));
 	}
 }
 
