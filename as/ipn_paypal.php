@@ -148,9 +148,9 @@ else
 						}
 						
 						if( $diskplan === true )
-							$params = array('plan' => $custom['plan'], 'plan_type' => 'disk', 'user'=>$custom['user']);
+							$params = array('plan' => $custom['plan'],  'billing' => 1, 'plan_type' => 'disk', 'user'=>$custom['user']);
 						else
-							$params = array('plan' => $custom['plan'], 'user'=>$custom['user']);
+							$params = array('plan' => $custom['plan'],  'billing' => 1, 'user'=>$custom['user']);
 						api::send('user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 						
 						if( $diskplan !== true )
