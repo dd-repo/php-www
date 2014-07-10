@@ -18,7 +18,10 @@ $userinfo = $userinfo[0];
 $vats = array();
 $credits = 0;
 foreach( $bill['lines'] as $l )
-	$vats[$l['vat']] = $vats[$l['vat']]+($l['amount_ati']-$l['amount_et']);
+{
+	$vats[$l['vat']]['vat'] = $vats[$l['vat']]['vat']+($l['amount_ati']-$l['amount_et']);
+	$vats[$l['vat']]['et'] = $vats[$l['vat']]['et']+$l['amount_et'];
+}
 
 $content = "
 	<div class=\"panel\">
@@ -127,31 +130,54 @@ $content .= "
 					<td style=\"padding-top: 12px;\">{$bill['amount_et']} &euro;</td>
 					<td style=\"padding-top: 12px;\"></td>
 				</tr>
-";
-
-foreach( $vats as $key => $value )
-{
-	$content .= "
 				<tr>
 					<td style=\"text-align: center;\"></td>
 					<td style=\"padding-top: 12px;\"></td>
 					<td style=\"padding-top: 12px;\"></td>
 					<td style=\"padding-top: 12px;\"></td>
-					<td style=\"padding-top: 12px;\">{$lang['vat']} ({$key}%)</td>
-					<td style=\"padding-top: 12px;\">{$value} &euro;</td>
+					<td style=\"padding-top: 12px;\">{$lang['total_ati']}</td>
+					<td style=\"padding-top: 12px;\">{$bill['amount_ati']} &euro;</td>
 					<td style=\"padding-top: 12px;\"></td>
 				</tr>
-	";
+				<tr>
+					<td style=\"text-align: center;\"></td>
+					<td style=\"padding-top: 12px;\">&nbsp;</td>
+					<td style=\"padding-top: 12px;\"></td>
+					<td style=\"padding-top: 12px;\"></td>
+					<td style=\"padding-top: 12px;\"></td>
+					<td style=\"padding-top: 12px;\"></td>
+					<td style=\"padding-top: 12px;\"></td>
+				</tr>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th>{$lang['vat']}</th>
+					<th>{$lang['base']}</th>
+					<th>{$lang['totalvat']}</th>
+					<th></th>
+				</tr>
+";
+
+foreach( $vats as $key => $value )
+{
+	if( $value['vat'] != 0 )
+	{
+		$content .= "
+				<tr>
+					<td style=\"text-align: center;\"></td>
+					<td style=\"padding-top: 12px;\"></td>
+					<td style=\"padding-top: 12px;\"></td>
+					<td style=\"padding-top: 12px;\">{$lang['vat']} ({$key}%)</td>
+					<td style=\"padding-top: 12px;\">{$value['et']} &euro;</td>
+					<td style=\"padding-top: 12px;\">{$value['vat']} &euro;</td>
+					<td style=\"padding-top: 12px;\"></td>
+				</tr>
+		";
+	}
 }	
 
 $content .= "
-				<td style=\"text-align: center;\"></td>
-				<td style=\"padding-top: 12px;\"></td>
-				<td style=\"padding-top: 12px;\"></td>
-				<td style=\"padding-top: 12px;\"></td>
-				<td style=\"padding-top: 12px;\">{$lang['total_ati']}</td>
-				<td style=\"padding-top: 12px;\">{$bill['amount_ati']} &euro;</td>
-				<td style=\"padding-top: 12px;\"></td>
 			</table>
 		</div>
 	</div>
@@ -166,7 +192,19 @@ $content .= "
 		<p style=\"text-align: center;\">{$lang['pay_text']}</p>
 		<div class=\"form-small\">		
 			<form action=\"/admin/billing/pay_action\" method=\"get\" class=\"center\">
-				<input id=\"id\" type=\"hidden\" value=\"\" name=\"id\" />
+				<input id=\"id\" type=\"hidden\" value=\"{$bill['id']}\" name=\"id\" />
+				<fieldset autofocus>	
+					<input type=\"submit\" value=\"{$lang['confirm']}\" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<div id=\"send\" style=\"text-align: center;\" class=\"floatingdialog\">
+		<h3 class=\"center\">{$lang['send']}</h3>
+		<p style=\"text-align: center;\">{$lang['send_text']}</p>
+		<div class=\"form-small\">		
+			<form action=\"/admin/billing/pay_action\" method=\"get\" class=\"center\">
+				<input id=\"id\" type=\"hidden\" value=\"{$bill['id']}\" name=\"id\" />
 				<fieldset autofocus>	
 					<input type=\"submit\" value=\"{$lang['confirm']}\" />
 				</fieldset>
@@ -193,6 +231,7 @@ $content .= "
 				<fieldset>
 					<select name=\"vat\">
 						<option value=\"20\">20%</option>
+						<option value=\"10\">10%</option>
 						<option value=\"5.5\">5.5%</option>
 						<option value=\"0\">0%</option>
 					</select>

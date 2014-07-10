@@ -17,8 +17,12 @@ $userinfo = $userinfo[0];
 
 $vats = array();
 $credits = 0;
+
 foreach( $bill['lines'] as $l )
-	$vats[$l['vat']] = $vats[$l['vat']]+($l['amount_ati']-$l['amount_et']);
+{
+	$vats[$l['vat']]['vat'] = $vats[$l['vat']]['vat']+($l['amount_ati']-$l['amount_et']);
+	$vats[$l['vat']]['et'] = $vats[$l['vat']]['et']+$l['amount_et'];
+}
 
 $content = "
 	<div class=\"panel\">
@@ -114,6 +118,30 @@ $content .= "
 					<td style=\"padding-top: 12px;\">{$lang['total_et']}</td>
 					<td style=\"padding-top: 12px;\">{$bill['amount_et']} &euro;</td>
 				</tr>
+				<tr>
+					<td style=\"text-align: center;\"></td>
+					<td style=\"padding-top: 12px;\"></td>
+					<td style=\"padding-top: 12px;\"></td>
+					<td style=\"padding-top: 12px;\"></td>
+					<td style=\"padding-top: 12px;\">{$lang['total_ati']}</td>
+					<td style=\"padding-top: 12px;\">{$bill['amount_ati']} &euro;</td>
+				</tr>
+				<tr>
+					<td style=\"text-align: center;\">&nbsp;</td>
+					<td style=\"padding-top: 12px;\"></td>
+					<td style=\"padding-top: 12px;\"></td>
+					<td style=\"padding-top: 12px;\"></td>
+					<td style=\"padding-top: 12px;\"></td>
+					<td style=\"padding-top: 12px;\"></td>
+				</tr>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th>{$lang['vat']}</th>
+					<th>{$lang['base']}</th>
+					<th>{$lang['totalvat']}</th>
+				</tr>
 ";
 
 foreach( $vats as $key => $value )
@@ -123,20 +151,14 @@ foreach( $vats as $key => $value )
 					<td style=\"text-align: center;\"></td>
 					<td style=\"padding-top: 12px;\"></td>
 					<td style=\"padding-top: 12px;\"></td>
-					<td style=\"padding-top: 12px;\"></td>
 					<td style=\"padding-top: 12px;\">{$lang['vat']} ({$key}%)</td>
-					<td style=\"padding-top: 12px;\">{$value} &euro;</td>
+					<td style=\"padding-top: 12px;\">{$value['et']} &euro;</td>
+					<td style=\"padding-top: 12px;\">{$value['vat']} &euro;</td>
 				</tr>
 	";
 }	
 
-$content .= "
-				<td style=\"text-align: center;\"></td>
-				<td style=\"padding-top: 12px;\"></td>
-				<td style=\"padding-top: 12px;\"></td>
-				<td style=\"padding-top: 12px;\"></td>
-				<td style=\"padding-top: 12px;\">{$lang['total_ati']}</td>
-				<td style=\"padding-top: 12px;\">{$bill['amount_ati']} &euro;</td>			
+$content .= "	
 			</table>
 		</div>
 	</div>
