@@ -45,7 +45,7 @@ if( count($bills) > 0 )
 				<tr>
 					<td tyle=\"text-align: center; width: 50px;\"><a href=\"/admin/billing/view?id={$b['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/doc.png\" alt=\"\" style=\"display: block; padding-top: 5px; margin: 0 auto;\"/></a></td>
 					<td>{$b['name']}</td>
-					<td>{$b['reference']}</td>
+					<td>".str_replace($month, $month_translate, $b['reference'])."</td>
 					<td>".str_replace($month, $month_translate, date($lang['DATEFORMAT'], $b['date']))."</td>
 					<td>{$b['amount_ati']} &euro;</td>
 					<td><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/status_{$b['status']}.png\" alt=\"\" style=\"display: block; padding: 0 10px 0 0; margin: 0 auto; float: left;\"/>".$lang['status_'.$b['status']]."</td>

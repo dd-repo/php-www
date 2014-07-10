@@ -89,7 +89,7 @@ $content .= "
 			<div class=\"clear\"></div><br />
 			<h2 class=\"dark thin\">
 				{$bill['name']}<br />
-				<span style=\"font-size: 12px;\">{$bill['reference']}</span>
+				<span style=\"font-size: 12px;\">".str_replace($month, $month_translate, $bill['reference'])."</span>
 			</h2>
 			<table>
 				<tr>
