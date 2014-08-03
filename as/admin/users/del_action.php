@@ -12,7 +12,7 @@ $user = $user[0];
 api::send('user/del', array('id'=>$_POST['user']));
 	
 $email = str_replace(array('{USER}'), array($user['name']), $lang['content']);
-mail($user['email'], $lang['subject'], str_replace('{CONTENT}', $email, $GLOBALS['CONFIG']['MAIL_TEMPLATE']), "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\nFrom: Another Service <no-reply@anotherservice.com>\r\n");
+mail($user['email'], $lang['subject'], str_replace(array('{TITLE}', '{CONTENT}'), array($email, $lang['subject']), $GLOBALS['CONFIG']['MAIL_TEMPLATE']), "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\nFrom: Another Service <no-reply@anotherservice.com>\r\n");
 
 if( isset($_GET['redirect']) )
 	template::redirect($_GET['redirect']);
