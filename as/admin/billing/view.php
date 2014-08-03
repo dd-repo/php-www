@@ -76,8 +76,8 @@ $content .= "
 				<div style=\"float: right;\">
 					<p>
 						<span style=\"font-weight: bold; font-size: 18px;\">Another Service</span><br />
-						40 Bis Rue du Faubourg Poissonni&egrave;re<br />
-						75010 Paris FRANCE<br />
+						45 rue Joliot Curie<br />
+						13382 Marseille Cedex 13 FRANCE<br />
 						<a href=\"mailto:contact@anotherservice.com\">contact@anotherservice.com</a><br />
 						SIRET 521 745 935 00010
 					</p>
@@ -203,7 +203,7 @@ $content .= "
 		<h3 class=\"center\">{$lang['send']}</h3>
 		<p style=\"text-align: center;\">{$lang['send_text']}</p>
 		<div class=\"form-small\">		
-			<form action=\"/admin/billing/pay_action\" method=\"get\" class=\"center\">
+			<form action=\"/admin/billing/send_action\" method=\"get\" class=\"center\">
 				<input id=\"id\" type=\"hidden\" value=\"{$bill['id']}\" name=\"id\" />
 				<fieldset autofocus>	
 					<input type=\"submit\" value=\"{$lang['confirm']}\" />
@@ -232,7 +232,8 @@ $content .= "
 					<select name=\"vat\">
 						<option value=\"20\">20%</option>
 						<option value=\"10\">10%</option>
-						<option value=\"5.5\">5.5%</option>
+						<option value=\"8.5\">8,5%</option>
+						<option value=\"5.5\">5,5%</option>
 						<option value=\"0\">0%</option>
 					</select>
 					<span class=\"help-block\">{$lang['tipvat']}</span>

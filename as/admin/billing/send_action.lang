@@ -1,0 +1,11 @@
+[EN]
+
+[FR]
+
+subject = "Une nouvelle facture est disponible"
+mail = "Bonjour {NAME},<br /><br />
+Nous vous informons qu'une nouvelle facture de {AMOUNT} euros datée du {DATE} est disponible dans votre panel Another Service.<br /><br />
+Vous pouvez la visualiser et la payer directement en ligne à cette adresse : <a href='https://www.anotherservice.com/panel/billing/view?id={BILL}'>https://www.anotherservice.com/panel/billing/view?id={BILL}</a>.<br /><br />
+Nous vous remercions de votre confiance.<br /><br />
+Cordialement,<br />
+L'équipe Another Service"

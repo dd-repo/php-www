@@ -326,7 +326,7 @@ else
 	}
 	else
 	{
-		mail('contact@bus-it.com', '[Billing] New payment failed', json_encode($infos));	
+		mail('contact@anotherservice.com', '[Billing] New payment failed', json_encode($infos));	
 	}
 }
 
