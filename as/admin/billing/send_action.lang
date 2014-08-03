@@ -10,3 +10,5 @@ Nous vous remercions de votre confiance.<br /><br />
 Cordialement,<br />
 L'équipe Another Service"
 dateformat = "d/m/Y"
+
+success = "La facture a bien été envoyée."
