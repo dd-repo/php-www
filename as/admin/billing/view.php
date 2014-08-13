@@ -67,19 +67,20 @@ $content .= "
 			<div style=\"padding: 5px 10px 5px 10px; border: 1px solid #e7e7e7;\">
 				<div style=\"float: left;\">
 					<p>
-						<span style=\"font-weight: bold; font-size: 18px;\">{$userinfo['name']}</span><br />
-						".($userinfo['firstname']?"{$userinfo['firstname']} {$userinfo['lastname']}<br />":"")."
-						".($userinfo['address']?str_replace("\n", "<br />", $userinfo['address']):"")."
-						<a href=\"mailto:{$userinfo['user_mail']}\">{$userinfo['user_mail']}</a>
+						<span style=\"font-weight: bold; font-size: 18px;\">Another Service</span><br />
+						45 rue Joliot Curie<br />
+						13382 Marseille CEDEX 13<br />
+						FRANCE<br />
+						SIRET 521745935 00010 - TVA FR33 521745935
 					</p>
 				</div>
 				<div style=\"float: right;\">
 					<p>
-						<span style=\"font-weight: bold; font-size: 18px;\">Another Service</span><br />
-						45 rue Joliot Curie<br />
-						13382 Marseille Cedex 13 FRANCE<br />
-						<a href=\"mailto:contact@anotherservice.com\">contact@anotherservice.com</a><br />
-						SIRET 521 745 935 00010
+						<span style=\"font-weight: bold; font-size: 18px;\">{$userinfo['organisation']}</span><br />
+						".($userinfo['firstname']?"{$userinfo['firstname']} {$userinfo['lastname']}<br />":"")."
+						".($userinfo['postal_address']?str_replace("\n", "<br />", $userinfo['postal_address'])."<br />":"")."
+						".($userinfo['postal_code']?"{$userinfo['postal_code']}":"")."
+						".($userinfo['locality']?"{$userinfo['locality']}<br />":"")."
 					</p>
 				</div>
 				<div class=\"clear\"></div>

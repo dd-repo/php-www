@@ -18,8 +18,14 @@ if( isset($_POST['lastname']) && strlen($_POST['lastname']) > 0 )
 	$params['lastname'] = $_POST['lastname'];
 if( isset($_POST['pass']) && strlen($_POST['pass']) > 0 )
 	$params['pass'] = $_POST['pass'];
-if( isset($_POST['address']) && strlen($_POST['address']) > 0 )
-	$params['address'] = $_POST['address'];
+if( isset($_POST['postal_address']) && strlen($_POST['postal_address']) > 0 )
+	$params['postal_address'] = $_POST['postal_address'];
+if( isset($_POST['postal_code']) && strlen($_POST['postal_code']) > 0 )
+	$params['postal_code'] = $_POST['postal_code'];
+if( isset($_POST['organisation']) && strlen($_POST['organisation']) > 0 )
+	$params['organisation'] = $_POST['organisation'];
+if( isset($_POST['locality']) && strlen($_POST['locality']) > 0 )
+	$params['locality'] = $_POST['locality'];
 	
 $params['billing'] = $_POST['billing'];
 
