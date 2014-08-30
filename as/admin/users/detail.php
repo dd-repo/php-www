@@ -346,9 +346,25 @@ if( security::hasGrant('USER_SELECT') )
 						<span class=\"help-block\">{$lang['lastname_help']}</span>
 					</fieldset>
 					<fieldset>
-						<textarea style=\"width: 300px; height: 100px;\" name=\"address\">{$user['address']}</textarea>
-						<span class=\"help-block\">{$lang['address_help']}</span>
+						<input style=\"width: 300px;\" type=\"text\" name=\"organisation\" value=\"{$user['organisation']}\" />
+						<span class=\"help-block\">{$lang['organisation_help']}</span>
 					</fieldset>
+					<fieldset>
+						<textarea style=\"width: 300px; height: 100px;\" name=\"postal_address\">{$user['postal_address']}</textarea>
+						<span class=\"help-block\">{$lang['postal_address_help']}</span>
+					</fieldset>
+					<div style=\"float: left;\">
+					<fieldset>
+						<input style=\"width: 50px;\" type=\"text\" name=\"postal_code\" value=\"{$user['postal_code']}\" />
+						<span class=\"help-block\">{$lang['postal_code_help']}</span>
+					</fieldset>
+					</div>
+					<div style=\"float: left; padding-left: 30px;\">
+					<fieldset>
+						<input style=\"width: 200px;\" type=\"text\" name=\"locality\" value=\"{$user['locality']}\" />
+						<span class=\"help-block\">{$lang['locality_help']}</span>
+					</fieldset>
+					</div>
 					<fieldset>
 						<select name=\"billing\" style=\"width: 320px\">
 							<option value=\"1\" ".($user['billing']==1?"selected":"").">{$lang['billing']}</option>
