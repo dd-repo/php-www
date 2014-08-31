@@ -274,7 +274,7 @@ else
 	<br />
 	Nous vous informons que nous avons bien pris en considération la modification de votre offre sur la plateforme d'hébergement <a href='http://www.anotherservice.com'>Another Service</a>.<br /><br />
 	Vous disposez maintenant de <strong>{RAM}Mo de mémoire RAM</strong>, de <strong>{SERVICES} services</strong>, de <strong>{DISK} Mo d'espace disque</strong> ainsi que de l'ensemble des <a href='http://www.anotherservice.com/service/hosting'>services associés</a> à ce pack.<br /><br />
-	Vous pouvez retrouver la facture dans votre interface à l'adresse : <a href='https://www.bus-it.com/panel/credits/view?id={BILL}'>https://www.bus-it.com/panel/credits/view?id={BILL}</a><br /><br />
+	Vous pouvez retrouver la facture dans votre interface à l'adresse : <a href='https://www.anotherservice.com/panel/credits/view?id={BILL}'>https://www.anotherservice.com/panel/credits/view?id={BILL}</a><br /><br />
 	Nous vous remercions de votre confiance.<br /><br />
 	Cordialement,<br />
 	L'équipe Another Service";
