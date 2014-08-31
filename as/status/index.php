@@ -27,7 +27,7 @@ foreach( $response['monitors']['monitor'] as $m )
 require_once 'as/status/vendor/autoload.php';
 
 $client = new Redmine\Client('https://projets.anotherservice.com', 'admin', $GLOBALS['CONFIG']['REDMINE_TOKEN']);
-$issues = $client->api('issue')->all(array('project_id' => 'as-infra'));
+$issues = $client->api('issue')->all(array('project_id' => 'maintenances'));
 $issues = $issues['issues'];
 
 $content = "
@@ -81,7 +81,7 @@ if( count($issues) > 0 )
 				<tr>
 					<td style=\"text-align: center; width: 40px;\"><a href=\"https://projets.anotherservice.com/issues/{$i['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/issue.png\" /></a></td>
 					<td>".$lang['tracker_' . $i['tracker']['id']]."</td>
-					<td><a href=\"https://projets.olympe.in/issues/{$i['id']}\">{$i['subject']}</a></td>
+					<td><a href=\"https://support.anotherservice.com/issues/{$i['id']}\">{$i['subject']}</a></td>
 					<td>".$lang['priority_' . $i['priority']['id']]."</td>
 					<td>".date($lang['dateformatsimple'], strtotime($i['start_date']))."</td>
 					<td>".$lang['status2_' . $i['status']['id']]."</td>

@@ -65,10 +65,12 @@ $content = "
 								<option ".($userinfo['language']=='ES'?"selected":"")." value=\"ES\">Espa&ntilde;ol</option>
 							</select>
 							<span class=\"help-block\">{$lang['lang_help']}</span>
-						</fieldset>							
-						<fieldset>
-							<input type=\"submit\" value=\"{$lang['update']}\" />
-						</fieldset>		
+						</fieldset>
+					</div>
+					<div style=\"float: right;\">
+					    <fieldset>
+				    		<input type=\"submit\" value=\"{$lang['update']}\" />
+			    		</fieldset>		
 					</div>
 				</form>
 				<div class=\"clear\"></div>
@@ -124,6 +126,35 @@ $content = "
 						<input type=\"file\" name=\"avatar\" />
 						<span class=\"help-block\">{$lang['avatar_100']}</span>
 					</fieldset>
+					<fieldset>
+						<input type=\"submit\" value=\"{$lang['update']}\" />
+					</fieldset>		
+				</form>		
+			</div>
+			<div class=\"right border\" style=\"width: 370px; padding-left: 60px; margin-left: 40px; margin-top: 20px;\">
+				<h2 class=\"dark thin\">{$lang['billing']}</h1>
+				<br />
+				<form action=\"/panel/settings/update_action\" method=\"post\" enctype=\"multipart/form-data\">
+					<fieldset>
+						<input type=\"text\" name=\"organisation\" value=\"{$userinfo['organisation']}\" style=\"width: 250px;\"/>
+						<span class=\"help-block\">{$lang['organisation_help']}</span>
+					</fieldset>
+					<fieldset>
+						<textarea name=\"postal_address\" style=\"width: 250px; height: 50px;\">{$userinfo['postal_address']}</textarea>
+						<span class=\"help-block\">{$lang['postal_address_help']}</span>
+					</fieldset>
+					<div style=\"float: left;\">
+					<fieldset>
+						<input type=\"text\" name=\"postal_code\" value=\"{$userinfo['postal_code']}\" style=\"width: 50px;\"/>
+						<span class=\"help-block\">{$lang['postal_code_help']}</span>
+					</fieldset>
+                    </div>
+					<div style=\"float: left; padding-left: 30px; \">
+					<fieldset>
+						<input type=\"text\" name=\"locality\" value=\"{$userinfo['locality']}\" style=\"width: 150px;\"/>
+						<span class=\"help-block\">{$lang['locality_help']}</span>
+					</fieldset>
+                    </div>
 					<fieldset>
 						<input type=\"submit\" value=\"{$lang['update']}\" />
 					</fieldset>		

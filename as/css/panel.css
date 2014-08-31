@@ -498,6 +498,16 @@ div.panel a.action.reporting:hover {
 	background-image: url('../images/illu/pdf_hover.png');
 }
 
+div.panel a.action.edit {
+	background-image: url('../images/illu/edit.png');
+}
+
+div.panel a.action.edit:hover {
+	color: #2c8dd2;
+	background-image: url('../images/illu/edit_hover.png');
+}
+
+
 div.panel a.branch {
 	display: block;
 	float: left;

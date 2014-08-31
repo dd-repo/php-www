@@ -94,7 +94,10 @@ if( ($disk && $dquota['used'] > $disk && ($dquota['max'] <= $disk || $diskplan =
 	
 	template::redirect($_SERVER['HTTP_REFERER']);
 }
-	
+
+$pay = array('lang'=>translator::getLanguage(), 'first'=>1, 'ip'=>$_SERVER['REMOTE_ADDR'], 'email'=>$userinfo['email'], 'user'=>$userinfo['name'], 'plan'=>security::encode($_GET['plan']));
+$xpay = base64_encode(serialize($pay));
+
 $content = "
 	<div class=\"panel\">
 		<div class=\"top\">
@@ -119,15 +122,15 @@ $content = "
 						<input type=\"hidden\" name=\"return\" value=\"https://www.anotherservice.com/panel/plans/landing\" />
 						<input type=\"hidden\" name=\"cancel_return\" value=\"https://www.anotherservice.com/panel/plans/landing\" />
 						<input type=\"hidden\" name=\"notify_url\" value=\"https://www.anotherservice.com/ipn_paypal\" />
-						<input type=\"hidden\" name=\"custom\" value=\"{$userinfo['email']} {$userinfo['name']} ".security::encode($_GET['plan'])."\" />
+						<input type=\"hidden\" name=\"custom\" value=\"{$xpay}\" />
 						<img alt=\"\" border=\"0\" src=\"https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif\" width=\"1\" height=\"1\" />
 					</form>
 					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/paypal.png\" style=\"width: 150px;\" alt=\"\" />
 				</div>
-				<div class=\"pay\">
-					<h3 class=\"colored\" style=\"color: #6a6a6a\">{$lang['card']}</h3>
+				<div class=\"pay\" onclick=\"$('#sips').submit(); return false;\">
+					<h3 class=\"colored\">{$lang['card']}</h3>
 					<br />
-					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/card_disabled.png\" style=\"width: 150px;\" alt=\"\" />
+					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/card.png\" style=\"width: 150px;\" alt=\"\" />
 				</div>
 				<div class=\"pay\">
 					<h3 class=\"colored\" style=\"color: #6a6a6a\">{$lang['transfer']}</h3>
@@ -138,6 +141,11 @@ $content = "
 			</div>
 		</div>
 	</div>
+	<form action=\"/panel/plans/card\" method=\"post\" id=\"sips\" style=\"display: none;\">
+		<input type=\"hidden\" name=\"xpay\" value=\"{$xpay}\" />
+		<input type=\"hidden\" name=\"amount\" value=\"".str_replace('.', '', sprintf("%.2f", round($lang['offer_' . security::encode($_GET['plan']) . '_price'], 2)))."\" />
+		<input type=\"hidden\" name=\"desc\" value=\"".str_replace(' ', '&nbsp;', $lang['offer_' . security::encode($_GET['plan']) . '_title'])."\" />
+	</form>	
 ";
 
 /* ========================== OUTPUT PAGE ========================== */

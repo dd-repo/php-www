@@ -1,0 +1,31 @@
+[EN]
+
+[FR]
+title = "Facturation"
+
+DATEFORMAT = "j F Y"
+January = "janvier"
+February = "février"
+March = "mars"
+April = "avril"
+May = "mai"
+June = "juin"
+July = "juillet"
+August = "août"
+September = "septembre"
+October = "octobre"
+November = "novembre"
+December = "décembre"
+
+name = "Nom"
+ref = "Référence"
+date = "Date"
+amount = "Total (TTC)"
+status = "Statut"
+
+nobill = "Vous n'avez aucune facture."
+doc = "Documentation"
+status_0 = "Bon de commande"
+status_1 = "En attente"
+status_2 = "Facture payée"
+user = "Utilisateur"

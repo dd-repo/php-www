@@ -6,7 +6,6 @@ table {
 	*border-collapse: collapse;
 	/* IE7, collapse table to remove spacing */
 	font-size: 15px;
-	border: 1px solid #ddd;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
@@ -20,20 +19,25 @@ table td {
 }
 
 table th {
-	color: #2475ae;
+	color: #2b6fab;
 	padding-top: 9px;
 	vertical-align: middle;
 	border-bottom: 1px solid #ddd;
-	font-size: 16px;
+	font-size: 1em;
+	text-transform: uppercase;
+	font-family: 'Open Sans';
+	font-weight: bold;
+	color: #6f7b8a;
 }
 
 table td {
 	vertical-align: middle;
+	font-size: .9em;
+	color: #95989a;
 }
 
 table th + th,
 table td + td {
-	border-left: 1px solid #ddd;
 }
 
 table tr + tr td {
@@ -84,13 +88,9 @@ table.offer tr {
 
 }
 
-table.offer tr th {
-	text-align: center;
-}
-
 table.offer tr td {
 	text-align: center;
-
+	font-family: Cuprum;
 	letter-spacing: 0.1em;
 	font-size: 15px;
 	color: #909090;

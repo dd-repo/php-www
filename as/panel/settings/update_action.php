@@ -22,6 +22,14 @@ if( isset($_POST['pass']) && strlen($_POST['pass']) > 0 )
 	$params['pass'] = $_POST['pass'];
 if( isset($_POST['report']) && strlen($_POST['report']) > 0 )
 	$params['report'] = $_POST['report'];
+if( isset($_POST['postal_address']) && strlen($_POST['postal_address']) > 0 )
+	$params['postal_address'] = $_POST['postal_address'];
+if( isset($_POST['organisation']) && strlen($_POST['organisation']) > 0 )
+	$params['organisation'] = $_POST['organisation'];
+if( isset($_POST['postal_code']) && strlen($_POST['postal_code']) > 0 )
+	$params['postal_code'] = $_POST['postal_code'];
+if( isset($_POST['locality']) && strlen($_POST['locality']) > 0 )
+	$params['locality'] = $_POST['locality'];
 	
 try
 {
