@@ -6,12 +6,17 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
+$lang['TITLE'] = $lang['title'];
+
 $content = "
-		<div class=\"head-light\">
+		<div class=\"head\">
 			<div class=\"container\">
-				<h1 class=\"dark\">{$lang['title']}</h1>
+				<br /><br />
+				<h1 style=\"margin: 15px 0 5px 0;\">{$lang['title']}</h1>
+				<h2 style=\"margin: 20px 0 10px 0; color: #ffffff; letter-spacing: 1px;\">{$lang['subtitle']}</h2>
+				<br /><br />
 			</div>
-		</div>
+		</div>	
 		<div class=\"content\">
 			<div style=\"float: left;  width: 520px;\">
 				<h2 class=\"dark\">{$lang['datacenters']}</h2>

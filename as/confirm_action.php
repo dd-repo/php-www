@@ -19,7 +19,7 @@ try
 		throw new SiteException('Outdated registration', 400, 'The registration is outdated : ' . date('Y-n-j', $result[0]['date']));
 
 	// INSERT USER
-	$result = api::send('user/add', array('user'=>$_POST['username'], 'pass'=>$_POST['password'], 'email'=>$_POST['email'], 'ip'=>$_SERVER['HTTP_X_REAL_IP'], 'firstname'=>'', 'lastname'=>'', 'language'=>translator::getLanguage()), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+	$result = api::send('user/add', array('user'=>strtolower($_POST['username']), 'pass'=>$_POST['password'], 'email'=>$_POST['email'], 'ip'=>$_SERVER['HTTP_X_REAL_IP'], 'firstname'=>'', 'lastname'=>'', 'language'=>translator::getLanguage()), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 	$uid = $result['id'];
 
 	// REGISTRATION IS OK -> DELETE REGISTRATION

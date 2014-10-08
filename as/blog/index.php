@@ -6,6 +6,8 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
+$lang['TITLE'] = $lang['title'];
+
 $news = api::send('news/list', array(), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
 $content = "

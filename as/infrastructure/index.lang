@@ -2,7 +2,8 @@
 
 
 [FR]
-title = "Infrastructure"
+title = "Notre infrastructure"
+subtitle = "Basée en France, réseau en propre"
 datacenters = "Datacenters et réseau"
 datacenters_text = "Notre approche de l'infrastructure est avant tout d'assurer notre indépendance par rapport au matériel (serveurs, routeurs...) et aux opérateurs, en multipliant les points 
 d'interconnexions et les emplacements géographiques en France. Grâce à notre partenaire <a href='http://www.interxion.com'>Interxion</a>, nous disposons d'une fibre noire dédiée entre les datacenters parisiens dans lesquels

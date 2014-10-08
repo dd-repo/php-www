@@ -6,6 +6,8 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
+$lang['TITLE'] = $lang['title'];
+
 $content = "
 		<div class=\"head-light\">
 			<div class=\"container\">

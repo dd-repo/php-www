@@ -6,49 +6,124 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
+$lang['TITLE'] = $lang['title'];
+
 $content = "
-		<div class=\"head-light\">
+		<div class=\"head\">
 			<div class=\"container\">
-				<h1 class=\"dark\">{$lang['title']}</h1>
+				<br /><br />
+				<h1 style=\"margin: 15px 0 5px 0;\">{$lang['title']}</h1>
+				<h2 style=\"margin: 20px 0 10px 0; color: #ffffff; letter-spacing: 1px;\">{$lang['subtitle']}</h2>
+				<br /><br />
+			</div>
+		</div>	
+		<div class=\"content\">
+			<br />
+			<div style=\"text-align: center;\">
+				<a href=\"#\" onclick=\"$('#signup').dialog('open'); return false;\">
+					<div class=\"box offer\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/xs.png\" alt=\"\" style=\"width: 80px;\" />
+						<h3>{$lang['xs']}</h3>
+						<span style=\"font-size: .9em; color: #cccccc;\">
+							<span style=\"color: #a8a8a8; font-weight: bold;\">1</span> {$lang['gb']} {$lang['ram']}, <span style=\"color: #a8a8a8; font-weight: bold;\">4</span> {$lang['services']}<br />
+							<span style=\"color: #a8a8a8; font-weight: bold;\">1 {$lang['gb']}</span> {$lang['diskspace']}
+						</span>
+						<br />
+						<br />
+						<span class=\"colored large\">29 &euro; / {$lang['month']}</span>
+					</div>
+				<a href=\"#\" onclick=\"$('#signup').dialog('open'); return false;\">
+					<div class=\"box offer\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/s.png\" alt=\"\" style=\"width: 80px;\" />
+						<h3>{$lang['s']}</h3>
+						<span style=\"font-size: .9em; color: #cccccc;\">
+							<span style=\"color: #a8a8a8; font-weight: bold;\">4</span> {$lang['gb']} {$lang['ram']}, <span style=\"color: #a8a8a8; font-weight: bold;\">16</span> {$lang['services']}<br />
+							<span style=\"color: #a8a8a8; font-weight: bold;\">1 {$lang['gb']}</span> {$lang['diskspace']}
+						</span>
+						<br />
+						<br />
+						<span class=\"colored large\">99 &euro; / {$lang['month']}</span>
+					</div>
+				</a>
+				<a href=\"#\" onclick=\"$('#signup').dialog('open'); return false;\">
+					<div class=\"box offer\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/m.png\" alt=\"\" style=\"width: 80px;\" />
+						<h3>{$lang['m']}</h3>
+						<span style=\"font-size: .9em; color: #cccccc;\">
+							<span style=\"color: #a8a8a8; font-weight: bold;\">8</span> {$lang['gb']} {$lang['ram']}, <span style=\"color: #a8a8a8; font-weight: bold;\">32</span> {$lang['services']}<br />
+							<span style=\"color: #a8a8a8; font-weight: bold;\">10 {$lang['gb']}</span> {$lang['diskspace']}
+						</span>
+						<br />
+						<br />
+						<span class=\"colored large\">180 &euro; / {$lang['month']}</span>
+					</div>
+				</a>
+				<a href=\"#\" onclick=\"$('#signup').dialog('open'); return false;\">
+					<div class=\"box offer\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/l.png\" alt=\"\" style=\"width: 80px;\" />
+						<h3>{$lang['l']}</h3>
+						<span style=\"font-size: .9em; color: #cccccc;\">
+							<span style=\"color: #a8a8a8; font-weight: bold;\">16</span> {$lang['gb']} {$lang['ram']}, <span style=\"color: #a8a8a8; font-weight: bold;\">64</span> {$lang['services']}<br />
+							<span style=\"color: #a8a8a8; font-weight: bold;\">10 {$lang['gb']}</span> {$lang['diskspace']}
+						</span>
+						<br />
+						<br />
+						<span class=\"colored large\">320 &euro; / {$lang['month']}</span>
+					</div>
+				</a>
+			</div>
+			<br />
+		</div>
+		<div class=\"grey\">
+			<div class=\"content\">
+				<table style=\"width: 80%; margin: 0 auto; text-align: center;\">
+					<tr>
+						<td style=\"font-weight: bold;\">{$lang['script']}</td>
+						<td style=\"text-align: right\">{$lang['script_text']}</td>
+					</tr>
+					<tr>
+						<td style=\"font-weight: bold;\">{$lang['access']}</td>
+						<td style=\"text-align: right\">{$lang['access_text']}</td>
+					</tr>
+					<tr>
+						<td style=\"font-weight: bold;\">{$lang['databases']}</td>
+						<td style=\"text-align: right\">{$lang['databases_text']}</td>
+					</tr>
+					<tr>
+						<td style=\"font-weight: bold;\">{$lang['repositories']}</td>
+						<td style=\"text-align: right\">{$lang['repositories_text']}</td>
+					</tr>
+					<tr>
+						<td style=\"font-weight: bold;\">{$lang['stats']}</td>
+						<td style=\"text-align: right\">{$lang['stats_text']}</td>
+					</tr>
+					<tr>
+						<td style=\"font-weight: bold;\">{$lang['disk']}</td>
+						<td style=\"text-align: right\">{$lang['disk_text']}</td>
+					</tr>
+					<tr>
+						<td style=\"font-weight: bold;\">{$lang['domains']}</td>
+						<td style=\"text-align: right\">{$lang['domains_text']}</td>
+					</tr>
+					<tr>
+						<td style=\"font-weight: bold;\">{$lang['accounts']}</td>
+						<td style=\"text-align: right\">{$lang['accounts_text']}</td>
+					</tr>
+					<tr>
+						<td style=\"font-weight: bold;\">{$lang['traffic']}</td>
+						<td style=\"text-align: right\">{$lang['traffic_text']}</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 		<div class=\"content\">
-			<div style=\"float: left;  width: 500px;\">
-				<h2 class=\"dark\">{$lang['multi']}</h2>
-				<br />
-				<p>{$lang['multi_text']}</p>
-			</div>
-			<div style=\"float: right; width: 520px; text-align: right;\">
-				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/1.png\" style=\"float: right; display: block; padding: 10px; border: 1px solid #d1d1d1; border-radius: 3px;\" />
-			</div>
-			<div class=\"clear\"></div>
-			<br /><br />
-			<div style=\"float: left;  width: 520px;\">
-				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/2.png\" style=\"display: block; padding: 10px; border: 1px solid #d1d1d1; border-radius: 3px;\" />
-			</div>
-			<div style=\"float: right; width: 500px;\">
-				<h2 class=\"dark\">{$lang['control']}</h2>
-				<br />
-				<p>{$lang['control_text']}</p>				
-			</div>
-			<div class=\"clear\"></div>
-			<br /><br />
-			<div style=\"float: left;  width: 500px;\">
-				<h2 class=\"dark\">{$lang['domain']}</h2>
-				<br />
-				<p>{$lang['domain_text']}</p>
-			</div>
-			<div style=\"float: right; width: 520px; text-align: right;\">
-				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/3.png\" style=\"display: block; padding: 10px; border: 1px solid #d1d1d1; border-radius: 3px;\" />		
-			</div>
-			<div class=\"clear\"></div>
-			<br /><br />
 			<div style=\"text-align: center;\">
-				<a class=\"button classic\" href=\"/service/offer\" style=\"height: 22px; width: 200px; margin: 0 auto;\">
-					<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['offers']}</span>	
+				<a class=\"button classic\" href=\"#\" onclick=\"$('#signup').dialog('open'); return false;\" style=\"height: 22px; width: 200px; margin: 0 auto;\">
+					<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['signup_now']}</span>
 				</a>
+				<p>{$lang['help']}</p>
 			</div>
-			<br /><br />
+			<br />
 		</div>
 	</div>
 ";

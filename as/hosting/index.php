@@ -6,6 +6,8 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
+$lang['TITLE'] = $lang['title'];
+
 $content = "
 		<div class=\"head\">
 			<div class=\"container\">
@@ -16,57 +18,61 @@ $content = "
 			</div>
 		</div>	
 		<div class=\"content\">
-			<a href=\"#\" onclick=\"$('#signup').dialog('open'); return false;\">
-				<div class=\"box offer\">
-					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/small.png\" alt=\"\" style=\"width: 80px;\" />
-					<h3>{$lang['small']}</h3>
-					<span style=\"font-size: .9em; color: #cccccc;\">
-						<span style=\"color: #a8a8a8; font-weight: bold;\">1</span> {$lang['applications']}, <span style=\"color: #a8a8a8; font-weight: bold;\">1</span> {$lang['services']}<br />
-						<span style=\"color: #a8a8a8; font-weight: bold;\">500 {$lang['mb']}</span> {$lang['diskspace']}
-					</span>
-					<br />
-					<br />
-					<span class=\"colored large\">2 &euro; / {$lang['month']}</span>
-				</div>
-			<a href=\"#\" onclick=\"$('#signup').dialog('open'); return false;\">
-				<div class=\"box offer\">
-					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/basic.png\" alt=\"\" style=\"width: 80px;\" />
-					<h3>{$lang['basic']}</h3>
-					<span style=\"font-size: .9em; color: #cccccc;\">
-						<span style=\"color: #a8a8a8; font-weight: bold;\">3</span> {$lang['applications']}, <span style=\"color: #a8a8a8; font-weight: bold;\">2</span> {$lang['services']}<br />
-						<span style=\"color: #a8a8a8; font-weight: bold;\">1 {$lang['gb']}</span> {$lang['diskspace']}
-					</span>
-					<br />
-					<br />
-					<span class=\"colored large\">5 &euro; / {$lang['month']}</span>
-				</div>
-			</a>
-			<a href=\"#\" onclick=\"$('#signup').dialog('open'); return false;\">
-				<div class=\"box offer\">
-					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/medium.png\" alt=\"\" style=\"width: 80px;\" />
-					<h3>{$lang['medium']}</h3>
-					<span style=\"font-size: .9em; color: #cccccc;\">
-						<span style=\"color: #a8a8a8; font-weight: bold;\">6</span> {$lang['applications']}, <span style=\"color: #a8a8a8; font-weight: bold;\">4</span> {$lang['services']}<br />
-						<span style=\"color: #a8a8a8; font-weight: bold;\">2 {$lang['gb']}</span> {$lang['diskspace']}
-					</span>
-					<br />
-					<br />
-					<span class=\"colored large\">10 &euro; / {$lang['month']}</span>
-				</div>
-			</a>
-			<a href=\"#\" onclick=\"$('#signup').dialog('open'); return false;\">
-				<div class=\"box offer\">
-					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/large.png\" alt=\"\" style=\"width: 80px;\" />
-					<h3>{$lang['large']}</h3>
-					<span style=\"font-size: .9em; color: #cccccc;\">
-						<span style=\"color: #a8a8a8; font-weight: bold;\">12</span> {$lang['applications']}, <span style=\"color: #a8a8a8; font-weight: bold;\">6</span> {$lang['services']}<br />
-						<span style=\"color: #a8a8a8; font-weight: bold;\">4 {$lang['gb']}</span> {$lang['diskspace']}
-					</span>
-					<br />
-					<br />
-					<span class=\"colored large\">20 &euro; / {$lang['month']}</span>
-				</div>
-			</a>
+			<br />
+			<div style=\"text-align: center;\">
+				<a href=\"#\" onclick=\"$('#signup').dialog('open'); return false;\">
+					<div class=\"box offer\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/small.png\" alt=\"\" style=\"width: 80px;\" />
+						<h3>{$lang['small']}</h3>
+						<span style=\"font-size: .9em; color: #cccccc;\">
+							<span style=\"color: #a8a8a8; font-weight: bold;\">1</span> {$lang['applications']}, <span style=\"color: #a8a8a8; font-weight: bold;\">1</span> {$lang['services']}<br />
+							<span style=\"color: #a8a8a8; font-weight: bold;\">500 {$lang['mb']}</span> {$lang['diskspace']}
+						</span>
+						<br />
+						<br />
+						<span class=\"colored large\">2 &euro; / {$lang['month']}</span>
+					</div>
+				<a href=\"#\" onclick=\"$('#signup').dialog('open'); return false;\">
+					<div class=\"box offer\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/basic.png\" alt=\"\" style=\"width: 80px;\" />
+						<h3>{$lang['basic']}</h3>
+						<span style=\"font-size: .9em; color: #cccccc;\">
+							<span style=\"color: #a8a8a8; font-weight: bold;\">3</span> {$lang['applications']}, <span style=\"color: #a8a8a8; font-weight: bold;\">2</span> {$lang['services']}<br />
+							<span style=\"color: #a8a8a8; font-weight: bold;\">1 {$lang['gb']}</span> {$lang['diskspace']}
+						</span>
+						<br />
+						<br />
+						<span class=\"colored large\">5 &euro; / {$lang['month']}</span>
+					</div>
+				</a>
+				<a href=\"#\" onclick=\"$('#signup').dialog('open'); return false;\">
+					<div class=\"box offer\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/medium.png\" alt=\"\" style=\"width: 80px;\" />
+						<h3>{$lang['medium']}</h3>
+						<span style=\"font-size: .9em; color: #cccccc;\">
+							<span style=\"color: #a8a8a8; font-weight: bold;\">6</span> {$lang['applications']}, <span style=\"color: #a8a8a8; font-weight: bold;\">4</span> {$lang['services']}<br />
+							<span style=\"color: #a8a8a8; font-weight: bold;\">2 {$lang['gb']}</span> {$lang['diskspace']}
+						</span>
+						<br />
+						<br />
+						<span class=\"colored large\">10 &euro; / {$lang['month']}</span>
+					</div>
+				</a>
+				<a href=\"#\" onclick=\"$('#signup').dialog('open'); return false;\">
+					<div class=\"box offer\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/large.png\" alt=\"\" style=\"width: 80px;\" />
+						<h3>{$lang['large']}</h3>
+						<span style=\"font-size: .9em; color: #cccccc;\">
+							<span style=\"color: #a8a8a8; font-weight: bold;\">12</span> {$lang['applications']}, <span style=\"color: #a8a8a8; font-weight: bold;\">6</span> {$lang['services']}<br />
+							<span style=\"color: #a8a8a8; font-weight: bold;\">4 {$lang['gb']}</span> {$lang['diskspace']}
+						</span>
+						<br />
+						<br />
+						<span class=\"colored large\">20 &euro; / {$lang['month']}</span>
+					</div>
+				</a>
+			</div>
+			<br />
 		</div>
 		<div class=\"grey\">
 			<div class=\"content\">
