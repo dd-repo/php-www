@@ -74,7 +74,7 @@ div.panel div.apps div.app {
 }
 
 div.panel div.apps div.app:hover {
-	border: 1px solid #2475ae;
+	border: 1px solid #53bfed;
 	border-radius: 3px;
 }
 
@@ -188,7 +188,7 @@ div.panel div.service.first {
 
 div.panel div.service:hover {
 	background-color: #f6f6f6;
-	border: 1px solid #2475ae;
+	border: 1px solid #53bfed;
 }
 
 div.panel div.service span.name {
@@ -350,7 +350,7 @@ div.panel a.action.apps {
 }
 
 div.panel a.action.apps:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/apps_hover.png');
 }
 
@@ -359,7 +359,7 @@ div.panel a.action.pass {
 }
 
 div.panel a.action.pass:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/pass_hover.png');
 }
 
@@ -368,7 +368,7 @@ div.panel a.action.bill {
 }
 
 div.panel a.action.bill:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/bill_hover.png');
 }
 
@@ -377,7 +377,7 @@ div.panel a.action.log {
 }
 
 div.panel a.action.log:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/log_hover.png');
 }
 
@@ -386,7 +386,7 @@ div.panel a.action.push {
 }
 
 div.panel a.action.push:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/push_hover.png');
 }
 
@@ -395,7 +395,7 @@ div.panel a.action.certificate {
 }
 
 div.panel a.action.certificate:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/certificate_hover.png');
 }
 
@@ -404,7 +404,7 @@ div.panel a.action.disable {
 }
 
 div.panel a.action.disable:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/kill_hover.png');
 }
 
@@ -413,7 +413,7 @@ div.panel a.action.settings {
 }
 
 div.panel a.action.settings:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/settings_hover.png');
 }
 
@@ -422,7 +422,7 @@ div.panel a.action.delete {
 }
 
 div.panel a.action.delete:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/delete_hover.png');
 }
 
@@ -431,7 +431,7 @@ div.panel a.action.buy {
 }
 
 div.panel a.action.buy:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/buy_hover.png');
 }
 
@@ -440,7 +440,7 @@ div.panel a.action.alert {
 }
 
 div.panel a.action.alert:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/alert_hover.png');
 }
 
@@ -449,7 +449,7 @@ div.panel a.action.graph {
 }
 
 div.panel a.action.graph:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/graph_hover.png');
 }
 
@@ -458,7 +458,7 @@ div.panel a.action.print {
 }
 
 div.panel a.action.print:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/print_hover.png');
 }
 
@@ -467,7 +467,7 @@ div.panel a.action.pay {
 }
 
 div.panel a.action.pay:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/pay_hover.png');
 }
 
@@ -476,7 +476,7 @@ div.panel a.action.adddatabase {
 }
 
 div.panel a.action.adddatabase:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/adddatabase_hover.png');
 }
 
@@ -485,7 +485,7 @@ div.panel a.action.reporting {
 }
 
 div.panel a.action.reporting:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/pdf_hover.png');
 }
 
@@ -494,7 +494,7 @@ div.panel a.action.reporting {
 }
 
 div.panel a.action.reporting:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/pdf_hover.png');
 }
 
@@ -503,7 +503,7 @@ div.panel a.action.edit {
 }
 
 div.panel a.action.edit:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/edit_hover.png');
 }
 
@@ -683,7 +683,7 @@ div.panel div.multimenu div.subelement.active:hover {
 }
 
 #config a.action.interface:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/interface_hover.png');
 }
 
@@ -700,7 +700,7 @@ div.panel div.multimenu div.subelement.active:hover {
 }
 
 #config a.action.parameters:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/settings_hover.png');
 }
 
@@ -717,12 +717,12 @@ div.panel div.multimenu div.subelement.active:hover {
 }
 
 #config a.action.edit:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/edit_hover.png');
 }
 
 #config a.action.edit:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/edit_hover.png');
 }
 
@@ -731,7 +731,7 @@ div.panel div.multimenu div.subelement.active:hover {
 }
 
 #config a.action.cron:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/cron_hover.png');
 }
 
@@ -747,7 +747,7 @@ div.panel div.multimenu div.subelement.active:hover {
 	background-image: url('../images/illu/sec.png');
 }
 #config  a.action.security:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/sec_hover.png');
 }
 
@@ -785,7 +785,7 @@ div.panel div.multimenu div.subelement.active:hover {
 }
 
 #pay a.action.card:hover {
-	color: #2c8dd2;
+	color: #56c8f9;
 	background-image: url('../images/illu/card_hover.png');
 }
 

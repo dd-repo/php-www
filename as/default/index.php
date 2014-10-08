@@ -8,128 +8,55 @@ if( !defined('PROPER_START') )
 
 $content = "
 			<div class=\"head\">
-				<br />
+				<br /><br />
 				<h1 style=\"margin: 15px 0 5px 0;\">{$lang['intro']}</h1>
-				<h2 style=\"margin: 20px 0 10px 0; color: #abdcff; letter-spacing: 1px;\">{$lang['intro_text']}</h2>
-				<br />
+				<h2 style=\"margin: 20px 0 10px 0; color: #ffffff; letter-spacing: 1px;\">{$lang['intro_text']}</h2>
+				<br /><br />
 ";
-
-if( $security->hasAccess('/panel') )
-{
-	$content .= "
-				<a class=\"button main\" href=\"/panel\">{$lang['panel']}</a>
-				<span class=\"light\">{$lang['logged']} <span style=\"color: #ffffff;\">".security::get('USER')."</span>.</span>
-	";
-}
-else
-{
-	$content .= "
-				<a class=\"button main\" href=\"#\" onclick=\"showSignup(); return false;\">{$lang['signup']}</a>
-				<span class=\"light\"><a href=\"#\" onclick=\"showLogin(); return false;\">{$lang['login_now']}</a></span>
-	";
-}
 
 if( !isset($_SESSION['ANTISPAM']) )
 	$_SESSION['ANTISPAM'] = md5(time().'anotherservice');
 
 $content .= "
-				<br />
 			</div>
-			<div id=\"loginform\" style=\"display: none; padding-top: 10px;\">
-				<div class=\"form-small\">
-					<form action=\"/login_action\" method=\"post\" class=\"center\">
-						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
-						<fieldset>
-							<input class=\"auto\" type=\"text\" value=\"{$lang['username']}\" name=\"username\" onfocus=\"this.value = this.value=='{$lang['username']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['username']}' : this.value; this.value=='{$lang['username']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
-						</fieldset>
-						<fieldset>
-							<input class=\"auto\" type=\"password\" value=\"{$lang['password']}\" name=\"password\" onfocus=\"this.value = this.value=='{$lang['password']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['password']}' : this.value; this.value=='{$lang['password']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\"/>
-						</fieldset>
-						<input autofocus type=\"submit\" style=\"margin-bottom: 0; margin-top: 5px;\"  value=\"{$lang['login']}\" />											
-					</form>
-				</div>
-			</div>
-			<div id=\"signupform\" style=\"display: none; padding-top: 10px;\">
-				<div class=\"form-small\">
-					<form action=\"/signup_action\" method=\"post\" id=\"valid\" class=\"center\">
-						<input type=\"hidden\" name=\"antispam\" value=\"{$_SESSION['ANTISPAM']}\" />
-						<fieldset>
-							<input class=\"auto\" type=\"text\" value=\"".($_SESSION['JOIN_EMAIL']?"{$_SESSION['JOIN_EMAIL']}":"{$lang['email']}")."\" name=\"email\" onfocus=\"this.value = this.value=='{$lang['email']}' ? '' : this.value; this.style.color='#4c4c4c';\" onfocusout=\"this.value = this.value == '' ? this.value = '{$lang['email']}' : this.value; this.value=='{$lang['email']}' ? this.style.color='#cccccc' : this.style.color='#4c4c4c'\" />
-						</fieldset>
-						<fieldset>
-							<input type=\"checkbox\" name=\"conditions\" value=\"1\" />
-							{$GLOBALS['lang']['conditions']}
-						</fieldset>
-						<input autofocus type=\"submit\" style=\"margin-bottom: 0; margin-top: 5px;\" value=\"{$lang['signup']}\" ".($_SESSION['JOIN_STATUS']===0?'disabled':'')." />
-					</form>
-				</div>
-			</div>
-			<div class=\"lines\">
-				<div class=\"lines-content\">
-					<div class=\"hservice\">
-						<a href=\"/service/hosting\" class=\"hservice\"><h3 class=\"red\" style=\"padding-top: 100px;\">{$lang['service']}</h3></a>
-						<p>{$lang['service_text']}</p>
-					</div>
-					<div class=\"hconsulting\">
-						<a href=\"/service/consulting\" class=\"hconsulting\"><h3 class=\"green\"  style=\"padding-top: 100px;\">{$lang['advice']}</h3></a>
-						<p>{$lang['advice_text']}</p>
-					</div>
-					<div class=\"hopen\">
-						<a href=\"/developers\" class=\"hopen\"><h3 class=\"orange\"  style=\"padding-top: 100px;\">{$lang['open']}</h3></a>
-						<p>{$lang['open_text']}</p>
-					</div>
-				</div>
-			</div>
-			<div class=\"separator\"></div>
-			<div class=\"customers\" style=\"margin-bottom: 0; padding-bottom: 0;\">
-				<blockquote style=\"margin-bottom: 0; padding-bottom: 0;\">
-					<p>{$lang['demo']}</p>
-				</blockquote>
-				<br />
-				<div style=\"text-align: center;\">
-					<a class=\"button classic\" href=\"#\" onclick=\"$('#logindemo').dialog('open'); return false;\" style=\"height: 22px; width: 200px; margin: 0 auto;\">
-						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['login']}</span>
-					</a>
-					<p>{$lang['demo2']}</p>
-				</div>
-			</div>		
-			<div class=\"separator\"></div>
 			<div class=\"content\">
-				<div class=\"left\">
-					<h3>{$lang['services']}</h3>
-					<p>{$lang['services_text']}</p>
+				<div style=\"text-align: center;\">
+					<a href=\"/hosting\">
+						<div class=\"box\">
+							<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/hosting.png\" alt=\"\" style=\"width: 150px;\" /><br /><br />
+							<span style=\"color: #53bfed; text-transform: uppercase; font-size: 1.9em; display: block; margin: 0 auto; padding-bottom: 5px;\">{$lang['mutu']}</span><br />
+							<span style=\"color: #949494;\">{$lang['mutu_text']}</span>
+							<br /><br />
+							<span style=\"font-size: .8em; color: #a3a3a3;\">{$lang['mutu_price']}</span>		
+						</div>
+					</a>
+					<a href=\"/paas\">
+						<div class=\"box\">
+							<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/illu/paas.png\" alt=\"\"  style=\"width: 150px;\" /><br /><br />
+							<span style=\"color: #53bfed; text-transform: uppercase; font-size: 1.9em; display: block; margin: 0 auto; padding-bottom: 5px;\">{$lang['paas']}</span><br />
+							<span style=\"color: #949494;\">{$lang['paas_text']}</span>
+							<br /><br />
+							<span style=\"font-size: .8em; color: #a3a3a3;\">{$lang['paas_price']}</span>
+						</div>
+					</a>
+					<br /><br />
+					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/services/services.png\" alt=\"\" /><br />
 				</div>
-				<div class=\"right\" style=\"text-align: center;\">
-					<div class=\"terminal\">
-						<div class=\"indicators\">
-							<span class=\"circle\"></span>
-							<span class=\"circle\"></span>
-							<span class=\"circle\"></span>
-						</div>
-						<div class=\"terminal-text\">
-							<a href='/service/hosting'><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen1.png\" alt=\"map\" style=\"display: block; padding: 5px 0 0 5px;\" /></a>
-						</div>
+			</div>			
+			<div class=\"grey\">
+				<div class=\"content\">
+					<div style=\"text-align: center;\">
+						<span style=\"display: block; font-size: 70px; margin: 0 auto;\">51 568</span>
+						<span style=\"display: block; font-size: 25px; color: #53bfed; margin-top: 5px; text-transform: uppercase;\">{$lang['users']}</span>
+						<span style=\"display: block; font-size: 18px; margin-top: 20px;\">
+							<span style=\"color: #53bfed\">85 689</span> {$lang['apps']}, 
+							<span style=\"color: #53bfed\">24 567</span> {$lang['databases']}
+							<span style=\"color: #53bfed\">12 383</span> {$lang['domains']}
+						</span>
 					</div>
 				</div>
-				<div class=\"clear\" style=\"margin-bottom: 60px;\"></div>
-				<div class=\"left\" style=\"text-align: center;\">
-					<div class=\"terminal\">
-						<div class=\"indicators\">
-							<span class=\"circle\"></span>
-							<span class=\"circle\"></span>
-							<span class=\"circle\"></span>
-						</div>
-						<div class=\"terminal-text\">
-							<a href='/service/offer'><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen2.png\" alt=\"map\" style=\"display: block; padding: 10px 0 0 10px;\" /></a>
-						</div>
-					</div>
-				</div>
-				<div class=\"right\">
-					<h3>{$lang['apps']}</h3>
-					<p>{$lang['apps_text']}</p>
-				</div>
-				<div class=\"clear\"><br /><br /></div>
-				<div class=\"separator light\"></div>			
+			</div>
+			<div class=\"content\">
 				<div style=\"text-align: center;\">
 					<div style=\"display: inline-block; margin-right: 50px; opacity: 0.6;\">
 						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/references/bnpparibas.png\" alt=\"\" />
@@ -144,24 +71,53 @@ $content .= "
 						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/references/lafourchette.png\" alt=\"\" />
 					</div>
 				</div>
-				<div class=\"clearfix\"></div>
-				<div class=\"customers\" style=\"margin-top: 30px;\">
-					<blockquote>
-						<p>{$lang['quote']}</p>
-						<p style=\"font-size: 18px; display: block; margin-top: 10px;\"><i>&mdash; {$lang['quote_author']}</i></p>
-					</blockquote>
+			</div>
+			<div class=\"grey\">
+				<div class=\"content\">
+					<div class=\"left\">
+						<h3>{$lang['mutu_title']}</h3>
+						<p>{$lang['mutu_explain']}</p>
+					</div>
+					<div class=\"right\" style=\"text-align: center;\">
+						<div class=\"terminal\">
+							<div class=\"indicators\">
+								<span class=\"circle\"></span>
+								<span class=\"circle\"></span>
+								<span class=\"circle\"></span>
+							</div>
+							<div class=\"terminal-text\">
+								<a href='/service/hosting'><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen1.png\" alt=\"map\" style=\"display: block; padding: 5px 0 0 5px;\" /></a>
+							</div>
+						</div>
+					</div>
+					<div class=\"clear\"></div><br /><br />		
+					<div class=\"left\" style=\"text-align: center;\">
+						<div class=\"terminal\">
+							<div class=\"indicators\">
+								<span class=\"circle\"></span>
+								<span class=\"circle\"></span>
+								<span class=\"circle\"></span>
+							</div>
+							<div class=\"terminal-text\">
+								<a href='/service/offer'><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen2.png\" alt=\"map\" style=\"display: block; padding: 10px 0 0 10px;\" /></a>
+							</div>
+						</div>
+					</div>
+					<div class=\"right\">
+						<h3>{$lang['paas_title']}</h3>
+						<p>{$lang['paas_explain']}</p>
+					</div>
+					<div class=\"clear\"></div><br /><br />
 				</div>
-				<div class=\"clear\"></div><br />
-				<div class=\"separator light\"></div>
+			</div>
+			<div class=\"content\">
 				<div style=\"text-align: center;\">
 					<a class=\"button classic\" href=\"#\" onclick=\"$('#signup').dialog('open'); return false;\" style=\"height: 22px; width: 200px; margin: 0 auto;\">
 						<span style=\"display: block; font-size: 18px; padding-top: 3px;\">{$lang['signup_now']}</span>
 					</a>
 					<p>{$lang['help']}</p>
+					<br />
 				</div>
-				<br />
-				<br />
-				<br />
 			</div>
 			<script>			
 				function showLogin()

@@ -1,0 +1,32 @@
+[EN]
+
+
+[FR]
+title = "Infrastructure"
+datacenters = "Datacenters et réseau"
+datacenters_text = "Notre approche de l'infrastructure est avant tout d'assurer notre indépendance par rapport au matériel (serveurs, routeurs...) et aux opérateurs, en multipliant les points 
+d'interconnexions et les emplacements géographiques en France. Grâce à notre partenaire <a href='http://www.interxion.com'>Interxion</a>, nous disposons d'une fibre noire dédiée entre les datacenters parisiens dans lesquels
+nous sommes présents. <br /><br />De plus, Another Service dispose d'un port gigabit sur le point de peering <a href='https://www.franceix.net'>FranceIX</a>. Cela nous permet d'accroître nos capacités de transits vers 
+les principaux opérateurs français et nos autres fournisseurs comme <a href='https://www.ovh.com'>OVH</a> et <a href='https://www.online.net'>Online</a>. Notre réseau est donc entièrement redondé, les services
+tournent en parallèle dans plusieurs centres de données différents afin d'assurer une répartition des charges et une résiliance optimale."
+
+virt = "Stockage et virtualisation"
+virt_text = "L'infrastructure d'Another Service repose sur un cluster de serveurs physiques <a href='http://www.proxmox.com'>Proxmox</a> qui assure la gestion et la redondance des machines virtuelles. Nous avons développé nos 
+<a href='/developers'>outils</a> d'ajustement automatique des ressources et de haute disponibilité.<br /><br />
+Le stockage de la production est assuré par un pool <a href='http://www.ceph.com'>Ceph</a> de 22 teraoctets, avec des blocs <a href='http://ceph.com/docs/next/rbd/rbd/'>Rados</a> pour les machines virtuelles 
+et une partition CephFS pour les données persistantes. Les sauvegardes sont effectuées sur un espace répliqué/distribué <a href='http://www.gluster.org'>GlusterFS</a>.<br /><br />
+Nous avons ensuite des colonnes duplicables comprenant des firewalls <a href='http://www.pfsense.org'>Pfsense</a> (virtuel) et <a href='http://www.cisco.com'>Cisco</a> (physiques) frontaux, des machines virtuelles de load balancing
+(proxy) et des briques de traitement découpées en <a href='http://www.docker.io'>containers LXC dockers</a>."
+
+soft = "Applicatifs"
+status = "Statut de l'infrastructure"
+data = "Notre matériel"
+paris = "Datacentres parisiens"
+paris_text = "Nous avons deux points de présence à Paris, le premier à <i>Interxion Paris 2</i> et le second à <i>Interxion Paris 7</i>. Nous éclairons une boucle fibre noire dédiée à notre infrastructure entre ces deux datacenters."
+paris_text2 = "Ces deux datacenters possèdent trois points d'interconnexion dont France-IX et plus de 70 opérateurs Télécom/ISPs. Avec une densité électrique de 2300W/m² et de nombreuses innovations, nous envisageons serinement la croissance
+de nos infrastructures parisiennes."
+marseille = "Datacentres marseillais"
+marseille_text = "A Marseille, nous sommes présents chez Jaguar Network dans deux centres de données, le <i>SFR Netcenter</i> et <i>MRS-01</i>. Nous opérons le routage de notre réseau publique et gérons pleinement la redondance
+entre ces deux sites."
+marseille_text2 = "Centre de données tiers IV, notre implantation historique en Provence et dans la région nous a permis de développer une partie de notre infrastructure système et réseau en collaboration avec des acteurs locaux et des opérateurs
+indépendants."

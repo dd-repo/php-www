@@ -10,11 +10,13 @@ $quotas =  api::send('self/quota/user/list');
 
 foreach( $quotas as $q )
 {
+	if( $q['name'] == 'APPS' )
+		$aquota = $q;
 	if( $q['name'] == 'MEMORY' )
-		$quota = $q;
+		$mquota = $q;
 }
 
-if( $quota['max'] == 0 )
+if( $mquota['max'] == 0 && $aquota['max'] == 0 )
 	template::redirect('/panel/plans');
 	
 $repos = api::send('self/repo/list');

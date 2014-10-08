@@ -46,31 +46,30 @@ switch( $_GET['plan'] )
 		$services = 256;
 		$disk = 50000;
 	break;
-	case '8':
-		$disk = 10000;
+	case '101':
+		$disk = 500;
+		$services = 1;
+		$apps = 1;
 		$success = true;
-		$diskplan = true;
 	break;
-	case '9':
-		$disk = 50000;
-		$success = true;	
-		$diskplan = true;
-	break;
-	case '10':
-		$disk = 100000;
+	case '102':
+		$disk = 1000;
+		$services = 2;
+		$apps = 3;
 		$success = true;
-		$diskplan = true;
 	break;
-	case '11':
-		$disk = 500000;
-		$success = true;	
-		$diskplan = true;
-	break;
-	case '12':
-		$disk = 1000000;
+	case '103':
+		$disk = 2000;
+		$services = 4;
+		$apps = 6;
 		$success = true;
-		$diskplan = true;
-	break;	
+	break;
+	case '104':
+		$disk = 4000;
+		$services = 6;
+		$apps = 12;
+		$success = true;
+	break;
 	default:
 		$success = false;
 }
@@ -85,6 +84,8 @@ foreach( $quotas as $q )
 		$mquota = $q;
 	if( $q['name'] == 'SERVICES' )
 		$squota = $q;
+	if( $q['name'] == 'APPS' )
+		$aquota = $q;
 }
 				
 if( ($disk && $dquota['used'] > $disk && ($dquota['max'] <= $disk || $diskplan === true) ) || ($ram && $mquota['used'] > $ram) || ($ram && $squota['used'] > $services)  )

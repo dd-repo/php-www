@@ -1,0 +1,19 @@
+[EN]
+
+
+[FR]
+title = "Hébergement applicatif"
+multi = "Multi-langages et multi-services"
+multi_text = "Notre plateforme gère les applications dans des <a href='/service/infrastructure'>conteneurs</a> isolés, avec leurs propres environnements et configurations. Actuellement, les langages PHP (5.2 et 5.4), 
+Ruby, Python, Java, NodeJS et .Net sont disponibles.<br /><br />Afin d'enrichir les applications, Another Service fournit également des services de bases de données et de cache comme MySQL, PostgreSQL, 
+MongoDB, Memcached, RabbitMQ, Redis...<br /><br />Nous faisons régulièrement évoluer notre <a href='/service/offer'>offre</a> en fonction des besoins de nos clients."
+control = "Contrôle des processus et des branches"
+control_text = "Chaque application possède des branches (développement, production, recette...) et chaque branche a ses propres processus isolés. Vous pouvez gérer et visualiser directement dans le panel les processus
+de chaque branche, ajuster leur nombre et la mémoire qui leur est allouée. <br /><br />Par exemple, il est possible de lancer deux processus de 64Mo de mémoire pour l'environnement de recette et quatre processus de 128Mo pour 
+l'environnement de production."
+domain = "Domaines, agendas, contacts et stockage"
+domain_text = "Quelle que soit l'offre choisie nous ne limitons pas le nombre de noms de domaine, de comptes mails ou d'agendas créés. Nous proposons une gestion complète des domaines 
+(DNS, mails, alias, redirections...) ainsi qu'une série d'applications \"cloud\" (stockage, agendas et contacts partagés, galeries, lecteur...).<br /><br />Another Service supporte également la création 
+illimitée de dépôts de développement indépendant des applications (Git, Subversion et Mercurial) et accessibles en SSH."
+
+offers = "Voir les offres"

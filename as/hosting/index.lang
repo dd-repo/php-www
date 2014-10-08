@@ -1,0 +1,38 @@
+﻿[EN]
+
+
+[FR]
+
+title = "Offres d'hébergement mutualisé"
+subtitle = "Simples et accessibles."
+
+small = "Small"
+basic = "Basic"
+medium = "Medium"
+large = "Large"
+
+script = "Scripts"
+script_text = "<a href='http://phpinfo.anotherservice.com'>PHP et ses modules</a> version 5.5.3"
+databases = "Services"
+databases_text = "MySQL, PostgreSQL, MongoDB, Redis, Memcache, RabbitMQ"
+disk = "Espace disque"
+disk_text = "Stockage persistant répliqué"
+domains = "Noms de domaine"
+domains_text = "Gestion des DNS, sous-domaines, alias de domaine"
+accounts = "Comptes mails"
+accounts_text = "Accès POP/IMAP, redirections, alias, webmail"
+traffic = "Trafic"
+traffic_text = "Bande passante illimitée"
+access = "Accès"
+access_text = "SSH, GIT, FTP, SFTP, SCP"
+stats = "Stats"
+stats_text = "Statistiques client <a href='https://www.piwik.org'>Piwik</a> et statistiques serveur <a href='http://www.awstats.org/'>Awstats</a>"
+signup_now = "S'inscrire maintenant"
+help = "Une question? N'hésitez pas à nous <a href='/about/contact'>contacter</a>."
+
+mb = "Mo"
+gb = "Go"
+applications = "application(s)"
+diskspace = "d'espace disque"
+services = "service(s)"
+month = "mois"

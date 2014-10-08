@@ -27,6 +27,9 @@ $params['runtime'] = $_POST['runtime'];
 $params['pass'] = $_POST['pass'];
 $params['mail'] = $userinfo['email'];
 
+if( $_POST['nodocker'] == 1 )
+	$params['nodocker'] = 1;
+
 $app = api::send('self/app/add', $params);
 api::send('self/subdomain/add', array('domain'=>'anotherservice.net', 'subdomain'=>strtolower($app['name'])));
 api::send('self/app/update', array('app'=>$app['id'], 'url' => strtolower($app['name']) . '.anotherservice.net', 'branch' => 'master', 'mode'=>'add'));

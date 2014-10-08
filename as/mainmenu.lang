@@ -1,7 +1,8 @@
 [EN]
 
 [FR]
-nhosting = "Hébergement"
+nhosting = "Mutualisé"
+npaas = "Plateforme"
 nconsulting = "Conseils"
 nhelp = "Documentation"
 nabout = "A propos"

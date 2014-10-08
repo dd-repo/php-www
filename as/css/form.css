@@ -5,7 +5,7 @@ form {
 
 fieldset {
 	margin: 0;
-	padding: 0px 0px 20px 0px;
+	padding: 10px 0px 10px 0px;
 	border: 0;
 }
 
@@ -16,7 +16,8 @@ form.center fieldset {
 label {
 	display: block;
 	float: left;
-	width: 200px;
+	max-width: 200px;
+	width: 85%;
 	margin: 0 0 5px 0;
 	padding: 0;
 	font-size: 14px;
@@ -29,15 +30,33 @@ form.center label {
 }
 
 input, select, textarea {
-	margin: 0 0 5px 0;
+	margin: 0 0 10px 0;
 	display: block;
-	width: 210px;
+	max-width: 250px;
+	width: 90%;
 	padding: 5px 5px 5px 10px;
 	border-radius: 3px;
 	border: solid 1px #ffffff;
 	background-color: rgb(240, 240, 240);
-	font-size: 16px;
+	font-size: 0.95em;
 	transition: all 0.2s;
+	color: #525252;
+}
+
+select {
+	max-width: 267px;
+}
+
+input.large, select.large, textarea.large {
+	max-width: 300px;
+}
+
+textarea.large {
+	height: 200px;
+}
+
+select.large {
+	max-width: 322px;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -60,6 +79,11 @@ input[type=image] {
 input[type=button]:focus, input[type=image]:focus, input[type=submit]:focus {
 	outline: 0;
 }
+
+::-webkit-input-placeholder { color:#cccccc; }
+::-moz-placeholder { color:#cccccc; }
+:-ms-input-placeholder { color:#cccccc; }
+input:-moz-placeholder { color:#cccccc; }
 
 input.auto {
 	color: #cccccc;
@@ -108,7 +132,7 @@ input[type=submit], input[type=button] {
 	display: block;
 	margin: 0;
 	padding: 10px;
-	background-color: #2475ae;
+	background-color: #53bfed;
 	border-radius: 3px;
 	color: #ffffff;
 	font-weight: 500;
@@ -118,7 +142,7 @@ input[type=submit], input[type=button] {
 }
 
 input[type=submit]:hover, input[type=button]:hover {
-	background-color: #2c8dd2;
+	background-color: #56c8f9;
 }
 
 input[type=file] {

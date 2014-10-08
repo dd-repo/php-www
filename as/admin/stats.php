@@ -145,7 +145,7 @@ $content .= "
 					argumentField: \"hour\"
 				},
 				series: [
-					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'bar', 'color': '#2475ae' }
+					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'bar', 'color': '#53bfed' }
 				],
 				argumentAxis:{
 					grid:{
@@ -183,7 +183,7 @@ $content .= "
 					argumentField: \"day\"
 				},
 				series: [
-					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'line', 'color': '#2475ae' }
+					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'line', 'color': '#53bfed' }
 				],
 				argumentAxis:{
 					grid:{

@@ -68,36 +68,42 @@ else
 					switch( $custom['plan'] )
 					{
 						case '1':
+							$apps = 200;
 							$ram = 1024;
 							$services = 4;
 							$disk = 1000;
 							$success = true;
 						break;
 						case '2':
+							$apps = 200;
 							$ram = 4096;
 							$services = 16;
 							$disk = 1000;
 							$success = true;
 						break;
 						case '3':
+							$apps = 200;
 							$ram = 8192;
 							$services = 32;
 							$disk = 10000;
 							$success = true;
 						break;
 						case '4':
+							$apps = 200;
 							$ram = 16384;
 							$services = 64;
 							$disk = 10000;
 							$success = true;
 						break;
 						case '5':
+							$apps = 200;
 							$ram = 32768;
 							$services = 128;
 							$disk = 50000;
 							$success = true;
 						break;
 						case '6':
+							$apps = 200;
 							$ram = 65536;
 							$services = 256;
 							$disk = 50000;
@@ -127,6 +133,30 @@ else
 							$success = true;
 							$diskplan = true;
 						break;	
+						case '101':
+							$disk = 500;
+							$services = 1;
+							$apps = 1;
+							$success = true;
+						break;
+						case '102':
+							$disk = 1000;
+							$services = 2;
+							$apps = 3;
+							$success = true;
+						break;
+						case '103':
+							$disk = 2000;
+							$services = 4;
+							$apps = 6;
+							$success = true;
+						break;
+						case '104':
+							$disk = 4000;
+							$services = 6;
+							$apps = 12;
+							$success = true;
+						break;
 						default:
 							$success = false;
 					}
@@ -134,10 +164,11 @@ else
 					if( $success === true )
 					{
 						$ramPrice = computeRam($ram);
-						$diskPrice = computeDisk($ram, $disk);
+						$appsPrice = computeApps($apps);
 
 						if( $ramPrice['price'] > 0 )
 						{
+							$diskPrice = computeDisk($ram, $disk);
 							$bill = api::send('bill/insert', array('user'=>$custom['user']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 							api::send('bill/insertline', array('bill'=>$bill['id'], 'name'=>$ramPrice['name'], 'description'=>$ramPrice['desc'], 'amount'=>$ramPrice['price'], 'vat'=>20), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 	
@@ -145,6 +176,17 @@ else
 								api::send('bill/insertline', array('user'=>$custom['user'], 'bill'=>$bill['id'], 'name'=>$diskPrice['name'], 'description'=>$diskPrice['desc'], 'amount'=>$diskPrice['price'], 'vat'=>20), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 	
 							api::send('bill/update', array('bill'=>$bill['id'], 'status'=>2), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+						}
+						else if( $appsPrice['price'] > 0 )
+						{
+							$diskPrice = computeHostingDisk($ram, $disk);
+							$bill = api::send('bill/insert', array('user'=>$custom['user']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+							api::send('bill/insertline', array('bill'=>$bill['id'], 'name'=>$appsPrice['name'], 'description'=>$appsPrice['desc'], 'amount'=>$appsPrice['price'], 'vat'=>20), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+	
+							if( $diskPrice['price'] > 0 )
+								api::send('bill/insertline', array('user'=>$custom['user'], 'bill'=>$bill['id'], 'name'=>$diskPrice['name'], 'description'=>$diskPrice['desc'], 'amount'=>$diskPrice['price'], 'vat'=>20), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+	
+							api::send('bill/update', array('bill'=>$bill['id'], 'status'=>2), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);							
 						}
 						
 						if( $diskplan === true )
@@ -155,8 +197,18 @@ else
 						
 						if( $diskplan !== true )
 						{
-							$params = array('user' => $custom['user'], 'quota' => 'MEMORY', 'max' => $ram);
-							api::send('quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+							if( $ram > 0 )
+							{
+								$params = array('user' => $custom['user'], 'quota' => 'MEMORY', 'max' => $ram);
+								api::send('quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+							}
+							
+							if( $apps > 0 )
+							{
+								$params = array('user' => $custom['user'], 'quota' => 'APPS', 'max' => $apps);
+								api::send('quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+							}
+							
 							$params = array('user' => $custom['user'], 'quota' => 'SERVICES', 'max' => $services);
 							api::send('quota/user/update', $params, $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 						}
@@ -185,6 +237,8 @@ else
 						$quotas = api::send('quota/user/list', array('user' => $custom['user']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 						foreach( $quotas as $q )
 						{
+							if( $q['name'] == 'APPS' )
+								$aquota = $q;
 							if( $q['name'] == 'DISK' )
 								$dquota = $q;
 							if( $q['name'] == 'MEMORY' )
@@ -199,9 +253,9 @@ else
 								$subject = "Modification de votre offre";
 								$mailcontent = "Bonjour {NAME},<br />
 		<br />
-		Nous vous informons que nous avons bien pris en considération la modification de votre offre sur la plateforme d'hébergement <a href='http://www.anotherservice.com'>Another Service</a>.<br /><br />
-		Vous disposez maintenant de <strong>{RAM}Mo de mémoire RAM</strong>, de <strong>{SERVICES} services</strong>, de <strong>{DISK} Mo d'espace disque</strong> ainsi que de l'ensemble des <a href='http://www.anotherservice.com/service/hosting'>services associés</a> à ce pack.<br /><br />
-		Vous pouvez retrouver la facture dans votre interface à l'adresse : <a href='https://www.anotherservice.com/panel/billing/view?id={BILL}'>https://www.anotherservice.com/panel/billing/view?id={BILL}</a><br /><br />
+		Nous vous informons que nous avons bien pris en considération la modification de votre offre sur la plateforme d'hébergement <a style='color: #56c8f9; text-decoration: none;' href='http://www.anotherservice.com'>Another Service</a>.<br /><br />
+		Vous disposez maintenant de <strong>{APPS} applications</strong>, <strong>{RAM}Mo de mémoire RAM</strong>, de <strong>{SERVICES} services</strong>, de <strong>{DISK} Mo d'espace disque</strong> ainsi que de l'ensemble des <a hstyle='color: #56c8f9; text-decoration: none;' ref='http://www.anotherservice.com/service/hosting'>services associés</a> à ce pack.<br /><br />
+		Vous pouvez retrouver la facture dans votre interface à l'adresse : <a style='color: #56c8f9; text-decoration: none;' href='https://www.anotherservice.com/panel/billing/view?id={BILL}'>https://www.anotherservice.com/panel/billing/view?id={BILL}</a><br /><br />
 		Nous vous remercions de votre confiance.<br /><br />
 		Cordialement,<br />
 		L'équipe Another Service";
@@ -210,16 +264,16 @@ else
 								$subject = "Modification de votre offre";
 								$mailcontent = "Bonjour {NAME},<br />
 		<br />
-		Nous vous informons que nous avons bien pris en considération la modification de votre offre sur la plateforme d'hébergement <a href='http://www.anotherservice.com'>Another Service</a>.<br /><br />
-		Vous disposez maintenant de <strong>{RAM}Mo de mémoire RAM</strong>, de <strong>{SERVICES} services</strong>, de <strong>{DISK} Mo d'espace disque</strong> ainsi que de l'ensemble des <a href='http://www.anotherservice.com/service/hosting'>services associés</a> à ce pack.<br /><br />
-		Vous pouvez retrouver la facture dans votre interface à l'adresse : <a href='https://www.anotherservice.com/panel/credits/view?id={BILL}'>https://www.anotherservice.com/panel/credits/view?id={BILL}</a><br /><br />
+		Nous vous informons que nous avons bien pris en considération la modification de votre offre sur la plateforme d'hébergement <a style='color: #56c8f9; text-decoration: none;' href='http://www.anotherservice.com'>Another Service</a>.<br /><br />
+		Vous disposez maintenant de <strong>{APPS} applications</strong>, <strong>{RAM}Mo de mémoire RAM</strong>, de <strong>{SERVICES} services</strong>, de <strong>{DISK} Mo d'espace disque</strong> ainsi que de l'ensemble des <a style='color: #56c8f9; text-decoration: none;' href='http://www.anotherservice.com/service/hosting'>services associés</a> à ce pack.<br /><br />
+		Vous pouvez retrouver la facture dans votre interface à l'adresse : <a style='color: #56c8f9; text-decoration: none;' href='https://www.anotherservice.com/panel/credits/view?id={BILL}'>https://www.anotherservice.com/panel/credits/view?id={BILL}</a><br /><br />
 		Nous vous remercions de votre confiance.<br /><br />
 		Cordialement,<br />
 		L'équipe Another Service";
 						}
 						
 						// SEND MAIL
-						$mail = str_replace(array('{RAM}', '{SERVICES}', '{DISK}', '{NAME}', '{BILL}'), array($mquota['max'], $squota['max'], $dquota['max'], $custom['user'], $bill['id']), $mailcontent);
+						$mail = str_replace(array('{APPS}', '{RAM}', '{SERVICES}', '{DISK}', '{NAME}', '{BILL}'), array($aquota['max'], $mquota['max'], $squota['max'], $dquota['max'], $custom['user'], $bill['id']), $mailcontent);
 						$result = mail($custom['email'], $subject, str_replace(array('{TITLE}', '{CONTENT}'), array($subject, $mail), $GLOBALS['CONFIG']['MAIL_TEMPLATE']), "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\nFrom: Another Service <no-reply@anotherservice.com>\r\nBcc: contact@anotherservice.com\r\n");
 						mail('contact@anotherservice.com', '[Billing] New payment succeded', $message);
 					}
@@ -238,7 +292,7 @@ else
 						$mailcontent = "Bonjour {NAME},<br />
 		<br />
 		Nous vous informons que le paiement de votre facture s'est déroulé avec succès.<br /><br />
-		Vous pouvez retrouver la facture dans votre interface à l'adresse : <a href='https://www.anotherservice.com/panel/billing/view?id={BILL}'>https://www.anotherservice.com/panel/billing/view?id={BILL}</a><br /><br />
+		Vous pouvez retrouver la facture dans votre interface à l'adresse : <a style='color: #56c8f9; text-decoration: none;' href='https://www.anotherservice.com/panel/billing/view?id={BILL}'>https://www.anotherservice.com/panel/billing/view?id={BILL}</a><br /><br />
 		Nous vous remercions de votre confiance.<br /><br />
 		Cordialement,<br />
 		L'équipe Another Service";
@@ -248,7 +302,7 @@ else
 						$mailcontent = "Bonjour {NAME},<br />
 		<br />
 		Nous vous informons que le paiement de votre facture s'est déroulé avec succès.<br /><br />
-		Vous pouvez retrouver la facture dans votre interface à l'adresse : <a href='https://www.anotherservice.com/panel/billing/view?id={BILL}'>https://www.anotherservice.com/panel/billing/view?id={BILL}</a><br /><br />
+		Vous pouvez retrouver la facture dans votre interface à l'adresse : <a style='color: #56c8f9; text-decoration: none;' href='https://www.anotherservice.com/panel/billing/view?id={BILL}'>https://www.anotherservice.com/panel/billing/view?id={BILL}</a><br /><br />
 		Nous vous remercions de votre confiance.<br /><br />
 		Cordialement,<br />
 		L'équipe Another Service";
@@ -293,6 +347,29 @@ function computeRam($ram)
 		case '65536':
 			return array('name'=>'Pack 64Go', 'desc'=>'64Go de mémoire, 256 services', 'price'=>999);
 		break;
+		default:
+			return false;
+	}
+}
+
+function computeApps($apps)
+{
+	switch( $apps )
+	{
+		case '1':
+			return array('name'=>'Pack 1 application', 'desc'=>'500Mo de disque, 1 service', 'price'=>2);
+		break;
+		case '3':
+			return array('name'=>'Pack 3 applications', 'desc'=>'1Go de disque, 2 services', 'price'=>5);		
+		break;
+		case '6':
+			return array('name'=>'Pack 6 applications', 'desc'=>'2Go de disque, 2 services', 'price'=>10);
+		break;
+		case '12':
+			return array('name'=>'Pack 12 applications', 'desc'=>'4Go de disque, 4 services', 'price'=>20);
+		break;
+		default:
+			return false;
 	}
 }
 
@@ -313,6 +390,28 @@ function computeDisk($ram, $disk)
 				return array('price'=>0);
 			else
 				return array('name'=>'Disque 50Go', 'desc'=>'Espace disque supplémentaire 50Go', 'price'=>20);
+		break;
+		case '100000':
+			return array('name'=>'Disque 100Go', 'desc'=>'Espace disque supplémentaire 100Go', 'price'=>30);
+		break;
+		case '500000':
+			return array('name'=>'Disque 500Go', 'desc'=>'Espace disque supplémentaire 500Go', 'price'=>100);
+		break;
+		case '1000000':
+			return array('name'=>'Disque 1To', 'desc'=>'Espace disque supplémentaire 1To', 'price'=>150);
+		break;
+	}
+}
+
+function computeHostingDisk($disk)
+{
+	switch( $disk )
+	{
+		case '10000':
+			return array('name'=>'Disque 10Go', 'desc'=>'Espace disque supplémentaire 10Go', 'price'=>5);
+		break;
+		case '50000':
+			return array('name'=>'Disque 50Go', 'desc'=>'Espace disque supplémentaire 50Go', 'price'=>20);
 		break;
 		case '100000':
 			return array('name'=>'Disque 100Go', 'desc'=>'Espace disque supplémentaire 100Go', 'price'=>30);

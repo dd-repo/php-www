@@ -6,7 +6,7 @@ subject = "Confirmation de votre compte sur Another Service"
 content = "Bonjour,<br /><br />
 
 Merci de votre inscription sur Another Service ! Vous devez cliquer sur le lien suivant pour activer votre compte :<br /><br />
-<a href='https://{DOMAIN}/confirm?email={EMAIL}&code={CODE}'>https://{DOMAIN}/confirm?email={EMAIL}&code={CODE}</a><br /><br />
+<a style='color: #56c8f9; text-decoration: none;' href='https://{DOMAIN}/confirm?email={EMAIL}&code={CODE}'>https://{DOMAIN}/confirm?email={EMAIL}&code={CODE}</a><br /><br />
 
 Bonne publication, et n'hésitez pas à nous contacter pour nous transmettre votre retour d'expérience.<br /><br />
 Cordialement,<br />

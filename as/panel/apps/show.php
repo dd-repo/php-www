@@ -6,6 +6,18 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
+
+$quotas =  api::send('self/quota/user/list');
+
+foreach( $quotas as $q )
+{
+	if( $q['name'] == 'APPS' )
+		$aquota = $q;
+	if( $q['name'] == 'MEMORY' )
+		$mquota = $q;
+}
+
+
 $app = api::send('self/app/list', array('id'=>$_GET['id']));
 $app = $app[0];
 
@@ -109,9 +121,16 @@ $content = "
 				<a class=\"action push\" href=\"#\" onclick=\"$('#push').dialog('open'); return false;\">
 					{$lang['push']}
 				</a>
+";
+if( $mquota['max'] > 0 )
+{
+	$content .= "
 				<a class=\"action log\" href=\"/panel/apps/log?id={$app['id']}\">
 					{$lang['logs']}
 				</a>
+	";
+}
+$content .= "
 				<a class=\"action delete\" href=\"#\" onclick=\"$('#delete').dialog('open'); return false;\">
 					{$lang['delete']}
 				</a>
@@ -120,13 +139,19 @@ $content = "
 		</div>
 		<div class=\"container\">
 			<div style=\"float: left; width: 600px;\">
-";
-
+			";
+			
 foreach( $app['branches'] as $key => $value )
 	$content .= "<a href=\"/panel/apps/show?id={$app['id']}&branch={$key}\" class=\"branch ".($key==$_SESSION['DATA'][$app['id']]['branch']?"active":"")."\">{$key}</a>";
+		
+if( $mquota['max'] > 0 )
+{
+	$content .= "
+					<a href=\"#\" class=\"branch\" onclick=\"$('#newbranch').dialog('open'); return false;\">+</a>"
+	;
+}
 
 $content .= "
-					<a href=\"#\" class=\"branch\" onclick=\"$('#newbranch').dialog('open'); return false;\">+</a>
 			</div>
 			<div style=\"float: right; width: 500px;\">			
 			";
@@ -232,17 +257,30 @@ $content .= "
 					<tr>
 						<td>{$lang['memory']}</td>
 						<td><span class=\"large\" id=\"memorycount\">{$memory}</span> {$lang['mb']}</td>
-						<td style=\"width: 70px; text-align: center;\">
+						<td style=\"width: 70px; text-align: center;\">";
+if( $mquota['max'] > 0 )
+{
+	$content .= "
 							<a href=\"#\" onclick=\"decreaseMemory(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/less.png\" alt=\"\" /></a>
 							<a href=\"#\" onclick=\"increaseMemory(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/add.png\" alt=\"\" /></a>
+	";
+}
+$content .= "
 						</td>
 					</tr>
 					<tr>
 						<td>{$lang['number']}</td>
 						<td><span class=\"large\" id=\"instancescount\">{$instances}</span> {$lang['instances']}</td>
 						<td style=\"width: 70px; text-align: center;\">
+";
+if( $mquota['max'] > 0 )
+{
+	$content .= "
 							<a href=\"#\" onclick=\"decreaseInstances(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/less.png\" alt=\"\" /></a>
 							<a href=\"#\" onclick=\"increaseInstances(); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/add.png\" alt=\"\" /></a>
+	";
+}
+$content .= "
 						</td>
 					</tr>
 					<tr>
@@ -290,6 +328,10 @@ $content .= "
 			</div>
 			<div class=\"clear\"></div><br />
 			<br />
+";
+if( $mquota['max'] > 0 )
+{
+	$content .= "
 			<div style=\"float: left; width: 500px; padding-top: 8px;\">
 				<h2 class=\"dark\">{$lang['branchinstances']}</h2>
 			</div>
@@ -313,6 +355,9 @@ $content .= "
 			<br />
 			<h2 class=\"dark\">{$lang['graphinstances']}</h2>
 			<div id=\"graphs\" style=\"text-align: center; padding: 10px;\"></div>
+	";
+}
+$content .= "
 		</div>
 	</div>
 	<br />
@@ -358,6 +403,10 @@ $content .= "
 					<input style=\"width: 400px;\" type=\"text\" name=\"tag\" value=\"{$app['tag']}\" />
 					<span class=\"help-block\">{$lang['tag_help']}</span>
 				</fieldset>
+		";
+		if( $mquota['max'] > 0 )
+		{
+			$content .= "
 				<fieldset>
 					<select style=\"width: 420px;\" name=\"cache\" style=\"text-align: center;\">
 						<option ".($app['cache']!=1?"selected":"")." value=\"0\" style=\"text-align: center;\">{$lang['inactive']}</option>
@@ -387,6 +436,9 @@ $content .= "
 						</div>
 					</div>
 				</fieldset>
+			";
+		}
+		$content .= "
 				<fieldset>	
 					<input autofocus type=\"submit\" value=\"{$lang['update']}\" />
 				</fieldset>

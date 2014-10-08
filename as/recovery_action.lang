@@ -7,9 +7,9 @@ nouser = "Cet utilisateur n'existe pas."
 
 subject = "Récupération du compte"
 content = "Bonjour,<br /><br />
-	Vous avez effectué une demande de récupération de votre compte sur la plateforme <a href='https://www.anotherservice.com'>Another Service</a>. Afin de modifier votre mot de passe, 
+	Vous avez effectué une demande de récupération de votre compte sur la plateforme <a style='color: #56c8f9; text-decoration: none;' href='https://www.anotherservice.com'>Another Service</a>. Afin de modifier votre mot de passe, 
 	merci de cliquer sur le lien suivant. Attention, ce lien n'est valide que pendant <strong>6 heures</strong> !<br /><br />
-	Changement de mot de passe : <a href='https://www.anotherservice.com/change_password?user={USER}&token={TOKEN}'>https://www.anotherservice.com/change_password?user={USER}&token={TOKEN}</a>
+	Changement de mot de passe : <a style='color: #56c8f9; text-decoration: none;' href='https://www.anotherservice.com/change_password?user={USER}&token={TOKEN}'>https://www.anotherservice.com/change_password?user={USER}&token={TOKEN}</a>
 	<br /><br />
 	Cordialement,<br />
 	L'équipe Another Service"
