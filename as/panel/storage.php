@@ -13,6 +13,8 @@ foreach( $quotas as $q )
 		$dquota = $q;
 	if( $q['name'] == 'MEMORY' )
 		$mquota = $q;
+	if( $q['name'] == 'APPS' )
+		$aquota = $q;
 }
 
 $content = "
@@ -32,6 +34,23 @@ $content = "
 					<th>{$lang['price']}</th>
 					<th>{$lang['actions']}</th>
 				</tr>
+";
+if( $aquota['max'] == 1 )
+{
+	$content .= "
+				<tr>
+					<td>
+						<h3>{$lang['offer_0_title']}</h3>
+						<p style=\"margin-bottom: 0;\">{$lang['offer_0_desc']}</p>
+					</td>
+					<td><span class=\"large\"><span class=\"colored\">0&euro;</span> / {$lang['month']}</span></td>
+					<td><span class=\"large colored\">{$lang['included']}</span></td>
+				</tr>
+	";
+}
+else
+{
+	$content .= "
 				<tr>
 					<td>
 						<h3>{$lang['offer_1_title']}</h3>
@@ -40,6 +59,10 @@ $content = "
 					<td><span class=\"large\"><span class=\"colored\">0&euro;</span> / {$lang['month']}</span></td>
 					<td><span class=\"large colored\">{$lang['included']}</span></td>
 				</tr>
+	";
+}
+
+$content .= "
 				<tr>
 					<td>
 						<h3>{$lang['offer_2_title']}</h3>
