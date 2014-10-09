@@ -86,7 +86,7 @@ $content .= "
 								<span class=\"circle\"></span>
 							</div>
 							<div class=\"terminal-text\">
-								<a href='/hosting'><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen1.png\" alt=\"map\" style=\"display: block; padding: 5px 0 0 5px; width: 430px;\" /></a>
+								<a href='/hosting'><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen1.png\" alt=\"map\" style=\"display: block; padding: 5px 0 0 5px; width: 430px; margin: 0 auto;\" /></a>
 							</div>
 						</div>
 					</div>
