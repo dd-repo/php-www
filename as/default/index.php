@@ -86,7 +86,7 @@ $content .= "
 								<span class=\"circle\"></span>
 							</div>
 							<div class=\"terminal-text\">
-								<a href='/service/hosting'><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen1.png\" alt=\"map\" style=\"display: block; padding: 5px 0 0 5px;\" /></a>
+								<a href='/hosting'><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen1.png\" alt=\"map\" style=\"display: block; padding: 5px 0 0 5px; width: 430px;\" /></a>
 							</div>
 						</div>
 					</div>
@@ -99,7 +99,7 @@ $content .= "
 								<span class=\"circle\"></span>
 							</div>
 							<div class=\"terminal-text\">
-								<a href='/service/offer'><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen2.png\" alt=\"map\" style=\"display: block; padding: 10px 0 0 10px;\" /></a>
+								<a href='/paas'><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/screen2.png\" alt=\"map\" style=\"display: block; padding: 10px 0 0 10px;\" /></a>
 							</div>
 						</div>
 					</div>
