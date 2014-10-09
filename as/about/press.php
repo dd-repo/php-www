@@ -6,20 +6,21 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$lang['TITLE'] = $lang['intro'];
+$lang['TITLE'] = $lang['title'];
 
 $content = "
 		<div class=\"head-light\">
-			<br /><br />
+			<div class=\"container\">
+				<h1 class=\"dark\">{$lang['title']}</h1>
+			</div>
 		</div>	
 		<div class=\"content\">
 			<div class=\"left big\">
-				<h1 class=\"dark\">{$lang['intro']}</h1>
-				<br />
+				<h2 class=\"dark\" style=\"margin-bottom: 10px;\">{$lang['intro']}</h2>
 				<p>{$lang['intro_text']}</p>
 			</div>
 			<div class=\"right small rounded\">
-				<h2 class=\"dark\">{$lang['plaquettes']}</h2>
+				<h2 class=\"dark\" style=\"margin-bottom: 15px;\">{$lang['plaquettes']}</h2>
 				<ul class=\"simple\">
 					<li><a class=\"normal\" href=\"/{$GLOBALS['CONFIG']['SITE']}/documents/AnotherService-Logos.zip\"><i class=\"fa fa-file-zip-o fa-fw\"></i> {$lang['logos']}</a></li>
 					<li><a class=\"normal\" href=\"/{$GLOBALS['CONFIG']['SITE']}/documents/AnotherService-Leaflet_institutionnel.pdf\"><i class=\"fa fa-file-pdf-o fa-fw\"></i> {$lang['instit']}</a></li>
@@ -30,8 +31,8 @@ $content = "
 			<div class=\"separator\"></div>
 			<div style=\"text-align: center;\">
 				<div class=\"review\">
-					<a href=\"http://webdesobjets.fr/busit-la-plateforme-pour-connecter-notre-vie-numerique-le-frenchy-ifttt-killer\">
-						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/reviews/wo.png\" alt=\"\" />
+					<a href=\"https://{$GLOBALS['CONFIG']['HOSTNAME']}/blog/post?id=2\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/reviews/anotherservice.png\" alt=\"\" />
 					</a>
 					<h2 class=\"dark\" style=\"font-size: 1.1em;\">
 						{$lang['news3']}<br />
@@ -41,7 +42,7 @@ $content = "
 				</div>
 				<div class=\"review\">
 					<a href=\"https://{$GLOBALS['CONFIG']['HOSTNAME']}/blog/post?id=3\">
-						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/reviews/busit.png\" alt=\"\" />
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/reviews/anotherservice.png\" alt=\"\" />
 					</a>
 					<h2 class=\"dark\" style=\"font-size: 1.1em;\">
 						{$lang['news2']}<br />
@@ -51,7 +52,7 @@ $content = "
 				</div>
 				<div class=\"review\">
 					<a href=\"https://{$GLOBALS['CONFIG']['HOSTNAME']}/blog/post?id=1\">
-						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/reviews/busit.png\" alt=\"\" />
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/reviews/anotherservice.png\" alt=\"\" />
 					</a>
 					<h2 class=\"dark\" style=\"font-size: 1.1em;\">{$lang['news1']}<br />
 						<span class=\"date\">{$lang['news1_date']}</span>
