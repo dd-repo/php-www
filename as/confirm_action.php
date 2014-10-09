@@ -40,24 +40,42 @@ try
 	api::send('quota/user/update', array('user'=>$uid, 'quota'=>'MEMORY', 'max'=>0), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 	api::send('quota/user/update', array('user'=>$uid, 'quota'=>'DISK', 'max'=>0), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
-	$tracker = "<!-- Google Code for Nouveau compte Conversion Page -->
+	$tracker = "<!-- Google Code for Registration Conversion Page -->
 	<script type=\"text/javascript\">
 	/* <![CDATA[ */
-	var google_conversion_id = 998104197;
+	var google_conversion_id = 912926472;
 	var google_conversion_language = \"en\";
 	var google_conversion_format = \"3\";
 	var google_conversion_color = \"ffffff\";
-	var google_conversion_label = \"q-ZJCJP36AMQhbn32wM\";
-	var google_conversion_value = 1;
+	var google_conversion_label = \"A15eCJ3o3VYQiM6oswM\";
+	var google_remarketing_only = false;
 	/* ]]> */
 	</script>
-	<script type=\"text/javascript\" src=\"https://www.googleadservices.com/pagead/conversion.js\">
+	<script type=\"text/javascript\" src=\"//www.googleadservices.com/pagead/conversion.js\">
 	</script>
 	<noscript>
 	<div style=\"display:inline;\">
-	<img height=\"1\" width=\"1\" style=\"border-style:none;\" alt=\"\" src=\"https://www.googleadservices.com/pagead/conversion/998104197/?value=30&amp;label=q-ZJCJP36AMQhbn32wM&amp;guid=ON&amp;script=0\"/>
+	<img height=\"1\" width=\"1\" style=\"border-style:none;\" alt=\"\" src=\"//www.googleadservices.com/pagead/conversion/912926472/?label=A15eCJ3o3VYQiM6oswM&amp;guid=ON&amp;script=0\"/>
 	</div>
-	</noscript>";
+	</noscript>
+	
+	<!-- Facebook Conversion Code for Another Service Registrations -->
+	<script>(function() {
+	var _fbq = window._fbq || (window._fbq = []);
+	if (!_fbq.loaded) {
+	var fbds = document.createElement('script');
+	fbds.async = true;
+	fbds.src = '//connect.facebook.net/en_US/fbds.js';
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(fbds, s);
+	_fbq.loaded = true;
+	}
+	})();
+	window._fbq = window._fbq || [];
+	window._fbq.push(['track', '6019653056807', {'value':'0.01','currency':'EUR'}]);
+	</script>
+	<noscript><img height=\"1\" width=\"1\" alt=\"\" style=\"display:none\" src=\"https://www.facebook.com/tr?ev=6019653056807&amp;cd[value]=0.01&amp;cd[currency]=EUR&amp;noscript=1\" /></noscript>
+";
 
 	$_SESSION['MESSAGE']['TYPE'] = 'success';
 	$_SESSION['MESSAGE']['TEXT']= $lang['success'] . ' ' . $tracker;
