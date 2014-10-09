@@ -6,54 +6,61 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$lang['TITLE'] = $lang['title'];
+$lang['TITLE'] = $lang['intro'];
 
 $content = "
 		<div class=\"head-light\">
-			<div class=\"container\">
-				<h1 class=\"dark\">{$lang['title']}</h1>
-			</div>
+			<br /><br />
 		</div>	
 		<div class=\"content\">
-			<div style=\"float: left;  width: 770px;\">
-				<h2 class=\"dark\">{$lang['events']}</h2>
-				<a href=\"http://www.solutionslinux.fr\"><img style=\"display: block; float: left; width: 200px; margin-right: 20px; padding: 5px; border: 1px solid #d6d6d6; border-radius: 3px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/events/1.png\" /></a>
-				<span style=\"font-size: 18px;\">{$lang['event1_title']}</span><br />
-				<span style=\"color: #9b9b9b;\">{$lang['published']} {$lang['event1_date']}</span>
-				<p>{$lang['event1_extract']}</p>
-				<div class=\"clear\"></div>
-				<br />				
+			<div class=\"left big\">
+				<h1 class=\"dark\">{$lang['intro']}</h1>
+				<br />
+				<p>{$lang['intro_text']}</p>
 			</div>
-			<div style=\"float: right; width: 300px;\">
-				<h2 class=\"dark\">{$lang['print']}</h2>
-				<a href=\"/{$GLOBALS['CONFIG']['SITE']}/documents/plaquette.png\"><img style=\"display: block; float: left; width: 120px; margin-right: 20px; padding: 5px; border: 1px solid #d6d6d6; border-radius: 3px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/goodies/plaquette_mini.png\" /></a>
-				<p>{$lang['commercial']}</p>
-				<div class=\"clear\"></div>
+			<div class=\"right small rounded\">
+				<h2 class=\"dark\">{$lang['plaquettes']}</h2>
+				<ul class=\"simple\">
+					<li><a class=\"normal\" href=\"/{$GLOBALS['CONFIG']['SITE']}/documents/AnotherService-Logos.zip\"><i class=\"fa fa-file-zip-o fa-fw\"></i> {$lang['logos']}</a></li>
+					<li><a class=\"normal\" href=\"/{$GLOBALS['CONFIG']['SITE']}/documents/AnotherService-Leaflet_institutionnel.pdf\"><i class=\"fa fa-file-pdf-o fa-fw\"></i> {$lang['instit']}</a></li>
+					<li><a class=\"normal\" href=\"/{$GLOBALS['CONFIG']['SITE']}/documents/SYS-Leaflet_institutionnel\"><i class=\"fa fa-file-pdf-o fa-fw\"></i> {$lang['sys']}</a></li>
+				</ul>
 			</div>
 			<div class=\"clear\"></div>
-			<br /><br />
-			<h2 class=\"dark\">{$lang['kit']}</h2>
-			<table style=\"border: 0; padding: 0;\">
-				<tr style=\"border: 0; padding: 0;\">
-					<td style=\"border: 0; text-align: center; padding: 0;\">
-						<a href=\"/{$GLOBALS['CONFIG']['SITE']}/images/goodies/logo-small.png\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/goodies/logo-small.png\" /></a>
-					</td>
-					<td style=\"border: 0; text-align: center; padding: 0;\">
-						<a href=\"/{$GLOBALS['CONFIG']['SITE']}/images/goodies/logo-normal.png\"><img style=\"width: 550px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/goodies/logo-normal.png\" /></a>
-					</td>
-					<td style=\"border: 0; text-align: center; padding: 0;\">
-						<a href=\"/{$GLOBALS['CONFIG']['SITE']}/images/goodies/logo-big.png\"><img style=\"width: 250px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/goodies/logo-big.png\" /></a>
-					</td>
-				</tr>
-				<tr style=\"border: 0; padding: 0;\">
-					<td style=\"border: 0; text-align: center; padding: 0;\"><span class=\"legend\">{$lang['small']}</span></td>
-					<td style=\"border: 0; text-align: center; padding: 0;\"><span class=\"legend\">{$lang['normal']}</span></td>
-					<td style=\"border: 0; text-align: center; padding: 0;\"><span class=\"legend\">{$lang['big']}</span></td>
-				</tr>
-			</table>
+			<div class=\"separator\"></div>
+			<div style=\"text-align: center;\">
+				<div class=\"review\">
+					<a href=\"http://webdesobjets.fr/busit-la-plateforme-pour-connecter-notre-vie-numerique-le-frenchy-ifttt-killer\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/reviews/wo.png\" alt=\"\" />
+					</a>
+					<h2 class=\"dark\" style=\"font-size: 1.1em;\">
+						{$lang['news3']}<br />
+						<span class=\"date\">{$lang['news3_date']}</span>
+					</h2>
+					<p>{$lang['news3_text']}</p>
+				</div>
+				<div class=\"review\">
+					<a href=\"https://{$GLOBALS['CONFIG']['HOSTNAME']}/blog/post?id=3\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/reviews/busit.png\" alt=\"\" />
+					</a>
+					<h2 class=\"dark\" style=\"font-size: 1.1em;\">
+						{$lang['news2']}<br />
+						<span class=\"date\">{$lang['news2_date']}</span>
+					</h2>
+					<p>{$lang['news2_text']}</p>
+				</div>
+				<div class=\"review\">
+					<a href=\"https://{$GLOBALS['CONFIG']['HOSTNAME']}/blog/post?id=1\">
+						<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/reviews/busit.png\" alt=\"\" />
+					</a>
+					<h2 class=\"dark\" style=\"font-size: 1.1em;\">{$lang['news1']}<br />
+						<span class=\"date\">{$lang['news1_date']}</span>
+					</h2>
+					<p>{$lang['news1_text']}</p>
+				</div>
+			</div>
 			<br /><br />
 		</div>
-	</div>
 ";
 
 /* ========================== OUTPUT PAGE ========================== */

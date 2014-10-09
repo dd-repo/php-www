@@ -1,19 +1,35 @@
 [EN]
 
-
 [FR]
-title = "Communication et presse"
-kit = "Logos Another Service"
-small = "Logo mini"
-normal = "Logo écriture haute définition"
-square = "Logo carré"
-big = "Logo haute définition"
-press = "Olympe dans la presse"
-published = "Publié le"
-print = "Kits et plaquettes"
-commercial = "La plaquette commerciale de la société."
+intro = "Presse et évènements"
+intro_text = "Vous trouverez dans cette rubrique l'ensemble des articles et des communiqués concernant Another Service. Il est également possible de consulter la page consacrée à l'<a href='http://www.sys.as/press'>espace presse de la société SYS SAS</a>
+à l'origine de la plateforme Another Service.<br /><br />
+Pour toute information complémentaire, n'hésitez pas à <a href='/about/contact'>nous contacter</a>."
 
-event1_title = "Another Service au salon Solutions Linux"
-event1_date = "5 mai 2013"
-event1_extract = "Nous serons présents les 28 et 29 mai prochains pour le salon Solutions Linux à Paris au CNIT de la Défense."
+press = "Articles"
 events = "Evènements"
+more = "Lire la suite"
+pack = "Pack de visuels de communication"
+
+plaquettes = "Présentations"
+instit = "Institutionnel"
+commercial = "Commercial"
+partner = "Partenaire"
+sys = "Société SYS"
+logos = "Pack de logos"
+
+news1 = "Lancement de Busit !"
+news1_text = "Un premier aperçu de la plateforme, Busit se prépare au lancement en septembre 2014."
+news1_date = "Le 1<sup>er</sup> septembre 2014"
+news2 = "Busit, Internet et ma Porsche"
+news2_text = "Qu'est-ce que Busit et comment notre plateforme se positionne dans le paysage numérique."
+news2_date = "Le 5 septembre 2014"
+news3 = "Busit, la plateforme pour connecter notre vie numérique – Le Frenchy IFTTT Killer"
+news3_text = "La plateforme d’automation à la française qui a de sérieux arguments face à IFTTT."
+news3_date = "Le 19 septembre 2014"
+news4 = "Interview exclusive des trois co-fondateurs de la plate-forme Busit"
+news4_text = "Nous répondons aux questions de Laurent Amar concernant le service et de l'histoire de Busit."
+news4_date = "Le 19 septembre 2014"
+news5 = "La sécurité sur Busit"
+news5_text = "Notre vision de la vie privée et notre implémentation de la sécurité."
+news5_date = "Le 20 septembre 2014"
