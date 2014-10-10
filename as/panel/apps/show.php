@@ -555,17 +555,17 @@ $content .= "
 				<th>{$lang['port']}</th>
 			</tr>
 			<tr>
-				<td><span class=\"large\">Git</span></td>
-				<td>ssh://git.as/~".security::get('USER')."/{$app['name']}.git</td>
-				<td>{$app['name']}</td>
-				<td>22</td>
-			</tr>
-			<tr>
 				<td><span class=\"large\">SFTP / FTP</span></td>
 				<td>(s)ftp://ftp.anotherservice.com</td>
 				<td>{$app['name']}</td>
 				<td>22 / 21</td>
 			</tr>	
+			<tr>
+				<td><span class=\"large\">Git</span></td>
+				<td>ssh://git.as/~".security::get('USER')."/{$app['name']}.git</td>
+				<td>{$app['name']}</td>
+				<td>22</td>
+			</tr>
 			<tr>
 				<td><span class=\"large\">{$lang['dir']}</span></td>
 				<td colspan=\"3\">{$app['homeDirectory']}</td>

@@ -38,7 +38,7 @@ $content = "
 			<a href=\"#\" onclick=\"$('#runtime').val('php55'); $('#standalone').val(0); $('#binary').hide(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-php.png\" alt=\"PHP\"><span class=\"large\">PHP (Web)</span></p>
-					<div class=\"overline\">5.5.3</div>
+					<div class=\"overline\">5.5.12</div>
 					<br />					
 				</div>
 			</a>
@@ -52,7 +52,7 @@ if( $mquota['max'] > 0 )
 					<div class=\"overline\">5.2.17</div>
 					<br />					
 				</div>
-			</a>						
+			</a>				
 			<a href=\"#\" onclick=\"$('#runtime').val('rails40'); $('#standalone').val(0); $('#binary').hide(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubyrails.png\" alt=\"Ruby on Rails\"><span class=\"large\">Ruby on Rails</span></p>
