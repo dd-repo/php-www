@@ -20,13 +20,16 @@ $content = "
 				<blockquote style=\"width: 100%;\"><p>{$lang['registered']} <span style=\"font-weight: bold;\">".str_replace($month, $month_translate, date($lang['DATEFORMAT'], $userinfo['date']))."</span>.</p></blockquote>
 			</div>
 			<div class=\"right\" style=\"width: 550px; float: right; text-align: right;\">
-				<a class=\"action pass big\" href=\"#\" onclick=\"$('#changepass').dialog('open'); return false;\">
+				<a class=\"action pass\" href=\"#\" onclick=\"$('#changepass').dialog('open'); return false;\">
 					{$lang['pass']}
 				</a>
-				<a class=\"action apps big\" href=\"/panel/settings/tokens\">
+				<a class=\"action buy\" href=\"/panel/billing\">
+					{$lang['bills']}
+				</a>
+				<a class=\"action apps\" href=\"/panel/settings/tokens\">
 					{$lang['apps']}
 				</a>
-				<a class=\"action delete big\" href=\"#\" onclick=\"$('#delete').dialog('open'); return false;\">
+				<a class=\"action delete\" href=\"#\" onclick=\"$('#delete').dialog('open'); return false;\">
 					{$lang['delete']}
 				</a>					
 			</div>
@@ -144,17 +147,18 @@ $content = "
 						<span class=\"help-block\">{$lang['postal_address_help']}</span>
 					</fieldset>
 					<div style=\"float: left;\">
-					<fieldset>
-						<input type=\"text\" name=\"postal_code\" value=\"{$userinfo['postal_code']}\" style=\"width: 50px;\"/>
-						<span class=\"help-block\">{$lang['postal_code_help']}</span>
-					</fieldset>
+						<fieldset>
+							<input type=\"text\" name=\"postal_code\" value=\"{$userinfo['postal_code']}\" style=\"width: 50px;\"/>
+							<span class=\"help-block\">{$lang['postal_code_help']}</span>
+						</fieldset>
                     </div>
 					<div style=\"float: left; padding-left: 30px; \">
-					<fieldset>
-						<input type=\"text\" name=\"locality\" value=\"{$userinfo['locality']}\" style=\"width: 150px;\"/>
-						<span class=\"help-block\">{$lang['locality_help']}</span>
-					</fieldset>
+						<fieldset>
+							<input type=\"text\" name=\"locality\" value=\"{$userinfo['locality']}\" style=\"width: 150px;\"/>
+							<span class=\"help-block\">{$lang['locality_help']}</span>
+						</fieldset>
                     </div>
+					<div class=\"clear\"></div>
 					<fieldset>
 						<input type=\"submit\" value=\"{$lang['update']}\" />
 					</fieldset>		

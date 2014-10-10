@@ -47,7 +47,7 @@ if( count($domains) > 0 )
 							<th>{$lang['domain']}</th>
 							<th>{$lang['arecord']}</th>
 							<th>{$lang['home']}</th>
-							<th style=\"width: 100px; text-align: center;\">{$lang['actions']}</th>
+							<th style=\"width: 150px; text-align: center;\">{$lang['actions']}</th>
 						</tr>
 	";
 	
@@ -77,8 +77,9 @@ if( count($domains) > 0 )
 							<td><span style=\"font-weight: bold;\">{$d['hostname']}</span></td>
 							<td><span class=\"lightlarge\">{$arecord}</a></td>
 							<td>".($d['destination']?"{$d['destination']}":"{$d['homeDirectory']}")."</td>
-							<td style=\"width: 100px; text-align: center;\">
+							<td style=\"width: 150px; text-align: center;\">
 								<a href=\"/panel/domains/config?id={$d['id']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/settings.png\" alt=\"\" /></a>
+								<a href=\"/panel/users/list?domain={$d['hostname']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/users2.png\" alt=\"\" /></a>
 								<a href=\"#\" onclick=\"$('#id').val('{$d['id']}'); $('#delete').dialog('open'); return false;\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/close.png\" alt=\"\" /></a>
 							</td>
 						</tr>
