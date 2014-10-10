@@ -67,7 +67,7 @@ if( count($domains) > 0 )
 		if( security::hasGrant('SELF_ACCOUNT_INSERT') )
 		{
 			$content .= "
-									<a href=\"/panel/users/list?domain={$d['hostname']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/small/settings.png\" alt=\"\" /></a>";
+									<a href=\"/panel/users/list?domain={$d['hostname']}\" title=\"\"><img class=\"link\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/large/settings.png\" alt=\"\" /></a>";
 		}
 		
 		$content .= "

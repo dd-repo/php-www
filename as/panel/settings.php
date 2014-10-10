@@ -67,7 +67,7 @@ $content = "
 							<span class=\"help-block\">{$lang['lang_help']}</span>
 						</fieldset>
 					</div>
-					<div style=\"float: right;\">
+					<div style=\"float: right; width: 267px;\">
 					    <fieldset>
 				    		<input type=\"submit\" value=\"{$lang['update']}\" />
 			    		</fieldset>		

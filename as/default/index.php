@@ -45,15 +45,7 @@ $content .= "
 			</div>			
 			<div class=\"grey\">
 				<div class=\"content\">
-					<div style=\"text-align: center;\">
-						<span style=\"display: block; font-size: 70px; margin: 0 auto;\">51 568</span>
-						<span style=\"display: block; font-size: 25px; color: #53bfed; margin-top: 5px; text-transform: uppercase;\">{$lang['users']}</span>
-						<span style=\"display: block; font-size: 18px; margin-top: 20px;\">
-							<span style=\"color: #53bfed\">85 689</span> {$lang['apps']}, 
-							<span style=\"color: #53bfed\">24 567</span> {$lang['databases']}
-							<span style=\"color: #53bfed\">12 383</span> {$lang['domains']}
-						</span>
-					</div>
+					<div id=\"stats\" style=\"text-align: center;\"></div>
 				</div>
 			</div>
 			<div class=\"content\">
@@ -119,7 +111,10 @@ $content .= "
 					<br />
 				</div>
 			</div>
-			<script>			
+			<script>
+				$(\"#stats\").html(\"<img src='/{$GLOBALS['CONFIG']['SITE']}/images/anim_loading_16x16.gif' />\");
+				$(\"#stats\").load(\"/default/stats\");
+
 				function showLogin()
 				{
 					if( $(\"#signupform\").css('display') != 'none' )
