@@ -89,7 +89,7 @@ foreach( $users as $u )
 			}
 			
 			if( $u['billing'] > 1 )
-				api::send('bill/update', array('bill'=>$bill['id'], 'status'=>1));
+				api::send('bill/update', array('bill'=>$bill['id'], 'status'=>1), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 			
 			switch( $u['language'] )
 			{
