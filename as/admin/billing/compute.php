@@ -6,7 +6,7 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$users = api::send('user/list', array('fast'=>1));
+$users = api::send('user/list', array('fast'=>1), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
 /*if( date('j') != 1 )
 {
@@ -18,28 +18,46 @@ foreach( $users as $u )
 {
 	if( $u['billing'] == 1 )
 	{
-		$quotas = api::send('quota/user/list', array('user'=>$u['id']));
+		$bills = api::send('bill/list', array('user'=>$u['id']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
-		foreach( $quotas as $q )
+		if( $bills[0]['date'] < strtotime('this day previous month') )
 		{
-			if( $q['name'] == 'MEMORY' )
-				$ram = $q['max'];
-			if( $q['name'] == 'DISK' )
-				$disk = $q['max'];
+			$quotas = api::send('quota/user/list', array('user'=>$u['id']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+
+			foreach( $quotas as $q )
+			{
+				if( $q['name'] == 'MEMORY' )
+					$ram = $q['max'];
+				if( $q['name'] == 'DISK' )
+					$disk = $q['max'];
+				if( $q['name'] == 'APPS' )
+					$apps = $q['max'];
+			}
+		
+			$ramPrice = computeRam($ram);
+			$appsPrice = computeApps($apps);
+
+			$bill = api::send('bill/insert', array('user'=>$u['id']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+			
+			if( $ramPrice['price'] > 0 )
+			{
+				$diskPrice = computeDisk($ram, $disk);
+				api::send('bill/insertline', array('bill'=>$bill['id'], 'name'=>$ramPrice['name'], 'description'=>$ramPrice['desc'], 'amount'=>$ramPrice['price'], 'vat'=>20), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+				
+				if( $diskPrice['price'] > 0 )
+					api::send('bill/insertline', array('user'=>$custom['user'], 'bill'=>$bill['id'], 'name'=>$diskPrice['name'], 'description'=>$diskPrice['desc'], 'amount'=>$diskPrice['price'], 'vat'=>20), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);	
+			}
+			else if( $appsPrice['price'] > 0 )
+			{
+				$diskPrice = computeHostingDisk($disk);
+				api::send('bill/insertline', array('bill'=>$bill['id'], 'name'=>$appsPrice['name'], 'description'=>$appsPrice['desc'], 'amount'=>$appsPrice['price'], 'vat'=>20), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+
+				if( $diskPrice['price'] > 0 )
+					api::send('bill/insertline', array('user'=>$custom['user'], 'bill'=>$bill['id'], 'name'=>$diskPrice['name'], 'description'=>$diskPrice['desc'], 'amount'=>$diskPrice['price'], 'vat'=>20), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+			}
+			
+			api::send('bill/update', array('bill'=>$bill['id'], 'status'=>1));
 		}
-		
-		$ramPrice = computeRam($ram);
-		$diskPrice = computeDisk($ram, $disk);
-		
-		$bill = api::send('bill/insert', array('user'=>$u['id']));
-		
-		if( $ramPrice['price'] > 0 )
-			api::send('bill/insertline', array('bill'=>$bill['id'], 'name'=>$ramPrice['name'], 'description'=>$ramPrice['desc'], 'amount'=>$ramPrice['price'], 'vat'=>20));
-		
-		if( $diskPrice['price'] > 0 )
-			api::send('bill/insertline', array('user'=>$u['id'], 'bill'=>$bill['id'], 'name'=>$diskPrice['name'], 'description'=>$diskPrice['desc'], 'amount'=>$diskPrice['price'], 'vat'=>20));
-		
-		api::send('bill/update', array('bill'=>$bill['id'], 'status'=>1));
 	}
 }
 
@@ -85,6 +103,49 @@ function computeDisk($ram, $disk)
 				return array('price'=>0);
 			else
 				return array('name'=>'Disque 50Go', 'desc'=>'Espace disque supplémentaire 50Go', 'price'=>20);
+		break;
+		case '100000':
+			return array('name'=>'Disque 100Go', 'desc'=>'Espace disque supplémentaire 100Go', 'price'=>30);
+		break;
+		case '500000':
+			return array('name'=>'Disque 500Go', 'desc'=>'Espace disque supplémentaire 500Go', 'price'=>100);
+		break;
+		case '1000000':
+			return array('name'=>'Disque 1To', 'desc'=>'Espace disque supplémentaire 1To', 'price'=>150);
+		break;
+	}
+}
+
+function computeApps($apps)
+{
+	switch( $apps )
+	{
+		case '1':
+			return array('name'=>'Pack 1 application', 'desc'=>'500Mo de disque, 1 service', 'price'=>2);
+		break;
+		case '3':
+			return array('name'=>'Pack 3 applications', 'desc'=>'1Go de disque, 2 services', 'price'=>5);		
+		break;
+		case '6':
+			return array('name'=>'Pack 6 applications', 'desc'=>'2Go de disque, 2 services', 'price'=>10);
+		break;
+		case '12':
+			return array('name'=>'Pack 12 applications', 'desc'=>'4Go de disque, 4 services', 'price'=>20);
+		break;
+		default:
+			return false;
+	}
+}
+
+function computeHostingDisk($disk)
+{
+	switch( $disk )
+	{
+		case '10000':
+			return array('name'=>'Disque 10Go', 'desc'=>'Espace disque supplémentaire 10Go', 'price'=>5);
+		break;
+		case '50000':
+			return array('name'=>'Disque 50Go', 'desc'=>'Espace disque supplémentaire 50Go', 'price'=>20);
 		break;
 		case '100000':
 			return array('name'=>'Disque 100Go', 'desc'=>'Espace disque supplémentaire 100Go', 'price'=>30);

@@ -179,7 +179,7 @@ else
 						}
 						else if( $appsPrice['price'] > 0 )
 						{
-							$diskPrice = computeHostingDisk($ram, $disk);
+							$diskPrice = computeHostingDisk($disk);
 							$bill = api::send('bill/insert', array('user'=>$custom['user']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 							api::send('bill/insertline', array('bill'=>$bill['id'], 'name'=>$appsPrice['name'], 'description'=>$appsPrice['desc'], 'amount'=>$appsPrice['price'], 'vat'=>20), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 	
