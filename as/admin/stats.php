@@ -223,7 +223,7 @@ $content .= "
 					argumentField: \"month\"
 				},
 				series: [
-					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'splineArea', 'color': '#68aad9' }
+					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'splineArea', 'color': '#53bfed' }
 				],
 				argumentAxis:{
 					grid:{
