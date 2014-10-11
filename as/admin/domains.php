@@ -50,7 +50,7 @@ foreach( $domains as $d )
 			
 	$content .= "
 				<tr>
-					<td style=\"width: 40px; text-align: center;\"><img style=\"width: 30px; height: 30px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/domain.png\" /></a></td>
+					<td style=\"width: 40px; text-align: center;\"><img style=\"width: 40px;\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/domain.png\" /></a></td>
 					<td><a href=\"http://{$d['hostname']}\">{$d['hostname']}</a></td>
 					<td>{$arecord}</td>
 					<td style=\"width: 100px; text-align: center;\">
