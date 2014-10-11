@@ -6,7 +6,7 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
-$users = api::send('user/list', array('fast'=>1), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+$users = api::send('user/list', array(), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
 foreach( $users as $u )
 {
@@ -62,7 +62,9 @@ foreach( $users as $u )
 					$subject = "Votre facture est disponible";
 					$mailcontent = "Bonjour {NAME},<br />
 		<br />
-		Nous vous informons que votre facture pour le mois en cours est disponible dans votre interface de gestion Another Service. Vous pouvez la payer directement par carte bancaire. Si vous avez souscrit au prélèvement automatique, vous
+		Nous vous informons que votre facture pour le mois en cours est disponible dans votre <a style='color: #56c8f9; text-decoration: none;' href='https://www.anotherservice.com/panel/billing'>interface de gestion</a> Another Service. 
+		Vous pouvez la payer directement par carte bancaire.<br /><br />
+		Si vous avez souscrit au prélèvement automatique, vous
 		pouvez ignorer cet email et votre facture sera marquée payée une fois le prélèvement effectué.<br /><br />
 		Vous pouvez retrouver la facture dans votre interface à l'adresse : <a style='color: #56c8f9; text-decoration: none;' href='https://www.anotherservice.com/panel/billing/view?id={BILL}'>https://www.anotherservice.com/panel/billing/view?id={BILL}</a><br /><br />
 		Nous vous remercions de votre confiance.<br /><br />
@@ -70,11 +72,11 @@ foreach( $users as $u )
 		L'équipe Another Service";
 							break;
 							default:
-								$subject = "Modification de votre offre";
+								$subject = "Votre facture est disponible";
 								$mailcontent = "Bonjour {NAME},<br />
 		<br />
-		Nous vous informons que votre facture pour le mois en cours est disponible dans votre interface de gestion Another Service. Vous pouvez la payer directement par carte bancaire. Si vous avez souscrit au prélèvement automatique, vous
-		pouvez ignorer cet email et votre facture sera marquée payée une fois le prélèvement effectué.<br /><br />
+		Nous vous informons que votre facture pour le mois en cours est disponible dans votre <a style='color: #56c8f9; text-decoration: none;' href='https://www.anotherservice.com/panel/billing'>interface de gestion</a> Another Service. 
+		Vous pouvez la payer directement par carte bancaire.<br /><br /> Si vous avez souscrit au prélèvement automatique, vous pouvez ignorer cet email et votre facture sera marquée payée une fois le prélèvement effectué.<br /><br />
 		Vous pouvez retrouver la facture dans votre interface à l'adresse : <a style='color: #56c8f9; text-decoration: none;' href='https://www.anotherservice.com/panel/billing/view?id={BILL}'>https://www.anotherservice.com/panel/billing/view?id={BILL}</a><br /><br />
 		Nous vous remercions de votre confiance.<br /><br />
 		Cordialement,<br />
