@@ -52,7 +52,10 @@ else
 		";
 }
 
-$content .= "	
+$content .= "
+				<a class=\"action back\" href=\"/panel/billing\">
+					{$lang['back']}
+				</a>
 			</div>
 			<div class=\"clear\"></div>
 		</div>

@@ -390,6 +390,15 @@ div.panel a.action.push:hover {
 	background-image: url('../images/illu/push_hover.png');
 }
 
+div.panel a.action.back {
+	background-image: url('../images/illu/back.png');
+}
+
+div.panel a.action.back:hover {
+	color: #56c8f9;
+	background-image: url('../images/illu/back_hover.png');
+}
+
 div.panel a.action.certificate {
 	background-image: url('../images/illu/certificate.png');
 }
