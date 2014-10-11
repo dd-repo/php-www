@@ -345,6 +345,19 @@ a h4.colored:hover {
 	color: #56c8f9;
 }
 
+h5 {
+	font-family: 'Open Sans';
+	font-smoothing: antialiased;
+	color: #a4a4a4;
+	display: block;
+	font-size: 1.1em;
+	font-weight: 300;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	padding: 0;
+	line-height: 1.4em;
+}
+
 span.title {
 	display: block;
 	color: #999999;

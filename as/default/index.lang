@@ -24,3 +24,8 @@ paas_explain = "L'évolution des méthodes de développement et des besoins nous
 et services.<br /><br /> On compte notamment la gestion des dépôts de développement, les ressources élastiques pour les applications, la supervision des processus etc..."
 signup_now = "S'inscrire"
 help = "Une question? N'hésitez pas à <a href='/about/contact'>nous contacter</a>."
+
+statistics = "Statistiques"
+statistics_sub = "Another Service en chiffres"
+trust = "Quelques références"
+trust_sub = "Ils nous font confiance"

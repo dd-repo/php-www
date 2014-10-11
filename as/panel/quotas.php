@@ -118,7 +118,7 @@ $content = "
 						<th>{$lang['size']}</th>
 					</tr>
 					<tr>
-						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/ftp.png\" /></td>
+						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/ftp.png\" style=\"width: 40px;\" /></td>
 						<td>{$lang['cloud']}</td>
 						<td>{$lang['cloud_type']}</td>
 						<td>/dns/com/anotherservice/Users/".security::get('USER')."</td>
@@ -130,7 +130,7 @@ foreach( $apps2 as $a )
 {
 	$content .= "
 					<tr>
-						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/panel.png\" /></td>
+						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/panel.png\" style=\"width: 40px;\" /></td>
 						<td>{$a['tag']}</td>
 						<td>{$lang['app']}</td>
 						<td>{$a['homeDirectory']}</td>
@@ -143,7 +143,7 @@ foreach( $services2 as $s )
 {
 	$content .= "
 					<tr>
-						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" /></td>
+						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" style=\"width: 40px;\" /></td>
 						<td>{$s['description']}</td>
 						<td>{$lang['service']} {$s['vendor']}</td>
 						<td>/services/{$s['name']}-master</td>
@@ -157,7 +157,7 @@ foreach( $services2 as $s )
 		{
 			$content .= "
 					<tr>
-						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" /></td>
+						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" style=\"width: 40px;\" /></td>
 						<td>{$s['description']}</td>
 						<td>{$lang['service']} {$s['vendor']}</td>
 						<td>/services/{$s['name']}-{$b['branch_name']}</td>
@@ -177,7 +177,7 @@ foreach( $domains2 as $d )
 	{
 		$content .= "
 					<tr>
-						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/user.png\" /></td>
+						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/user.png\" style=\"width: 40px;\" /></td>
 						<td>{$u['mail']}</td>
 						<td>{$lang['user']}</td>
 						<td>{$u['homeDirectory']}</td>

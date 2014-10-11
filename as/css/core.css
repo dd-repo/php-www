@@ -77,6 +77,17 @@ div.core div.content div.box.offer {
 	margin: 0 5px 0 5px;
 }
 
+div.core div.boxin {
+	display: inline-block;
+	width: 450px;
+	margin: 0 10px 0 10px;
+	padding: 0;
+}
+
+div.core div.boxin.small {
+	width: 130px;
+}
+
 div.core  div.content div.left {
 	float: left;
 	margin: 0;

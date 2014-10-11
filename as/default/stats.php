@@ -36,14 +36,27 @@ switch( translator::getLanguage() )
 		$domains['count'] = number_format($domains['count']);
 }
 
-$content = "		
-			<span style=\"display: block; font-size: 70px; margin: 0 auto;\">{$users['count']}</span>
-			<span style=\"display: block; font-size: 30px; color: #53bfed; margin-top: 5px;\">{$lang['users']}</span>
-			<span style=\"display: block; font-size: 18px; margin-top: 20px;\">
-				<span style=\"color: #53bfed\">{$apps['count']}</span> {$lang['apps']}, 
-				<span style=\"color: #53bfed\">{$services['count']}</span> {$lang['services']} 
-				<span style=\"color: #53bfed\">{$domains['count']}</span> {$lang['domains']}
-			</span>
+$content = "
+			<div class=\"boxin small\">
+				<span style=\"font-size: .8em; color: #acacac; text-transform: uppercase;\">{$lang['users']}</span><br />
+				<span class=\"colored large\" style=\"display: block; margin: 0 auto; margin-bottom: 10px;\">{$users['count']}</span>
+				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/users_dark.png\" alt=\"\" style=\"width: 40px;\" />
+			</div>
+			<div class=\"boxin small\">
+				<span style=\"font-size: .8em; color: #acacac; text-transform: uppercase;\">{$lang['apps']}</span><br />
+				<span class=\"colored large\" style=\"display: block; margin: 0 auto; margin-bottom: 10px;\">{$apps['count']}</span>
+				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/apps_dark.png\" alt=\"\" style=\"width: 40px;\" />
+			</div>
+			<div class=\"boxin small\">
+				<span style=\"font-size: .8em; color: #acacac; text-transform: uppercase;\">{$lang['services']}</span><br />
+				<span class=\"colored large\" style=\"display: block; margin: 0 auto; margin-bottom: 10px;\">{$services['count']}</span>
+				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/databases_dark.png\" alt=\"\" style=\"width: 40px;\" />
+			</div>
+			<div class=\"boxin small\">
+				<span style=\"font-size: .8em; color: #acacac; text-transform: uppercase;\">{$lang['domains']}</span><br />
+				<span class=\"colored large\" style=\"display: block; margin: 0 auto; margin-bottom: 10px;\">{$domains['count']}</span>
+				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/domains_dark.png\" alt=\"\" style=\"width: 40px;\" />
+			</div>
 ";
 
 echo $content;

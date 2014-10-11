@@ -73,7 +73,7 @@ if( count($domains) > 0 )
 		
 		$content .= "
 						<tr>
-							<td style=\"text-align: center; width: 40px;\"><a href=\"/panel/domains/config?id={$d['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/domain.png\" /></td>
+							<td style=\"text-align: center; width: 40px;\"><a href=\"/panel/domains/config?id={$d['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/domain.png\" style=\"width: 30px;\" /></td>
 							<td><span style=\"font-weight: bold;\">{$d['hostname']}</span></td>
 							<td><span class=\"lightlarge\">{$arecord}</a></td>
 							<td>".($d['destination']?"{$d['destination']}":"{$d['homeDirectory']}")."</td>

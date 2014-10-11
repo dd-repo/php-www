@@ -44,7 +44,9 @@ $content .= "
 				</div>
 			</div>			
 			<div class=\"grey\">
-				<div class=\"content\">
+				<div class=\"content\" style=\"text-align: center;\">
+					<h4 style=\"font-size: 1.7em;\">{$lang['statistics']}</h4>
+					<h5>{$lang['statistics_sub']}</h5>
 					<div id=\"stats\" style=\"text-align: center;\"></div>
 				</div>
 			</div>
