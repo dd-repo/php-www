@@ -330,22 +330,22 @@ function computeRam($ram)
 	switch( $ram )
 	{
 		case '1024':
-			return array('name'=>'Pack 1Go', 'desc'=>'1Go de mémoire, 4 services', 'price'=>29);
+			return array('name'=>'Pack 1Go (1 mois)', 'desc'=>'1Go de mémoire, 4 services', 'price'=>29);
 		break;
 		case '4096':
-			return array('name'=>'Pack 4Go', 'desc'=>'4Go de mémoire, 16 services', 'price'=>99);		
+			return array('name'=>'Pack 4Go (1 mois)', 'desc'=>'4Go de mémoire, 16 services', 'price'=>99);		
 		break;
 		case '8192':
-			return array('name'=>'Pack 8Go', 'desc'=>'8Go de mémoire, 32 services', 'price'=>180);
+			return array('name'=>'Pack 8Go (1 mois)', 'desc'=>'8Go de mémoire, 32 services', 'price'=>180);
 		break;
 		case '16384':
-			return array('name'=>'Pack 16Go', 'desc'=>'16Go de mémoire, 64 services', 'price'=>320);
+			return array('name'=>'Pack 16Go (1 mois)', 'desc'=>'16Go de mémoire, 64 services', 'price'=>320);
 		break;
 		case '32768':
-			return array('name'=>'Pack 32Go', 'desc'=>'32Go de mémoire, 128 services', 'price'=>560);	
+			return array('name'=>'Pack 32Go (1 mois)', 'desc'=>'32Go de mémoire, 128 services', 'price'=>560);	
 		break;
 		case '65536':
-			return array('name'=>'Pack 64Go', 'desc'=>'64Go de mémoire, 256 services', 'price'=>999);
+			return array('name'=>'Pack 64Go (1 mois)', 'desc'=>'64Go de mémoire, 256 services', 'price'=>999);
 		break;
 		default:
 			return false;
@@ -357,16 +357,16 @@ function computeApps($apps)
 	switch( $apps )
 	{
 		case '1':
-			return array('name'=>'Pack 1 application', 'desc'=>'500Mo de disque, 1 service', 'price'=>2);
+			return array('name'=>'Pack 1 application (1 mois)', 'desc'=>'500Mo de disque, 1 service', 'price'=>2);
 		break;
 		case '3':
-			return array('name'=>'Pack 3 applications', 'desc'=>'1Go de disque, 2 services', 'price'=>5);		
+			return array('name'=>'Pack 3 applications (1 mois)', 'desc'=>'1Go de disque, 2 services', 'price'=>5);		
 		break;
 		case '6':
-			return array('name'=>'Pack 6 applications', 'desc'=>'2Go de disque, 2 services', 'price'=>10);
+			return array('name'=>'Pack 6 applications (1 mois)', 'desc'=>'2Go de disque, 2 services', 'price'=>10);
 		break;
 		case '12':
-			return array('name'=>'Pack 12 applications', 'desc'=>'4Go de disque, 4 services', 'price'=>20);
+			return array('name'=>'Pack 12 applications (1 mois)', 'desc'=>'4Go de disque, 4 services', 'price'=>20);
 		break;
 		default:
 			return false;
@@ -383,22 +383,22 @@ function computeDisk($ram, $disk)
 			if( $ram >= 8192 )
 				return array('price'=>0);
 			else
-				return array('name'=>'Disque 10Go', 'desc'=>'Espace disque supplémentaire 10Go', 'price'=>5);
+				return array('name'=>'Disque 10Go (1 mois)', 'desc'=>'Espace disque supplémentaire 10Go', 'price'=>5);
 		break;
 		case '50000':
 			if( $ram >= 32768 )
 				return array('price'=>0);
 			else
-				return array('name'=>'Disque 50Go', 'desc'=>'Espace disque supplémentaire 50Go', 'price'=>20);
+				return array('name'=>'Disque 50Go (1 mois)', 'desc'=>'Espace disque supplémentaire 50Go', 'price'=>20);
 		break;
 		case '100000':
-			return array('name'=>'Disque 100Go', 'desc'=>'Espace disque supplémentaire 100Go', 'price'=>30);
+			return array('name'=>'Disque 100Go (1 mois)', 'desc'=>'Espace disque supplémentaire 100Go', 'price'=>30);
 		break;
 		case '500000':
-			return array('name'=>'Disque 500Go', 'desc'=>'Espace disque supplémentaire 500Go', 'price'=>100);
+			return array('name'=>'Disque 500Go (1 mois)', 'desc'=>'Espace disque supplémentaire 500Go', 'price'=>100);
 		break;
 		case '1000000':
-			return array('name'=>'Disque 1To', 'desc'=>'Espace disque supplémentaire 1To', 'price'=>150);
+			return array('name'=>'Disque 1To (1 mois)', 'desc'=>'Espace disque supplémentaire 1To', 'price'=>150);
 		break;
 	}
 }
@@ -408,19 +408,19 @@ function computeHostingDisk($disk)
 	switch( $disk )
 	{
 		case '10000':
-			return array('name'=>'Disque 10Go', 'desc'=>'Espace disque supplémentaire 10Go', 'price'=>5);
+			return array('name'=>'Disque 10Go (1 mois)', 'desc'=>'Espace disque supplémentaire 10Go', 'price'=>5);
 		break;
 		case '50000':
-			return array('name'=>'Disque 50Go', 'desc'=>'Espace disque supplémentaire 50Go', 'price'=>20);
+			return array('name'=>'Disque 50Go( 1 mois)', 'desc'=>'Espace disque supplémentaire 50Go', 'price'=>20);
 		break;
 		case '100000':
-			return array('name'=>'Disque 100Go', 'desc'=>'Espace disque supplémentaire 100Go', 'price'=>30);
+			return array('name'=>'Disque 100Go (1 mois)', 'desc'=>'Espace disque supplémentaire 100Go', 'price'=>30);
 		break;
 		case '500000':
-			return array('name'=>'Disque 500Go', 'desc'=>'Espace disque supplémentaire 500Go', 'price'=>100);
+			return array('name'=>'Disque 500Go (1 mois)', 'desc'=>'Espace disque supplémentaire 500Go', 'price'=>100);
 		break;
 		case '1000000':
-			return array('name'=>'Disque 1To', 'desc'=>'Espace disque supplémentaire 1To', 'price'=>150);
+			return array('name'=>'Disque 1To (1 mois)', 'desc'=>'Espace disque supplémentaire 1To', 'price'=>150);
 		break;
 	}
 }
