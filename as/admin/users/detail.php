@@ -367,7 +367,8 @@ if( security::hasGrant('USER_SELECT') )
 					</div>
 					<fieldset>
 						<select name=\"billing\" style=\"width: 320px\">
-							<option value=\"1\" ".($user['billing']==1?"selected":"").">{$lang['billing']}</option>
+							<option value=\"2\" ".($user['billing']==2?"selected":"").">{$lang['billing_month']}</option>
+							<option value=\"1\" ".($user['billing']==1?"selected":"").">{$lang['billing_auto']}</option>
 							<option value=\"0\" ".($user['billing']==0?"selected":"").">{$lang['nobilling']}</option>
 						</select>
 						<span class=\"help-block\">{$lang['billing_help']}</span>

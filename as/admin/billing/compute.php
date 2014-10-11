@@ -8,22 +8,19 @@ if( !defined('PROPER_START') )
 
 $users = api::send('user/list', array('fast'=>1), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
-/*if( date('j') != 1 )
-{
-	echo "We are not the 1<sup>st</sup> of the month!";
-	exit();
-}*/
-
 foreach( $users as $u )
 {
-	if( $u['billing'] == 1 )
+	if( $u['billing'] > 0 )
 	{
 		$bills = api::send('bill/list', array('user'=>$u['id']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
+		if( !$bills[0]['date'] )
+			$bills[0]['date'] = 0;
+		
 		if( $bills[0]['date'] < strtotime('this day previous month') )
 		{
 			$quotas = api::send('quota/user/list', array('user'=>$u['id']), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
-
+			
 			foreach( $quotas as $q )
 			{
 				if( $q['name'] == 'MEMORY' )
@@ -33,7 +30,7 @@ foreach( $users as $u )
 				if( $q['name'] == 'APPS' )
 					$apps = $q['max'];
 			}
-		
+
 			$ramPrice = computeRam($ram);
 			$appsPrice = computeApps($apps);
 
@@ -45,7 +42,7 @@ foreach( $users as $u )
 				api::send('bill/insertline', array('bill'=>$bill['id'], 'name'=>$ramPrice['name'], 'description'=>$ramPrice['desc'], 'amount'=>$ramPrice['price'], 'vat'=>20), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 				
 				if( $diskPrice['price'] > 0 )
-					api::send('bill/insertline', array('user'=>$custom['user'], 'bill'=>$bill['id'], 'name'=>$diskPrice['name'], 'description'=>$diskPrice['desc'], 'amount'=>$diskPrice['price'], 'vat'=>20), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);	
+					api::send('bill/insertline', array('user'=>$u['id'], 'bill'=>$bill['id'], 'name'=>$diskPrice['name'], 'description'=>$diskPrice['desc'], 'amount'=>$diskPrice['price'], 'vat'=>20), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);	
 			}
 			else if( $appsPrice['price'] > 0 )
 			{
@@ -53,10 +50,46 @@ foreach( $users as $u )
 				api::send('bill/insertline', array('bill'=>$bill['id'], 'name'=>$appsPrice['name'], 'description'=>$appsPrice['desc'], 'amount'=>$appsPrice['price'], 'vat'=>20), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
 				if( $diskPrice['price'] > 0 )
-					api::send('bill/insertline', array('user'=>$custom['user'], 'bill'=>$bill['id'], 'name'=>$diskPrice['name'], 'description'=>$diskPrice['desc'], 'amount'=>$diskPrice['price'], 'vat'=>20), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
+					api::send('bill/insertline', array('user'=>$u['id'], 'bill'=>$bill['id'], 'name'=>$diskPrice['name'], 'description'=>$diskPrice['desc'], 'amount'=>$diskPrice['price'], 'vat'=>20), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 			}
 			
-			api::send('bill/update', array('bill'=>$bill['id'], 'status'=>1));
+			if( $u['billing'] == 2 )
+				api::send('bill/update', array('bill'=>$bill['id'], 'status'=>1));
+			
+			switch( $u['language'] )
+			{
+				case 'FR':
+					$subject = "Votre facture est disponible";
+					$mailcontent = "Bonjour {NAME},<br />
+		<br />
+		Nous vous informons que votre facture pour le mois en cours est disponible dans votre interface de gestion Another Service. Vous pouvez la payer directement par carte bancaire. Si vous avez souscrit au prélèvement automatique, vous
+		pouvez ignorer cet email et votre facture sera marquée payée une fois le prélèvement effectué.<br /><br />
+		Vous pouvez retrouver la facture dans votre interface à l'adresse : <a style='color: #56c8f9; text-decoration: none;' href='https://www.anotherservice.com/panel/billing/view?id={BILL}'>https://www.anotherservice.com/panel/billing/view?id={BILL}</a><br /><br />
+		Nous vous remercions de votre confiance.<br /><br />
+		Cordialement,<br />
+		L'équipe Another Service";
+							break;
+							default:
+								$subject = "Modification de votre offre";
+								$mailcontent = "Bonjour {NAME},<br />
+		<br />
+		Nous vous informons que votre facture pour le mois en cours est disponible dans votre interface de gestion Another Service. Vous pouvez la payer directement par carte bancaire. Si vous avez souscrit au prélèvement automatique, vous
+		pouvez ignorer cet email et votre facture sera marquée payée une fois le prélèvement effectué.<br /><br />
+		Vous pouvez retrouver la facture dans votre interface à l'adresse : <a style='color: #56c8f9; text-decoration: none;' href='https://www.anotherservice.com/panel/billing/view?id={BILL}'>https://www.anotherservice.com/panel/billing/view?id={BILL}</a><br /><br />
+		Nous vous remercions de votre confiance.<br /><br />
+		Cordialement,<br />
+		L'équipe Another Service";
+			}
+			
+			$mail = str_replace(array('{NAME}', '{BILL}'), array($u['name'], $bill['id']), $mailcontent);
+			try
+			{
+				$result = mail($u['email'], $subject, str_replace(array('{TITLE}', '{CONTENT}'), array($subject, $mail), $GLOBALS['CONFIG']['MAIL_TEMPLATE']), "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\nFrom: Another Service <no-reply@anotherservice.com>\r\nBcc: contact@anotherservice.com\r\n");
+			}
+			catch( Exception $e )
+			{
+				
+			}
 		}
 	}
 }
