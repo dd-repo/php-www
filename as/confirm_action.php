@@ -40,7 +40,7 @@ try
 	api::send('quota/user/update', array('user'=>$uid, 'quota'=>'MEMORY', 'max'=>0), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 	api::send('quota/user/update', array('user'=>$uid, 'quota'=>'DISK', 'max'=>0), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
-	$tracker = "<!-- Google Code for Registration Conversion Page -->
+	$tracker = "<!-- Google Code for Another Service Registration Conversion Page -->
 	<script type=\"text/javascript\">
 	/* <![CDATA[ */
 	var google_conversion_id = 912926472;
