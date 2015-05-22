@@ -6,6 +6,16 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
+$quotas =  api::send('self/quota/user/list');
+
+foreach( $quotas as $q )
+{
+	if( $q['name'] == 'APPS' )
+		$aquota = $q;
+	if( $q['name'] == 'MEMORY' )
+		$mquota = $q;
+}
+
 $domains = api::send('self/domain/list');
 
 if( $_POST['password'] )
@@ -28,17 +38,21 @@ $content = "
 			<a href=\"#\" onclick=\"$('#runtime').val('php55'); $('#standalone').val(0); $('#binary').hide(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-php.png\" alt=\"PHP\"><span class=\"large\">PHP (Web)</span></p>
-					<div class=\"overline\">5.5.3</div>
+					<div class=\"overline\">5.5.12</div>
 					<br />					
 				</div>
 			</a>
+";
+if( $mquota['max'] > 0 )
+{
+	$content .= "
 			<a href=\"#\" onclick=\"$('#runtime').val('php52'); $('#standalone').val(0); $('#binary').hide(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-php.png\" alt=\"PHP\"><span class=\"large\">PHP (Web)</span></p>
 					<div class=\"overline\">5.2.17</div>
 					<br />					
 				</div>
-			</a>						
+			</a>				
 			<a href=\"#\" onclick=\"$('#runtime').val('rails40'); $('#standalone').val(0); $('#binary').hide(); $('#new').dialog('open'); return false;\">
 				<div class=\"nservice\">
 					<p><img class=\"icon\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-rubyrails.png\" alt=\"Ruby on Rails\"><span class=\"large\">Ruby on Rails</span></p>
@@ -107,6 +121,9 @@ $content = "
 			</a>			
 			<div class=\"clear\"></div>
 			<br /><br />
+	";
+}
+$content .= "
 		</div>
 	</div>
 	<div id=\"new\" class=\"floatingdialog\">
@@ -118,6 +135,7 @@ $content = "
 				<input id=\"standalone\" type=\"hidden\" name=\"standalone\" value=\"{$_SESSION['APP_STANDALONE']}\" />
 				<input type=\"hidden\" name=\"pass\" value=\"{$_SESSION['APP_PASS']}\" />
 				<input type=\"hidden\" name=\"tag\" value=\"{$_SESSION['APP_TAG']}\" />
+				<input type=\"hidden\" name=\"nodocker\" value=\"".($mquota['max']>0?"0":"1")."\" />
 				<fieldset>
 					<input type=\"text\" disabled value=\"{$_SESSION['APP_TAG']}\" />
 					<span class=\"help-block\">{$lang['name']}</span>

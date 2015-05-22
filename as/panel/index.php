@@ -16,26 +16,30 @@ if( security::hasGrant('SELF_APP_SELECT') )
 
 foreach( $quotas as $q )
 {
+	if( $q['name'] == 'APPS' )
+		$aquota = $q;
 	if( $q['name'] == 'MEMORY' )
-		$quota = $q;
+		$mquota = $q;
 }
 
-if( $quota['max'] == 0 )
+if( $mquota['max'] == 0 && $aquota['max'] == 0 )
 	template::redirect('/panel/plans');
 
 $domains = api::send('self/domain/list');
 if( count($domains) == 0 )
 	template::redirect('/panel/domains');
 	
-if( $quota['max'] > 0 )
-	$percent = $quota['used']*100/$quota['max'];
+if( $mquota['max'] > 0 )
+	$mpercent = $mquota['used']*100/$mquota['max'];
+if( $aquota['max'] > 0 )
+	$apercent = $aquota['used']*100/$aquota['max'];
+	
+$mquota['max'] = round($mquota['max']/1024, 2) . " {$lang['gb']}";
 
-$quota['max'] = round($quota['max']/1024, 2) . " {$lang['gb']}";
-
-if( $quota['used'] >= 1024 )
-	$quota['used'] = round($quota['used']/1024, 2) . " {$lang['gb']}";
+if( $mquota['used'] >= 1024 )
+	$mquota['used'] = round($mquota['used']/1024, 2) . " {$lang['gb']}";
 else
-	$quota['used'] = "{$quota['used']} {$lang['mb']}";
+	$mquota['used'] = "{$mquota['used']} {$lang['mb']}";
 		
 $content = "
 	<div class=\"panel\">
@@ -45,15 +49,36 @@ $content = "
 				<h1 class=\"dark title\">".security::get('USER')."</h1>
 				<h2 class=\"dark title\">".($userinfo['firstname']?"{$userinfo['firstname']} {$userinfo['lastname']}":"{$lang['nolastname']}")."</h2>
 			</div>
+";
+if( $mquota['max'] > 0 )
+{
+	$content .= "
 			<div class=\"right\" style=\"width: 450px;\">
 				<span style=\"block; float: left; padding-top: 7px; font-size: 18px; color: #878787;\">{$lang['memory2']}</span>
 				<div style=\"float: right;\">
 					<div class=\"fillgraph\" style=\"margin-top: 10px;\">
-						<small style=\"width: {$percent}%;\"></small>
+						<small style=\"width: {$mpercent}%;\"></small>
 					</div>
-					<span class=\"quota\"><span style='font-weight: bold;'>{$quota['used']}</span> {$lang['of']} {$quota['max']}. <a href=\"/panel/raise\">{$lang['request']}</a>.</span>
+					<span class=\"quota\"><span style='font-weight: bold;'>{$mquota['used']}</span> {$lang['of']} {$mquota['max']}. <a href=\"/panel/raise\">{$lang['request']}</a>.</span>
 				</div>
 			</div>
+	";
+}
+else if( $aquota['max'] > 0 )
+{
+	$content .= "
+			<div class=\"right\" style=\"width: 450px;\">
+				<span style=\"block; float: left; padding-top: 7px; font-size: 18px; color: #878787;\">{$lang['apps2']}</span>
+				<div style=\"float: right;\">
+					<div class=\"fillgraph\" style=\"margin-top: 10px;\">
+						<small style=\"width: {$apercent}%;\"></small>
+					</div>
+					<span class=\"quota\"><span style='font-weight: bold;'>{$aquota['used']}</span> {$lang['of']} {$aquota['max']}. <a href=\"/panel/raise\">{$lang['request']}</a>.</span>
+				</div>
+			</div>
+	";
+}
+$content .= "
 			<div class=\"clear\"></div>
 		</div>
 		<br />
@@ -147,16 +172,23 @@ else
 		$content .= "
 				<div class=\"app\" {$last} onclick=\"window.location.href='/panel/apps/show?id={$a['id']}'; return false;\">
 					<div class=\"normal\">
-						<span style=\"color: #2475ae; font-size: 12px; display: block; position: absolute; left: 10px; top: 10px;\">{$a['name']}</span>
-						<span style=\"color: #2475ae; font-size: 12px; display: block; position: absolute; right: 10px; top: 10px;\">{$lang['size']} {$a['size']} {$lang['mb']}</span>
+						<span style=\"color: #53bfed; font-size: 12px; display: block; position: absolute; left: 10px; top: 10px;\">{$a['name']}</span>
+						<span style=\"color: #53bfed; font-size: 12px; display: block; position: absolute; right: 10px; top: 10px;\">{$lang['size']} {$a['size']} {$lang['mb']}</span>
 						<div style=\"vertical-align: middle; display: table-cell; height: 250px; margin: 0 auto; width: 250px; text-align: center;\">
 							<div style=\"display: inline-block;\">
 								<span style=\"font-size: 25px; text-align: center; display: block; margin: 0 auto;\">{$a['tag']}</a><br />
 								<img class=\"language\" src=\"/{$GLOBALS['CONFIG']['SITE']}/images/languages/icon-{$language}.png\" alt=\"\" />
 							</div>
-						</div>						
+						</div>
+		";
+		if( $mquota['max'] > 0 )
+		{
+			$content .= "
 						<span style=\"color: #a5a5a5; font-size: 12px; display: block; position: absolute; left: 10px; bottom: 10px;\">{$lang['cpu']} {$instances} {$lang['cores']}</span>
 						<span style=\"color: #a5a5a5; font-size: 12px; display: block; position: absolute; right: 10px; bottom: 10px;\">{$lang['memory']} {$memory} {$lang['mb']}</span>
+			";
+		}
+		$content .= "
 					</div>
 				</div>
 		";

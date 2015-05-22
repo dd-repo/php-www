@@ -66,35 +66,37 @@ $services = api::send('service/list', array('count'=>1), $GLOBALS['CONFIG']['API
 $domains = api::send('domain/list', array('count'=>1), $GLOBALS['CONFIG']['API_USERNAME'].':'.$GLOBALS['CONFIG']['API_PASSWORD']);
 
 $content = "
-	<div class=\"admin\">
+	<div class=\"panel\">
 		<div class=\"content\" style=\"margin-top: 0;\">
 			<h1 class=\"dark\" style=\"text-align: center;\">{$lang['title']}</h1>
 			<br />
-			<div style=\"width: 260px; float: left; text-align: center;\">
-				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/user-big.png\" style=\"width: 80px;\" />
-				<br />
-				<span style=\"font-size: 40px; display: block; margin: 10px 0 10px 0;\">{$users['count']}</span>
-				<span style=\"font-size: 14px; display: block; color: #a2a2a2;\">{$lang['user']}</span>
+			<div style=\"text-align: center;\">
+				<div style=\"width: 240px; display: inline-block; text-align: center; margin-left: 0px; margin-right: 10px;\">
+					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/user.png\" style=\"width: 80px;\" />
+					<br />
+					<span style=\"font-size: 40px; display: block; margin: 10px 0 10px 0;\">{$users['count']}</span>
+					<span style=\"font-size: 14px; display: block; color: #a2a2a2;\">{$lang['user']}</span>
+				</div>
+				<div style=\"width: 240px; display: inline-block; text-align: center; margin-left: 0px; margin-right: 10px;\">
+					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/app.png\" style=\"width: 80px;\"/>
+					<br />
+					<span style=\"font-size: 40px; display: block; margin: 10px 0 10px 0;\">{$apps['count']}</span>
+					<span style=\"font-size: 14px; display: block; color: #a2a2a2;\">{$lang['apps']}</span>
+				</div>
+				<div style=\"width: 240px; display: inline-block; text-align: center; margin-left: 0px; margin-right: 10px;\">
+					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" style=\"width: 80px;\" />
+					<br />
+					<span style=\"font-size: 40px; display: block; margin: 10px 0 10px 0;\">{$services['count']}</span>
+					<span style=\"font-size: 14px; display: block; color: #a2a2a2;\">{$lang['services']}</span>
+				</div>
+				<div style=\"width: 240px; display: inline-block; text-align: center; margin-left: 0px; margin-right: 10px;\">
+					<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/domain.png\" style=\"width: 80px;\" />
+					<br />
+					<span style=\"font-size: 40px; display: block; margin: 10px 0 10px 0;\">{$domains['count']}</span>
+					<span style=\"font-size: 14px; display: block; color: #a2a2a2;\">{$lang['domains']}</span>
+				</div>
 			</div>
-			<div style=\"width: 260px; float: left; text-align: center; margin-left: 20px;\">
-				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/app-big.png\" style=\"width: 80px;\"/>
-				<br />
-				<span style=\"font-size: 40px; display: block; margin: 10px 0 10px 0;\">{$apps['count']}</span>
-				<span style=\"font-size: 14px; display: block; color: #a2a2a2;\">{$lang['apps']}</span>
-			</div>
-			<div style=\"width: 260px; float: left; text-align: center; margin-left: 20px;\">
-				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service-big.png\" style=\"width: 80px;\" />
-				<br />
-				<span style=\"font-size: 40px; display: block; margin: 10px 0 10px 0;\">{$services['count']}</span>
-				<span style=\"font-size: 14px; display: block; color: #a2a2a2;\">{$lang['services']}</span>
-			</div>
-			<div style=\"width: 260px; float: left; text-align: center; margin-left: 20px;\">
-				<img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/domain-big.png\" style=\"width: 80px;\" />
-				<br />
-				<span style=\"font-size: 40px; display: block; margin: 10px 0 10px 0;\">{$domains['count']}</span>
-				<span style=\"font-size: 14px; display: block; color: #a2a2a2;\">{$lang['domains']}</span>
-			</div>
-			<div class=\"clear\"></div><br /><br />
+			<br /><br />
 			<div id=\"chart1\" style=\"margin-bottom: 20px;\"></div>
 			<div id=\"chart2\" style=\"margin-bottom: 20px;\"></div>
 			<div id=\"chart3\" style=\"margin-bottom: 20px;\"></div>
@@ -145,7 +147,7 @@ $content .= "
 					argumentField: \"hour\"
 				},
 				series: [
-					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'bar', 'color': '#2475ae' }
+					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'bar', 'color': '#53bfed' }
 				],
 				argumentAxis:{
 					grid:{
@@ -183,7 +185,7 @@ $content .= "
 					argumentField: \"day\"
 				},
 				series: [
-					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'line', 'color': '#2475ae' }
+					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'line', 'color': '#53bfed' }
 				],
 				argumentAxis:{
 					grid:{
@@ -221,7 +223,7 @@ $content .= "
 					argumentField: \"month\"
 				},
 				series: [
-					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'splineArea', 'color': '#68aad9' }
+					{ valueField: \"users\", name: \"{$lang['users']}\", type: 'splineArea', 'color': '#53bfed' }
 				],
 				argumentAxis:{
 					grid:{

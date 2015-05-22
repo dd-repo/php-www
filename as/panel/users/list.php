@@ -43,7 +43,7 @@ if( count($users) > 0 )
 	{
 		$content .= "
 				<tr>
-					<td style=\"text-align: center; width: 40px;\"><a href=\"/panel/users/config?domain={$domain['hostname']}&id={$u['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/user.png\" /></a></td>
+					<td style=\"text-align: center; width: 40px;\"><a href=\"/panel/users/config?domain={$domain['hostname']}&id={$u['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/user.png\" style=\"width: 40px;\" /></a></td>
 					<td>{$u['mail']}</td>
 					<td>{$u['firstname']}</td>
 					<td>{$u['lastname']}</td>
@@ -88,7 +88,7 @@ if( count($groups) > 0 )
 	{
 		$content .= "
 				<tr>
-					<td style=\"text-align: center; width: 40px;\"><a href=\"/panel/groups/config?domain={$domain['hostname']}&id={$g['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/group.png\" /></a></td>
+					<td style=\"text-align: center; width: 40px;\"><a href=\"/panel/groups/config?domain={$domain['hostname']}&id={$g['id']}\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/group.png\" style=\"width: 40px;\" /></a></td>
 					<td>{$g['name']}</td>
 					<td>{$g['firstname']}</td>
 					<td>{$g['lastname']}</td>

@@ -1,19 +1,30 @@
 [EN]
 
-
 [FR]
-title = "Communication et presse"
-kit = "Logos Another Service"
-small = "Logo mini"
-normal = "Logo écriture haute définition"
-square = "Logo carré"
-big = "Logo haute définition"
-press = "Olympe dans la presse"
-published = "Publié le"
-print = "Kits et plaquettes"
-commercial = "La plaquette commerciale de la société."
+title = "Presse et évènements"
+intro = "Introduction"
+intro_text = "Vous trouverez dans cette rubrique l'ensemble des articles et des communiqués concernant Another Service. Il est également possible de consulter la page consacrée à l'<a href='http://www.sys.as/press'>espace presse de la société SYS SAS</a>
+à l'origine de la plateforme Another Service.<br /><br />
+Pour toute information complémentaire, n'hésitez pas à <a href='/about/contact'>nous contacter</a>."
 
-event1_title = "Another Service au salon Solutions Linux"
-event1_date = "5 mai 2013"
-event1_extract = "Nous serons présents les 28 et 29 mai prochains pour le salon Solutions Linux à Paris au CNIT de la Défense."
+press = "Articles"
 events = "Evènements"
+more = "Lire la suite"
+pack = "Pack de visuels de communication"
+
+plaquettes = "Visuels"
+instit = "Institutionnel"
+commercial = "Commercial"
+partner = "Partenaire"
+sys = "Société SYS"
+logos = "Pack de logos"
+
+news1 = "Nouveautés 2014 !"
+news1_text = "L'ensemble de l'équipe Another Service vous souhaite une heureuse année 2014 ! A cette occasion, nous avons mis à jour notre site Internet et notre panel."
+news1_date = "Le 4 janvier 2014"
+news2 = "Ceph RBD : la solution aux problématiques de stockage ?"
+news2_text = "L'un de nos architectes revient sur le point clé des architectures cloud : le stockage."
+news2_date = "Le 28 janvier 2014"
+news3 = "Partenariat avec les Flash de la Courneuve"
+news3_text = "Another Service vient de concrétiser son premier partenariat dans le domaine sportif et devient sponsor des Flash de la Courneuve."
+news3_date = "18 mars 2014"

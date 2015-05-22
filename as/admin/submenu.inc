@@ -5,16 +5,16 @@ if( isset($GLOBALS['lang']) && is_object($GLOBALS['lang']) )
 
 // initialize the menu
 $menu = array(
-	array('text'=>"menu_home", 'icon'=>"iDownload", 'link'=>"/admin"),
-	array('text'=>"menu_users", 'icon'=>"iDownload", 'link'=>"/admin/users"),
-	array('text'=>"menu_billing", 'icon'=>"iDownload", 'link'=>"/admin/billing"),
-	array('text'=>"menu_domains", 'icon'=>"iDownload", 'link'=>"/admin/domains"),
-	array('text'=>"menu_groups", 'icon'=>"iUsers", 'link'=>"/admin/groups"),
-	array('text'=>"menu_grants", 'icon'=>"iKey", 'link'=>"/admin/grants"),
-	array('text'=>"menu_quotas", 'icon'=>"iChart8", 'link'=>"/admin/quotas"),
-	array('text'=>"menu_stats", 'icon'=>"iChart8", 'link'=>"/admin/stats"),
-	array('text'=>"menu_blog", 'icon'=>"iChart8", 'link'=>"/admin/blog"),
-	array('text'=>"menu_logs", 'icon'=>"iChart8", 'link'=>"/admin/logs")
+	array('text'=>"menu_home", 'link'=>"/admin"),
+	array('text'=>"menu_users", 'link'=>"/admin/users"),
+	array('text'=>"menu_billing", 'link'=>"/admin/billing"),
+	array('text'=>"menu_domains", 'link'=>"/admin/domains"),
+	array('text'=>"menu_groups", 'link'=>"/admin/groups"),
+	array('text'=>"menu_grants", 'link'=>"/admin/grants"),
+	array('text'=>"menu_quotas", 'link'=>"/admin/quotas"),
+	array('text'=>"menu_stats", 'link'=>"/admin/stats"),
+	array('text'=>"menu_blog", 'link'=>"/admin/blog"),
+	array('text'=>"menu_logs", 'link'=>"/admin/logs")
 );
 
 return $menu;

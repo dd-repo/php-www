@@ -5,7 +5,9 @@
 title = "A propos d'Another Service"
 
 intro = "Qui sommes-nous ?"
-intro_text = "<span style='font-weight: bold;'>Another Service</span> est un fournisseur de <span class='colored large'>PaaS</span> (Platform As A Service) et <span class='colored large'>SaaS</span> (Software As A Service). 
+intro_text = "<span style='font-weight: bold;'>Another Service</span> est un fournisseur de <span class='colored large'>PaaS</span> (Platform As A Service) et <span class='colored large'>SaaS</span> (Software As A Service). Nous
+proposons des offres d'<a href='/hosting'>hébergement mutualisé</a> ainsi qu'une gamme <a href='/paas'>Platform As A Service</a>.<br /><br />
+
 Notre équipe assure le maintien d'un cloud public extensible très haute disponibilité et accompagne de nombreuses entreprises dans le déploiement
 de leurs applications.<br /><br />Nous proposons également des prestations de conseils et d'aide à la prise de décision à l'intention des DSI sur l'évolution
 de leur système d'information vers une solution cloud."
@@ -16,11 +18,11 @@ listes de diffusions, forums, en utilisant le formulaire de contact ou les autre
 Elles ne sont cédées à aucune société commerciale ou autre organisation. Pour cela, le site Another Service fait l'objet des déclarations à la CNIL numéros <span style='font-weight:bold;'>1641705</span> et 
 <span style='font-weight:bold;'>1641706</span>."
 
-follow = "Suivez nous"
-news = "Actualité"
-legal = "Informations légales"
-legal_text = "<i>SIRET</i> : 52174593500010<br />
-<i>RCS</i> : Marseille B 521 745 935<br />
-<i>Capital social</i> : 10.000 euros"
-behind = "A l'origine d'Another Service"
-behind_text = "La plateforme <a href='https://www.anotherservice.com'>Another Service</a> est soutenue et propulsée par la société française <a href='http://www.sys.as'>SYS</a>, opérateur indépendant créé en 2010."
+infos = "Informations"
+creation = "Création"
+founders = "Société fondatrice"
+capital = "Capital social"
+siret = "SIRET"
+office = "Siège"
+
+labels = "Labels"

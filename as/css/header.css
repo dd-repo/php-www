@@ -4,12 +4,13 @@ div.header {
 	width: 100%;
 	margin: 0;
 	padding: 15px 0 20px 0;
-	background-color: #1c1c1c;
+	background-color: #11193e;
 	height: 80px;
 }
 
 div.header div.content  {
-	width: 1100px;
+	width: 100%;
+	max-width: 1100px;
 	margin: 0 auto;
 	padding: 0;
 }
@@ -46,8 +47,8 @@ div.header div.content div.menu ul  li {
 
 div.header div.content div.menu ul  li a {
 	display: block;
-	color: #b2c0cA;
-	margin: 0px 4px 0 4px;
+	color: #b2c0ca;
+	margin: 0px 10px 0 10px;
 	padding: 10px 9px 10px 9px;
 }
 
@@ -61,35 +62,31 @@ div.header div.content div.menu ul  li a.active {
 }
 
 div.header div.content div.menu ul  li.nlogin a {
-	height: 10px;
-	margin: 0 0 0 20px;
-	padding: 10px 9px 12px 9px;
-	font-size: 14px;
-	color: #ffffff;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	background-color: #68ab17;
-}
-
-div.header div.content div.menu ul  li.nlogin a:hover {
-	background: #7bcb1b;
-	color: #ffffff;
-}
-
-div.header div.content div.menu ul  li.npanel a {
-	background-image: linear-gradient(rgb(28, 28, 28), rgb(36, 117, 174) 50%, rgb(36, 117, 174) 50%, rgb(28, 28, 28));
+	background-image: linear-gradient(rgb(17, 25, 62), rgb(156, 197, 234) 50%, rgb(156, 197, 234) 50%, rgb(17, 25, 62));
 	background-position: 0% 50%;
 	background-repeat: no-repeat;
 	background-size: 1px 100%;
-	padding-left: 25px;
-	margin-left: 15px;
+	transition: all 0.2s;
+	background-color: #;
+	padding-left: 30px;
+	margin-left: 12px;
+}
+
+div.header div.content div.menu ul  li.npanel a {
+	background-image: linear-gradient(rgb(17, 25, 62), rgb(156, 197, 234) 50%, rgb(156, 197, 234) 50%, rgb(17, 25, 62));
+	background-position: 0% 50%;
+	background-repeat: no-repeat;
+	background-size: 1px 100%;
+	transition: all 0.2s;
+	background-color: #;
+	padding-left: 30px;
+	margin-left: 12px;
 }
 
 
 div.header div.content div.menu ul  li.nlogout a {
 	transition: all 0.2s;
-	background-color: #2475ae;
+	background-color: #53bfed;
 	border-radius: 3px;
 	color: #ffffff;
 	cursor: pointer;
@@ -100,19 +97,15 @@ div.header div.content div.menu ul  li.nlogout a {
 }
 
 div.header div.content div.menu ul  li.nlogout a:hover {
-	background-color: #2c8dd2;
+	background-color: #56c8f9;
 }
 
 div.header div.content div.menu ul  li.nsignup a {
-	height: 10px;
-	margin: 0 0 0 20px;
-	padding: 10px 9px 12px 9px;
-	font-size: 14px;
+	transition: all 0.2s;
+	background-color: #53bfed;
+	border-radius: 3px;
 	color: #ffffff;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	background-color: #51626b;
+	cursor: pointer;
 }
 
 div.header div.content div.menu ul  li.nsignup a {
@@ -128,7 +121,7 @@ div.menu-fixed {
 	position: absolute;
 	top: 115px;
 	width: 100%;
-	background-color: #2475ae;
+	background-color: #53bfed;
 	height: 50px;
 	border-bottom: 1px solid #ccc;
 	z-index: 100;
@@ -161,12 +154,12 @@ div.menu-fixed  div.container ul  li {
 
 div.menu-fixed  div.container ul  li:hover {
 	text-decoration: none;
-	background-color: #2c8dd2;
+	background-color: #56c8f9;
 }
 
 div.menu-fixed  div.container ul  li.active {
 	text-decoration: none;
-	background-color: #2c8dd2;
+	background-color: #56c8f9;
 }
 
 div.menu-fixed  div.container ul li a {
@@ -176,7 +169,7 @@ div.menu-fixed  div.container ul li a {
 	padding: 15px 20px 0 20px;
 	font-weight: 400;
 	font-size: 15px;
-	color: #e8e8e8;
+	color: #ffffff;
 }
 
 div.menu-fixed  div.container ul li a:hover {

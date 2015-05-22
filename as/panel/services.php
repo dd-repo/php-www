@@ -32,7 +32,7 @@ foreach( $me['quotas'] as $q )
 	}
 }
 
-if( $mem['max'] == 0 )
+if( $mem['max'] == 0 && $appq['max'] == 0 )
 	template::redirect('/panel/plans');
 
 $services_left = 260-round($serv['used']*260/$serv['max']);

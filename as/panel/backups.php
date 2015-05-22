@@ -6,6 +6,19 @@ if( !defined('PROPER_START') )
 	exit;
 }
 
+$quotas =  api::send('self/quota/user/list');
+
+foreach( $quotas as $q )
+{
+	if( $q['name'] == 'APPS' )
+		$aquota = $q;
+	if( $q['name'] == 'MEMORY' )
+		$mquota = $q;
+}
+
+if( $mquota['max'] == 0 && $aquota['max'] == 0 )
+	template::redirect('/panel/plans');
+	
 $backups = api::send('self/backup/list');
 
 $content = "

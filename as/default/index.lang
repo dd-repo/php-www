@@ -2,41 +2,30 @@
 
 
 [FR]
-intro = "Hébergement applicatif haute disponibilité "
-intro_text = "Services cloud et conseils en infrastructure."
-learn = "En savoir plus"
-signup = "S'inscrire"
-login_now = "ou se connecter"
-username = "Utilisateur"
-password = "Mot de passe"
-login = "Connexion"
-email = "Email"
-contact = "Contact"
-register = "Commencer"
-services = "Services et conseils"
-services_text = "Nous fournissons un service d'<a href='/service/hosting'>hébergement</a> haute disponibilité pour vos applications et vos environnements de développement. Nous vous accompagnons dans le déploiement et la mise 
-en oeuvre d'architectures \"cloud\".<br /><br />Investis dans le monde de l'<a href='/service/opensource'>Open Source</a>, les documentations de nos infrastructures et les codes sources de nos applications sont ouverts à la 
-communauté."
-apps = "Applications et bases de données"
-apps_text = "Notre plateforme supporte de nombreux langages et permet d'exécuter des applications PHP, JAVA, Ruby, Python, NodeJS et .Net. Nous proposons aussi bien des bases de données SQL (MySQL, PostgreSQL...) 
-que no-SQL (MongoDB, Redis, CouchDB...). <br /><br />De nombreux outils sont à votre disposition pour surveiller votre consommation et ajuster les ressources dont vous avez besoin."
+intro = "Votre hébergement sur mesure"
+intro_text = "Particuliers, associations, entreprises, développeurs."
+mutu = "Mutualisé"
+mutu_text = "PHP"
+mutu_price = "A partir de 2 &euro; / mois"
+paas = "Platform As A Service"
+paas_text = "PHP, Ruby, Python, JAVA, NodeJS"
+paas_price = "A partir de 29 &euro; / mois"
+users = "Utilisateurs"
+apps = "applications"
+databases = "bases de données et "
+domains = "noms de domaine"
 
-showcase_text = "La mise en place d'un outil de gestion de projets en mode SaaS a apporté un réel gain de productivité pour 
-toute l'équipe, et amélioré la relation au quotidien avec les clients.<br /><br /> L'équipe d'Another Service nous a justement conseillé sur le choix du logiciel, et 
-s'occupe intégralement de l'hébergement, des mises à jour, et des évolutions en fonction de nos besoins. [...]"
-more = "En savoir plus"
-references = "Références"
-quote = "Another Service est une solution complète et performante pour le déploiement d'applications critiques."
-quote_author = "Damien Boissier, Altermedia"
-signup_now = "S'inscrire maintenant"
+mutu_title = "L'hébergement à la portée de tous"
+mutu_explain = "Notre expérience d'hébergeur depuis plus de 7 ans nous a permis de mettre au point des offres abordables, simples et efficaces. Vous disposez dans votre hébergement
+mutualisé Another Service de nombreux outils et services. <br /><br />En plus des statistiques, des bases de données, du stockage cloud, vous disposez de l'ensemble de la suite Agenda/Contacts/Boîte mail pour vos adresses emails."
+
+paas_title = "Une plateforme pour les entreprises et les développeurs"
+paas_explain = "L'évolution des méthodes de développement et des besoins nous a conduit à monter une offre de plateforme entièrement intégrée. A destination des entreprises et des développeurs, nous proposons de nombreux langages
+et services.<br /><br /> On compte notamment la gestion des dépôts de développement, les ressources élastiques pour les applications, la supervision des processus etc..."
+signup_now = "S'inscrire"
 help = "Une question? N'hésitez pas à <a href='/about/contact'>nous contacter</a>."
-panel = "Panel"
-logged = "Identifié en tant que"
-service = "Services"
-service_text = "Another Service est une plateforme d'<a href='/service/hosting'>hébergement applicatif</a> haute disponibilité, découvrez nos <a href='/service/offer'>offres</a>."
-open = "Open Source"
-open_text = "Le code de notre plateforme et de <a href='/developers'>nos outils</a> est public, l'<a href='/service/infrastructure'>infrastructure</a> est basée sur des technologies ouvertes."
-advice = "Conseils"
-advice_text = "Notre société accompagne les <a href='/about/reference'>entreprises</a> dans leur adaptation aux plateformes PaaS/SaaS."
-demo = "Vous souhaitez tester nos services ?"
-demo2 = "Connectez vous avec le compte de démonstration."
+
+statistics = "Statistiques"
+statistics_sub = "Another Service en chiffres"
+trust = "Quelques références"
+trust_sub = "Ils nous font confiance"

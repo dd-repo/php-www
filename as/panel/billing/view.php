@@ -35,7 +35,7 @@ $content = "
 			<div class=\"right\" style=\"float: right; text-align: right;\">
 ";
 
-if( $bill['status'] == 1 )
+if( $bill['status'] < 2 )
 {
 	$content .= "
 				<a class=\"action pay\" href=\"#\" onclick=\"$('#pay').dialog('open'); return false;\">
@@ -52,7 +52,10 @@ else
 		";
 }
 
-$content .= "	
+$content .= "
+				<a class=\"action back\" href=\"/panel/billing\">
+					{$lang['back']}
+				</a>
 			</div>
 			<div class=\"clear\"></div>
 		</div>

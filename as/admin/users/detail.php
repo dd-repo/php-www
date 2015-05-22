@@ -367,7 +367,9 @@ if( security::hasGrant('USER_SELECT') )
 					</div>
 					<fieldset>
 						<select name=\"billing\" style=\"width: 320px\">
-							<option value=\"1\" ".($user['billing']==1?"selected":"").">{$lang['billing']}</option>
+							<option value=\"3\" ".($user['billing']==3?"selected":"").">{$lang['billing_year']}</option>
+							<option value=\"2\" ".($user['billing']==2?"selected":"").">{$lang['billing_month']}</option>
+							<option value=\"1\" ".($user['billing']==1?"selected":"").">{$lang['billing_auto']}</option>
 							<option value=\"0\" ".($user['billing']==0?"selected":"").">{$lang['nobilling']}</option>
 						</select>
 						<span class=\"help-block\">{$lang['billing_help']}</span>
@@ -447,7 +449,7 @@ $content .= "
 					<th>{$lang['size']}</th>
 				</tr>
 				<tr>
-					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/ftp.png\" /></td>
+					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/ftp.png\" style=\"width: 40px;\" /></td>
 					<td>{$lang['cloud']}</td>
 					<td>{$lang['cloud_type']}</td>
 					<td>/dns/in/olympe/Users/{$user['name']}</td>
@@ -459,7 +461,7 @@ foreach( $apps as $a )
 {
 	$content .= "
 				<tr>
-					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/app.png\" /></td>
+					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/app.png\" style=\"width: 40px;\" /></td>
 					<td>{$a['name']}</td>
 					<td>{$lang['app']}</td>
 					<td>{$a['homeDirectory']}</td>
@@ -472,7 +474,7 @@ foreach( $services as $s )
 {
 	$content .= "
 				<tr>
-					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" /></td>
+					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" style=\"width: 40px;\" /></td>
 					<td>{$s['name']}</td>
 					<td>{$lang['service2']} {$s['type']}</td>
 					<td>/services/{$s['name']}-master</td>
@@ -485,7 +487,7 @@ foreach( $services as $s )
 		{
 			$content .= "
 					<tr>
-						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" /></td>
+						<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/service.png\" style=\"width: 40px;\" /></td>
 						<td>{$s['description']}</td>
 						<td>{$lang['service']} {$s['vendor']}</td>
 						<td>/services/{$s['name']}-{$b['branch_name']}</td>
@@ -505,7 +507,7 @@ foreach( $domains as $d )
 	{
 		$content .= "
 				<tr>
-					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/user.png\" /></td>
+					<td style=\"text-align: center; width: 40px;\"><img src=\"/{$GLOBALS['CONFIG']['SITE']}/images/icons/user.png\" style=\"width: 40px;\" /></td>
 					<td>{$u['mail']}</td>
 					<td>{$lang['account']}</td>
 					<td>{$u['homeDirectory']}</td>
